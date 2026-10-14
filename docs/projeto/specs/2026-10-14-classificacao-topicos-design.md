@@ -124,13 +124,13 @@ O coletor não é código do repositório. O prompt dos agentes, os critérios d
 
 `calibracao.py` roda o pipeline completo sobre o corpus, com cada questão excluída da própria vizinhança, e mede acerto com a régua da Vício: certo se o tema decidido é igual, pai ou filho do tema do corpus.
 
-Saídas intermediárias: precisão por faixa de confiança, em 5 faixas, cruzada com a regra que decidiu. Como as 359 são mais difíceis que o corpus, a precisão prevista reponderada é a soma, sobre as faixas, da precisão da faixa no corpus vezes a fração de publicadas das 359 que caíram naquela faixa.
+Saídas intermediárias: precisão por faixa de confiança, em 5 faixas, cruzada com a regra que decidiu. Cada célula (regra, faixa) recebe a precisão suavizada de Jeffreys, (acertos + 0,5) / (n + 1), para que células pequenas todas certas não virem certeza; célula com menos de 5 questões do corpus recua para a faixa agregada, e faixa pequena recua para o global. Como as 359 são mais difíceis que o corpus, a precisão prevista reponderada é a média, sobre as publicadas das 359, da precisão suavizada da célula onde cada uma caiu.
 
 Escolha de limiares: varre `limiar_publicar` e `limiar_pai` em passos de 0,05, calcula precisão prevista e cobertura para cada par, e escolhe o par de maior cobertura cuja precisão prevista é de pelo menos 0,97 e cujo limite inferior do intervalo é de pelo menos 0,95.
 
 Âncora: a seção 11 fornece 40 rótulos nas 359. A precisão observada nas publicadas da âncora é comparada à prevista para as mesmas questões. Se a diferença cabe no intervalo, o intervalo é mantido. Se não cabe, o intervalo é alargado até conter a observação e o relatório explica.
 
-Intervalos: bootstrap com 1000 reamostragens sobre o corpus de validação e sobre a âncora; reportamos o mais largo. Cobertura é observada diretamente, então seu intervalo é estreito.
+Intervalos: simulação da posterior Beta por célula com 1000 amostras (cada célula sorteia sua precisão de Beta(acertos + 0,5; erros + 0,5), e a média ponderada pelas publicadas das 359 forma a distribuição), percentis 2,5 e 97,5. Isso mantém largura honesta em células pequenas, onde o bootstrap por reamostragem colapsa. A varredura de limiares usa 200 amostras por par; os números finais e a verificação de que a meta foi atingida usam as 1000. Cobertura é observada diretamente, então seu intervalo é estreito.
 
 `previsao.txt` segue o formato do LEIA-ME e, após as quatro linhas, explica o método, o viés do corpus, o que a âncora mostrou e os limiares escolhidos.
 
