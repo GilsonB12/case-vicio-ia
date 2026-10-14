@@ -16,12 +16,12 @@ _ESPACOS = re.compile(r"\s+")
 
 
 def limpar_html(texto_html: str) -> str:
-    """Remove tags, entidades e o '\\n' literal que vem do banco; colapsa espaços."""
+    """Remove tags, entidades e os '\\n' e '\\t' literais que vêm do banco; colapsa espaços."""
     if not texto_html:
         return ""
     sem_tags = BeautifulSoup(texto_html, "html.parser").get_text(" ")
     sem_entidades = modulo_html.unescape(sem_tags).replace("\xa0", " ")
-    sem_barra_n = sem_entidades.replace("\\n", " ")
+    sem_barra_n = sem_entidades.replace("\\n", " ").replace("\\t", " ")
     return _ESPACOS.sub(" ", sem_barra_n).strip()
 
 

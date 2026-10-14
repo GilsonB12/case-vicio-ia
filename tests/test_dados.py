@@ -15,6 +15,10 @@ def test_limpar_html_troca_barra_n_literal_por_espaco():
     assert dados.limpar_html("Ministério\\nPúblico") == "Ministério Público"
 
 
+def test_limpar_html_troca_barra_t_literal_por_espaco():
+    assert dados.limpar_html("15\\tdias") == "15 dias"
+
+
 def test_montar_texto_inclui_comando_e_alternativas():
     texto = dados.montar_texto(
         "Assinale a alternativa correta.",
