@@ -1,0 +1,293 @@
+"""Calibração: precisão por faixa no corpus, reponderação, varredura de limiares, âncora e previsao.txt."""
+from __future__ import annotations
+
+import json
+import logging
+from dataclasses import dataclass
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+
+from classificador.ancora import carregar_ancora_manual
+from classificador.arvore import ArvoreTemas
+from classificador.candidatos import Candidato, candidatos_de_dict
+from classificador.config import CAMINHOS, SEMENTE
+from classificador.dados import carregar_corpus, ler_jsonl
+from classificador.decisao import Decisao, Limiares, decidir
+from classificador.llm import VotoModelo
+from classificador.vizinhanca import VotoVizinhanca
+
+registro = logging.getLogger(__name__)
+
+FAIXAS = [(0.0, 0.6), (0.6, 0.7), (0.7, 0.8), (0.8, 0.9), (0.9, 1.01)]
+ROTULOS = ["0.0-0.6", "0.6-0.7", "0.7-0.8", "0.8-0.9", "0.9-1.0"]
+GRADE_PADRAO = [round(x, 2) for x in np.arange(0.5, 0.951, 0.05)]
+
+
+def faixa_de(confianca: float | None) -> str:
+    if confianca is None or (isinstance(confianca, float) and np.isnan(confianca)):
+        return "sem"
+    for (inicio, fim), rotulo in zip(FAIXAS, ROTULOS):
+        if inicio <= confianca < fim:
+            return rotulo
+    return ROTULOS[-1]
+
+
+@dataclass
+class Entrada:
+    id: str
+    voto_a: VotoModelo | None
+    voto_b: VotoModelo | None
+    vizinhanca: VotoVizinhanca | None
+    candidatos: list[Candidato]
+    verdadeiro: int | None
+
+
+def carregar_entradas(alvo: str, pasta: Path, arvore: ArvoreTemas, passada: int = 2) -> list[Entrada]:
+    caminho_votos = pasta / f"votos_llm_{alvo}.jsonl"
+    if not caminho_votos.exists():
+        raise FileNotFoundError(f"{caminho_votos} não existe; rode os votos de '{alvo}' antes de calibrar")
+    votos = ler_jsonl(caminho_votos)
+    caminho_viz = pasta / f"vizinhanca_{alvo}.jsonl"
+    vizinhancas = {l["id"]: VotoVizinhanca.de_dict(l) for l in ler_jsonl(caminho_viz)} if caminho_viz.exists() else {}
+    candidatos = {l["id"]: candidatos_de_dict(l["candidatos"]) for l in ler_jsonl(pasta / f"candidatos_{alvo}_p{passada}.jsonl")}
+    verdadeiros: dict[str, int] = {}
+    if alvo == "corpus":
+        corpus = carregar_corpus()
+        verdadeiros = {str(i): arvore.canonico(int(t)) for i, t in zip(corpus["id"], corpus["tema_id"])}
+    entradas = []
+    for linha in votos:
+        id_ = linha["id"]
+        entradas.append(Entrada(
+            id=id_,
+            voto_a=None if linha.get("openai") is None else VotoModelo.model_validate(linha["openai"]),
+            voto_b=None if linha.get("anthropic") is None else VotoModelo.model_validate(linha["anthropic"]),
+            vizinhanca=vizinhancas.get(id_),
+            candidatos=candidatos.get(id_, []),
+            verdadeiro=verdadeiros.get(id_),
+        ))
+    return entradas
+
+
+def decidir_todas(entradas: list[Entrada], arvore: ArvoreTemas, limiares: Limiares) -> list[Decisao]:
+    return [decidir(e.id, e.voto_a, e.voto_b, e.vizinhanca, e.candidatos, arvore, limiares) for e in entradas]
+
+
+def avaliar(decisoes: list[Decisao], entradas: list[Entrada], arvore: ArvoreTemas) -> pd.DataFrame:
+    verdadeiros = {e.id: e.verdadeiro for e in entradas}
+    linhas = []
+    for d in decisoes:
+        verdadeiro = verdadeiros.get(d.id)
+        acerto = None
+        if d.tema_central_id is not None and verdadeiro is not None:
+            acerto = arvore.acerto(d.tema_central_id, verdadeiro)
+        linhas.append({
+            "id": d.id, "decisao": d.decisao, "regra": d.regra, "confianca": d.confianca,
+            "faixa": faixa_de(d.confianca), "tema_decidido": d.tema_central_id,
+            "tema_verdadeiro": verdadeiro, "acerto": acerto,
+        })
+    return pd.DataFrame(linhas, columns=["id", "decisao", "regra", "confianca", "faixa", "tema_decidido", "tema_verdadeiro", "acerto"])
+
+
+def tabela_faixas(avaliacao: pd.DataFrame) -> pd.DataFrame:
+    publicadas = avaliacao[(avaliacao["decisao"] == "publicar") & avaliacao["acerto"].notna()].copy()
+    if publicadas.empty:
+        return pd.DataFrame(columns=["regra", "faixa", "n", "acertos", "precisao"])
+    publicadas["acerto"] = publicadas["acerto"].astype(bool)
+    grupo = publicadas.groupby(["regra", "faixa"])["acerto"].agg(n="size", acertos="sum").reset_index()
+    grupo["precisao"] = grupo["acertos"] / grupo["n"]
+    return grupo
+
+
+def precisao_reponderada(tabela: pd.DataFrame, avaliacao_questoes: pd.DataFrame) -> float:
+    publicadas = avaliacao_questoes[avaliacao_questoes["decisao"] == "publicar"]
+    if publicadas.empty or tabela.empty:
+        return 0.0
+    por_par = {(int(r.regra), r.faixa): float(r.precisao) for r in tabela.itertuples()}
+    por_faixa_df = tabela.groupby("faixa")[["n", "acertos"]].sum()
+    por_faixa = {f: float(r.acertos / r.n) for f, r in por_faixa_df.iterrows()}
+    global_ = float(tabela["acertos"].sum() / tabela["n"].sum())
+    soma = 0.0
+    for linha in publicadas.itertuples():
+        chave = (int(linha.regra), linha.faixa)
+        soma += por_par.get(chave, por_faixa.get(linha.faixa, global_))
+    return soma / len(publicadas)
+
+
+def bootstrap_precisao(
+    avaliacao_corpus: pd.DataFrame,
+    avaliacao_questoes: pd.DataFrame,
+    repeticoes: int,
+    semente: int = SEMENTE,
+) -> tuple[float, float]:
+    publicadas = avaliacao_corpus[(avaliacao_corpus["decisao"] == "publicar") & avaliacao_corpus["acerto"].notna()]
+    if publicadas.empty:
+        return 0.0, 0.0
+    gerador = np.random.default_rng(semente)
+    estimativas = []
+    for _ in range(repeticoes):
+        indices = gerador.integers(0, len(publicadas), len(publicadas))
+        amostra = publicadas.iloc[indices]
+        estimativas.append(precisao_reponderada(tabela_faixas(amostra), avaliacao_questoes))
+    return float(np.percentile(estimativas, 2.5)), float(np.percentile(estimativas, 97.5))
+
+
+def varrer_limiares(
+    entradas_corpus: list[Entrada],
+    entradas_questoes: list[Entrada],
+    arvore: ArvoreTemas,
+    grade: list[float] = GRADE_PADRAO,
+    contradicao: float = 0.6,
+    repeticoes: int = 200,
+) -> pd.DataFrame:
+    linhas = []
+    total = len(entradas_questoes)
+    for publicar in grade:
+        for pai in grade:
+            limiares = Limiares(publicar=publicar, pai=pai, contradicao=contradicao)
+            aval_c = avaliar(decidir_todas(entradas_corpus, arvore, limiares), entradas_corpus, arvore)
+            aval_q = avaliar(decidir_todas(entradas_questoes, arvore, limiares), entradas_questoes, arvore)
+            tabela = tabela_faixas(aval_c)
+            n_pub = int((aval_q["decisao"] == "publicar").sum())
+            precisao_corpus = float(tabela["acertos"].sum() / tabela["n"].sum()) if not tabela.empty else 0.0
+            inferior, superior = bootstrap_precisao(aval_c, aval_q, repeticoes)
+            linhas.append({
+                "publicar": publicar, "pai": pai, "n_publicadas": n_pub,
+                "cobertura": n_pub / total if total else 0.0,
+                "precisao_corpus": precisao_corpus,
+                "precisao_prevista": precisao_reponderada(tabela, aval_q),
+                "limite_inferior": inferior, "limite_superior": superior,
+            })
+    return pd.DataFrame(linhas)
+
+
+def escolher_limiares(varredura: pd.DataFrame, alvo: float = 0.97, piso: float = 0.95, contradicao: float = 0.6) -> Limiares:
+    aptas = varredura[(varredura["precisao_prevista"] >= alvo) & (varredura["limite_inferior"] >= piso)]
+    if aptas.empty:
+        registro.warning("nenhum par de limiares atinge precisão %.2f com piso %.2f; usando o de maior limite inferior", alvo, piso)
+        melhor = varredura.sort_values(["limite_inferior", "cobertura"], ascending=[False, False]).iloc[0]
+    else:
+        melhor = aptas.sort_values(["cobertura", "precisao_prevista"], ascending=[False, False]).iloc[0]
+    return Limiares(publicar=float(melhor["publicar"]), pai=float(melhor["pai"]), contradicao=contradicao)
+
+
+def comparar_ancora(avaliacao_questoes: pd.DataFrame, ancora: pd.DataFrame, arvore: ArvoreTemas, tabela: pd.DataFrame) -> dict:
+    rotulos = {str(i): int(t) for i, t in zip(ancora["id"], ancora["tema_id"])}
+    publicadas = avaliacao_questoes[(avaliacao_questoes["decisao"] == "publicar") & avaliacao_questoes["id"].isin(rotulos)]
+    if publicadas.empty:
+        return {"n_publicadas_na_ancora": 0, "acertos": 0, "precisao_observada": None, "precisao_prevista_para_elas": None}
+    acertos = sum(arvore.acerto(int(l.tema_decidido), rotulos[l.id]) for l in publicadas.itertuples())
+    return {
+        "n_publicadas_na_ancora": int(len(publicadas)),
+        "acertos": int(acertos),
+        "precisao_observada": acertos / len(publicadas),
+        "precisao_prevista_para_elas": precisao_reponderada(tabela, publicadas),
+    }
+
+
+def ajustar_intervalo(inferior: float, superior: float, observado: float | None) -> tuple[float, float]:
+    if observado is None:
+        return inferior, superior
+    return min(inferior, observado), max(superior, observado)
+
+
+def escrever_previsao(
+    caminho: Path,
+    precisao: float,
+    intervalo: tuple[float, float],
+    cobertura: float,
+    intervalo_cobertura: tuple[float, float],
+    texto: str,
+) -> Path:
+    conteudo = (
+        f"precisao_prevista: {precisao:.2f}   # fração das publicadas que estará certa\n"
+        f"precisao_intervalo: {intervalo[0]:.2f}-{intervalo[1]:.2f}\n"
+        f"cobertura_prevista: {cobertura:.2f}  # fração das questões que você publicou\n"
+        f"cobertura_intervalo: {intervalo_cobertura[0]:.2f}-{intervalo_cobertura[1]:.2f}\n"
+        f"\n{texto.strip()}\n"
+    )
+    caminho.write_text(conteudo, encoding="utf-8")
+    return caminho
+
+
+def montar_texto_previsao(resumo: dict) -> str:
+    ancora = resumo.get("ancora") or {}
+    partes = [
+        "Como chegamos nos números.",
+        f"Não há gabarito das 359 questões, então a precisão foi estimada num corpus de referência de {resumo['n_corpus']} "
+        f"questões reais de concurso com tema conhecido, coletado por agentes a partir da própria árvore de temas. "
+        f"O pipeline rodou sobre esse corpus com cada questão excluída da própria vizinhança, e medimos a precisão "
+        f"das publicadas por regra de decisão e faixa de confiança, com a régua da Vício: certo se igual, pai ou filho.",
+        f"O corpus é mais fácil que as 359, que vieram de lixeiras. Para corrigir isso, a precisão prevista é a média das "
+        f"precisões por faixa no corpus, ponderada pela distribuição de faixas que as 359 publicadas realmente têm. "
+        f"Os limiares de publicação ({resumo['limiares']['publicar']:.2f} no tema, {resumo['limiares']['pai']:.2f} no pai) "
+        f"foram escolhidos por varredura, maximizando cobertura sujeita a precisão prevista de pelo menos 0,97 e limite "
+        f"inferior do intervalo de pelo menos 0,95. Intervalo por bootstrap com {resumo['repeticoes_final']} reamostragens.",
+    ]
+    if ancora.get("n_publicadas_na_ancora"):
+        partes.append(
+            f"Checagem com âncora manual: das {ancora['n_publicadas_na_ancora']} questões publicadas que estavam na "
+            f"âncora de 40 rotuladas às cegas, {ancora['acertos']} estavam certas "
+            f"(observado {ancora['precisao_observada']:.2f}, previsto {ancora['precisao_prevista_para_elas']:.2f}). "
+            f"{'O intervalo foi alargado para conter a observação.' if resumo.get('intervalo_alargado') else 'A observação cabe no intervalo.'}"
+        )
+    else:
+        partes.append("Não houve âncora manual disponível na calibração; o intervalo reflete só o corpus.")
+    partes.append(
+        f"Cobertura: {resumo['n_publicadas']} de {resumo['n_questoes']} questões publicadas. "
+        f"É um número observado, não previsto, por isso o intervalo é estreito."
+    )
+    return "\n\n".join(partes)
+
+
+def rodar_calibracao(
+    arvore: ArvoreTemas,
+    pasta: Path = CAMINHOS.intermediarios,
+    caminho_ancora: Path = CAMINHOS.ancora_manual,
+    contradicao: float = 0.6,
+    repeticoes_varredura: int = 200,
+    repeticoes_final: int = 1000,
+) -> dict:
+    entradas_corpus = carregar_entradas("corpus", pasta, arvore)
+    entradas_questoes = carregar_entradas("questoes", pasta, arvore)
+    varredura = varrer_limiares(entradas_corpus, entradas_questoes, arvore, contradicao=contradicao, repeticoes=repeticoes_varredura)
+    varredura.to_csv(pasta / "calibracao_varredura.csv", index=False)
+    limiares = escolher_limiares(varredura, contradicao=contradicao)
+    (pasta / "limiares.json").write_text(json.dumps(limiares.para_dict(), indent=2), encoding="utf-8")
+
+    aval_c = avaliar(decidir_todas(entradas_corpus, arvore, limiares), entradas_corpus, arvore)
+    aval_q = avaliar(decidir_todas(entradas_questoes, arvore, limiares), entradas_questoes, arvore)
+    aval_c.to_csv(pasta / "avaliacao_corpus.csv", index=False)
+    tabela = tabela_faixas(aval_c)
+    tabela.to_csv(pasta / "calibracao_faixas.csv", index=False)
+    precisao = precisao_reponderada(tabela, aval_q)
+    inferior, superior = bootstrap_precisao(aval_c, aval_q, repeticoes_final)
+
+    ancora_resultado = None
+    if caminho_ancora.exists():
+        ancora_resultado = comparar_ancora(aval_q, carregar_ancora_manual(arvore, caminho_ancora), arvore, tabela)
+    else:
+        registro.warning("âncora manual ausente em %s; intervalo reflete só o corpus", caminho_ancora)
+    observado = None if ancora_resultado is None else ancora_resultado["precisao_observada"]
+    inferior_final, superior_final = ajustar_intervalo(inferior, superior, observado)
+
+    n_pub = int((aval_q["decisao"] == "publicar").sum())
+    cobertura = n_pub / len(aval_q)
+    resumo = {
+        "limiares": limiares.para_dict(),
+        "n_corpus": len(entradas_corpus),
+        "n_questoes": len(aval_q),
+        "n_publicadas": n_pub,
+        "cobertura": cobertura,
+        "cobertura_intervalo": [max(0.0, cobertura - 0.01), min(1.0, cobertura + 0.01)],
+        "precisao_prevista": precisao,
+        "precisao_intervalo": [inferior_final, superior_final],
+        "intervalo_bruto": [inferior, superior],
+        "intervalo_alargado": (inferior_final, superior_final) != (inferior, superior),
+        "ancora": ancora_resultado,
+        "repeticoes_final": repeticoes_final,
+    }
+    (pasta / "calibracao_resumo.json").write_text(json.dumps(resumo, indent=2, ensure_ascii=False), encoding="utf-8")
+    registro.info("limiares %s; precisão prevista %.3f [%.3f, %.3f]; cobertura %.3f", limiares, precisao, inferior_final, superior_final, cobertura)
+    return resumo
