@@ -16,25 +16,48 @@ from classificador.embeddings import criar_embeddings
 
 registro = logging.getLogger(__name__)
 
+# Lido pelas etapas de ETAPAS_TUDO na hora da chamada; rodar_tudo troca durante a execução e restaura no fim.
+# Fora do `tudo`, as etapas sempre recalculam.
+_recalcular_no_tudo = True
+
 
 def caminho_corpus() -> Path:
     return CAMINHOS.corpus
 
 
-def etapa_candidatos(passada: int, alvo: str = "questoes") -> None:
+def _reaproveitar(saida: Path, recalcular: bool) -> bool:
+    if not recalcular and saida.exists():
+        registro.info("reaproveitando %s", saida)
+        return True
+    return False
+
+
+def etapa_candidatos(passada: int, alvo: str = "questoes", recalcular: bool = True) -> None:
+    if _reaproveitar(CAMINHOS.intermediarios / f"candidatos_{alvo}_p{passada}.jsonl", recalcular):
+        return
     candidatos.rodar_candidatos(alvo, passada, ArvoreTemas.carregar(), criar_embeddings())
 
 
-def etapa_ancora() -> None:
-    ancora.rodar_ancora()
+def etapa_ancora(pular_se_existir: bool = True) -> None:
+    planilha = CAMINHOS.ancora_planilha
+    if pular_se_existir and planilha.exists():
+        registro.info("planilha da âncora já existe em %s; etapa pulada para não sobrescrever rótulos", planilha)
+        return
+    ancora.rodar_ancora(saida=planilha)
 
 
 def etapa_votos(alvo: str, limite: int | None = None) -> None:
     caminho = CAMINHOS.intermediarios / f"candidatos_{alvo}_p2.jsonl"
+    if not caminho.exists():
+        raise FileNotFoundError(
+            f"{caminho} não existe; rode `classificar candidatos --alvo {alvo} --passada 2` antes dos votos"
+        )
     llm.rodar_votos(alvo, ArvoreTemas.carregar(), caminho, llm.criar_classificadores(), limite=limite)
 
 
-def etapa_vizinhanca(alvo: str) -> None:
+def etapa_vizinhanca(alvo: str, recalcular: bool = True) -> None:
+    if _reaproveitar(CAMINHOS.intermediarios / f"vizinhanca_{alvo}.jsonl", recalcular):
+        return
     vizinhanca.rodar_vizinhanca(alvo, ArvoreTemas.carregar(), criar_embeddings())
 
 
@@ -61,35 +84,43 @@ def etapa_publicar() -> None:
         calibracao.montar_texto_previsao(resumo),
     )
     contagem = Counter(d["decisao"] for d in decisoes)
+    inferior, superior = resumo["precisao_intervalo"]
     print(f"publicacao.csv: {dict(contagem)}")
-    print(f"previsao.txt: precisão {resumo['precisao_prevista']:.2f} {resumo['precisao_intervalo']}, cobertura {resumo['cobertura']:.2f}")
+    print(f"previsao.txt: precisão {resumo['precisao_prevista']:.2f} [{inferior:.2f}, {superior:.2f}], cobertura {resumo['cobertura']:.2f}")
 
 
 ETAPAS_TUDO: list[tuple[str, Callable[[], None]]] = [
-    ("candidatos p1 questoes", lambda: etapa_candidatos(1, "questoes")),
+    ("candidatos p1 questoes", lambda: etapa_candidatos(1, "questoes", recalcular=_recalcular_no_tudo)),
     ("ancora", etapa_ancora),
-    ("candidatos p2 questoes", lambda: etapa_candidatos(2, "questoes")),
-    ("candidatos p2 corpus", lambda: etapa_candidatos(2, "corpus")),
+    ("candidatos p2 questoes", lambda: etapa_candidatos(2, "questoes", recalcular=_recalcular_no_tudo)),
+    ("candidatos p2 corpus", lambda: etapa_candidatos(2, "corpus", recalcular=_recalcular_no_tudo)),
     ("votos questoes", lambda: etapa_votos("questoes")),
     ("votos corpus", lambda: etapa_votos("corpus")),
-    ("vizinhanca questoes", lambda: etapa_vizinhanca("questoes")),
-    ("vizinhanca corpus", lambda: etapa_vizinhanca("corpus")),
+    ("vizinhanca questoes", lambda: etapa_vizinhanca("questoes", recalcular=_recalcular_no_tudo)),
+    ("vizinhanca corpus", lambda: etapa_vizinhanca("corpus", recalcular=_recalcular_no_tudo)),
     ("calibrar", etapa_calibrar),
     ("decidir", lambda: etapa_decidir("questoes")),
     ("publicar", etapa_publicar),
 ]
 
 
-def rodar_tudo(etapas: list[tuple[str, Callable[[], None]]] = ETAPAS_TUDO) -> None:
+def rodar_tudo(etapas: list[tuple[str, Callable[[], None]]] = ETAPAS_TUDO, recalcular: bool = False) -> None:
+    """Roda as etapas na ordem. Sem recalcular, candidatos e vizinhança com arquivo pronto são reaproveitados;
+    os votos vêm do cache e a planilha da âncora existente nunca é regravada."""
+    global _recalcular_no_tudo
     corpus = caminho_corpus()
     if not corpus.exists():
         raise FileNotFoundError(
             f"corpus de referência ausente em {corpus}. O pipeline completo precisa dele para calibrar. "
             "Use o corpus commitado ou rode as etapas individualmente."
         )
-    for nome, funcao in etapas:
-        registro.info("=== etapa: %s ===", nome)
-        funcao()
+    _recalcular_no_tudo = recalcular
+    try:
+        for nome, funcao in etapas:
+            registro.info("=== etapa: %s ===", nome)
+            funcao()
+    finally:
+        _recalcular_no_tudo = True
 
 
 def main(argv: list[str] | None = None) -> None:
@@ -117,13 +148,14 @@ def main(argv: list[str] | None = None) -> None:
     p.add_argument("--alvo", choices=["questoes", "corpus"], default="questoes")
 
     sub.add_parser("publicar", help="grava publicacao.csv e previsao.txt")
-    sub.add_parser("tudo", help="roda todas as etapas na ordem")
+    p = sub.add_parser("tudo", help="roda todas as etapas na ordem, reaproveitando os intermediários prontos")
+    p.add_argument("--recalcular", action="store_true", help="recalcula candidatos e vizinhança mesmo com arquivo pronto")
 
     args = parser.parse_args(argv)
     if args.comando == "candidatos":
         etapa_candidatos(args.passada, args.alvo)
     elif args.comando == "ancora":
-        etapa_ancora()
+        etapa_ancora(pular_se_existir=False)
     elif args.comando == "votos":
         if args.verificar:
             for provedor, estado in llm.verificar_provedores().items():
@@ -139,7 +171,7 @@ def main(argv: list[str] | None = None) -> None:
     elif args.comando == "publicar":
         etapa_publicar()
     elif args.comando == "tudo":
-        rodar_tudo()
+        rodar_tudo(recalcular=args.recalcular)
 
 
 if __name__ == "__main__":

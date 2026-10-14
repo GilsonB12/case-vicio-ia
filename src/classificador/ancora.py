@@ -1,6 +1,7 @@
 """Planilha da âncora manual: 40 questões sorteadas, com candidatos, para rotular às cegas."""
 from __future__ import annotations
 
+import csv
 import logging
 from pathlib import Path
 
@@ -14,6 +15,22 @@ registro = logging.getLogger(__name__)
 
 N_ANCORA = 40
 COLUNAS = ["id", "disciplina_origem", "texto", "candidatos", "tema_id_gilson", "tema_id_segunda_passagem", "observacao"]
+COLUNAS_ROTULO = ["tema_id_gilson", "tema_id_segunda_passagem", "observacao"]
+
+
+def ler_csv_planilha(caminho: Path, **opcoes) -> pd.DataFrame:
+    """Lê CSV gravado por nós ou salvo pelo Excel: separador detectado (vírgula ou ponto e vírgula) e BOM ignorado."""
+    return pd.read_csv(caminho, sep=None, engine="python", encoding="utf-8-sig", **opcoes)
+
+
+def planilha_tem_rotulos(caminho: Path) -> bool:
+    """Verdadeiro se alguma célula de rótulo ou observação está preenchida, ou se não dá para ler o arquivo."""
+    try:
+        planilha = ler_csv_planilha(caminho, dtype=str, keep_default_na=False)
+    except (UnicodeDecodeError, pd.errors.ParserError, csv.Error) as erro:
+        registro.warning("não consegui ler %s (%s); trato como planilha rotulada", caminho, erro)
+        return True
+    return any(planilha[c].str.strip().ne("").any() for c in COLUNAS_ROTULO if c in planilha.columns)
 
 
 def sortear_ancora(questoes: pd.DataFrame, n: int = N_ANCORA, semente: int = SEMENTE) -> pd.DataFrame:
@@ -62,18 +79,29 @@ def rodar_ancora(
     caminho_candidatos: Path = CAMINHOS.intermediarios / "candidatos_questoes_p1.jsonl",
     saida: Path = CAMINHOS.ancora_planilha,
 ) -> Path:
+    if saida.exists() and planilha_tem_rotulos(saida):
+        raise FileExistsError(
+            f"{saida} já tem rótulos ou observações preenchidos; mova o arquivo para outro lugar antes de gerar "
+            "a planilha de novo, para não perder a rotulagem."
+        )
     arvore = ArvoreTemas.carregar()
     questoes = carregar_questoes()
     candidatos = {linha["id"]: linha["candidatos"] for linha in ler_jsonl(caminho_candidatos)}
     planilha = gerar_planilha_ancora(questoes, candidatos, arvore)
     saida.parent.mkdir(parents=True, exist_ok=True)
-    planilha.to_csv(saida, index=False, encoding="utf-8")
+    # Com BOM, o Excel abre a planilha com os acentos certos.
+    planilha.to_csv(saida, index=False, encoding="utf-8-sig")
     registro.info("planilha da âncora com %d questões em %s", len(planilha), saida)
     return saida
 
 
 def carregar_ancora_manual(arvore: ArvoreTemas, caminho: Path = CAMINHOS.ancora_manual) -> pd.DataFrame:
-    df = pd.read_csv(caminho, dtype={"id": str})
+    df = ler_csv_planilha(caminho, dtype={"id": str})
+    if "tema_id" not in df.columns:
+        raise ValueError(f"âncora em {caminho} sem a coluna tema_id; colunas encontradas: {list(df.columns)}")
+    em_branco = df["tema_id"].isna() | (df["tema_id"].astype(str).str.strip() == "")
+    if em_branco.any():
+        raise ValueError(f"âncora em {caminho} com tema_id em branco nas questões: {list(df.loc[em_branco, 'id'])}")
     df["tema_id"] = df["tema_id"].astype(int)
     invalidos = [int(t) for t in df["tema_id"] if not arvore.publicavel(int(t))]
     if invalidos:

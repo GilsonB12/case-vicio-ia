@@ -50,3 +50,53 @@ def test_carregar_ancora_manual_valida_temas(arvore, tmp_path):
     pd.DataFrame({"id": ["Q0001"], "tema_id": [6724]}).to_csv(caminho, index=False)
     with pytest.raises(ValueError, match="6724"):
         ancora.carregar_ancora_manual(arvore, caminho)
+
+
+def planilha_vazia(ids):
+    return pd.DataFrame([{coluna: "" for coluna in ancora.COLUNAS} | {"id": i} for i in ids])
+
+
+def test_rodar_ancora_nao_sobrescreve_planilha_rotulada(tmp_path):
+    saida = tmp_path / "ancora_para_rotular.csv"
+    planilha = planilha_vazia(["Q0001", "Q0002"])
+    planilha.loc[1, "tema_id_gilson"] = "5527"
+    planilha.to_csv(saida, index=False, encoding="utf-8-sig")
+    antes = saida.read_bytes()
+    with pytest.raises(FileExistsError, match="já tem rótulos"):
+        ancora.rodar_ancora(caminho_candidatos=tmp_path / "candidatos_questoes_p1.jsonl", saida=saida)
+    assert saida.read_bytes() == antes
+
+
+def test_rodar_ancora_regrava_planilha_sem_rotulos_com_bom(tmp_path, questoes):
+    from classificador.dados import escrever_jsonl
+
+    candidatos = tmp_path / "candidatos_questoes_p1.jsonl"
+    escrever_jsonl(candidatos, [{"id": i, "candidatos": [{"tema_id": 5527, "origem": "tema", "similaridade": 0.5}]}
+                                for i in questoes["id"]])
+    saida = tmp_path / "ancora_para_rotular.csv"
+    planilha_vazia(["Q0001"]).to_csv(saida, index=False, sep=";", encoding="utf-8-sig")
+    ancora.rodar_ancora(caminho_candidatos=candidatos, saida=saida)
+    assert saida.read_bytes().startswith("﻿".encode("utf-8"))
+    assert len(pd.read_csv(saida, encoding="utf-8-sig")) == 40
+
+
+def test_carregar_ancora_manual_aceita_ponto_e_virgula_e_bom(arvore, tmp_path):
+    caminho = tmp_path / "ancora_manual.csv"
+    caminho.write_text("id;tema_id;observacao\nQ0001;5527;decisão conjunta\n", encoding="utf-8-sig")
+    df = ancora.carregar_ancora_manual(arvore, caminho)
+    assert list(df["id"]) == ["Q0001"]
+    assert list(df["tema_id"]) == [5527]
+
+
+def test_carregar_ancora_manual_acusa_tema_em_branco(arvore, tmp_path):
+    caminho = tmp_path / "ancora_manual.csv"
+    caminho.write_text("id,tema_id\nQ0001,5527\nQ0002,\nQ0003, \n", encoding="utf-8")
+    with pytest.raises(ValueError, match=r"em branco.*Q0002.*Q0003"):
+        ancora.carregar_ancora_manual(arvore, caminho)
+
+
+def test_carregar_ancora_manual_sem_coluna_tema_id_lista_as_colunas(arvore, tmp_path):
+    caminho = tmp_path / "ancora_manual.csv"
+    caminho.write_text("id,tema\nQ0001,5527\n", encoding="utf-8")
+    with pytest.raises(ValueError, match=r"tema_id.*'id', 'tema'"):
+        ancora.carregar_ancora_manual(arvore, caminho)
