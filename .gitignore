@@ -1,0 +1,14 @@
+# segredos e ambiente
+.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+
+# node
+node_modules/
+revisao-ui/dist/
+
+# weaviate local
+weaviate_data/
