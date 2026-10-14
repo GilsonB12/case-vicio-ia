@@ -212,14 +212,36 @@ def escolher_limiares(
     alvo: float = ALVO_PRECISAO,
     piso: float = PISO_PRECISAO,
     contradicao: float = 0.6,
-) -> Limiares:
-    aptas = varredura[_atinge_alvo(varredura, alvo, piso)]
-    if aptas.empty:
-        registro.warning("nenhum par de limiares atinge precisão %.2f com piso %.2f; usando o de maior limite inferior", alvo, piso)
-        melhor = varredura.sort_values(["limite_inferior", "cobertura"], ascending=[False, False]).iloc[0]
-    else:
-        melhor = aptas.sort_values(["cobertura", "precisao_prevista", "limite_inferior"], ascending=[False, False, False]).iloc[0]
-    return Limiares(publicar=float(melhor["publicar"]), pai=float(melhor["pai"]), contradicao=contradicao)
+) -> tuple[Limiares, int]:
+    """Escolhe o par de limiares por uma escada de critérios e devolve (limiares, degrau).
+
+    Degrau 0: precisão prevista >= alvo e limite inferior >= piso; maior cobertura (desempate: prevista, inferior).
+    Degrau 1: limite inferior >= piso; maior cobertura (desempate: inferior).
+    Degrau 2: precisão prevista >= alvo; maior limite inferior (desempate: cobertura).
+    Degrau 3: qualquer par; maior limite inferior (desempate: cobertura).
+    """
+    prevista_ok = varredura["precisao_prevista"] >= alvo
+    inferior_ok = varredura["limite_inferior"] >= piso
+    escada = [
+        (_atinge_alvo(varredura, alvo, piso), ["cobertura", "precisao_prevista", "limite_inferior"]),
+        (inferior_ok, ["cobertura", "limite_inferior"]),
+        (prevista_ok, ["limite_inferior", "cobertura"]),
+        (pd.Series(True, index=varredura.index), ["limite_inferior", "cobertura"]),
+    ]
+    avisos = {
+        1: "nenhum par atinge precisão prevista %.2f com limite inferior %.2f; degrau 1: maior cobertura com o piso",
+        2: "nenhum par atinge precisão prevista %.2f com limite inferior %.2f nem o piso sozinho; degrau 2: maior limite inferior com a meta",
+        3: "nenhum par atinge precisão prevista %.2f nem limite inferior %.2f; degrau 3: maior limite inferior",
+    }
+    for degrau, (mascara, ordem) in enumerate(escada):
+        aptas = varredura[mascara]
+        if aptas.empty:
+            continue
+        if degrau:
+            registro.warning(avisos[degrau], alvo, piso)
+        melhor = aptas.sort_values(ordem, ascending=False).iloc[0]
+        return Limiares(publicar=float(melhor["publicar"]), pai=float(melhor["pai"]), contradicao=contradicao), degrau
+    raise ValueError("varredura de limiares vazia; não há par para escolher")
 
 
 def comparar_ancora(avaliacao_questoes: pd.DataFrame, ancora: pd.DataFrame, arvore: ArvoreTemas, tabela: pd.DataFrame) -> dict:
@@ -261,55 +283,86 @@ def escrever_previsao(
     return caminho
 
 
+def _frase_degrau(degrau: int) -> str:
+    """Como o par de limiares foi escolhido, em português corrido, para cada degrau da escada de seleção."""
+    if degrau == 0:
+        return (
+            f"foram escolhidos por varredura, maximizando cobertura sujeita a precisão prevista de pelo menos {ALVO_PRECISAO:.2f} "
+            f"e limite inferior do intervalo de pelo menos {PISO_PRECISAO:.2f}. É o primeiro critério da escada de seleção, "
+            f"o único que cumpre a meta inteira."
+        )
+    descida = (
+        f"saíram de uma varredura em que nenhum par de limiares atingiu ao mesmo tempo a meta de precisão prevista "
+        f"{ALVO_PRECISAO:.2f} e o piso de {PISO_PRECISAO:.2f} para o limite inferior, então a escolha desceu a escada de seleção."
+    )
+    if degrau == 1:
+        return descida + (
+            f" Usamos o segundo critério: entre os pares com limite inferior de pelo menos {PISO_PRECISAO:.2f}, o de maior "
+            f"cobertura, abrindo mão da meta de precisão prevista."
+        )
+    if degrau == 2:
+        return descida + (
+            f" Usamos o terceiro critério: nenhum par teve limite inferior de pelo menos {PISO_PRECISAO:.2f}, então, entre os "
+            f"pares com precisão prevista de pelo menos {ALVO_PRECISAO:.2f}, ficou o de maior limite inferior."
+        )
+    return descida + " Usamos o último critério: nenhum par cumpriu sequer uma das duas condições, então ficou o de maior limite inferior."
+
+
 def montar_texto_previsao(resumo: dict) -> str:
     ancora = resumo.get("ancora")
-    if resumo["varredura_atingiu_alvo"]:
-        escolha = (
-            f"foram escolhidos por varredura, maximizando cobertura sujeita a precisão prevista de pelo menos {ALVO_PRECISAO:.2f} "
-            f"e limite inferior do intervalo de pelo menos {PISO_PRECISAO:.2f}."
-        )
-    else:
-        escolha = (
-            f"saíram de uma varredura em que nenhum par de limiares atingiu ao mesmo tempo a meta de precisão prevista "
-            f"{ALVO_PRECISAO:.2f} e o piso de {PISO_PRECISAO:.2f} para o limite inferior; usamos o par de maior limite inferior."
-        )
+    degrau = resumo["degrau"]
+    n_ancora = resumo.get("n_ancora", 0)
+    escolha = _frase_degrau(degrau)
     if not resumo["alvo_atingido"]:
         condicoes = (
             f"a meta de precisão prevista {ALVO_PRECISAO:.2f} e o piso de {PISO_PRECISAO:.2f} para o limite inferior"
-            if resumo["varredura_atingiu_alvo"] else "as duas condições"
+            if degrau == 0 else "as duas condições"
         )
         escolha += (
             f" Com os números finais, o par escolhido não cumpre ao mesmo tempo {condicoes}, e a previsão de precisão no "
             f"topo deste arquivo reflete esse par."
         )
+    elif degrau > 0:
+        escolha += f" Com os números finais, de {resumo['repeticoes_final']} sorteios, o par escolhido cumpre as duas condições."
     partes = [
         "Como chegamos nos números.",
         f"Não há gabarito das 359 questões, então a precisão foi estimada num corpus de referência de {resumo['n_corpus']} "
         f"questões reais de concurso com tema conhecido, coletado por agentes a partir da própria árvore de temas. "
         f"O pipeline rodou sobre esse corpus com cada questão excluída da própria vizinhança, e medimos a precisão "
         f"das publicadas por regra de decisão e faixa de confiança, com a régua da Vício: certo se igual, pai ou filho.",
-        f"O corpus é mais fácil que as 359, que vieram de lixeiras. Para corrigir isso, a precisão prevista é a média, "
-        f"sobre as publicadas entre as 359, da precisão no corpus da célula (regra de decisão × faixa de confiança) em que cada uma "
-        f"cai, com suavização de Jeffreys ((acertos + {PRIOR_JEFFREYS:.1f}) / (n + {2 * PRIOR_JEFFREYS:.0f})). Quando a célula "
+        f"O corpus é mais fácil que as 359, que vieram de lixeiras. A precisão prevista é a média, sobre as publicadas "
+        f"entre as 359, da precisão no corpus da célula (regra de decisão × faixa de confiança) em que cada uma cai, com "
+        f"suavização de Jeffreys ((acertos + {PRIOR_JEFFREYS:.1f}) / (n + {2 * PRIOR_JEFFREYS:.0f})). Quando a célula "
         f"tem menos de {N_MINIMO_CELULA} questões do corpus, recua para a faixa; quando a faixa também tem menos de "
-        f"{N_MINIMO_CELULA}, para o corpus inteiro. O intervalo de 95% vem de simulação da posterior Beta de cada célula, "
+        f"{N_MINIMO_CELULA}, para o corpus inteiro. Essa reponderação corrige só a diferença na mistura de regras de decisão "
+        f"e faixas de confiança entre o corpus e as 359. Ela supõe que, dentro de uma célula, a chance de acerto é a mesma "
+        f"no corpus e nas 359; a única checagem dessa suposição é a âncora manual, que, com poucas questões publicadas, só "
+        f"detecta diferenças grandes. O intervalo de 95% vem de simulação da posterior Beta de cada célula, "
         f"com {resumo['repeticoes_final']} sorteios.",
         f"Os limiares de publicação ({resumo['limiares']['publicar']:.2f} no tema, {resumo['limiares']['pai']:.2f} no pai) "
-        f"{escolha}",
+        f"{escolha} Os limiares foram escolhidos no mesmo corpus usado para estimar a precisão, o que pode deixar a "
+        f"estimativa um pouco otimista.",
     ]
     if ancora is None:
         partes.append("Não houve âncora manual disponível na calibração; o intervalo reflete só o corpus.")
     elif not ancora["n_publicadas_na_ancora"]:
         partes.append(
-            "A âncora manual de 40 questões rotuladas às cegas não tinha nenhuma questão publicada para comparar; "
+            f"A âncora manual de {n_ancora} questões rotuladas às cegas não tinha nenhuma questão publicada para comparar; "
             "o intervalo reflete só o corpus."
         )
     else:
+        if resumo.get("intervalo_alargado"):
+            conclusao = (
+                f"O intervalo foi alargado para conter a observação; depois do alargamento, o limite inferior é "
+                f"{resumo['precisao_intervalo'][0]:.2f} (antes, {resumo['intervalo_bruto'][0]:.2f})."
+            )
+        else:
+            conclusao = "A observação cabe no intervalo."
         partes.append(
             f"Checagem com âncora manual: das {ancora['n_publicadas_na_ancora']} questões publicadas que estavam na "
-            f"âncora de 40 rotuladas às cegas, {ancora['acertos']} estavam certas "
+            f"âncora de {n_ancora} rotuladas às cegas, {ancora['acertos']} estavam certas "
             f"(observado {ancora['precisao_observada']:.2f}, previsto {ancora['precisao_prevista_para_elas']:.2f}). "
-            f"{'O intervalo foi alargado para conter a observação.' if resumo.get('intervalo_alargado') else 'A observação cabe no intervalo.'}"
+            f"{conclusao}"
         )
     partes.append(
         f"Cobertura: {resumo['n_publicadas']} de {resumo['n_questoes']} questões publicadas. "
@@ -330,8 +383,9 @@ def rodar_calibracao(
     entradas_questoes = carregar_entradas("questoes", pasta, arvore)
     varredura = varrer_limiares(entradas_corpus, entradas_questoes, arvore, contradicao=contradicao, repeticoes=repeticoes_varredura)
     varredura.to_csv(pasta / "calibracao_varredura.csv", index=False)
-    limiares = escolher_limiares(varredura, contradicao=contradicao)
-    varredura_atingiu_alvo = bool(_atinge_alvo(varredura, ALVO_PRECISAO, PISO_PRECISAO).any())
+    limiares, degrau = escolher_limiares(varredura, contradicao=contradicao)
+    # Degrau 0 é exatamente "algum par da varredura cumpre meta e piso".
+    varredura_atingiu_alvo = degrau == 0
     (pasta / "limiares.json").write_text(json.dumps(limiares.para_dict(), indent=2), encoding="utf-8")
 
     aval_c = avaliar(decidir_todas(entradas_corpus, arvore, limiares), entradas_corpus, arvore)
@@ -345,8 +399,11 @@ def rodar_calibracao(
     alvo_atingido = bool(precisao >= ALVO_PRECISAO and inferior >= PISO_PRECISAO)
 
     ancora_resultado = None
+    n_ancora = 0
     if caminho_ancora.exists():
-        ancora_resultado = comparar_ancora(aval_q, carregar_ancora_manual(arvore, caminho_ancora), arvore, tabela)
+        ancora = carregar_ancora_manual(arvore, caminho_ancora)
+        n_ancora = len(ancora)
+        ancora_resultado = comparar_ancora(aval_q, ancora, arvore, tabela)
     else:
         registro.warning("âncora manual ausente em %s; intervalo reflete só o corpus", caminho_ancora)
     observado = None if ancora_resultado is None else ancora_resultado["precisao_observada"]
@@ -366,7 +423,9 @@ def rodar_calibracao(
         "intervalo_bruto": [inferior, superior],
         "intervalo_alargado": (inferior_final, superior_final) != (inferior, superior),
         "ancora": ancora_resultado,
+        "n_ancora": n_ancora,
         "repeticoes_final": repeticoes_final,
+        "degrau": degrau,
         "varredura_atingiu_alvo": varredura_atingiu_alvo,
         "alvo_atingido": alvo_atingido,
     }
