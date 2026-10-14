@@ -174,7 +174,8 @@ def criar_invocador(provedor: str, modelo: str) -> Invocador:
 
         # claude-sonnet-5-5 recusa temperature fora do padrão e tool_choice forçado:
         # sem temperature e com a saída estruturada nativa (json_schema) em vez de ferramenta.
-        base = ChatAnthropic(model=modelo, max_tokens=1024)
+        # O raciocínio adaptativo conta em max_tokens: esforço baixo e folga para não truncar o JSON.
+        base = ChatAnthropic(model=modelo, max_tokens=4096, reasoning_effort="low")
     else:
         raise ValueError(f"provedor desconhecido: {provedor}")
     estruturado = base.with_structured_output(VotoModelo, method="json_schema")
