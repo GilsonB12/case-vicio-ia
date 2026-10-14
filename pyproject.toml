@@ -1,0 +1,32 @@
+[project]
+name = "classificador-vicio"
+version = "0.1.0"
+description = "Classificação de questões jurídicas em temas, case Vício"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "pandas>=2.2",
+  "numpy>=1.26",
+  "pydantic>=2.7",
+  "python-dotenv>=1.0",
+  "beautifulsoup4>=4.12",
+  "langchain-core>=0.3",
+  "langchain-openai>=0.3",
+  "langchain-anthropic>=0.3",
+  "weaviate-client>=4.9",
+]
+
+[project.scripts]
+classificar = "classificador.pipeline:main"
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/classificador"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
