@@ -40,6 +40,13 @@ def test_indice_memoria_vazio_devolve_lista_vazia():
     assert ind.buscar("x", k=3) == []
 
 
+def test_indice_memoria_fechar_e_inofensivo():
+    ind = IndiceMemoria("Teste", EmbeddingsFalsas())
+    _popular(ind)
+    ind.fechar()
+    assert ind.buscar("furto de coisa alheia móvel", k=1)[0].id == "a"
+
+
 def test_criar_indice_cai_para_memoria_quando_desligado(monkeypatch):
     monkeypatch.setenv("USAR_WEAVIATE", "nao")
     ind = criar_indice("Teste", EmbeddingsFalsas())

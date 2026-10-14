@@ -31,6 +31,8 @@ class Indice(Protocol):
 
     def tamanho(self) -> int: ...
 
+    def fechar(self) -> None: ...
+
 
 def _normalizar(matriz: np.ndarray) -> np.ndarray:
     normas = np.linalg.norm(matriz, axis=1, keepdims=True)
@@ -73,6 +75,9 @@ class IndiceMemoria:
 
     def tamanho(self) -> int:
         return len(self._ids)
+
+    def fechar(self) -> None:
+        """Nada a liberar: existe para cumprir o contrato do Indice."""
 
 
 class IndiceWeaviate:
