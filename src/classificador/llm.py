@@ -5,11 +5,12 @@ import argparse
 import hashlib
 import json
 import logging
+import re
 import time
 from pathlib import Path
 from typing import Callable, Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ValidationError
 
 from classificador.arvore import ArvoreTemas
 from classificador.candidatos import Candidato, candidatos_de_dict
@@ -39,6 +40,47 @@ AVISO_RETENTATIVA = (
     "\n\nATENÇÃO: sua resposta anterior escolheu o id {id}, que NÃO está na lista de candidatos. "
     "Escolha somente um id da lista ou devolva tema_central_id nulo."
 )
+AVISO_VALIDACAO = (
+    "\n\nATENÇÃO: sua resposta anterior não seguiu o schema pedido ({erro}). "
+    "Responda de novo seguindo exatamente o schema."
+)
+MAXIMO_NONE_CONSECUTIVOS = 5
+ABREVIACOES_CONFIGURACAO = {
+    "effort": "effort-", "reasoning_effort": "effort-", "max_tokens": "max", "method": "", "temperature": "temp",
+}
+
+
+def erro_permanente(erro: Exception) -> bool:
+    """Erro 4xx do provedor, exceto 429: chave, modelo ou pedido errado, que não se resolve tentando de novo.
+
+    Os erros dos SDKs da OpenAI e da Anthropic expõem status_code; nada é importado deles aqui.
+    """
+    status = getattr(erro, "status_code", None)
+    return isinstance(status, int) and 400 <= status <= 499 and status != 429
+
+
+def erro_de_validacao(erro: BaseException) -> ValidationError | None:
+    """O ValidationError da resposta, seja o próprio erro, seja a causa dele.
+
+    O parser do LangChain para a Anthropic embrulha o ValidationError numa OutputParserException.
+    """
+    if isinstance(erro, ValidationError):
+        return erro
+    if isinstance(erro.__cause__, ValidationError):
+        return erro.__cause__
+    return None
+
+
+def resumir_validacao(erro: ValidationError) -> str:
+    return "; ".join(
+        f"{'.'.join(str(p) for p in e['loc']) or 'resposta'}: {e['msg']}" for e in erro.errors(include_url=False)
+    )
+
+
+def slug_configuracao(configuracao: dict) -> str:
+    """Rótulo curto e seguro para nome de pasta, por exemplo effort-low_max4096_json_schema."""
+    partes = [f"{ABREVIACOES_CONFIGURACAO.get(chave, chave + '-')}{valor}" for chave, valor in sorted(configuracao.items())]
+    return re.sub(r"[^A-Za-z0-9._-]", "-", "_".join(partes))
 
 
 def carregar_prompt(caminho: Path = CAMINHOS.prompts / "classificar.md") -> str:
@@ -70,11 +112,15 @@ class ClassificadorLLM:
         tentativas: int = 3,
         espera_base: float = 2.0,
         dormir: Callable[[float], None] = time.sleep,
+        configuracao: dict | None = None,
     ) -> None:
         self.nome = nome
         self.modelo = modelo
         self.invocador = invocador
-        self.pasta = pasta_cache / "llm" / nome / modelo
+        # Parâmetros de invocação que mudam a resposta (esforço, max_tokens, método): entram na chave e na pasta do cache.
+        self.configuracao = dict(configuracao or {})
+        slug = slug_configuracao(self.configuracao)
+        self.pasta = pasta_cache / "llm" / nome / (f"{modelo}__{slug}" if slug else modelo)
         self.pasta.mkdir(parents=True, exist_ok=True)
         self.template = template
         self.tentativas = tentativas
@@ -85,7 +131,8 @@ class ClassificadorLLM:
 
     def _arquivo(self, prompt: str) -> Path:
         schema = json.dumps(VotoModelo.model_json_schema(), sort_keys=True)
-        chave = hashlib.sha256(f"{self.modelo}\n{prompt}\n{schema}".encode("utf-8")).hexdigest()
+        configuracao = json.dumps(self.configuracao, sort_keys=True)
+        chave = hashlib.sha256(f"{self.modelo}\n{configuracao}\n{prompt}\n{schema}".encode("utf-8")).hexdigest()
         return self.pasta / f"{chave}.json"
 
     def _ler_cache(self, prompt: str) -> VotoModelo | None:
@@ -116,6 +163,11 @@ class ClassificadorLLM:
         return voto.model_copy(update={"tema_central_id": central, "extras_ids": extras})
 
     def _invocar_com_retentativas(self, prompt: str) -> VotoModelo | None:
+        """Chama o modelo com espera exponencial em erro transitório (429, 5xx, conexão, desconhecido).
+
+        Erro 4xx que não é 429 sobe na hora. Resposta fora do schema sobe como ValidationError, para o chamador
+        tentar uma vez só com o aviso no prompt, sem passar pelas esperas.
+        """
         assert self.invocador is not None
         for tentativa in range(self.tentativas):
             try:
@@ -124,6 +176,14 @@ class ClassificadorLLM:
             except VotoInvalidoError:
                 raise
             except Exception as erro:
+                validacao = erro_de_validacao(erro)
+                if validacao is not None:
+                    if validacao is erro:
+                        raise
+                    raise validacao from erro
+                if erro_permanente(erro):
+                    registro.error("%s: erro permanente na chamada (%s); sem nova tentativa", self.nome, erro)
+                    raise
                 registro.warning("%s: erro na chamada (%s), tentativa %d/%d", self.nome, erro, tentativa + 1, self.tentativas)
                 if tentativa + 1 < self.tentativas:
                     self.dormir(self.espera_base * (2 ** tentativa))
@@ -147,7 +207,13 @@ class ClassificadorLLM:
             )
         prompt_atual = prompt
         for rodada in range(2):
-            bruto = self._invocar_com_retentativas(prompt_atual)
+            try:
+                bruto = self._invocar_com_retentativas(prompt_atual)
+            except ValidationError as erro:
+                resumo = resumir_validacao(erro)
+                registro.warning("%s: resposta fora do schema (rodada %d): %s", self.nome, rodada + 1, resumo)
+                prompt_atual = prompt + AVISO_VALIDACAO.format(erro=resumo)
+                continue
             if bruto is None:
                 return None
             try:
@@ -161,24 +227,33 @@ class ClassificadorLLM:
         return None
 
 
-def criar_invocador(provedor: str, modelo: str) -> Invocador:
+def configuracao_invocador(provedor: str, modelo: str) -> dict:
+    """Parâmetros com que criar_invocador chama o modelo; a mesma fonte alimenta a chave do cache."""
     if provedor == "openai":
-        from langchain_openai import ChatOpenAI
-
         if modelo.startswith("gpt-5") or modelo.startswith("o"):
-            base = ChatOpenAI(model=modelo, reasoning_effort="low")
-        else:
-            base = ChatOpenAI(model=modelo, temperature=0)
-    elif provedor == "anthropic":
-        from langchain_anthropic import ChatAnthropic
-
+            return {"reasoning_effort": "low", "method": "json_schema"}
+        return {"temperature": 0, "method": "json_schema"}
+    if provedor == "anthropic":
         # claude-sonnet-5-5 recusa temperature fora do padrão e tool_choice forçado:
         # sem temperature e com a saída estruturada nativa (json_schema) em vez de ferramenta.
         # O raciocínio adaptativo conta em max_tokens: esforço baixo e folga para não truncar o JSON.
-        base = ChatAnthropic(model=modelo, max_tokens=4096, reasoning_effort="low")
+        return {"effort": "low", "max_tokens": 4096, "method": "json_schema"}
+    raise ValueError(f"provedor desconhecido: {provedor}")
+
+
+def criar_invocador(provedor: str, modelo: str) -> Invocador:
+    configuracao = configuracao_invocador(provedor, modelo)
+    parametros = {chave: valor for chave, valor in configuracao.items() if chave != "method"}
+    if provedor == "openai":
+        from langchain_openai import ChatOpenAI
+
+        base = ChatOpenAI(model=modelo, **parametros)
     else:
-        raise ValueError(f"provedor desconhecido: {provedor}")
-    estruturado = base.with_structured_output(VotoModelo, method="json_schema")
+        from langchain_anthropic import ChatAnthropic
+
+        # effort é o apelido do campo reasoning_effort no ChatAnthropic.
+        base = ChatAnthropic(model=modelo, **parametros)
+    estruturado = base.with_structured_output(VotoModelo, method=configuracao["method"])
 
     def invocar(prompt: str) -> VotoModelo:
         resultado = estruturado.invoke(prompt)
@@ -196,8 +271,10 @@ def criar_classificadores(pasta_cache: Path = CAMINHOS.cache) -> tuple[Classific
     inv_openai = criar_invocador("openai", modelo_openai) if ler_env("OPENAI_API_KEY") else None
     inv_anthropic = criar_invocador("anthropic", modelo_anthropic) if ler_env("ANTHROPIC_API_KEY") else None
     return (
-        ClassificadorLLM("openai", modelo_openai, inv_openai, pasta_cache, template),
-        ClassificadorLLM("anthropic", modelo_anthropic, inv_anthropic, pasta_cache, template),
+        ClassificadorLLM("openai", modelo_openai, inv_openai, pasta_cache, template,
+                         configuracao=configuracao_invocador("openai", modelo_openai)),
+        ClassificadorLLM("anthropic", modelo_anthropic, inv_anthropic, pasta_cache, template,
+                         configuracao=configuracao_invocador("anthropic", modelo_anthropic)),
     )
 
 
@@ -212,13 +289,25 @@ def rodar_votos(
     df = carregar_questoes() if alvo == "questoes" else carregar_corpus()
     candidatos = {linha["id"]: candidatos_de_dict(linha["candidatos"]) for linha in ler_jsonl(caminho_candidatos)}
     openai, anthropic = classificadores
+    # Disjuntor: o mesmo classificador sem voto em várias questões seguidas é chave, cota ou modelo com problema.
+    sem_voto_seguidas = {openai.nome: 0, anthropic.nome: 0}
     linhas: list[dict] = []
     for posicao, (id_, texto) in enumerate(zip(df["id"], df["texto"])):
         if limite is not None and posicao >= limite:
             break
+        if str(id_) not in candidatos:
+            raise KeyError(f"questão {id_} sem candidatos em {caminho_candidatos}; gere os candidatos de novo")
         lista = candidatos[str(id_)]
         voto_a = openai.classificar(texto, lista, arvore)
         voto_b = anthropic.classificar(texto, lista, arvore)
+        for classificador, voto in ((openai, voto_a), (anthropic, voto_b)):
+            sem_voto_seguidas[classificador.nome] = sem_voto_seguidas[classificador.nome] + 1 if voto is None else 0
+            if sem_voto_seguidas[classificador.nome] >= MAXIMO_NONE_CONSECUTIVOS:
+                raise RuntimeError(
+                    f"classificador '{classificador.nome}' ficou sem voto em {MAXIMO_NONE_CONSECUTIVOS} questões seguidas "
+                    f"(última: {id_}); votação interrompida para não gastar chamadas. Rode `classificar votos --verificar` "
+                    "para checar chave, modelo e cota; os votos já obtidos ficam no cache."
+                )
         linhas.append({
             "id": str(id_),
             "openai": None if voto_a is None else voto_a.model_dump(),

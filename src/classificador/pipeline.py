@@ -106,6 +106,7 @@ def main(argv: list[str] | None = None) -> None:
     p = sub.add_parser("votos", help="votos dos dois modelos de linguagem")
     p.add_argument("--alvo", choices=["questoes", "corpus"], default="questoes")
     p.add_argument("--limite", type=int, default=None)
+    p.add_argument("--verificar", action="store_true", help="só testa chave e modelo de cada provedor")
 
     p = sub.add_parser("vizinhanca", help="voto por vizinhança sobre o corpus")
     p.add_argument("--alvo", choices=["questoes", "corpus"], default="questoes")
@@ -124,7 +125,11 @@ def main(argv: list[str] | None = None) -> None:
     elif args.comando == "ancora":
         etapa_ancora()
     elif args.comando == "votos":
-        etapa_votos(args.alvo, args.limite)
+        if args.verificar:
+            for provedor, estado in llm.verificar_provedores().items():
+                print(f"{provedor}: {estado}")
+        else:
+            etapa_votos(args.alvo, args.limite)
     elif args.comando == "vizinhanca":
         etapa_vizinhanca(args.alvo)
     elif args.comando == "calibrar":

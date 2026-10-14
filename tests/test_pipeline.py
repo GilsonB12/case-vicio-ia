@@ -25,3 +25,10 @@ def test_main_despacha_subcomando(monkeypatch):
     monkeypatch.setattr(pipeline, "etapa_votos", lambda alvo, limite=None: recebido.update(alvo=alvo, limite=limite))
     pipeline.main(["votos", "--alvo", "corpus", "--limite", "5"])
     assert recebido == {"alvo": "corpus", "limite": 5}
+
+
+def test_votos_verificar_testa_os_provedores_sem_votar(monkeypatch, capsys):
+    monkeypatch.setattr(pipeline.llm, "verificar_provedores", lambda: {"openai": "ok", "anthropic": "sem ANTHROPIC_API_KEY"})
+    monkeypatch.setattr(pipeline, "etapa_votos", lambda *a, **k: pytest.fail("não deveria votar"))
+    pipeline.main(["votos", "--verificar"])
+    assert capsys.readouterr().out.splitlines() == ["openai: ok", "anthropic: sem ANTHROPIC_API_KEY"]
