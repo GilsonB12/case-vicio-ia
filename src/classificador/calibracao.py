@@ -1,4 +1,4 @@
-"""Calibração: precisão por faixa no corpus, reponderação, varredura de limiares, âncora e previsao.txt."""
+"""Calibração: precisão por célula (regra × faixa) no corpus, reponderação, varredura de limiares, âncora e previsao.txt."""
 from __future__ import annotations
 
 import json
@@ -25,13 +25,15 @@ ROTULOS = ["0.0-0.6", "0.6-0.7", "0.7-0.8", "0.8-0.9", "0.9-1.0"]
 GRADE_PADRAO = [round(x, 2) for x in np.arange(0.5, 0.951, 0.05)]
 ALVO_PRECISAO = 0.97
 PISO_PRECISAO = 0.95
+N_MINIMO_CELULA = 5
+PRIOR_JEFFREYS = 0.5
 
 
 def faixa_de(confianca: float | None) -> str:
     if confianca is None or (isinstance(confianca, float) and np.isnan(confianca)):
         return "sem"
-    for (inicio, fim), rotulo in zip(FAIXAS, ROTULOS):
-        if inicio <= confianca < fim:
+    for (_, fim), rotulo in zip(FAIXAS, ROTULOS):
+        if confianca < fim:
             return rotulo
     return ROTULOS[-1]
 
@@ -102,18 +104,46 @@ def tabela_faixas(avaliacao: pd.DataFrame) -> pd.DataFrame:
     return grupo
 
 
+def precisao_suavizada(acertos: float, n: float) -> float:
+    """Média da posterior Beta com prior de Jeffreys: (acertos + 0.5) / (n + 1)."""
+    assert n > 0, "precisão suavizada exige pelo menos uma questão"
+    return (acertos + PRIOR_JEFFREYS) / (n + 2 * PRIOR_JEFFREYS)
+
+
+def _unidades_usadas(tabela: pd.DataFrame, publicadas: pd.DataFrame) -> list[tuple[float, float, int]]:
+    """Resolve cada publicada do alvo na sua unidade do corpus e devolve (acertos, n, publicadas que a usam).
+
+    A unidade é a célula (regra, faixa) se ela tem pelo menos N_MINIMO_CELULA questões do corpus; senão a faixa
+    somada sobre as regras, se ela tem pelo menos N_MINIMO_CELULA; senão o corpus inteiro.
+    """
+    por_celula = {(int(r.regra), r.faixa): (float(r.acertos), float(r.n)) for r in tabela.itertuples()}
+    por_faixa = {f: (float(r.acertos), float(r.n)) for f, r in tabela.groupby("faixa")[["n", "acertos"]].sum().iterrows()}
+    global_ = (float(tabela["acertos"].sum()), float(tabela["n"].sum()))
+    usadas: dict[tuple, list] = {}
+    for linha in publicadas.itertuples():
+        celula = (int(linha.regra), linha.faixa)
+        if celula in por_celula and por_celula[celula][1] >= N_MINIMO_CELULA:
+            chave, contagem = ("celula", celula), por_celula[celula]
+        elif linha.faixa in por_faixa and por_faixa[linha.faixa][1] >= N_MINIMO_CELULA:
+            chave, contagem = ("faixa", linha.faixa), por_faixa[linha.faixa]
+        else:
+            chave, contagem = ("global",), global_
+        usadas.setdefault(chave, [contagem[0], contagem[1], 0])[2] += 1
+    return [(acertos, n, peso) for acertos, n, peso in usadas.values()]
+
+
 def precisao_reponderada(tabela: pd.DataFrame, avaliacao_questoes: pd.DataFrame) -> float:
+    """Precisão prevista para as publicadas do alvo, reponderada pela distribuição delas nas células do corpus.
+
+    Cada publicada do alvo recebe a precisão suavizada (Jeffreys) da sua célula (regra, faixa) no corpus, desde que a
+    célula tenha pelo menos N_MINIMO_CELULA questões; senão a da faixa somada sobre as regras, com o mesmo mínimo;
+    senão a do corpus inteiro. O resultado é a média sobre as publicadas, ou seja, ponderada pela contagem de cada
+    unidade. Sem publicadas no alvo ou tabela vazia, devolve 0.0.
+    """
     publicadas = avaliacao_questoes[avaliacao_questoes["decisao"] == "publicar"]
     if publicadas.empty or tabela.empty:
         return 0.0
-    por_par = {(int(r.regra), r.faixa): float(r.precisao) for r in tabela.itertuples()}
-    por_faixa_df = tabela.groupby("faixa")[["n", "acertos"]].sum()
-    por_faixa = {f: float(r.acertos / r.n) for f, r in por_faixa_df.iterrows()}
-    global_ = float(tabela["acertos"].sum() / tabela["n"].sum())
-    soma = 0.0
-    for linha in publicadas.itertuples():
-        chave = (int(linha.regra), linha.faixa)
-        soma += por_par.get(chave, por_faixa.get(linha.faixa, global_))
+    soma = sum(peso * precisao_suavizada(acertos, n) for acertos, n, peso in _unidades_usadas(tabela, publicadas))
     return soma / len(publicadas)
 
 
@@ -123,15 +153,24 @@ def bootstrap_precisao(
     repeticoes: int,
     semente: int = SEMENTE,
 ) -> tuple[float, float]:
-    publicadas = avaliacao_corpus[(avaliacao_corpus["decisao"] == "publicar") & avaliacao_corpus["acerto"].notna()]
-    if publicadas.empty:
+    """Intervalo de 95% da precisão prevista por simulação da posterior Beta por célula.
+
+    O nome ficou por compatibilidade; o método não reamostra mais o corpus, porque a reamostragem dá intervalo de
+    largura zero em célula pequena toda certa (3 de 3 dava [1.0, 1.0]). A tabela do corpus é montada uma vez; cada
+    publicada do alvo é resolvida na sua unidade (célula, faixa ou corpus inteiro) pela mesma regra de recuo de
+    precisao_reponderada. Em cada repetição, cada unidade usada sorteia p ~ Beta(acertos + 0.5, erros + 0.5) e a
+    estimativa é a média dos p ponderada pelas publicadas do alvo em cada unidade. Devolve os percentis 2.5 e 97.5
+    das repetições, ou (0.0, 0.0) quando não há publicadas no corpus ou no alvo.
+    """
+    tabela = tabela_faixas(avaliacao_corpus)
+    publicadas = avaliacao_questoes[avaliacao_questoes["decisao"] == "publicar"]
+    if tabela.empty or publicadas.empty:
         return 0.0, 0.0
+    unidades = np.array(_unidades_usadas(tabela, publicadas), dtype=float)
+    acertos, n, pesos = unidades[:, 0], unidades[:, 1], unidades[:, 2]
     gerador = np.random.default_rng(semente)
-    estimativas = []
-    for _ in range(repeticoes):
-        indices = gerador.integers(0, len(publicadas), len(publicadas))
-        amostra = publicadas.iloc[indices]
-        estimativas.append(precisao_reponderada(tabela_faixas(amostra), avaliacao_questoes))
+    sorteios = gerador.beta(acertos + PRIOR_JEFFREYS, n - acertos + PRIOR_JEFFREYS, size=(repeticoes, len(unidades)))
+    estimativas = sorteios @ pesos / pesos.sum()
     return float(np.percentile(estimativas, 2.5)), float(np.percentile(estimativas, 97.5))
 
 
@@ -179,7 +218,7 @@ def escolher_limiares(
         registro.warning("nenhum par de limiares atinge precisão %.2f com piso %.2f; usando o de maior limite inferior", alvo, piso)
         melhor = varredura.sort_values(["limite_inferior", "cobertura"], ascending=[False, False]).iloc[0]
     else:
-        melhor = aptas.sort_values(["cobertura", "precisao_prevista"], ascending=[False, False]).iloc[0]
+        melhor = aptas.sort_values(["cobertura", "precisao_prevista", "limite_inferior"], ascending=[False, False, False]).iloc[0]
     return Limiares(publicar=float(melhor["publicar"]), pai=float(melhor["pai"]), contradicao=contradicao)
 
 
@@ -223,17 +262,25 @@ def escrever_previsao(
 
 
 def montar_texto_previsao(resumo: dict) -> str:
-    ancora = resumo.get("ancora") or {}
-    if resumo["alvo_atingido"]:
+    ancora = resumo.get("ancora")
+    if resumo["varredura_atingiu_alvo"]:
         escolha = (
             f"foram escolhidos por varredura, maximizando cobertura sujeita a precisão prevista de pelo menos {ALVO_PRECISAO:.2f} "
             f"e limite inferior do intervalo de pelo menos {PISO_PRECISAO:.2f}."
         )
     else:
         escolha = (
-            f"saíram de uma varredura em que nenhum par de limiares atingiu a meta de precisão prevista {ALVO_PRECISAO:.2f} "
-            f"com limite inferior do intervalo {PISO_PRECISAO:.2f}; usamos o par de maior limite inferior, e a previsão "
-            f"de precisão no topo deste arquivo reflete esse par, abaixo da meta."
+            f"saíram de uma varredura em que nenhum par de limiares atingiu ao mesmo tempo a meta de precisão prevista "
+            f"{ALVO_PRECISAO:.2f} e o piso de {PISO_PRECISAO:.2f} para o limite inferior; usamos o par de maior limite inferior."
+        )
+    if not resumo["alvo_atingido"]:
+        condicoes = (
+            f"a meta de precisão prevista {ALVO_PRECISAO:.2f} e o piso de {PISO_PRECISAO:.2f} para o limite inferior"
+            if resumo["varredura_atingiu_alvo"] else "as duas condições"
+        )
+        escolha += (
+            f" Com os números finais, o par escolhido não cumpre ao mesmo tempo {condicoes}, e a previsão de precisão no "
+            f"topo deste arquivo reflete esse par."
         )
     partes = [
         "Como chegamos nos números.",
@@ -241,20 +288,29 @@ def montar_texto_previsao(resumo: dict) -> str:
         f"questões reais de concurso com tema conhecido, coletado por agentes a partir da própria árvore de temas. "
         f"O pipeline rodou sobre esse corpus com cada questão excluída da própria vizinhança, e medimos a precisão "
         f"das publicadas por regra de decisão e faixa de confiança, com a régua da Vício: certo se igual, pai ou filho.",
-        f"O corpus é mais fácil que as 359, que vieram de lixeiras. Para corrigir isso, a precisão prevista é a média das "
-        f"precisões por faixa no corpus, ponderada pela distribuição de faixas que as 359 publicadas realmente têm. "
+        f"O corpus é mais fácil que as 359, que vieram de lixeiras. Para corrigir isso, a precisão prevista é a média, "
+        f"sobre as publicadas entre as 359, da precisão no corpus da célula (regra de decisão × faixa de confiança) em que cada uma "
+        f"cai, com suavização de Jeffreys ((acertos + {PRIOR_JEFFREYS:.1f}) / (n + {2 * PRIOR_JEFFREYS:.0f})). Quando a célula "
+        f"tem menos de {N_MINIMO_CELULA} questões do corpus, recua para a faixa; quando a faixa também tem menos de "
+        f"{N_MINIMO_CELULA}, para o corpus inteiro. O intervalo de 95% vem de simulação da posterior Beta de cada célula, "
+        f"com {resumo['repeticoes_final']} sorteios.",
         f"Os limiares de publicação ({resumo['limiares']['publicar']:.2f} no tema, {resumo['limiares']['pai']:.2f} no pai) "
-        f"{escolha} Intervalo por bootstrap com {resumo['repeticoes_final']} reamostragens.",
+        f"{escolha}",
     ]
-    if ancora.get("n_publicadas_na_ancora"):
+    if ancora is None:
+        partes.append("Não houve âncora manual disponível na calibração; o intervalo reflete só o corpus.")
+    elif not ancora["n_publicadas_na_ancora"]:
+        partes.append(
+            "A âncora manual de 40 questões rotuladas às cegas não tinha nenhuma questão publicada para comparar; "
+            "o intervalo reflete só o corpus."
+        )
+    else:
         partes.append(
             f"Checagem com âncora manual: das {ancora['n_publicadas_na_ancora']} questões publicadas que estavam na "
             f"âncora de 40 rotuladas às cegas, {ancora['acertos']} estavam certas "
             f"(observado {ancora['precisao_observada']:.2f}, previsto {ancora['precisao_prevista_para_elas']:.2f}). "
             f"{'O intervalo foi alargado para conter a observação.' if resumo.get('intervalo_alargado') else 'A observação cabe no intervalo.'}"
         )
-    else:
-        partes.append("Não houve âncora manual disponível na calibração; o intervalo reflete só o corpus.")
     partes.append(
         f"Cobertura: {resumo['n_publicadas']} de {resumo['n_questoes']} questões publicadas. "
         f"É um número observado, não previsto, por isso o intervalo é estreito."
@@ -275,8 +331,7 @@ def rodar_calibracao(
     varredura = varrer_limiares(entradas_corpus, entradas_questoes, arvore, contradicao=contradicao, repeticoes=repeticoes_varredura)
     varredura.to_csv(pasta / "calibracao_varredura.csv", index=False)
     limiares = escolher_limiares(varredura, contradicao=contradicao)
-    escolhida = (varredura["publicar"] == limiares.publicar) & (varredura["pai"] == limiares.pai)
-    alvo_atingido = bool(_atinge_alvo(varredura[escolhida], ALVO_PRECISAO, PISO_PRECISAO).iloc[0])
+    varredura_atingiu_alvo = bool(_atinge_alvo(varredura, ALVO_PRECISAO, PISO_PRECISAO).any())
     (pasta / "limiares.json").write_text(json.dumps(limiares.para_dict(), indent=2), encoding="utf-8")
 
     aval_c = avaliar(decidir_todas(entradas_corpus, arvore, limiares), entradas_corpus, arvore)
@@ -286,6 +341,8 @@ def rodar_calibracao(
     tabela.to_csv(pasta / "calibracao_faixas.csv", index=False)
     precisao = precisao_reponderada(tabela, aval_q)
     inferior, superior = bootstrap_precisao(aval_c, aval_q, repeticoes_final)
+    # O alvo é julgado nos números finais (o intervalo de repeticoes_final), não na linha da varredura.
+    alvo_atingido = bool(precisao >= ALVO_PRECISAO and inferior >= PISO_PRECISAO)
 
     ancora_resultado = None
     if caminho_ancora.exists():
@@ -296,7 +353,7 @@ def rodar_calibracao(
     inferior_final, superior_final = ajustar_intervalo(inferior, superior, observado)
 
     n_pub = int((aval_q["decisao"] == "publicar").sum())
-    cobertura = n_pub / len(aval_q)
+    cobertura = n_pub / len(aval_q) if len(aval_q) else 0.0
     resumo = {
         "limiares": limiares.para_dict(),
         "n_corpus": len(entradas_corpus),
@@ -310,6 +367,7 @@ def rodar_calibracao(
         "intervalo_alargado": (inferior_final, superior_final) != (inferior, superior),
         "ancora": ancora_resultado,
         "repeticoes_final": repeticoes_final,
+        "varredura_atingiu_alvo": varredura_atingiu_alvo,
         "alvo_atingido": alvo_atingido,
     }
     (pasta / "calibracao_resumo.json").write_text(json.dumps(resumo, indent=2, ensure_ascii=False), encoding="utf-8")
