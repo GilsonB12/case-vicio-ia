@@ -23,6 +23,8 @@ registro = logging.getLogger(__name__)
 FAIXAS = [(0.0, 0.6), (0.6, 0.7), (0.7, 0.8), (0.8, 0.9), (0.9, 1.01)]
 ROTULOS = ["0.0-0.6", "0.6-0.7", "0.7-0.8", "0.8-0.9", "0.9-1.0"]
 GRADE_PADRAO = [round(x, 2) for x in np.arange(0.5, 0.951, 0.05)]
+ALVO_PRECISAO = 0.97
+PISO_PRECISAO = 0.95
 
 
 def faixa_de(confianca: float | None) -> str:
@@ -162,8 +164,17 @@ def varrer_limiares(
     return pd.DataFrame(linhas)
 
 
-def escolher_limiares(varredura: pd.DataFrame, alvo: float = 0.97, piso: float = 0.95, contradicao: float = 0.6) -> Limiares:
-    aptas = varredura[(varredura["precisao_prevista"] >= alvo) & (varredura["limite_inferior"] >= piso)]
+def _atinge_alvo(varredura: pd.DataFrame, alvo: float, piso: float) -> pd.Series:
+    return (varredura["precisao_prevista"] >= alvo) & (varredura["limite_inferior"] >= piso)
+
+
+def escolher_limiares(
+    varredura: pd.DataFrame,
+    alvo: float = ALVO_PRECISAO,
+    piso: float = PISO_PRECISAO,
+    contradicao: float = 0.6,
+) -> Limiares:
+    aptas = varredura[_atinge_alvo(varredura, alvo, piso)]
     if aptas.empty:
         registro.warning("nenhum par de limiares atinge precisão %.2f com piso %.2f; usando o de maior limite inferior", alvo, piso)
         melhor = varredura.sort_values(["limite_inferior", "cobertura"], ascending=[False, False]).iloc[0]
@@ -213,6 +224,17 @@ def escrever_previsao(
 
 def montar_texto_previsao(resumo: dict) -> str:
     ancora = resumo.get("ancora") or {}
+    if resumo["alvo_atingido"]:
+        escolha = (
+            f"foram escolhidos por varredura, maximizando cobertura sujeita a precisão prevista de pelo menos {ALVO_PRECISAO:.2f} "
+            f"e limite inferior do intervalo de pelo menos {PISO_PRECISAO:.2f}."
+        )
+    else:
+        escolha = (
+            f"saíram de uma varredura em que nenhum par de limiares atingiu a meta de precisão prevista {ALVO_PRECISAO:.2f} "
+            f"com limite inferior do intervalo {PISO_PRECISAO:.2f}; usamos o par de maior limite inferior, e a previsão "
+            f"de precisão no topo deste arquivo reflete esse par, abaixo da meta."
+        )
     partes = [
         "Como chegamos nos números.",
         f"Não há gabarito das 359 questões, então a precisão foi estimada num corpus de referência de {resumo['n_corpus']} "
@@ -222,8 +244,7 @@ def montar_texto_previsao(resumo: dict) -> str:
         f"O corpus é mais fácil que as 359, que vieram de lixeiras. Para corrigir isso, a precisão prevista é a média das "
         f"precisões por faixa no corpus, ponderada pela distribuição de faixas que as 359 publicadas realmente têm. "
         f"Os limiares de publicação ({resumo['limiares']['publicar']:.2f} no tema, {resumo['limiares']['pai']:.2f} no pai) "
-        f"foram escolhidos por varredura, maximizando cobertura sujeita a precisão prevista de pelo menos 0,97 e limite "
-        f"inferior do intervalo de pelo menos 0,95. Intervalo por bootstrap com {resumo['repeticoes_final']} reamostragens.",
+        f"{escolha} Intervalo por bootstrap com {resumo['repeticoes_final']} reamostragens.",
     ]
     if ancora.get("n_publicadas_na_ancora"):
         partes.append(
@@ -254,6 +275,8 @@ def rodar_calibracao(
     varredura = varrer_limiares(entradas_corpus, entradas_questoes, arvore, contradicao=contradicao, repeticoes=repeticoes_varredura)
     varredura.to_csv(pasta / "calibracao_varredura.csv", index=False)
     limiares = escolher_limiares(varredura, contradicao=contradicao)
+    escolhida = (varredura["publicar"] == limiares.publicar) & (varredura["pai"] == limiares.pai)
+    alvo_atingido = bool(_atinge_alvo(varredura[escolhida], ALVO_PRECISAO, PISO_PRECISAO).iloc[0])
     (pasta / "limiares.json").write_text(json.dumps(limiares.para_dict(), indent=2), encoding="utf-8")
 
     aval_c = avaliar(decidir_todas(entradas_corpus, arvore, limiares), entradas_corpus, arvore)
@@ -287,6 +310,7 @@ def rodar_calibracao(
         "intervalo_alargado": (inferior_final, superior_final) != (inferior, superior),
         "ancora": ancora_resultado,
         "repeticoes_final": repeticoes_final,
+        "alvo_atingido": alvo_atingido,
     }
     (pasta / "calibracao_resumo.json").write_text(json.dumps(resumo, indent=2, ensure_ascii=False), encoding="utf-8")
     registro.info("limiares %s; precisão prevista %.3f [%.3f, %.3f]; cobertura %.3f", limiares, precisao, inferior_final, superior_final, cobertura)

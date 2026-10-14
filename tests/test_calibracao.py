@@ -125,3 +125,20 @@ def test_escrever_previsao_segue_o_formato(tmp_path):
 def test_rodar_calibracao_sem_votos_do_corpus_falha_com_mensagem_clara(arvore, tmp_path):
     with pytest.raises(FileNotFoundError, match=r"votos_llm_corpus\.jsonl não existe; rode os votos de 'corpus'"):
         cal.rodar_calibracao(arvore, pasta=tmp_path, caminho_ancora=tmp_path / "ancora_manual.csv")
+
+
+def test_texto_previsao_diz_quando_alvo_nao_foi_atingido():
+    resumo = {
+        "n_corpus": 40, "n_questoes": 10, "n_publicadas": 6, "repeticoes_final": 200,
+        "limiares": {"publicar": 0.7, "pai": 0.5, "contradicao": 0.6},
+        "ancora": None, "intervalo_alargado": False, "alvo_atingido": False,
+    }
+    texto = cal.montar_texto_previsao(resumo)
+    assert "nenhum par de limiares" in texto
+    assert "pelo menos 0.97" not in texto
+    assert "0.70 no tema, 0.50 no pai" in texto
+    resumo["alvo_atingido"] = True
+    texto = cal.montar_texto_previsao(resumo)
+    assert "nenhum par de limiares" not in texto
+    assert "pelo menos 0.97 e limite inferior do intervalo de pelo menos 0.95" in texto
+    assert not re.search(r"\d,\d", texto)
