@@ -84,3 +84,21 @@ def test_rodar_candidatos_passada_1_grava_jsonl_e_temas_alvo(arvore, tmp_path):
             assert c["tema_id"] in alvo
             if arvore.nivel(c["tema_id"]) == 2:
                 assert arvore.pai(c["tema_id"]) in alvo
+
+
+class IndiceQueFalhaNaCarga(IndiceMemoria):
+    fechados: list[str] = []
+
+    def adicionar(self, ids, textos, metadados):
+        raise ConnectionError("weaviate caiu no meio da carga")
+
+    def fechar(self):
+        IndiceQueFalhaNaCarga.fechados.append(self.nome)
+
+
+def test_indice_de_temas_e_fechado_quando_a_carga_falha(arvore, tmp_path):
+    IndiceQueFalhaNaCarga.fechados = []
+    with pytest.raises(ConnectionError):
+        modulo.rodar_candidatos("questoes", 1, arvore, EmbeddingsFalsas(), pasta_saida=tmp_path,
+                                criar=lambda nome, emb: IndiceQueFalhaNaCarga(nome, emb))
+    assert IndiceQueFalhaNaCarga.fechados == ["Tema"]

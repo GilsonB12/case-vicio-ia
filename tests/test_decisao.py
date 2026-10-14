@@ -158,3 +158,18 @@ def test_rodar_decisoes_grava(arvore, tmp_path):
     saida = modulo.rodar_decisoes("questoes", arvore, L, pasta=tmp_path)
     linhas = ler_jsonl(saida)
     assert linhas[0]["decisao"] == "publicar" and linhas[0]["tema_central_id"] == 5527
+
+
+def test_rodar_decisoes_acusa_invariante_quebrada_com_o_id(arvore, tmp_path, monkeypatch):
+    escrever_jsonl(tmp_path / "votos_llm_questoes.jsonl", [
+        {"id": "Q7", "openai": v(5527).model_dump(), "anthropic": v(5527).model_dump()},
+    ])
+    escrever_jsonl(tmp_path / "candidatos_questoes_p2.jsonl", [
+        {"id": "Q7", "candidatos": [{"tema_id": 5527, "origem": "tema", "similaridade": 0.5}]},
+    ])
+    monkeypatch.setattr(modulo, "decidir", lambda id_, *a: modulo.Decisao(id_, "publicar", None))
+    with pytest.raises(ValueError, match="Q7"):
+        modulo.rodar_decisoes("questoes", arvore, L, pasta=tmp_path)
+    monkeypatch.setattr(modulo, "decidir", lambda id_, *a: modulo.Decisao(id_, "revisar", None))
+    with pytest.raises(ValueError, match="Q7"):
+        modulo.rodar_decisoes("questoes", arvore, L, pasta=tmp_path)

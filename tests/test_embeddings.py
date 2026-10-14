@@ -49,3 +49,15 @@ def test_cache_corrompido_e_regravado(tmp_path):
     vetor = emb.embed_query("x")
     assert len(base.chamadas) == 2
     assert json.loads(arquivo.read_text(encoding="utf-8")) == vetor
+
+
+class BaseQueDevolveMenos(EmbeddingsFalsas):
+    def embed_documents(self, texts: list[str]) -> list[list[float]]:
+        return super().embed_documents(texts)[:1]
+
+
+def test_base_que_devolve_menos_vetores_levanta_erro(tmp_path):
+    emb = EmbeddingsComCache(BaseQueDevolveMenos(), "falso", tmp_path)
+    with pytest.raises(RuntimeError, match=r"1 vetor\(es\) para 2 texto\(s\)"):
+        emb.embed_documents(["a", "b"])
+    assert not list((tmp_path / "embeddings").rglob("*.json"))

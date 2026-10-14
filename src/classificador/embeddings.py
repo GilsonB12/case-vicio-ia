@@ -56,7 +56,12 @@ class EmbeddingsComCache(Embeddings):
                 )
             novos = self.base.embed_documents([texts[i] for i in faltantes])
             self.chamadas_base += len(faltantes)
-            for indice, vetor in zip(faltantes, novos):
+            if len(novos) != len(faltantes):
+                raise RuntimeError(
+                    f"a base de embeddings devolveu {len(novos)} vetor(es) para {len(faltantes)} texto(s); "
+                    "nada foi gravado no cache"
+                )
+            for indice, vetor in zip(faltantes, novos, strict=True):
                 vetor = [float(x) for x in vetor]
                 self._gravar(texts[indice], vetor)
                 resultado[indice] = vetor

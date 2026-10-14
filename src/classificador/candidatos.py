@@ -33,7 +33,12 @@ class Candidato:
 def montar_indice_temas(arvore: ArvoreTemas, embeddings: Embeddings, criar=criar_indice) -> Indice:
     ids = arvore.candidatos_possiveis()
     indice = criar("Tema", embeddings)
-    indice.adicionar([str(t) for t in ids], [arvore.documento(t) for t in ids], [{"tema_id": t} for t in ids])
+    try:
+        indice.adicionar([str(t) for t in ids], [arvore.documento(t) for t in ids], [{"tema_id": t} for t in ids])
+    except Exception:
+        # O índice ainda não foi devolvido, então quem chamou não tem como fechá-lo.
+        indice.fechar()
+        raise
     return indice
 
 
@@ -43,7 +48,11 @@ def montar_indice_corpus(corpus: pd.DataFrame, arvore: ArvoreTemas, embeddings: 
         return indice
     ids = [str(i) for i in corpus["id"]]
     metadados = [{"tema_id": arvore.canonico(int(t)), "id": str(i)} for t, i in zip(corpus["tema_id"], corpus["id"])]
-    indice.adicionar(ids, list(corpus["texto"]), metadados)
+    try:
+        indice.adicionar(ids, list(corpus["texto"]), metadados)
+    except Exception:
+        indice.fechar()
+        raise
     return indice
 
 
@@ -102,9 +111,10 @@ def rodar_candidatos(
         raise ValueError("alvo deve ser 'questoes' ou 'corpus'")
     if alvo == "corpus" and passada != 2:
         raise ValueError("o corpus só roda na passada 2")
-    indice_temas = montar_indice_temas(arvore, embeddings, criar)
+    indice_temas: Indice | None = None
     indice_corpus: Indice | None = None
     try:
+        indice_temas = montar_indice_temas(arvore, embeddings, criar)
         if passada == 2:
             if CAMINHOS.corpus.exists():
                 corpus = carregar_corpus()
@@ -124,7 +134,8 @@ def rodar_candidatos(
         # O Weaviate abre uma conexão por índice; o substituto em memória ignora o fechamento.
         if indice_corpus is not None:
             indice_corpus.fechar()
-        indice_temas.fechar()
+        if indice_temas is not None:
+            indice_temas.fechar()
     saida = pasta_saida / f"candidatos_{alvo}_p{passada}.jsonl"
     escrever_jsonl(saida, linhas)
     registro.info("gravado %s com %d linhas", saida, len(linhas))

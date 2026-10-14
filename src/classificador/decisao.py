@@ -165,10 +165,12 @@ def rodar_decisoes(
         voto_a = None if linha.get("openai") is None else VotoModelo.model_validate(linha["openai"])
         voto_b = None if linha.get("anthropic") is None else VotoModelo.model_validate(linha["anthropic"])
         decisao = decidir(id_, voto_a, voto_b, vizinhancas.get(id_), candidatos.get(id_, []), arvore, limiares)
-        if decisao.decisao == "publicar":
-            assert decisao.tema_central_id is not None and arvore.publicavel(decisao.tema_central_id)
-        if decisao.decisao == "revisar":
-            assert decisao.tema_central_id is not None
+        if decisao.decisao == "publicar" and (decisao.tema_central_id is None or not arvore.publicavel(decisao.tema_central_id)):
+            raise ValueError(
+                f"questão {id_}: decisão publicar sem tema publicável (tema {decisao.tema_central_id}, regra {decisao.regra})"
+            )
+        if decisao.decisao == "revisar" and decisao.tema_central_id is None:
+            raise ValueError(f"questão {id_}: decisão revisar sem tema sugerido (regra {decisao.regra})")
         linhas.append(decisao.para_dict())
     saida = pasta / f"decisoes_{alvo}.jsonl"
     escrever_jsonl(saida, linhas)
