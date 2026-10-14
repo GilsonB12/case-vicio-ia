@@ -290,7 +290,7 @@ def rodar_votos(
     candidatos = {linha["id"]: candidatos_de_dict(linha["candidatos"]) for linha in ler_jsonl(caminho_candidatos)}
     openai, anthropic = classificadores
     # Disjuntor: o mesmo classificador sem voto em várias questões seguidas é chave, cota ou modelo com problema.
-    sem_voto_seguidas = {openai.nome: 0, anthropic.nome: 0}
+    sem_voto_seguidas = [0, 0]
     linhas: list[dict] = []
     for posicao, (id_, texto) in enumerate(zip(df["id"], df["texto"])):
         if limite is not None and posicao >= limite:
@@ -300,9 +300,9 @@ def rodar_votos(
         lista = candidatos[str(id_)]
         voto_a = openai.classificar(texto, lista, arvore)
         voto_b = anthropic.classificar(texto, lista, arvore)
-        for classificador, voto in ((openai, voto_a), (anthropic, voto_b)):
-            sem_voto_seguidas[classificador.nome] = sem_voto_seguidas[classificador.nome] + 1 if voto is None else 0
-            if sem_voto_seguidas[classificador.nome] >= MAXIMO_NONE_CONSECUTIVOS:
+        for posicao_clf, (classificador, voto) in enumerate(((openai, voto_a), (anthropic, voto_b))):
+            sem_voto_seguidas[posicao_clf] = sem_voto_seguidas[posicao_clf] + 1 if voto is None else 0
+            if sem_voto_seguidas[posicao_clf] >= MAXIMO_NONE_CONSECUTIVOS:
                 raise RuntimeError(
                     f"classificador '{classificador.nome}' ficou sem voto em {MAXIMO_NONE_CONSECUTIVOS} questões seguidas "
                     f"(última: {id_}); votação interrompida para não gastar chamadas. Rode `classificar votos --verificar` "
