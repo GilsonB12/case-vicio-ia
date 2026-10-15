@@ -41,12 +41,24 @@ _QUATRO_DIGITOS = re.compile(r"\d{4}")
 # Número isolado: não faz parte de outro número, de decimal com vírgula nem de "9.605/98".
 _NUMERO_ISOLADO = re.compile(r"(?<![\w.,/])(\d{4})(?!\w|[.,/]\d)")
 _DECIMAL_COM_PONTO = re.compile(r"(?<![\w.])0\.\d")
+_DECIMAL_COM_VIRGULA = re.compile(r"(?<![\d,])0,\d+")
+_EXEMPLO = re.compile(r"^- Q\d{4}: ", re.MULTILINE)
+ASSUNTOS_DAS_LIXEIRAS = 6
+EXEMPLOS_POR_ASSUNTO = 3
+BULLETS_DO_RESUMO = 5
 
 
 @cache
 def _texto() -> str:
     assert ACHADOS.exists(), f"{ACHADOS.relative_to(RAIZ)} não existe"
     return ACHADOS.read_text(encoding="utf-8")
+
+
+def _secao(numero: int) -> str:
+    texto = _texto()
+    inicio = texto.index(SECOES[numero - 1])
+    fim = texto.index(SECOES[numero]) if numero < len(SECOES) else len(texto)
+    return texto[inicio:fim]
 
 
 def _celulas(linha: str) -> list[str]:
@@ -129,3 +141,25 @@ def test_todo_id_citado_aparece_no_notebook():
 
 def test_proporcoes_com_virgula_decimal():
     assert not _DECIMAL_COM_PONTO.findall(_texto())
+
+
+def test_todo_decimal_citado_aparece_no_notebook():
+    notebook = _texto_do_notebook()
+    citados = sorted(set(_DECIMAL_COM_VIRGULA.findall(_texto())))
+    assert citados, "o documento não cita nenhuma proporção"
+    ausentes = [d for d in citados if not re.search(rf"(?<![\d,]){re.escape(d)}(?!\d)", notebook)]
+    assert not ausentes, f"proporções citadas que o notebook não mostra: {ausentes}"
+
+
+def test_resumo_tem_cinco_bullets():
+    bullets = [linha for linha in _secao(1).splitlines() if linha.startswith("- ")]
+    assert len(bullets) == BULLETS_DO_RESUMO
+
+
+def test_lixeiras_tem_tres_exemplos_por_assunto():
+    # Cada assunto abre com uma linha em negrito ("**Concurso de Crimes** (43 questões)...")
+    # seguida dos exemplos "- Q0039: ...".
+    blocos = re.split(r"^\*\*", _secao(4), flags=re.MULTILINE)[1:]
+    exemplos = {bloco.split("**")[0]: len(_EXEMPLO.findall(bloco)) for bloco in blocos}
+    assert len(exemplos) == ASSUNTOS_DAS_LIXEIRAS, exemplos
+    assert all(n == EXEMPLOS_POR_ASSUNTO for n in exemplos.values()), exemplos
