@@ -59,3 +59,12 @@ Task 2: minor (deferred): ticks do histograma sem separador de milhar pt-BR; gr�
 Task 3: minor (deferred): termos ainda sem glosa ("prompt" antes da seção 5, "ids", "HTML do Word", "corpus de referência").
 
 - A heurística de OCR (proporção de palavras fora do vocabulário) não isola a questão corrompida: Q0078 fica em 12º. Registrar no relatório como beco sem saída e como lista de triagem.
+
+## Plano da API e da tela de revisão (2026-10-15)
+
+### Itens adiados
+
+Task 1: minor (deferred): nomes de coleção Weaviate colidem com o pipeline em lote (prefixo "Api" via criar=); dublê sem fechar(); /saude abre conexão a cada chamada; enunciado vazio aceito.
+Task 2: minor (deferred): observação sem decisão fica fora do CSV exportado apesar do placeholder; desfazer rearma o aviso de fechar aba; CSV exportado sem BOM para Excel; copiar-dados não apaga cópia antiga; status comparado com caixa; EX05 motivo não segue o template; DOMParser a cada tecla.
+
+- Nomes de coleção no Weaviate são compartilhados entre a API e o pipeline em lote (`Tema`, `CorpusQuestao`); não rodar os dois ao mesmo tempo contra o mesmo Weaviate, ou prefixar as coleções da API.
