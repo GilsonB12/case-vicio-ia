@@ -60,6 +60,8 @@ CAMPOS: dict[str, type] = {
     "confianca_fonte": str,
     "gabarito": str,
 }
+# Campos de texto que o protocolo permite vazios: null nesses campos vira "".
+OPCIONAIS_NULOS_VIRAM_VAZIO = ("comando", "banca_ano", "gabarito")
 
 _ESPACOS = re.compile(r"\s+")
 
@@ -184,6 +186,10 @@ class _Consolidacao:
             except ValueError as erro:
                 self.descartar(lote, numero, "schema", _trecho(None, legivel), f"JSON inválido: {erro}")
                 continue
+            if isinstance(objeto, dict):
+                for campo in OPCIONAIS_NULOS_VIRAM_VAZIO:
+                    if campo in objeto and objeto[campo] is None:
+                        objeto[campo] = ""
             problema = problema_de_esquema(objeto)
             if problema:
                 self.descartar(lote, numero, "schema", _trecho(objeto, legivel), problema)

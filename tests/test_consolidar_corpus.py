@@ -81,7 +81,8 @@ def test_linha_malformada_e_descartada_por_schema_e_o_resto_segue(caminhos, arvo
     {"alternativas": ["A", "B"]},
     {"alternativas": {"A": 1}},
     {"confianca_fonte": "altissima"},
-    {"gabarito": None},
+    {"url": None},
+    {"enunciado": None},
 ])
 def test_campo_com_tipo_errado_e_descartado_por_schema(caminhos, arvore, defeito):
     pasta, saida, resumo_caminho = caminhos
@@ -89,6 +90,15 @@ def test_campo_com_tipo_errado_e_descartado_por_schema(caminhos, arvore, defeito
     resumo = consolidar(pasta, saida, resumo_caminho, arvore=arvore)
     assert motivos(resumo) == ["schema"]
     assert ler_saida(saida) == []
+
+
+def test_campos_opcionais_nulos_viram_vazio(caminhos, arvore):
+    pasta, saida, resumo_caminho = caminhos
+    gravar_lote(pasta, "01", [linha(comando=None, gabarito=None, banca_ano=None)])
+    resumo = consolidar(pasta, saida, resumo_caminho, arvore=arvore)
+    assert resumo["descartadas"] == []
+    [questao] = ler_saida(saida)
+    assert (questao["comando"], questao["gabarito"], questao["banca_ano"]) == ("", "", "")
 
 
 def test_campo_ausente_e_linha_que_nao_e_objeto_sao_schema(caminhos, arvore):
