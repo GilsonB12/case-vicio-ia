@@ -1,0 +1,2464 @@
+{
+ "n_lotes": 12,
+ "lotes": [
+  {
+   "lote": "01",
+   "meta_total": 124,
+   "temas": [
+    {
+     "tema_id": 4368,
+     "caminho": "Criminologia > Criminologia no Estado Democrático de Direito",
+     "descricao": "",
+     "peso": 22,
+     "meta": 6
+    },
+    {
+     "tema_id": 4705,
+     "caminho": "Direito Penal - Legislação Especial > Organizações Criminosas",
+     "descricao": "",
+     "peso": 12,
+     "meta": 6
+    },
+    {
+     "tema_id": 5081,
+     "caminho": "Penal > Dos Crimes Contra a Administração Judicial > Falso Testemunha ou Falsa Perícia e Corrupção Ativa de Testemunha ou Perito",
+     "descricao": "",
+     "peso": 10,
+     "meta": 6
+    },
+    {
+     "tema_id": 5125,
+     "caminho": "Penal > Dos Crimes Contra a Incolumidade Pública",
+     "descricao": "",
+     "peso": 10,
+     "meta": 6
+    },
+    {
+     "tema_id": 5155,
+     "caminho": "Penal > Dos Crimes contra o Estado Democrático de Direito",
+     "descricao": "",
+     "peso": 25,
+     "meta": 6
+    },
+    {
+     "tema_id": 5199,
+     "caminho": "Penal > Teoria da Pena",
+     "descricao": "",
+     "peso": 77,
+     "meta": 6
+    },
+    {
+     "tema_id": 5222,
+     "caminho": "Penal > Teoria do Crime: Fato Típico > Crime Doloso e Culposo",
+     "descricao": "",
+     "peso": 14,
+     "meta": 6
+    },
+    {
+     "tema_id": 5484,
+     "caminho": "Processo Penal > Competência > Competência por Prerrogativa de Função",
+     "descricao": "",
+     "peso": 20,
+     "meta": 6
+    },
+    {
+     "tema_id": 5515,
+     "caminho": "Processo Penal > Parte Geral dos Recursos > Efeito dos Recursos",
+     "descricao": "",
+     "peso": 10,
+     "meta": 6
+    },
+    {
+     "tema_id": 5540,
+     "caminho": "Processo Penal > Procedimento Sumaríssimo > Competência dos Juizados Especiais Criminais",
+     "descricao": "",
+     "peso": 12,
+     "meta": 6
+    },
+    {
+     "tema_id": 5563,
+     "caminho": "Processo Penal > Recursos em Espécies > Protesto por novo Júri",
+     "descricao": "",
+     "peso": 10,
+     "meta": 6
+    },
+    {
+     "tema_id": 4374,
+     "caminho": "Criminologia > Política Criminal",
+     "descricao": "",
+     "peso": 5,
+     "meta": 4
+    },
+    {
+     "tema_id": 4687,
+     "caminho": "Direito Penal - Legislação Especial > Crimes contra a Economia Popular",
+     "descricao": "",
+     "peso": 7,
+     "meta": 4
+    },
+    {
+     "tema_id": 5070,
+     "caminho": "Penal > Concurso de Crimes > Pena de Multa no Concurso de Crimes",
+     "descricao": "",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 5103,
+     "caminho": "Penal > Dos Crimes Contra a Dignidade Sexual > Estupro e Estupro de Vulnerável",
+     "descricao": "",
+     "peso": 9,
+     "meta": 4
+    },
+    {
+     "tema_id": 5161,
+     "caminho": "Penal > Dos Crimes Contra o Patrimônio > Extorsão",
+     "descricao": "",
+     "peso": 8,
+     "meta": 4
+    },
+    {
+     "tema_id": 5176,
+     "caminho": "Penal > Iter Criminis > Fases do Iter Criminis",
+     "descricao": "",
+     "peso": 8,
+     "meta": 4
+    },
+    {
+     "tema_id": 5212,
+     "caminho": "Penal > Teoria do Crime: Culpabilidade > Conceito e Elementos da Culpabilidade",
+     "descricao": "",
+     "peso": 7,
+     "meta": 4
+    },
+    {
+     "tema_id": 5479,
+     "caminho": "Processo Penal > Ações Autônomas de Impugnação > Mandado de Segurança",
+     "descricao": "Mandado de segurança, no âmbito das ações autônomas de impugnação em processo penal, é remédio constitucional destinado à tutela de direito líquido e certo violado ou ameaçado por ato ilegal ou abusivo de autoridade, quando não houver outro meio processual adequado. Seu estudo envolve a Lei 12.016/2",
+     "peso": 5,
+     "meta": 4
+    },
+    {
+     "tema_id": 5502,
+     "caminho": "Processo Penal > Inquérito Policial > Acordo de Não Persecução Penal",
+     "descricao": "",
+     "peso": 7,
+     "meta": 4
+    },
+    {
+     "tema_id": 5554,
+     "caminho": "Processo Penal > Provas em Espécies > Busca e Apreensão",
+     "descricao": "",
+     "peso": 8,
+     "meta": 4
+    },
+    {
+     "tema_id": 5571,
+     "caminho": "Processo Penal > Recursos em Espécies > Recurso Especial",
+     "descricao": "O Recurso Especial, no âmbito do Processo Penal, é o meio impugnativo dirigido ao Superior Tribunal de Justiça para uniformização da interpretação da lei federal, nos termos do art. 105, III, da Constituição Federal, quando o acórdão recorrido contrariar tratado ou lei federal, negar-lhes vigência o",
+     "peso": 9,
+     "meta": 4
+    },
+    {
+     "tema_id": 4686,
+     "caminho": "Direito Penal - Legislação Especial > Contravenções Penais",
+     "descricao": "",
+     "peso": 1,
+     "meta": 2
+    },
+    {
+     "tema_id": 5090,
+     "caminho": "Penal > Dos Crimes Contra a Administração Pública > Emprego Irregular de Verbas ou Rendas Públicas",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    },
+    {
+     "tema_id": 5129,
+     "caminho": "Penal > Dos Crimes Contra a Liberdade Pessoal > Intimidação Sistemática (Bullying)",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    },
+    {
+     "tema_id": 5158,
+     "caminho": "Penal > Dos Crimes Contra o Patrimônio > 12 Disposições Gerais dos Crimes Contra o Patrimônio",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    },
+    {
+     "tema_id": 5197,
+     "caminho": "Penal > Punibilidade > Perdão Judicial",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    },
+    {
+     "tema_id": 5511,
+     "caminho": "Processo Penal > Nulidades > Nulidades em Espécie",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    },
+    {
+     "tema_id": 5586,
+     "caminho": "Processo Penal > Teoria Geral das Prisões > Imunidades Prisionais e Prisões Especiais",
+     "descricao": "",
+     "peso": 1,
+     "meta": 2
+    }
+   ]
+  },
+  {
+   "lote": "02",
+   "meta_total": 124,
+   "temas": [
+    {
+     "tema_id": 4370,
+     "caminho": "Criminologia > Criminologia no Estado Democrático de Direito > Modelos de Reação ao Delito",
+     "descricao": "",
+     "peso": 15,
+     "meta": 6
+    },
+    {
+     "tema_id": 4708,
+     "caminho": "Direito Penal - Legislação Especial > Tráfico de Drogas",
+     "descricao": "",
+     "peso": 14,
+     "meta": 6
+    },
+    {
+     "tema_id": 5084,
+     "caminho": "Penal > Dos Crimes Contra a Administração Judicial > Favorecimento Pessoal e Real",
+     "descricao": "",
+     "peso": 12,
+     "meta": 6
+    },
+    {
+     "tema_id": 5128,
+     "caminho": "Penal > Dos Crimes Contra a Liberdade Pessoal",
+     "descricao": "",
+     "peso": 23,
+     "meta": 6
+    },
+    {
+     "tema_id": 5156,
+     "caminho": "Penal > Dos Crimes contra o Funcionamento dos Serviços Essenciais",
+     "descricao": "",
+     "peso": 16,
+     "meta": 6
+    },
+    {
+     "tema_id": 5209,
+     "caminho": "Penal > Teoria da Pena > Efeitos da Condenação Penais e Extrapenais",
+     "descricao": "",
+     "peso": 55,
+     "meta": 6
+    },
+    {
+     "tema_id": 5223,
+     "caminho": "Penal > Teoria do Crime: Fato Típico > Crimes Omissivos e Comissivos",
+     "descricao": "",
+     "peso": 14,
+     "meta": 6
+    },
+    {
+     "tema_id": 5481,
+     "caminho": "Processo Penal > Competência > Espécies e Fixação de Competência Criminal",
+     "descricao": "",
+     "peso": 10,
+     "meta": 6
+    },
+    {
+     "tema_id": 5517,
+     "caminho": "Processo Penal > Prisões em Espécie",
+     "descricao": "",
+     "peso": 57,
+     "meta": 6
+    },
+    {
+     "tema_id": 5524,
+     "caminho": "Processo Penal > Procedimento do Tribunal do Júri",
+     "descricao": "",
+     "peso": 11,
+     "meta": 6
+    },
+    {
+     "tema_id": 5570,
+     "caminho": "Processo Penal > Recursos em Espécies > Recurso Extraordinário",
+     "descricao": "No Processo Penal, o Recurso Extraordinário é o meio de impugnação dirigido ao Supremo Tribunal Federal para discutir, em sede excepcional, matéria constitucional decidida em última ou única instância, nos termos do art. 102, III, da Constituição Federal e dos arts. 1.029 a 1.041 do CPC, aplicados s",
+     "peso": 21,
+     "meta": 6
+    },
+    {
+     "tema_id": 4376,
+     "caminho": "Criminologia > Política Criminal > Direito Penal do Inimigo",
+     "descricao": "",
+     "peso": 4,
+     "meta": 4
+    },
+    {
+     "tema_id": 4689,
+     "caminho": "Direito Penal - Legislação Especial > Crimes contra o Sistema Financeiro",
+     "descricao": "",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 5072,
+     "caminho": "Penal > Concurso de Pessoas > Autores e Partícipes",
+     "descricao": "",
+     "peso": 7,
+     "meta": 4
+    },
+    {
+     "tema_id": 5109,
+     "caminho": "Penal > Dos Crimes Contra a Dignidade Sexual > Outros Crimes Contra a Dignidade Sexual",
+     "descricao": "",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 5168,
+     "caminho": "Penal > Dos Crimes Contra o Patrimônio > Fraude à Execução",
+     "descricao": "",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 5183,
+     "caminho": "Penal > Lei Penal no Tempo e no Espaço > Conflito Aparente de Normas",
+     "descricao": "",
+     "peso": 8,
+     "meta": 4
+    },
+    {
+     "tema_id": 5213,
+     "caminho": "Penal > Teoria do Crime: Culpabilidade > Inimputabilidade",
+     "descricao": "",
+     "peso": 9,
+     "meta": 4
+    },
+    {
+     "tema_id": 5478,
+     "caminho": "Processo Penal > Ações Autônomas de Impugnação > Revisão Criminal",
+     "descricao": "",
+     "peso": 5,
+     "meta": 4
+    },
+    {
+     "tema_id": 5503,
+     "caminho": "Processo Penal > Inquérito Policial > Juiz das Garantias",
+     "descricao": "",
+     "peso": 9,
+     "meta": 4
+    },
+    {
+     "tema_id": 5556,
+     "caminho": "Processo Penal > Provas em Espécies > Captação Ambiental",
+     "descricao": "",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 5569,
+     "caminho": "Processo Penal > Recursos em Espécies > Recursos no Âmbito dos Juizados Especiais",
+     "descricao": "",
+     "peso": 4,
+     "meta": 4
+    },
+    {
+     "tema_id": 4692,
+     "caminho": "Direito Penal - Legislação Especial > Crimes Eleitorais",
+     "descricao": "",
+     "peso": 1,
+     "meta": 2
+    },
+    {
+     "tema_id": 5100,
+     "caminho": "Penal > Dos Crimes Contra a Administração Pública > Resistência, Desobediência e Desacato",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    },
+    {
+     "tema_id": 5132,
+     "caminho": "Penal > Dos Crimes Contra a Liberdade Pessoal > Sequestro, Cárcere Privado, Redução à Condição Análoga à de Escravo e Tráfico de Pessoas",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    },
+    {
+     "tema_id": 5137,
+     "caminho": "Penal > Dos Crimes contra a Organização do Trabalho, a Propriedade Imaterial e ao Sentimento Religioso > Dos Crimes Contra o Sentimento Religioso e Respeito aos Mortos",
+     "descricao": "",
+     "peso": 1,
+     "meta": 2
+    },
+    {
+     "tema_id": 5206,
+     "caminho": "Penal > Teoria da Pena > Pena de Multa",
+     "descricao": "",
+     "peso": 1,
+     "meta": 2
+    },
+    {
+     "tema_id": 5513,
+     "caminho": "Processo Penal > Parte Geral dos Recursos > Princípios Recursais no Processo Penal",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    },
+    {
+     "tema_id": 5588,
+     "caminho": "Processo Penal > Teoria Geral das Prisões > Relaxamento da Prisão",
+     "descricao": "",
+     "peso": 1,
+     "meta": 2
+    }
+   ]
+  },
+  {
+   "lote": "03",
+   "meta_total": 124,
+   "temas": [
+    {
+     "tema_id": 4371,
+     "caminho": "Criminologia > Etapas Evolutivas e Escolas Criminológicas",
+     "descricao": "",
+     "peso": 15,
+     "meta": 6
+    },
+    {
+     "tema_id": 4709,
+     "caminho": "Direito Penal - Legislação Especial > Violência contra Criança e Adolescente",
+     "descricao": "",
+     "peso": 11,
+     "meta": 6
+    },
+    {
+     "tema_id": 5087,
+     "caminho": "Penal > Dos Crimes Contra a Administração Pública",
+     "descricao": "",
+     "peso": 47,
+     "meta": 6
+    },
+    {
+     "tema_id": 5131,
+     "caminho": "Penal > Dos Crimes Contra a Liberdade Pessoal > Violência Psicológica contra a Mulher",
+     "descricao": "",
+     "peso": 11,
+     "meta": 6
+    },
+    {
+     "tema_id": 5175,
+     "caminho": "Penal > Iter Criminis",
+     "descricao": "",
+     "peso": 36,
+     "meta": 6
+    },
+    {
+     "tema_id": 5208,
+     "caminho": "Penal > Teoria da Pena > Livramento Condicional",
+     "descricao": "",
+     "peso": 12,
+     "meta": 6
+    },
+    {
+     "tema_id": 5224,
+     "caminho": "Penal > Teoria do Crime: Fato Típico > Erro de Tipo",
+     "descricao": "",
+     "peso": 33,
+     "meta": 6
+    },
+    {
+     "tema_id": 5487,
+     "caminho": "Processo Penal > Comunicação dos Atos Processuais",
+     "descricao": "A Comunicação dos Atos Processuais no Processo Penal abrange as formas pelas quais o juiz, o Ministério Público, a defesa e os auxiliares da Justiça são cientificados dos atos processuais, assegurando contraditório, ampla defesa e regularidade procedimental. Nesse recorte, estudam-se a citação, a in",
+     "peso": 19,
+     "meta": 6
+    },
+    {
+     "tema_id": 5523,
+     "caminho": "Processo Penal > Prisões em Espécie > Liberdade Provisória",
+     "descricao": "",
+     "peso": 22,
+     "meta": 6
+    },
+    {
+     "tema_id": 5527,
+     "caminho": "Processo Penal > Procedimento do Tribunal do Júri > Impronúncia, Desclassificação, Absolvição Sumária e Pronúncia",
+     "descricao": "",
+     "peso": 10,
+     "meta": 6
+    },
+    {
+     "tema_id": 5561,
+     "caminho": "Processo Penal > Recursos em Espécies > Recurso em sentido estrito (RESE)",
+     "descricao": "",
+     "peso": 11,
+     "meta": 6
+    },
+    {
+     "tema_id": 4379,
+     "caminho": "Criminologia > Processos de Criminalização e Cifras Criminais > Cifras Criminais",
+     "descricao": "",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 4688,
+     "caminho": "Direito Penal - Legislação Especial > Crimes contra o meio ambiente",
+     "descricao": "",
+     "peso": 5,
+     "meta": 4
+    },
+    {
+     "tema_id": 5073,
+     "caminho": "Penal > Concurso de Pessoas > Autoria Mediata, Colateral e Coautoria",
+     "descricao": "",
+     "peso": 7,
+     "meta": 4
+    },
+    {
+     "tema_id": 5118,
+     "caminho": "Penal > Dos Crimes Contra a Fé Pública e de Falsidade Documental > Da Falsidade Documental",
+     "descricao": "",
+     "peso": 9,
+     "meta": 4
+    },
+    {
+     "tema_id": 5159,
+     "caminho": "Penal > Dos Crimes Contra o Patrimônio > Furto",
+     "descricao": "",
+     "peso": 9,
+     "meta": 4
+    },
+    {
+     "tema_id": 5186,
+     "caminho": "Penal > Prescrição > Conceito, Regras Gerais e Fundamentos da Prescrição",
+     "descricao": "",
+     "peso": 4,
+     "meta": 4
+    },
+    {
+     "tema_id": 5216,
+     "caminho": "Penal > Teoria do Crime: Culpabilidade > Obediência Hierárquica",
+     "descricao": "",
+     "peso": 9,
+     "meta": 4
+    },
+    {
+     "tema_id": 5483,
+     "caminho": "Processo Penal > Competência > Comeptência Territorial",
+     "descricao": "",
+     "peso": 5,
+     "meta": 4
+    },
+    {
+     "tema_id": 5508,
+     "caminho": "Processo Penal > Lei Processual no Tempo e no Espaço > Interpretação da Lei processual Penal",
+     "descricao": "",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 5557,
+     "caminho": "Processo Penal > Provas em Espécies > Colaboração Premiada",
+     "descricao": "",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 5578,
+     "caminho": "Processo Penal > Sentença Penal > Princípio da Correlação entre Acusação e Sentença",
+     "descricao": "",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 4693,
+     "caminho": "Direito Penal - Legislação Especial > Crimes Hediondos",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    },
+    {
+     "tema_id": 5101,
+     "caminho": "Penal > Dos Crimes Contra a Administração Pública > Tráfico de Influência",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    },
+    {
+     "tema_id": 5141,
+     "caminho": "Penal > Dos Crimes Contra a Periclitação da Vida e da Saúde > Abandono de Incapaz e Exposição ou Abandono de Recém-Nascido",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    },
+    {
+     "tema_id": 5136,
+     "caminho": "Penal > Dos Crimes contra a Organização do Trabalho, a Propriedade Imaterial e ao Sentimento Religioso > Dos Crimescontra a Propriedade Imaterial",
+     "descricao": "",
+     "peso": 1,
+     "meta": 2
+    },
+    {
+     "tema_id": 5219,
+     "caminho": "Penal > Teoria do Crime: Fato Típico > Conceito, Sujeito e Objeto do Crime",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    },
+    {
+     "tema_id": 5533,
+     "caminho": "Processo Penal > Procedimento Ordinário > Defesa Preliminar",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    },
+    {
+     "tema_id": 5593,
+     "caminho": "Processo Penal > Teoria Geral das Provas > Prova Emprestada",
+     "descricao": "",
+     "peso": 1,
+     "meta": 2
+    }
+   ]
+  },
+  {
+   "lote": "04",
+   "meta_total": 124,
+   "temas": [
+    {
+     "tema_id": 4373,
+     "caminho": "Criminologia > Etapas Evolutivas e Escolas Criminológicas > Escolas Crimonológicas",
+     "descricao": "",
+     "peso": 10,
+     "meta": 6
+    },
+    {
+     "tema_id": 5063,
+     "caminho": "Penal > Ação Penal",
+     "descricao": "Ação Penal, no âmbito do Direito Penal, trata da iniciativa estatal ou privada para provocar a jurisdição criminal, compreendendo legitimidade, interesse de agir, condições da ação, representação, requisição e os princípios da inércia, obrigatoriedade, oportunidade, indisponibilidade, divisibilidade",
+     "peso": 29,
+     "meta": 6
+    },
+    {
+     "tema_id": 5091,
+     "caminho": "Penal > Dos Crimes Contra a Administração Pública > Concussão e Excesso de Exação",
+     "descricao": "",
+     "peso": 24,
+     "meta": 6
+    },
+    {
+     "tema_id": 5149,
+     "caminho": "Penal > Dos Crimes Contra a Vida",
+     "descricao": "",
+     "peso": 22,
+     "meta": 6
+    },
+    {
+     "tema_id": 5177,
+     "caminho": "Penal > Iter Criminis > Crime Consumado e Tentado",
+     "descricao": "",
+     "peso": 15,
+     "meta": 6
+    },
+    {
+     "tema_id": 5201,
+     "caminho": "Penal > Teoria da Pena > Penas Privativas de Liberdade",
+     "descricao": "",
+     "peso": 22,
+     "meta": 6
+    },
+    {
+     "tema_id": 5225,
+     "caminho": "Penal > Teoria do Crime: Fato Típico > Resultado",
+     "descricao": "",
+     "peso": 13,
+     "meta": 6
+    },
+    {
+     "tema_id": 5488,
+     "caminho": "Processo Penal > Comunicação dos Atos Processuais > Citação e Contagem dos Prazos",
+     "descricao": "",
+     "peso": 15,
+     "meta": 6
+    },
+    {
+     "tema_id": 5522,
+     "caminho": "Processo Penal > Prisões em Espécie > Medidas Cautelares Diversas da Prisão",
+     "descricao": "",
+     "peso": 16,
+     "meta": 6
+    },
+    {
+     "tema_id": 5543,
+     "caminho": "Processo Penal > Provas em Espécies",
+     "descricao": "",
+     "peso": 49,
+     "meta": 6
+    },
+    {
+     "tema_id": 5572,
+     "caminho": "Processo Penal > Sentença Penal",
+     "descricao": "",
+     "peso": 50,
+     "meta": 6
+    },
+    {
+     "tema_id": 4378,
+     "caminho": "Criminologia > Processos de Criminalização e Cifras Criminais > Criminalização Primária e Secundária",
+     "descricao": "",
+     "peso": 5,
+     "meta": 4
+    },
+    {
+     "tema_id": 4690,
+     "caminho": "Direito Penal - Legislação Especial > Crimes de Racismo",
+     "descricao": "",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 5074,
+     "caminho": "Penal > Concurso de Pessoas > Participação",
+     "descricao": "",
+     "peso": 7,
+     "meta": 4
+    },
+    {
+     "tema_id": 5117,
+     "caminho": "Penal > Dos Crimes Contra a Fé Pública e de Falsidade Documental > Dos Crimes contra a Fé Pública",
+     "descricao": "",
+     "peso": 8,
+     "meta": 4
+    },
+    {
+     "tema_id": 5163,
+     "caminho": "Penal > Dos Crimes Contra o Patrimônio > Usurpação",
+     "descricao": "",
+     "peso": 8,
+     "meta": 4
+    },
+    {
+     "tema_id": 5187,
+     "caminho": "Penal > Prescrição > Contagem dos Prazos e Causas Suspensivas e Interruptivas da Prescrição",
+     "descricao": "",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 5226,
+     "caminho": "Penal > Teoria do Crime: Fato Típico > Nexo Causal e Imputação Objetiva",
+     "descricao": "",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 5485,
+     "caminho": "Processo Penal > Competência > Competência de Juízo",
+     "descricao": "",
+     "peso": 4,
+     "meta": 4
+    },
+    {
+     "tema_id": 5506,
+     "caminho": "Processo Penal > Lei Processual no Tempo e no Espaço > Lei Processual no Espaço",
+     "descricao": "",
+     "peso": 8,
+     "meta": 4
+    },
+    {
+     "tema_id": 5545,
+     "caminho": "Processo Penal > Provas em Espécies > Exame de Corpo de Delito",
+     "descricao": "",
+     "peso": 9,
+     "meta": 4
+    },
+    {
+     "tema_id": 5580,
+     "caminho": "Processo Penal > Sistemas e Princípios Processuais Penais",
+     "descricao": "",
+     "peso": 4,
+     "meta": 4
+    },
+    {
+     "tema_id": 4691,
+     "caminho": "Direito Penal - Legislação Especial > Crimes de Trânsito",
+     "descricao": "",
+     "peso": 1,
+     "meta": 2
+    },
+    {
+     "tema_id": 5106,
+     "caminho": "Penal > Dos Crimes Contra a Dignidade Sexual > Assédio Sexual",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    },
+    {
+     "tema_id": 5143,
+     "caminho": "Penal > Dos Crimes Contra a Periclitação da Vida e da Saúde > Maus-Tratos",
+     "descricao": "",
+     "peso": 1,
+     "meta": 2
+    },
+    {
+     "tema_id": 5147,
+     "caminho": "Penal > Dos Crimes contra as Finanças Públicas",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    },
+    {
+     "tema_id": 5220,
+     "caminho": "Penal > Teoria do Crime: Fato Típico > Fato Típico",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    },
+    {
+     "tema_id": 5528,
+     "caminho": "Processo Penal > Procedimento do Tribunal do Júri > Organização do Júri e Sessão de Julgamento",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    },
+    {
+     "tema_id": 5594,
+     "caminho": "Processo Penal > Teoria Geral das Provas > Prova Ilegal e Prova Ilícita",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    }
+   ]
+  },
+  {
+   "lote": "05",
+   "meta_total": 124,
+   "temas": [
+    {
+     "tema_id": 4377,
+     "caminho": "Criminologia > Processos de Criminalização e Cifras Criminais",
+     "descricao": "",
+     "peso": 14,
+     "meta": 6
+    },
+    {
+     "tema_id": 5066,
+     "caminho": "Penal > Concurso de Crimes",
+     "descricao": "",
+     "peso": 16,
+     "meta": 6
+    },
+    {
+     "tema_id": 5096,
+     "caminho": "Penal > Dos Crimes Contra a Administração Pública > Condescendência Criminosa",
+     "descricao": "",
+     "peso": 25,
+     "meta": 6
+    },
+    {
+     "tema_id": 5151,
+     "caminho": "Penal > Dos Crimes Contra a Vida > Feminicídio",
+     "descricao": "",
+     "peso": 12,
+     "meta": 6
+    },
+    {
+     "tema_id": 5178,
+     "caminho": "Penal > Iter Criminis > Desistência Voluntária, Arrependimento Eficaz e Arrependimento posterior",
+     "descricao": "",
+     "peso": 22,
+     "meta": 6
+    },
+    {
+     "tema_id": 5205,
+     "caminho": "Penal > Teoria da Pena > Penas Restritivas de Direitos",
+     "descricao": "",
+     "peso": 23,
+     "meta": 6
+    },
+    {
+     "tema_id": 5228,
+     "caminho": "Penal > Teoria do Crime: Ilicitude",
+     "descricao": "",
+     "peso": 46,
+     "meta": 6
+    },
+    {
+     "tema_id": 5490,
+     "caminho": "Processo Penal > Das Questões e Processos Incidentes",
+     "descricao": "",
+     "peso": 38,
+     "meta": 6
+    },
+    {
+     "tema_id": 5521,
+     "caminho": "Processo Penal > Prisões em Espécie > Prisão Domiciliar",
+     "descricao": "",
+     "peso": 32,
+     "meta": 6
+    },
+    {
+     "tema_id": 5558,
+     "caminho": "Processo Penal > Provas em Espécies > Ação Controlada",
+     "descricao": "",
+     "peso": 16,
+     "meta": 6
+    },
+    {
+     "tema_id": 5577,
+     "caminho": "Processo Penal > Sentença Penal > Efeitos Decorrentes da Sentença Penal Condenatória",
+     "descricao": "",
+     "peso": 27,
+     "meta": 6
+    },
+    {
+     "tema_id": 4380,
+     "caminho": "Criminologia > Teoria Geral da Criminologia",
+     "descricao": "",
+     "peso": 8,
+     "meta": 4
+    },
+    {
+     "tema_id": 4697,
+     "caminho": "Direito Penal - Legislação Especial > Estatuto do Desarmamento",
+     "descricao": "",
+     "peso": 7,
+     "meta": 4
+    },
+    {
+     "tema_id": 5097,
+     "caminho": "Penal > Dos Crimes Contra a Administração Pública > Advocacia Administrativa",
+     "descricao": "",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 5120,
+     "caminho": "Penal > Dos Crimes Contra a Honra",
+     "descricao": "",
+     "peso": 4,
+     "meta": 4
+    },
+    {
+     "tema_id": 5114,
+     "caminho": "Penal > Dos Crimes contra a Família > Dos Crimes Contra a Assistência Familiar",
+     "descricao": "",
+     "peso": 9,
+     "meta": 4
+    },
+    {
+     "tema_id": 5194,
+     "caminho": "Penal > Punibilidade > Abolitio Criminis",
+     "descricao": "",
+     "peso": 9,
+     "meta": 4
+    },
+    {
+     "tema_id": 5229,
+     "caminho": "Penal > Teoria do Crime: Ilicitude > Conceito e Elementos da Ilicitude",
+     "descricao": "",
+     "peso": 5,
+     "meta": 4
+    },
+    {
+     "tema_id": 5482,
+     "caminho": "Processo Penal > Competência > Competência em Razão da Matéria",
+     "descricao": "",
+     "peso": 8,
+     "meta": 4
+    },
+    {
+     "tema_id": 5507,
+     "caminho": "Processo Penal > Lei Processual no Tempo e no Espaço > Lei processual no Tempo",
+     "descricao": "",
+     "peso": 7,
+     "meta": 4
+    },
+    {
+     "tema_id": 5559,
+     "caminho": "Processo Penal > Provas em Espécies > Infiltração de Agentes",
+     "descricao": "",
+     "peso": 5,
+     "meta": 4
+    },
+    {
+     "tema_id": 5582,
+     "caminho": "Processo Penal > Sistemas e Princípios Processuais Penais > Princípios do Processo Penal",
+     "descricao": "",
+     "peso": 4,
+     "meta": 4
+    },
+    {
+     "tema_id": 4694,
+     "caminho": "Direito Penal - Legislação Especial > Crimes previstos no CDC",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    },
+    {
+     "tema_id": 5105,
+     "caminho": "Penal > Dos Crimes Contra a Dignidade Sexual > Importunação Sexual",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    },
+    {
+     "tema_id": 5139,
+     "caminho": "Penal > Dos Crimes Contra a Periclitação da Vida e da Saúde > Perigo de Contágio Venéreo e de Moléstia Grave",
+     "descricao": "",
+     "peso": 1,
+     "meta": 2
+    },
+    {
+     "tema_id": 5148,
+     "caminho": "Penal > Dos Crimes contra as Instituições Democráticas",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    },
+    {
+     "tema_id": 5227,
+     "caminho": "Penal > Teoria do Crime: Fato Típico > Tipicidade",
+     "descricao": "",
+     "peso": 1,
+     "meta": 2
+    },
+    {
+     "tema_id": 5525,
+     "caminho": "Processo Penal > Procedimento do Tribunal do Júri > Princípios Constitucionais do Júri",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    },
+    {
+     "tema_id": 5592,
+     "caminho": "Processo Penal > Teoria Geral das Provas > Sistemas de Avaliação da Prova",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    }
+   ]
+  },
+  {
+   "lote": "06",
+   "meta_total": 122,
+   "temas": [
+    {
+     "tema_id": 4384,
+     "caminho": "Criminologia > Teorias Legitimidoras da Pena",
+     "descricao": "",
+     "peso": 18,
+     "meta": 6
+    },
+    {
+     "tema_id": 5071,
+     "caminho": "Penal > Concurso de Pessoas",
+     "descricao": "",
+     "peso": 21,
+     "meta": 6
+    },
+    {
+     "tema_id": 5093,
+     "caminho": "Penal > Dos Crimes Contra a Administração Pública > Corrupção Ativa",
+     "descricao": "",
+     "peso": 12,
+     "meta": 6
+    },
+    {
+     "tema_id": 5157,
+     "caminho": "Penal > Dos Crimes Contra o Patrimônio",
+     "descricao": "",
+     "peso": 40,
+     "meta": 6
+    },
+    {
+     "tema_id": 5180,
+     "caminho": "Penal > Lei Penal no Tempo e no Espaço",
+     "descricao": "",
+     "peso": 11,
+     "meta": 6
+    },
+    {
+     "tema_id": 5202,
+     "caminho": "Penal > Teoria da Pena > Primeira Fase da Dosimetria: Circunstâncias Judiciais",
+     "descricao": "",
+     "peso": 14,
+     "meta": 6
+    },
+    {
+     "tema_id": 5233,
+     "caminho": "Penal > Teoria do Crime: Ilicitude > Causas Supralegais de Exclusão da Ilicitude",
+     "descricao": "",
+     "peso": 17,
+     "meta": 6
+    },
+    {
+     "tema_id": 5495,
+     "caminho": "Processo Penal > Das Questões e Processos Incidentes > Restituição de Coisas Apreendidas",
+     "descricao": "",
+     "peso": 12,
+     "meta": 6
+    },
+    {
+     "tema_id": 5518,
+     "caminho": "Processo Penal > Prisões em Espécie > Prisão em Flagrante",
+     "descricao": "",
+     "peso": 14,
+     "meta": 6
+    },
+    {
+     "tema_id": 5544,
+     "caminho": "Processo Penal > Provas em Espécies > Cadeia de Custódia",
+     "descricao": "",
+     "peso": 10,
+     "meta": 6
+    },
+    {
+     "tema_id": 5576,
+     "caminho": "Processo Penal > Sentença Penal > Fixação da Pena e do Regime Penitenciário",
+     "descricao": "",
+     "peso": 30,
+     "meta": 6
+    },
+    {
+     "tema_id": 4381,
+     "caminho": "Criminologia > Teoria Geral da Criminologia > Conceito e objeto da Criminologia",
+     "descricao": "",
+     "peso": 4,
+     "meta": 4
+    },
+    {
+     "tema_id": 4699,
+     "caminho": "Direito Penal - Legislação Especial > Identificação Criminal",
+     "descricao": "",
+     "peso": 8,
+     "meta": 4
+    },
+    {
+     "tema_id": 5094,
+     "caminho": "Penal > Dos Crimes Contra a Administração Pública > Contrabando ou Descaminho",
+     "descricao": "",
+     "peso": 9,
+     "meta": 4
+    },
+    {
+     "tema_id": 5133,
+     "caminho": "Penal > Dos Crimes Contra a Liberdade Pessoal > Dos Crimes contra a Inviolabilidade do Domicílio, Contra a Inviolabilidade da Correspondência e Contra a Inviolabilidade dos Segredos",
+     "descricao": "",
+     "peso": 7,
+     "meta": 4
+    },
+    {
+     "tema_id": 5112,
+     "caminho": "Penal > Dos Crimes contra a Família > Dos Crimes Contra o Casamento",
+     "descricao": "",
+     "peso": 7,
+     "meta": 4
+    },
+    {
+     "tema_id": 5193,
+     "caminho": "Penal > Punibilidade > Anistia, Graça e Indulto",
+     "descricao": "",
+     "peso": 7,
+     "meta": 4
+    },
+    {
+     "tema_id": 5230,
+     "caminho": "Penal > Teoria do Crime: Ilicitude > Estado de Necessidade",
+     "descricao": "",
+     "peso": 4,
+     "meta": 4
+    },
+    {
+     "tema_id": 5486,
+     "caminho": "Processo Penal > Competência > Prorrogação, Perpetuação e Modificação de Competência",
+     "descricao": "",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 5519,
+     "caminho": "Processo Penal > Prisões em Espécie > Prisão Preventiva",
+     "descricao": "",
+     "peso": 9,
+     "meta": 4
+    },
+    {
+     "tema_id": 5555,
+     "caminho": "Processo Penal > Provas em Espécies > Interceptação Telefônica e Quebra do Sigilo de Dados Telefônicos",
+     "descricao": "",
+     "peso": 5,
+     "meta": 4
+    },
+    {
+     "tema_id": 5590,
+     "caminho": "Processo Penal > Teoria Geral das Provas",
+     "descricao": "",
+     "peso": 8,
+     "meta": 4
+    },
+    {
+     "tema_id": 4700,
+     "caminho": "Direito Penal - Legislação Especial > Interceptação Telefônica",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    },
+    {
+     "tema_id": 5107,
+     "caminho": "Penal > Dos Crimes Contra a Dignidade Sexual > Registro Não Autorizado da Intimidade Sexual",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    },
+    {
+     "tema_id": 5140,
+     "caminho": "Penal > Dos Crimes Contra a Periclitação da Vida e da Saúde > Perigo para a Vida ou a Saúde de Outrem",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    },
+    {
+     "tema_id": 5174,
+     "caminho": "Penal > Introdução ao Estudo do Direito Penal > Classificações dos Crimes",
+     "descricao": "",
+     "peso": 1,
+     "meta": 2
+    },
+    {
+     "tema_id": 5470,
+     "caminho": "Processo Penal > Ação Penal > Ação Penal Pública Incondicionada",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    },
+    {
+     "tema_id": 5526,
+     "caminho": "Processo Penal > Procedimento do Tribunal do Júri > Procedimento Bifásico do Tribunal do Júri",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    }
+   ]
+  },
+  {
+   "lote": "07",
+   "meta_total": 122,
+   "temas": [
+    {
+     "tema_id": 4385,
+     "caminho": "Criminologia > Teorias Sociológicas Explicativas da Criminalidade",
+     "descricao": "",
+     "peso": 25,
+     "meta": 6
+    },
+    {
+     "tema_id": 5076,
+     "caminho": "Penal > Concurso de Pessoas > Comunicabilidade de Circunstâncias, Condições e Elementares",
+     "descricao": "",
+     "peso": 10,
+     "meta": 6
+    },
+    {
+     "tema_id": 5092,
+     "caminho": "Penal > Dos Crimes Contra a Administração Pública > Corrupção Passiva",
+     "descricao": "",
+     "peso": 10,
+     "meta": 6
+    },
+    {
+     "tema_id": 5165,
+     "caminho": "Penal > Dos Crimes Contra o Patrimônio > Apropriação indébita",
+     "descricao": "",
+     "peso": 12,
+     "meta": 6
+    },
+    {
+     "tema_id": 5185,
+     "caminho": "Penal > Prescrição",
+     "descricao": "No Direito Penal, o tema da prescrição trata da extinção da punibilidade pelo decurso do tempo, disciplinada principalmente nos arts. 109 a 117 do Código Penal e aplicada em conexão com a pretensão punitiva e a pretensão executória. Abrange o cálculo dos prazos prescricionais conforme a pena em abst",
+     "peso": 21,
+     "meta": 6
+    },
+    {
+     "tema_id": 5210,
+     "caminho": "Penal > Teoria da Pena > Reabilitação Criminal",
+     "descricao": "",
+     "peso": 16,
+     "meta": 6
+    },
+    {
+     "tema_id": 5232,
+     "caminho": "Penal > Teoria do Crime: Ilicitude > Estrito Cumprimento do Dever Legal",
+     "descricao": "",
+     "peso": 26,
+     "meta": 6
+    },
+    {
+     "tema_id": 5498,
+     "caminho": "Processo Penal > Inquérito Policial",
+     "descricao": "",
+     "peso": 18,
+     "meta": 6
+    },
+    {
+     "tema_id": 5530,
+     "caminho": "Processo Penal > Procedimento Ordinário",
+     "descricao": "O procedimento ordinário no Processo Penal disciplina o rito comum de maior amplitude para o processamento da ação penal, especialmente nos crimes cuja pena máxima seja superior a 4 anos, conforme os arts. 394 a 405 do Código de Processo Penal, com a redação dada pela Lei 11.719/2008. Abrange a denú",
+     "peso": 47,
+     "meta": 6
+    },
+    {
+     "tema_id": 5548,
+     "caminho": "Processo Penal > Provas em Espécies > Confissão",
+     "descricao": "No Processo Penal, a confissão é o meio de prova pelo qual o imputado admite a autoria ou participação no fato típico, podendo ser judicial ou extrajudicial, simples, qualificada, retratada ou parcial, e deve ser valorada em conjunto com os demais elementos probatórios, não bastando isoladamente par",
+     "peso": 13,
+     "meta": 6
+    },
+    {
+     "tema_id": 5584,
+     "caminho": "Processo Penal > Teoria Geral das Prisões",
+     "descricao": "",
+     "peso": 28,
+     "meta": 6
+    },
+    {
+     "tema_id": 4382,
+     "caminho": "Criminologia > Teoria Geral da Criminologia > Métodos e funções da Criminologia",
+     "descricao": "",
+     "peso": 5,
+     "meta": 4
+    },
+    {
+     "tema_id": 4702,
+     "caminho": "Direito Penal - Legislação Especial > Lavagem de Dinheiro",
+     "descricao": "",
+     "peso": 4,
+     "meta": 4
+    },
+    {
+     "tema_id": 5088,
+     "caminho": "Penal > Dos Crimes Contra a Administração Pública > Noções gerais dos crimes praticados contra a administração pública",
+     "descricao": "",
+     "peso": 8,
+     "meta": 4
+    },
+    {
+     "tema_id": 5138,
+     "caminho": "Penal > Dos Crimes Contra a Periclitação da Vida e da Saúde",
+     "descricao": "",
+     "peso": 8,
+     "meta": 4
+    },
+    {
+     "tema_id": 5113,
+     "caminho": "Penal > Dos Crimes contra a Família > Dos Crimes Contra o Estado de Filiação",
+     "descricao": "",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 5195,
+     "caminho": "Penal > Punibilidade > Perempção",
+     "descricao": "",
+     "peso": 5,
+     "meta": 4
+    },
+    {
+     "tema_id": 5231,
+     "caminho": "Penal > Teoria do Crime: Ilicitude > Legítima Defesa",
+     "descricao": "",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 5489,
+     "caminho": "Processo Penal > Comunicação dos Atos Processuais > Intimação e Contagem dos Prazos",
+     "descricao": "",
+     "peso": 9,
+     "meta": 4
+    },
+    {
+     "tema_id": 5520,
+     "caminho": "Processo Penal > Prisões em Espécie > Prisão Temporária",
+     "descricao": "",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 5547,
+     "caminho": "Processo Penal > Provas em Espécies > Interrogatório Judicial",
+     "descricao": "",
+     "peso": 8,
+     "meta": 4
+    },
+    {
+     "tema_id": 5595,
+     "caminho": "Processo Penal > Teoria Geral das Provas > Princípios Relativos à Prova Penal",
+     "descricao": "",
+     "peso": 5,
+     "meta": 4
+    },
+    {
+     "tema_id": 4706,
+     "caminho": "Direito Penal - Legislação Especial > Terrorismo",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    },
+    {
+     "tema_id": 5122,
+     "caminho": "Penal > Dos Crimes Contra a Honra > Calúnia",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    },
+    {
+     "tema_id": 5144,
+     "caminho": "Penal > Dos Crimes Contra a Saúde Pública e Dos Crimes Contra à Paz Pública",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    },
+    {
+     "tema_id": 5173,
+     "caminho": "Penal > Introdução ao Estudo do Direito Penal > Interpretação da Norma Penal",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    },
+    {
+     "tema_id": 5467,
+     "caminho": "Processo Penal > Ação Penal > Características e Condições da Ação Penal",
+     "descricao": "",
+     "peso": 1,
+     "meta": 2
+    },
+    {
+     "tema_id": 5553,
+     "caminho": "Processo Penal > Provas em Espécies > Prova Documental",
+     "descricao": "Prova documental, no processo penal, abrange a produção, juntada, admissibilidade, autenticidade, integridade e valoração de documentos públicos e particulares, inclusive escritos, reproduções fotográficas, eletrônicas, mensagens, certidões e outros suportes informativos, nos termos dos arts. 231 a ",
+     "peso": 1,
+     "meta": 2
+    }
+   ]
+  },
+  {
+   "lote": "08",
+   "meta_total": 120,
+   "temas": [
+    {
+     "tema_id": 4388,
+     "caminho": "Criminologia > Teorias Sociológicas Explicativas da Criminalidade > Teorias Criminológicas em Espécie",
+     "descricao": "",
+     "peso": 21,
+     "meta": 6
+    },
+    {
+     "tema_id": 5075,
+     "caminho": "Penal > Concurso de Pessoas > Cooperação Dolosamente Distinta",
+     "descricao": "",
+     "peso": 10,
+     "meta": 6
+    },
+    {
+     "tema_id": 5089,
+     "caminho": "Penal > Dos Crimes Contra a Administração Pública > Peculato e Peculato Mediante Erro de Outrem",
+     "descricao": "",
+     "peso": 10,
+     "meta": 6
+    },
+    {
+     "tema_id": 5164,
+     "caminho": "Penal > Dos Crimes Contra o Patrimônio > Dano",
+     "descricao": "",
+     "peso": 12,
+     "meta": 6
+    },
+    {
+     "tema_id": 5189,
+     "caminho": "Penal > Prescrição > Prescrição da Pretensão Executória",
+     "descricao": "",
+     "peso": 10,
+     "meta": 6
+    },
+    {
+     "tema_id": 5211,
+     "caminho": "Penal > Teoria do Crime: Culpabilidade",
+     "descricao": "",
+     "peso": 40,
+     "meta": 6
+    },
+    {
+     "tema_id": 5466,
+     "caminho": "Processo Penal > Ação Penal",
+     "descricao": "A Ação Penal, no Processo Penal brasileiro, disciplina a iniciativa jurisdicional para provocar a prestação jurisdicional penal, delimitando quem pode acusar, em que condições e sob quais espécies. Abrange a ação penal pública incondicionada e condicionada à representação ou à requisição do Ministro",
+     "peso": 52,
+     "meta": 6
+    },
+    {
+     "tema_id": 5501,
+     "caminho": "Processo Penal > Inquérito Policial > Conclusão e Arquivamento do Inquérito Policial",
+     "descricao": "",
+     "peso": 11,
+     "meta": 6
+    },
+    {
+     "tema_id": 5531,
+     "caminho": "Processo Penal > Procedimento Ordinário > 2 Oferecimento, Rejeição e Recebimento da Peça Acusatória",
+     "descricao": "",
+     "peso": 15,
+     "meta": 6
+    },
+    {
+     "tema_id": 5549,
+     "caminho": "Processo Penal > Provas em Espécies > Declaração do Ofendido",
+     "descricao": "",
+     "peso": 11,
+     "meta": 6
+    },
+    {
+     "tema_id": 5589,
+     "caminho": "Processo Penal > Teoria Geral das Prisões > Audiência de Custódia",
+     "descricao": "",
+     "peso": 10,
+     "meta": 6
+    },
+    {
+     "tema_id": 4387,
+     "caminho": "Criminologia > Teorias Sociológicas Explicativas da Criminalidade > Teorias de Nível Sociológico",
+     "descricao": "",
+     "peso": 7,
+     "meta": 4
+    },
+    {
+     "tema_id": 4704,
+     "caminho": "Direito Penal - Legislação Especial > Lei Maria da Penha",
+     "descricao": "",
+     "peso": 9,
+     "meta": 4
+    },
+    {
+     "tema_id": 5095,
+     "caminho": "Penal > Dos Crimes Contra a Administração Pública > Prevaricação",
+     "descricao": "",
+     "peso": 8,
+     "meta": 4
+    },
+    {
+     "tema_id": 5142,
+     "caminho": "Penal > Dos Crimes Contra a Periclitação da Vida e da Saúde > Omissão de Socorro",
+     "descricao": "",
+     "peso": 4,
+     "meta": 4
+    },
+    {
+     "tema_id": 5134,
+     "caminho": "Penal > Dos Crimes contra a Organização do Trabalho, a Propriedade Imaterial e ao Sentimento Religioso",
+     "descricao": "",
+     "peso": 5,
+     "meta": 4
+    },
+    {
+     "tema_id": 5200,
+     "caminho": "Penal > Teoria da Pena > Sanção Penal: Conceito, Finalidade e Modalidades",
+     "descricao": "",
+     "peso": 4,
+     "meta": 4
+    },
+    {
+     "tema_id": 5471,
+     "caminho": "Processo Penal > Ação Penal > Ação Penal Pública Condicionada",
+     "descricao": "",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 5493,
+     "caminho": "Processo Penal > Das Questões e Processos Incidentes > Exceção de Incompetência e de Ilegitimidade",
+     "descricao": "",
+     "peso": 7,
+     "meta": 4
+    },
+    {
+     "tema_id": 5534,
+     "caminho": "Processo Penal > Procedimento Ordinário > Absolvição Sumária",
+     "descricao": "",
+     "peso": 9,
+     "meta": 4
+    },
+    {
+     "tema_id": 5546,
+     "caminho": "Processo Penal > Provas em Espécies > Perícia",
+     "descricao": "",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 4366,
+     "caminho": "Criminologia > Classificação das Vítimas",
+     "descricao": "",
+     "peso": 1,
+     "meta": 2
+    },
+    {
+     "tema_id": 4707,
+     "caminho": "Direito Penal - Legislação Especial > Tortura",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    },
+    {
+     "tema_id": 5123,
+     "caminho": "Penal > Dos Crimes Contra a Honra > Difamação",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    },
+    {
+     "tema_id": 5146,
+     "caminho": "Penal > Dos Crimes Contra a Saúde Pública e Dos Crimes Contra à Paz Pública > Crimes Contra à Paz Pública",
+     "descricao": "",
+     "peso": 1,
+     "meta": 2
+    },
+    {
+     "tema_id": 5182,
+     "caminho": "Penal > Lei Penal no Tempo e no Espaço > Lei penal no Espaço",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    },
+    {
+     "tema_id": 5468,
+     "caminho": "Processo Penal > Ação Penal > Classificação da Ação Penal",
+     "descricao": "",
+     "peso": 1,
+     "meta": 2
+    },
+    {
+     "tema_id": 5573,
+     "caminho": "Processo Penal > Sentença Penal > Classificação dos Provimentos Judiciais",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    }
+   ]
+  },
+  {
+   "lote": "09",
+   "meta_total": 120,
+   "temas": [
+    {
+     "tema_id": 4386,
+     "caminho": "Criminologia > Teorias Sociológicas Explicativas da Criminalidade > Teorias de Nível Individual",
+     "descricao": "",
+     "peso": 14,
+     "meta": 6
+    },
+    {
+     "tema_id": 5079,
+     "caminho": "Penal > Dos Crimes Contra a Administração Judicial",
+     "descricao": "",
+     "peso": 41,
+     "meta": 6
+    },
+    {
+     "tema_id": 5102,
+     "caminho": "Penal > Dos Crimes Contra a Dignidade Sexual",
+     "descricao": "",
+     "peso": 16,
+     "meta": 6
+    },
+    {
+     "tema_id": 5169,
+     "caminho": "Penal > Dos Crimes Contra o Patrimônio > Receptação",
+     "descricao": "",
+     "peso": 12,
+     "meta": 6
+    },
+    {
+     "tema_id": 5188,
+     "caminho": "Penal > Prescrição > Prescrição da Pretensão Punitiva",
+     "descricao": "",
+     "peso": 10,
+     "meta": 6
+    },
+    {
+     "tema_id": 5217,
+     "caminho": "Penal > Teoria do Crime: Culpabilidade > Causas Supralegais de Exclusão da Culpabilidade",
+     "descricao": "",
+     "peso": 10,
+     "meta": 6
+    },
+    {
+     "tema_id": 5475,
+     "caminho": "Processo Penal > Ação Penal > Ação Civil Ex Delicto",
+     "descricao": "",
+     "peso": 16,
+     "meta": 6
+    },
+    {
+     "tema_id": 5504,
+     "caminho": "Processo Penal > Inquérito Policial > Inquérito Civil",
+     "descricao": "",
+     "peso": 10,
+     "meta": 6
+    },
+    {
+     "tema_id": 5536,
+     "caminho": "Processo Penal > Procedimento Ordinário > Alegações Orais",
+     "descricao": "",
+     "peso": 13,
+     "meta": 6
+    },
+    {
+     "tema_id": 5550,
+     "caminho": "Processo Penal > Provas em Espécies > Prova Testemunhal",
+     "descricao": "A prova testemunhal, no Processo Penal, é o meio de prova consistente na inquirição de pessoas que percebem fatos relevantes para a apuração da materialidade e autoria, regulada pelos arts. 202 a 225 do Código de Processo Penal. Abrange temas como capacidade para depor, compromisso legal, contradita",
+     "peso": 12,
+     "meta": 6
+    },
+    {
+     "tema_id": 5585,
+     "caminho": "Processo Penal > Teoria Geral das Prisões > Conceitos e Espécies de Prisão",
+     "descricao": "",
+     "peso": 18,
+     "meta": 6
+    },
+    {
+     "tema_id": 4383,
+     "caminho": "Criminologia > Teorias e Síndromes com Enfoque nas Vítimas",
+     "descricao": "",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 5065,
+     "caminho": "Penal > Ação Penal > Ação Penal Privada",
+     "descricao": "",
+     "peso": 4,
+     "meta": 4
+    },
+    {
+     "tema_id": 5099,
+     "caminho": "Penal > Dos Crimes Contra a Administração Pública > Usurpação de Função Pública",
+     "descricao": "",
+     "peso": 7,
+     "meta": 4
+    },
+    {
+     "tema_id": 5150,
+     "caminho": "Penal > Dos Crimes Contra a Vida > Homicídio",
+     "descricao": "",
+     "peso": 8,
+     "meta": 4
+    },
+    {
+     "tema_id": 5135,
+     "caminho": "Penal > Dos Crimes contra a Organização do Trabalho, a Propriedade Imaterial e ao Sentimento Religioso > Dos Crimes Contra a Organização do Trabalho",
+     "descricao": "",
+     "peso": 4,
+     "meta": 4
+    },
+    {
+     "tema_id": 5203,
+     "caminho": "Penal > Teoria da Pena > Segunda Fase da Dosimetria: Agravantes e Atenuantes",
+     "descricao": "",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 5472,
+     "caminho": "Processo Penal > Ação Penal > Ação Penal de Iniciativa Privada",
+     "descricao": "",
+     "peso": 9,
+     "meta": 4
+    },
+    {
+     "tema_id": 5494,
+     "caminho": "Processo Penal > Das Questões e Processos Incidentes > Exceção de Litispendência e de Coisa Julgada",
+     "descricao": "",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 5542,
+     "caminho": "Processo Penal > Procedimento Sumaríssimo > Suspensão Condicional do Processo",
+     "descricao": "",
+     "peso": 5,
+     "meta": 4
+    },
+    {
+     "tema_id": 5551,
+     "caminho": "Processo Penal > Provas em Espécies > Reconhecimento de Pessoas e Coisas",
+     "descricao": "",
+     "peso": 4,
+     "meta": 4
+    },
+    {
+     "tema_id": 4367,
+     "caminho": "Criminologia > Classificação dos Criminosos",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    },
+    {
+     "tema_id": 5064,
+     "caminho": "Penal > Ação Penal > Ação Penal Pública",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    },
+    {
+     "tema_id": 5124,
+     "caminho": "Penal > Dos Crimes Contra a Honra > Injúria",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    },
+    {
+     "tema_id": 5145,
+     "caminho": "Penal > Dos Crimes Contra a Saúde Pública e Dos Crimes Contra à Paz Pública > Dos Crimes Contra a Saúde Pública",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    },
+    {
+     "tema_id": 5181,
+     "caminho": "Penal > Lei Penal no Tempo e no Espaço > Lei penal no Tempo",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    },
+    {
+     "tema_id": 5491,
+     "caminho": "Processo Penal > Das Questões e Processos Incidentes > Questões Prejudiciais e Preliminares",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    },
+    {
+     "tema_id": 5579,
+     "caminho": "Processo Penal > Sentença Penal > Emendatio Libelli e Mutatio Libelli",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    }
+   ]
+  },
+  {
+   "lote": "10",
+   "meta_total": 120,
+   "temas": [
+    {
+     "tema_id": 4696,
+     "caminho": "Direito Penal - Legislação Especial > Estaturo de Idoso - Crimes",
+     "descricao": "",
+     "peso": 10,
+     "meta": 6
+    },
+    {
+     "tema_id": 5080,
+     "caminho": "Penal > Dos Crimes Contra a Administração Judicial > Denunciação Caluniosa, Comunicação Falsa de Crime ou Contravenção e Autoacusação Falsa",
+     "descricao": "",
+     "peso": 16,
+     "meta": 6
+    },
+    {
+     "tema_id": 5104,
+     "caminho": "Penal > Dos Crimes Contra a Dignidade Sexual > Violação Sexual Mediante Fraude",
+     "descricao": "",
+     "peso": 12,
+     "meta": 6
+    },
+    {
+     "tema_id": 5160,
+     "caminho": "Penal > Dos Crimes Contra o Patrimônio > Roubo",
+     "descricao": "",
+     "peso": 10,
+     "meta": 6
+    },
+    {
+     "tema_id": 5191,
+     "caminho": "Penal > Punibilidade",
+     "descricao": "",
+     "peso": 36,
+     "meta": 6
+    },
+    {
+     "tema_id": 5214,
+     "caminho": "Penal > Teoria do Crime: Culpabilidade > Erro de Proibição",
+     "descricao": "",
+     "peso": 24,
+     "meta": 6
+    },
+    {
+     "tema_id": 5473,
+     "caminho": "Processo Penal > Ação Penal > Denúncia",
+     "descricao": "",
+     "peso": 10,
+     "meta": 6
+    },
+    {
+     "tema_id": 5500,
+     "caminho": "Processo Penal > Inquérito Policial > Procedimento do Inquérito Policial",
+     "descricao": "",
+     "peso": 11,
+     "meta": 6
+    },
+    {
+     "tema_id": 5535,
+     "caminho": "Processo Penal > Procedimento Ordinário > Audiência de Instrução e Julgamento",
+     "descricao": "A Audiência de Instrução e Julgamento, no procedimento ordinário do processo penal, é o ato central de produção da prova oral, com disciplina nos arts. 400 a 411 do Código de Processo Penal, especialmente após a reforma da Lei 11.719/2008. Nela, observam-se a identidade física do juiz, a concentraçã",
+     "peso": 14,
+     "meta": 6
+    },
+    {
+     "tema_id": 5560,
+     "caminho": "Processo Penal > Recursos em Espécies",
+     "descricao": "No estudo de Recursos em Espécies no Processo Penal, examinam-se os meios impugnativos típicos previstos no Código de Processo Penal para provocar o reexame de decisões judiciais, como apelação, recurso em sentido estrito, embargos infringentes e de nulidade, carta testemunhável, correição parcial e",
+     "peso": 49,
+     "meta": 6
+    },
+    {
+     "tema_id": 5587,
+     "caminho": "Processo Penal > Teoria Geral das Prisões > Direitos e Garantias sobre a Prisão",
+     "descricao": "",
+     "peso": 14,
+     "meta": 6
+    },
+    {
+     "tema_id": 4684,
+     "caminho": "Direito Penal - Legislação Especial > Abuso de Autoridade",
+     "descricao": "",
+     "peso": 5,
+     "meta": 4
+    },
+    {
+     "tema_id": 5068,
+     "caminho": "Penal > Concurso de Crimes > Concurso Formal",
+     "descricao": "",
+     "peso": 5,
+     "meta": 4
+    },
+    {
+     "tema_id": 5098,
+     "caminho": "Penal > Dos Crimes Contra a Administração Pública > Violência Arbitrária",
+     "descricao": "",
+     "peso": 7,
+     "meta": 4
+    },
+    {
+     "tema_id": 5167,
+     "caminho": "Penal > Dos Crimes Contra o Patrimônio > Abuso de Incapazes",
+     "descricao": "",
+     "peso": 8,
+     "meta": 4
+    },
+    {
+     "tema_id": 5170,
+     "caminho": "Penal > Introdução ao Estudo do Direito Penal",
+     "descricao": "",
+     "peso": 7,
+     "meta": 4
+    },
+    {
+     "tema_id": 5207,
+     "caminho": "Penal > Teoria da Pena > Suspensão Condicional da Pena",
+     "descricao": "",
+     "peso": 9,
+     "meta": 4
+    },
+    {
+     "tema_id": 5469,
+     "caminho": "Processo Penal > Ação Penal > Princípios da Ação Penal",
+     "descricao": "",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 5492,
+     "caminho": "Processo Penal > Das Questões e Processos Incidentes > Exceção de Suspeição, de Impedimento ou de Incompatibilidade",
+     "descricao": "",
+     "peso": 4,
+     "meta": 4
+    },
+    {
+     "tema_id": 5541,
+     "caminho": "Processo Penal > Procedimento Sumaríssimo > Transação Penal",
+     "descricao": "",
+     "peso": 8,
+     "meta": 4
+    },
+    {
+     "tema_id": 5566,
+     "caminho": "Processo Penal > Recursos em Espécies > Agravo em Execução",
+     "descricao": "",
+     "peso": 9,
+     "meta": 4
+    },
+    {
+     "tema_id": 4375,
+     "caminho": "Criminologia > Política Criminal > Correntes da Política Criminal",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    },
+    {
+     "tema_id": 5077,
+     "caminho": "Penal > Das Lesões Corporais",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    },
+    {
+     "tema_id": 5127,
+     "caminho": "Penal > Dos Crimes Contra a Incolumidade Pública > Dos Crimes Contra a Segurança dos Meios de Comunicação e Transporte e Outros Serviços Públicos",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    },
+    {
+     "tema_id": 5154,
+     "caminho": "Penal > Dos Crimes Contra a Vida > Aborto",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    },
+    {
+     "tema_id": 5184,
+     "caminho": "Penal > Medida de Segurança",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    },
+    {
+     "tema_id": 5499,
+     "caminho": "Processo Penal > Inquérito Policial > Conceito, Finalidade e Caractéristas do Inquérito Policial",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    },
+    {
+     "tema_id": 5574,
+     "caminho": "Processo Penal > Sentença Penal > Sentença Absolutória",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    }
+   ]
+  },
+  {
+   "lote": "11",
+   "meta_total": 118,
+   "temas": [
+    {
+     "tema_id": 4701,
+     "caminho": "Direito Penal - Legislação Especial > Juizado Especial Criminal",
+     "descricao": "",
+     "peso": 11,
+     "meta": 6
+    },
+    {
+     "tema_id": 5082,
+     "caminho": "Penal > Dos Crimes Contra a Administração Judicial > Exercício Arbitrário das Próprias Razões",
+     "descricao": "",
+     "peso": 17,
+     "meta": 6
+    },
+    {
+     "tema_id": 5116,
+     "caminho": "Penal > Dos Crimes Contra a Fé Pública e de Falsidade Documental",
+     "descricao": "",
+     "peso": 16,
+     "meta": 6
+    },
+    {
+     "tema_id": 5111,
+     "caminho": "Penal > Dos Crimes contra a Família",
+     "descricao": "",
+     "peso": 19,
+     "meta": 6
+    },
+    {
+     "tema_id": 5198,
+     "caminho": "Penal > Punibilidade > Decadência",
+     "descricao": "No Direito Penal, a decadência é causa extintiva da punibilidade consistente na perda do direito de ação penal privada ou de representação, pelo decurso do prazo legal sem o seu exercício. Nos termos do Código Penal, especialmente o art. 107, IV, e do Código de Processo Penal, ela incide, em regra, ",
+     "peso": 12,
+     "meta": 6
+    },
+    {
+     "tema_id": 5218,
+     "caminho": "Penal > Teoria do Crime: Fato Típico",
+     "descricao": "",
+     "peso": 55,
+     "meta": 6
+    },
+    {
+     "tema_id": 5476,
+     "caminho": "Processo Penal > Ações Autônomas de Impugnação",
+     "descricao": "",
+     "peso": 16,
+     "meta": 6
+    },
+    {
+     "tema_id": 5505,
+     "caminho": "Processo Penal > Lei Processual no Tempo e no Espaço",
+     "descricao": "",
+     "peso": 13,
+     "meta": 6
+    },
+    {
+     "tema_id": 5537,
+     "caminho": "Processo Penal > Procedimento Ordinário > Sentença",
+     "descricao": "No procedimento ordinário do Processo Penal, a sentença é o ato jurisdicional que encerra a fase cognitiva em primeiro grau, após a instrução probatória e as alegações finais, com fundamento nos arts. 381 a 393 do Código de Processo Penal. Aborda-se a estrutura da decisão, especialmente o relatório,",
+     "peso": 15,
+     "meta": 6
+    },
+    {
+     "tema_id": 5562,
+     "caminho": "Processo Penal > Recursos em Espécies > Apelação",
+     "descricao": "Apelação, no Processo Penal, é o recurso cabível contra sentenças definitivas ou com força de definitivas proferidas pelo juiz singular, disciplinado nos arts. 593 a 603 do CPP, com a finalidade de provocar o reexame da matéria de fato e de direito pelo tribunal ad quem. Abrange temas como legitimid",
+     "peso": 19,
+     "meta": 6
+    },
+    {
+     "tema_id": 4369,
+     "caminho": "Criminologia > Criminologia no Estado Democrático de Direito > Sistemas de Prevenção",
+     "descricao": "",
+     "peso": 4,
+     "meta": 4
+    },
+    {
+     "tema_id": 4685,
+     "caminho": "Direito Penal - Legislação Especial > Biossegurança",
+     "descricao": "",
+     "peso": 5,
+     "meta": 4
+    },
+    {
+     "tema_id": 5067,
+     "caminho": "Penal > Concurso de Crimes > Concurso Material",
+     "descricao": "",
+     "peso": 7,
+     "meta": 4
+    },
+    {
+     "tema_id": 5108,
+     "caminho": "Penal > Dos Crimes Contra a Dignidade Sexual > Corrupção de Menores",
+     "descricao": "",
+     "peso": 9,
+     "meta": 4
+    },
+    {
+     "tema_id": 5162,
+     "caminho": "Penal > Dos Crimes Contra o Patrimônio > Esbulho Possessório",
+     "descricao": "",
+     "peso": 9,
+     "meta": 4
+    },
+    {
+     "tema_id": 5172,
+     "caminho": "Penal > Introdução ao Estudo do Direito Penal > Princípios do Direito Penal",
+     "descricao": "",
+     "peso": 4,
+     "meta": 4
+    },
+    {
+     "tema_id": 5204,
+     "caminho": "Penal > Teoria da Pena > Terceira fase da Dosimetria: Causas de Aumento e de Diminuição",
+     "descricao": "",
+     "peso": 9,
+     "meta": 4
+    },
+    {
+     "tema_id": 5474,
+     "caminho": "Processo Penal > Ação Penal > Queixa Crime",
+     "descricao": "",
+     "peso": 5,
+     "meta": 4
+    },
+    {
+     "tema_id": 5497,
+     "caminho": "Processo Penal > Das Questões e Processos Incidentes > Incidente de Falsidade e de Insanidade Mental",
+     "descricao": "",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 5529,
+     "caminho": "Processo Penal > Procedimento do Tribunal do Júri > Sentença do Júri",
+     "descricao": "",
+     "peso": 4,
+     "meta": 4
+    },
+    {
+     "tema_id": 5567,
+     "caminho": "Processo Penal > Recursos em Espécies > Carta Testemunhavel",
+     "descricao": "",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 4389,
+     "caminho": "Criminologia > Vitimologia",
+     "descricao": "",
+     "peso": 1,
+     "meta": 2
+    },
+    {
+     "tema_id": 5083,
+     "caminho": "Penal > Dos Crimes Contra a Administração Judicial > Fraude Processual",
+     "descricao": "",
+     "peso": 1,
+     "meta": 2
+    },
+    {
+     "tema_id": 5126,
+     "caminho": "Penal > Dos Crimes Contra a Incolumidade Pública > Dos Crimes de Perigo Comum",
+     "descricao": "",
+     "peso": 1,
+     "meta": 2
+    },
+    {
+     "tema_id": 5152,
+     "caminho": "Penal > Dos Crimes Contra a Vida > Induzimento, Instigação ou Auxílio ao Suicídio",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    },
+    {
+     "tema_id": 5190,
+     "caminho": "Penal > Prescrição > Outras Prescrições",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    },
+    {
+     "tema_id": 5509,
+     "caminho": "Processo Penal > Nulidades",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    },
+    {
+     "tema_id": 5575,
+     "caminho": "Processo Penal > Sentença Penal > Sentença Condenatória",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    }
+   ]
+  },
+  {
+   "lote": "12",
+   "meta_total": 118,
+   "temas": [
+    {
+     "tema_id": 4703,
+     "caminho": "Direito Penal - Legislação Especial > Lei de Execução Penal",
+     "descricao": "",
+     "peso": 18,
+     "meta": 6
+    },
+    {
+     "tema_id": 5085,
+     "caminho": "Penal > Dos Crimes Contra a Administração Judicial > Exercício Arbitrário ou Abuso de Poder",
+     "descricao": "",
+     "peso": 10,
+     "meta": 6
+    },
+    {
+     "tema_id": 5119,
+     "caminho": "Penal > Dos Crimes Contra a Fé Pública e de Falsidade Documental > De outras falsidades",
+     "descricao": "",
+     "peso": 10,
+     "meta": 6
+    },
+    {
+     "tema_id": 5115,
+     "caminho": "Penal > Dos Crimes contra a Família > Dos Crimes Contra o Pátrio Poder, a Tutela e a Curatela",
+     "descricao": "",
+     "peso": 11,
+     "meta": 6
+    },
+    {
+     "tema_id": 5196,
+     "caminho": "Penal > Punibilidade > Renúncia, Perdão do Ofendido e Retratação",
+     "descricao": "",
+     "peso": 19,
+     "meta": 6
+    },
+    {
+     "tema_id": 5221,
+     "caminho": "Penal > Teoria do Crime: Fato Típico > Conduta",
+     "descricao": "",
+     "peso": 19,
+     "meta": 6
+    },
+    {
+     "tema_id": 5480,
+     "caminho": "Processo Penal > Competência",
+     "descricao": "Competência no Processo Penal é o conjunto de regras que define qual órgão jurisdicional deve processar e julgar a infração penal, delimitando a jurisdição criminal segundo critérios como matéria, lugar, função, prerrogativa de foro e conexão/continência. Examina-se a competência absoluta e relativa",
+     "peso": 30,
+     "meta": 6
+    },
+    {
+     "tema_id": 5512,
+     "caminho": "Processo Penal > Parte Geral dos Recursos",
+     "descricao": "A Parte Geral dos Recursos no processo penal disciplina a impugnação das decisões judiciais mediante reexame por órgão jurisdicional hierarquicamente competente, à luz do devido processo legal, da ampla defesa e do duplo grau de jurisdição. Abrange teoria geral da recorribilidade, juízo de admissibi",
+     "peso": 19,
+     "meta": 6
+    },
+    {
+     "tema_id": 5539,
+     "caminho": "Processo Penal > Procedimento Sumaríssimo",
+     "descricao": "",
+     "peso": 21,
+     "meta": 6
+    },
+    {
+     "tema_id": 5568,
+     "caminho": "Processo Penal > Recursos em Espécies > Correição Parcial",
+     "descricao": "",
+     "peso": 11,
+     "meta": 6
+    },
+    {
+     "tema_id": 4372,
+     "caminho": "Criminologia > Etapas Evolutivas e Escolas Criminológicas > Etapas Evolutivas da Criminologia (Antiguidade, Idade Média e Idade Moderna)",
+     "descricao": "",
+     "peso": 9,
+     "meta": 4
+    },
+    {
+     "tema_id": 4695,
+     "caminho": "Direito Penal - Legislação Especial > Crimes Tributários",
+     "descricao": "",
+     "peso": 5,
+     "meta": 4
+    },
+    {
+     "tema_id": 5069,
+     "caminho": "Penal > Concurso de Crimes > Crime Continuado",
+     "descricao": "",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 5110,
+     "caminho": "Penal > Dos Crimes Contra a Dignidade Sexual > Disposições Gerais dos Crimes Contra a Dignidade Sexual",
+     "descricao": "",
+     "peso": 5,
+     "meta": 4
+    },
+    {
+     "tema_id": 5166,
+     "caminho": "Penal > Dos Crimes Contra o Patrimônio > Estelionato",
+     "descricao": "",
+     "peso": 9,
+     "meta": 4
+    },
+    {
+     "tema_id": 5179,
+     "caminho": "Penal > Iter Criminis > Crime Impossível",
+     "descricao": "",
+     "peso": 8,
+     "meta": 4
+    },
+    {
+     "tema_id": 5215,
+     "caminho": "Penal > Teoria do Crime: Culpabilidade > Coação Moral Irresistível",
+     "descricao": "",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 5477,
+     "caminho": "Processo Penal > Ações Autônomas de Impugnação > Habeas Corpus",
+     "descricao": "Habeas Corpus é a ação constitucional autônoma de impugnação destinada à tutela imediata da liberdade de locomoção, quando alguém sofre ou se encontra na iminência de sofrer violência ou coação ilegal por ilegalidade ou abuso de poder, nos termos do art. 5º, LXVIII, da Constituição Federal e dos art",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 5496,
+     "caminho": "Processo Penal > Das Questões e Processos Incidentes > Medidas Assecuratórias: Sequestro, Hipoteca Legal e Arresto",
+     "descricao": "",
+     "peso": 5,
+     "meta": 4
+    },
+    {
+     "tema_id": 5552,
+     "caminho": "Processo Penal > Provas em Espécies > Acareação",
+     "descricao": "",
+     "peso": 4,
+     "meta": 4
+    },
+    {
+     "tema_id": 5565,
+     "caminho": "Processo Penal > Recursos em Espécies > Embargos de Declaração",
+     "descricao": "Embargos de declaração, no processo penal, são o recurso cabível para sanar obscuridade, ambiguidade, contradição ou omissão da decisão judicial, inclusive acórdão, sentença e decisão interlocutória com conteúdo decisório, nos termos do art. 619 do CPP. Têm função integrativa e aclaratória, não se p",
+     "peso": 6,
+     "meta": 4
+    },
+    {
+     "tema_id": 4390,
+     "caminho": "Criminologia > Vitimologia > Processo de Vitimização",
+     "descricao": "",
+     "peso": 1,
+     "meta": 2
+    },
+    {
+     "tema_id": 5086,
+     "caminho": "Penal > Dos Crimes Contra a Administração Judicial > Outros crimes contra a Administração Judicial",
+     "descricao": "",
+     "peso": 1,
+     "meta": 2
+    },
+    {
+     "tema_id": 5130,
+     "caminho": "Penal > Dos Crimes Contra a Liberdade Pessoal > Ameaça e Perseguição",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    },
+    {
+     "tema_id": 5153,
+     "caminho": "Penal > Dos Crimes Contra a Vida > Infanticídio",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    },
+    {
+     "tema_id": 5192,
+     "caminho": "Penal > Punibilidade > Morte do agente",
+     "descricao": "",
+     "peso": 3,
+     "meta": 2
+    },
+    {
+     "tema_id": 5510,
+     "caminho": "Processo Penal > Nulidades > Nulidade Absoluta e Relativa",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    },
+    {
+     "tema_id": 5581,
+     "caminho": "Processo Penal > Sistemas e Princípios Processuais Penais > Sistemas Processuais Penais",
+     "descricao": "",
+     "peso": 2,
+     "meta": 2
+    }
+   ]
+  }
+ ]
+}

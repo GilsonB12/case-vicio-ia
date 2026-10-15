@@ -1,0 +1,41 @@
+{
+ "lote": "piloto",
+ "meta_total": 22,
+ "temas": [
+  {
+   "tema_id": 4368,
+   "caminho": "Criminologia > Criminologia no Estado Democrático de Direito",
+   "descricao": "",
+   "peso": 22,
+   "meta": 6
+  },
+  {
+   "tema_id": 4370,
+   "caminho": "Criminologia > Criminologia no Estado Democrático de Direito > Modelos de Reação ao Delito",
+   "descricao": "",
+   "peso": 15,
+   "meta": 6
+  },
+  {
+   "tema_id": 4369,
+   "caminho": "Criminologia > Criminologia no Estado Democrático de Direito > Sistemas de Prevenção",
+   "descricao": "",
+   "peso": 4,
+   "meta": 4
+  },
+  {
+   "tema_id": 4372,
+   "caminho": "Criminologia > Etapas Evolutivas e Escolas Criminológicas > Etapas Evolutivas da Criminologia (Antiguidade, Idade Média e Idade Moderna)",
+   "descricao": "",
+   "peso": 9,
+   "meta": 4
+  },
+  {
+   "tema_id": 4366,
+   "caminho": "Criminologia > Classificação das Vítimas",
+   "descricao": "",
+   "peso": 1,
+   "meta": 2
+  }
+ ]
+}
