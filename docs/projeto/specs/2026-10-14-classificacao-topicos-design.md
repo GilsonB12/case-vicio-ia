@@ -136,7 +136,7 @@ Intervalos: simulação da posterior Beta por célula com 1000 amostras (cada c�
 
 ## 11. Âncora manual
 
-Antes de qualquer chamada a modelos de linguagem, o pipeline gera `data/ancora_para_rotular.csv` com 40 questões das 359, sorteadas com semente fixa e estratificadas por `disciplina_origem`, cada uma com os candidatos da seção 6 e suas descrições. Gilson rotula às cegas, sem ver saída do pipeline; uma segunda passagem independente, feita por um modelo de linguagem que também não vê os votos, serve para discutir divergências. Divergências são discutidas e o rótulo final vai para `data/ancora_manual.csv` com os campos `id`, `tema_id`, `rotulador_gilson`, `rotulador_segunda_passagem`, `observacao`. O arquivo é commitado.
+Antes de qualquer chamada a modelos de linguagem, o pipeline gera `data/ancora_para_rotular.csv` com 40 questões das 359, sorteadas com semente fixa e estratificadas por `disciplina_origem`, cada uma com os candidatos da seção 6 e suas descrições. Gilson rotula sozinho e às cegas, sem ver saída do pipeline; pode pedir explicações sobre os temas candidatos, mas nunca recebe resposta sugerida. O rótulo final vai para `data/ancora_manual.csv` com os campos `id`, `tema_id`, `observacao`. O arquivo é commitado.
 
 ## 12. Análise exploratória dos dados
 

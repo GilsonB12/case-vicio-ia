@@ -14,8 +14,8 @@ from classificador.dados import carregar_questoes, ler_jsonl
 registro = logging.getLogger(__name__)
 
 N_ANCORA = 40
-COLUNAS = ["id", "disciplina_origem", "texto", "candidatos", "tema_id_gilson", "tema_id_segunda_passagem", "observacao"]
-COLUNAS_ROTULO = ["tema_id_gilson", "tema_id_segunda_passagem", "observacao"]
+COLUNAS = ["id", "disciplina_origem", "texto", "candidatos", "tema_id_gilson", "observacao"]
+COLUNAS_ROTULO = ["tema_id_gilson", "observacao"]
 
 
 def ler_csv_planilha(caminho: Path, **opcoes) -> pd.DataFrame:
@@ -69,7 +69,6 @@ def gerar_planilha_ancora(
         "texto": amostra["texto"],
         "candidatos": [formatar_candidatos_para_planilha(candidatos_por_id[i], arvore) for i in amostra["id"]],
         "tema_id_gilson": "",
-        "tema_id_segunda_passagem": "",
         "observacao": "",
     })
     return planilha[COLUNAS].reset_index(drop=True)

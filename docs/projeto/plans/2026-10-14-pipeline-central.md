@@ -1539,7 +1539,7 @@ git commit -m "Candidatos por questão com temas, vizinhos do corpus e pais, em 
   - `N_ANCORA = 40`
   - `sortear_ancora(questoes: pd.DataFrame, n=N_ANCORA, semente=SEMENTE) -> pd.DataFrame`: amostra estratificada por `disciplina_origem` com alocação proporcional arredondada; a diferença de arredondamento vai para o maior grupo. Ordenada por `id`.
   - `formatar_candidatos_para_planilha(candidatos: list[dict], arvore) -> str`: uma linha por candidato, `"<id> | <caminho> | <descrição até 200 caracteres>"`.
-  - `gerar_planilha_ancora(questoes, candidatos_por_id: dict[str, list[dict]], arvore, n=N_ANCORA, semente=SEMENTE) -> pd.DataFrame` com colunas `id, disciplina_origem, texto, candidatos, tema_id_gilson, tema_id_segunda_passagem, observacao`.
+  - `gerar_planilha_ancora(questoes, candidatos_por_id: dict[str, list[dict]], arvore, n=N_ANCORA, semente=SEMENTE) -> pd.DataFrame` com colunas `id, disciplina_origem, texto, candidatos, tema_id_gilson, observacao`.
   - `rodar_ancora(caminho_candidatos=CAMINHOS.intermediarios / "candidatos_questoes_p1.jsonl", saida=CAMINHOS.ancora_planilha) -> Path`
   - `carregar_ancora_manual(arvore, caminho=CAMINHOS.ancora_manual) -> pd.DataFrame` com colunas `id, tema_id`; levanta `ValueError` se algum `tema_id` não é publicável.
 
@@ -1586,7 +1586,7 @@ def test_sorteio_e_proporcional_por_disciplina(questoes):
 def test_planilha_tem_colunas_e_candidatos_formatados(questoes, arvore):
     candidatos = {i: [{"tema_id": 5527, "origem": "tema", "similaridade": 0.5}] for i in questoes["id"]}
     planilha = ancora.gerar_planilha_ancora(questoes, candidatos, arvore)
-    assert list(planilha.columns) == ["id", "disciplina_origem", "texto", "candidatos", "tema_id_gilson", "tema_id_segunda_passagem", "observacao"]
+    assert list(planilha.columns) == ["id", "disciplina_origem", "texto", "candidatos", "tema_id_gilson", "observacao"]
     assert len(planilha) == 40
     assert planilha.loc[0, "candidatos"].startswith("5527 | Processo Penal > Procedimento do Tribunal do Júri >")
     assert (planilha["tema_id_gilson"] == "").all()
@@ -1625,7 +1625,7 @@ from classificador.dados import carregar_questoes, ler_jsonl
 registro = logging.getLogger(__name__)
 
 N_ANCORA = 40
-COLUNAS = ["id", "disciplina_origem", "texto", "candidatos", "tema_id_gilson", "tema_id_segunda_passagem", "observacao"]
+COLUNAS = ["id", "disciplina_origem", "texto", "candidatos", "tema_id_gilson", "observacao"]
 
 
 def sortear_ancora(questoes: pd.DataFrame, n: int = N_ANCORA, semente: int = SEMENTE) -> pd.DataFrame:
@@ -1664,7 +1664,6 @@ def gerar_planilha_ancora(
         "texto": amostra["texto"],
         "candidatos": [formatar_candidatos_para_planilha(candidatos_por_id[i], arvore) for i in amostra["id"]],
         "tema_id_gilson": "",
-        "tema_id_segunda_passagem": "",
         "observacao": "",
     })
     return planilha[COLUNAS].reset_index(drop=True)
@@ -3792,7 +3791,7 @@ git commit -m "CLI classificar com todas as etapas e README mínimo"
 Este plano entrega o pipeline. O restante da spec vem em planos curtos, nesta ordem:
 
 1. **Protocolo de coleta do corpus** (não é código): lê-se `temas_alvo_corpus.json`, divide-se em lotes e disparam-se agentes de pesquisa baseados em LLM com o prompt de coleta; depois deduplica contra as 359 por embedding e grava `data/corpus_referencia.jsonl`. O prompt e os critérios de confiança das fontes vão para o relatório.
-2. **Rotulagem da âncora**: Gilson preenche `data/ancora_para_rotular.csv` às cegas e consolidam em `data/ancora_manual.csv`.
+2. **Rotulagem da âncora**: Gilson preenche `data/ancora_para_rotular.csv` às cegas e consolida o resultado em `data/ancora_manual.csv`.
 3. **Execução do pipeline** nas 359 e no corpus, com as chaves reais, e commit do cache.
 4. **Análise exploratória** em `analise/`.
 5. **API e tela de revisão**.

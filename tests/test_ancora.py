@@ -36,7 +36,7 @@ def test_sorteio_e_proporcional_por_disciplina(questoes):
 def test_planilha_tem_colunas_e_candidatos_formatados(questoes, arvore):
     candidatos = {i: [{"tema_id": 5527, "origem": "tema", "similaridade": 0.5}] for i in questoes["id"]}
     planilha = ancora.gerar_planilha_ancora(questoes, candidatos, arvore)
-    assert list(planilha.columns) == ["id", "disciplina_origem", "texto", "candidatos", "tema_id_gilson", "tema_id_segunda_passagem", "observacao"]
+    assert list(planilha.columns) == ["id", "disciplina_origem", "texto", "candidatos", "tema_id_gilson", "observacao"]
     assert len(planilha) == 40
     assert planilha.loc[0, "candidatos"].startswith("5527 | Processo Penal > Procedimento do Tribunal do Júri >")
     assert (planilha["tema_id_gilson"] == "").all()
