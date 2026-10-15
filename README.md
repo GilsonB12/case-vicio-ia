@@ -27,6 +27,14 @@ Os intermediários commitados em `data/intermediarios/` e o cache em `data/cache
 | `data/intermediarios/decisoes_questoes.jsonl` | `classificar decidir` |
 | `publicacao.csv`, `previsao.txt` | `classificar publicar` |
 
+## Análise exploratória
+
+O notebook `analise/analise_exploratoria.ipynb` descreve as questões e os temas antes de qualquer classificação, sem chamar modelo, e já vem executado. Os achados, para quem não é técnico, estão em [`analise/achados.md`](analise/achados.md). Para reconstruir o notebook a partir de `analise/construir_notebook.py` e executá-lo no lugar:
+
+```bash
+uv run python analise/construir_notebook.py && uv run jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=600 analise/analise_exploratoria.ipynb
+```
+
 ## Documentos
 
 - Spec de design: `docs/projeto/specs/2026-10-14-classificacao-topicos-design.md`
