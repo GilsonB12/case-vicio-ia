@@ -49,6 +49,28 @@ curl -X POST http://127.0.0.1:8000/classificar \
 
 `alternativas` é obrigatório e `comando` pode ser omitido, mas não nulo; fora disso a resposta é 422 apontando o campo. Sem chave de API e sem cache para a questão, a resposta é 503 com a mensagem do que falta. A documentação interativa fica em `http://127.0.0.1:8000/docs`.
 
+## Tela de revisão
+
+A pasta `revisao-ui/` tem a tela em que o professor revisa as questões que o classificador mandou para `revisar`. Ela lê arquivos estáticos e não chama a API nem modelo nenhum.
+
+```bash
+cd revisao-ui
+npm install
+npm run dados   # copia publicacao.csv, anexos/questoes.jsonl, anexos/temas.csv e os intermediários para public/dados/
+npm run dev     # abre em http://localhost:5173
+```
+
+`npm run dados` pula, com aviso, o arquivo que ainda não existe. Sem `publicacao.csv`, `questoes.jsonl` e `temas.csv` em `public/dados/`, a tela usa `public/dados-exemplo/`: 6 questões inventadas, 4 delas a revisar, com os temas da árvore real. Uma faixa no alto avisa que os dados são de exemplo.
+
+O que a tela faz:
+
+- À esquerda fica a fila das questões a revisar, com o id, o início do enunciado, o tema sugerido, a confiança e o motivo.
+- À direita aparecem o enunciado sem HTML e as alternativas. Abaixo deles vêm a sugestão com o caminho completo, o tema e a justificativa de cada modelo e os candidatos com caminho, origem e similaridade.
+- O professor confirma a sugestão, troca o tema ou marca a questão como fora. A observação é opcional. A troca oferece os candidatos da questão e uma busca, sem acento nem caixa, sobre todos os temas publicáveis. Raiz, tema inativo e duplicata sem descrição nunca aparecem.
+- O contador mostra quantas questões já foram revisadas. **Exportar CSV** baixa `decisoes_professor.csv` com as colunas `id,acao,tema_id,observacao`. As decisões ficam só na memória da aba, e a tela avisa antes de fechar a aba se há decisão ainda não exportada.
+
+Os testes rodam com `npm test`, e `npm run build` checa os tipos e gera `dist/`.
+
 ## Análise exploratória
 
 O notebook `analise/analise_exploratoria.ipynb` descreve as questões e os temas antes de qualquer classificação, sem chamar modelo, e já vem executado. Os achados, para quem não é técnico, estão em [`analise/achados.md`](analise/achados.md). Para reconstruir o notebook a partir de `analise/construir_notebook.py` e executá-lo no lugar:

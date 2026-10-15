@@ -1,0 +1,7 @@
+id,decisao,tema_central_id,extras_ids,confianca,motivo
+EX01,revisar,5527,5524,0.64,"modelos divergem: Processo Penal > Procedimento do Tribunal do Júri > Impronúncia, Desclassificação, Absolvição Sumária e Pronúncia vs Processo Penal > Parte Geral dos Recursos"
+EX02,publicar,5231,5228,0.92,
+EX03,revisar,5160,5159,0.58,confiança 0.58 abaixo do limiar 0.80
+EX04,revisar,4704,,0.77,modelo sem resposta válida
+EX05,fora,,,,"fora das quatro disciplinas: a questão cobra prescrição no Código Civil, não no Código Penal."
+EX06,revisar,4388,4385,0.71,um modelo não achou candidato; sugestão do outro

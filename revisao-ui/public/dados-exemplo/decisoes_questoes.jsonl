@@ -1,0 +1,6 @@
+{"id": "EX01", "decisao": "revisar", "tema_central_id": 5527, "extras_ids": [5524], "confianca": 0.64, "motivo": "modelos divergem: Processo Penal > Procedimento do Tribunal do Júri > Impronúncia, Desclassificação, Absolvição Sumária e Pronúncia vs Processo Penal > Parte Geral dos Recursos", "regra": 4}
+{"id": "EX02", "decisao": "publicar", "tema_central_id": 5231, "extras_ids": [5228], "confianca": 0.92, "motivo": "", "regra": 2}
+{"id": "EX03", "decisao": "revisar", "tema_central_id": 5160, "extras_ids": [5159], "confianca": 0.58, "motivo": "confiança 0.58 abaixo do limiar 0.80", "regra": 5}
+{"id": "EX04", "decisao": "revisar", "tema_central_id": 4704, "extras_ids": [], "confianca": 0.77, "motivo": "modelo sem resposta válida", "regra": 7}
+{"id": "EX05", "decisao": "fora", "tema_central_id": null, "extras_ids": [], "confianca": null, "motivo": "fora das quatro disciplinas: a questão cobra prescrição no Código Civil, não no Código Penal.", "regra": 1}
+{"id": "EX06", "decisao": "revisar", "tema_central_id": 4388, "extras_ids": [4385], "confianca": 0.71, "motivo": "um modelo não achou candidato; sugestão do outro", "regra": 6}
