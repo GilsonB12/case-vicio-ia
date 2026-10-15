@@ -19,7 +19,14 @@ dependencies = [
 classificar = "classificador.pipeline:main"
 
 [dependency-groups]
-dev = ["pytest>=8"]
+dev = [
+    "ipykernel>=6.29",
+    "jupyter>=1.1",
+    "matplotlib>=3.9",
+    "nbconvert>=7.16",
+    "nbformat>=5.10",
+    "pytest>=8",
+]
 
 [build-system]
 requires = ["hatchling"]
@@ -30,3 +37,4 @@ packages = ["src/classificador"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]
