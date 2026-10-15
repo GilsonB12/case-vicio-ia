@@ -44,3 +44,18 @@ Registro das decisões tomadas durante a implementação e dos itens deixados pa
 - Confiança dos modelos concentrada em 0.85 a 0.95, o que reduz as 5 faixas a 2 na prática.
 - Escolha dos limiares no mesmo corpus da estimativa.
 - Âncora pequena, que só detecta diferenças grandes.
+
+## Plano da análise exploratória (2026-10-15)
+
+### Decisões
+
+- A heurística de OCR é tratada como lista de triagem ordenada, não como detector; o notebook e o achados.md dizem isso.
+- achados.md ficou com cerca de 3,5 páginas; o limite de 3 era indicativo e o conteúdo extra é a lista de correções na fonte, que o memo precisa.
+
+### Itens adiados
+
+Task 1: minor (deferred): allow-list de pontuação estreita; tema.ativo com NA; chave de enunciado repetido não tira pontuação final.
+Task 2: minor (deferred): ticks do histograma sem separador de milhar pt-BR; gráficos 1-3 sem título do eixo de valor (rótulos diretos).
+Task 3: minor (deferred): termos ainda sem glosa ("prompt" antes da seção 5, "ids", "HTML do Word", "corpus de referência").
+
+- A heurística de OCR (proporção de palavras fora do vocabulário) não isola a questão corrompida: Q0078 fica em 12º. Registrar no relatório como beco sem saída e como lista de triagem.
