@@ -16,7 +16,7 @@ MAXIMO_DE_GRAFICOS = 5
 
 _SECAO = re.compile(r"^## (\d+)\. ", re.MULTILINE)
 _CAMINHO_ABSOLUTO = re.compile(r"(?<![A-Za-z])[A-Za-z]:[\\/]")
-_TIPOS_DE_TEXTO = ("text/plain", "text/html", "text/markdown")
+_CAMINHO_ABSOLUTO_NO_JSON = re.compile(r"(?<![A-Za-z0-9])[A-Za-z]:(?:\\\\|/)")
 
 
 @cache
@@ -29,18 +29,6 @@ def _celulas(tipo: str) -> list:
     return [celula for celula in _ler().cells if celula.cell_type == tipo]
 
 
-def _textos_das_saidas(celula) -> list[str]:
-    textos = []
-    for saida in celula.get("outputs", []):
-        if saida.output_type == "stream":
-            textos.append(saida.text)
-        elif saida.output_type in ("execute_result", "display_data"):
-            textos.extend(str(saida.data[tipo]) for tipo in _TIPOS_DE_TEXTO if tipo in saida.data)
-        elif saida.output_type == "error":
-            textos.append("\n".join(saida.traceback))
-    return textos
-
-
 def test_notebook_existe():
     assert NOTEBOOK.exists()
 
@@ -49,10 +37,11 @@ def test_notebook_e_nbformat_valido():
     nbformat.validate(_ler())
 
 
-def test_tem_as_sete_secoes_numeradas():
-    numeros = [int(n) for celula in _celulas("markdown") for n in _SECAO.findall(celula.source)]
-    assert len(numeros) >= 7
-    assert set(range(1, 8)) <= set(numeros)
+def test_tem_as_sete_secoes_numeradas_cada_uma_na_sua_celula():
+    celulas_de_secao = [celula for celula in _celulas("markdown") if _SECAO.search(celula.source)]
+    numeros = {int(n) for celula in celulas_de_secao for n in _SECAO.findall(celula.source)}
+    assert len(celulas_de_secao) >= 7
+    assert set(range(1, 8)) <= numeros
 
 
 def test_toda_celula_de_codigo_foi_executada():
@@ -77,10 +66,12 @@ def test_nenhuma_celula_de_codigo_tem_caminho_absoluto():
     assert not com_caminho
 
 
-def test_nenhuma_saida_ou_markdown_tem_caminho_absoluto():
-    textos = [celula.source for celula in _celulas("markdown")]
-    textos += [texto for celula in _celulas("code") for texto in _textos_das_saidas(celula)]
-    assert not [texto[:200] for texto in textos if _CAMINHO_ABSOLUTO.search(texto)]
+def test_arquivo_inteiro_sem_caminho_absoluto():
+    # Texto bruto do .ipynb, metadados e saídas incluídos. No JSON a barra invertida vem
+    # escapada ("D:\\Projetos"); o "\n" escapado depois de "Comando:" fica de fora porque
+    # a letra antes dos dois-pontos tem outra letra antes dela. Base64 não tem ":".
+    bruto = NOTEBOOK.read_text(encoding="utf-8")
+    assert not [m.group(0) for m in _CAMINHO_ABSOLUTO_NO_JSON.finditer(bruto)]
 
 
 def test_primeira_celula_de_codigo_acha_a_raiz_pelo_pyproject():

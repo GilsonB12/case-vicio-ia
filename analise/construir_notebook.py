@@ -32,7 +32,7 @@ _ABERTURA = [
     _md(r'''
 # Análise exploratória dos dados do case Vício
 
-Este notebook descreve as 359 questões de `anexos/questoes.jsonl` e os 377 temas de `anexos/temas.csv` antes de qualquer classificação. Nada aqui chama API de modelo: só Pandas, as funções de carga de `classificador.dados` e `classificador.arvore` e as heurísticas testadas em `analise/heuristicas.py`. O resumo para leitura fica em `analise/achados.md`.
+Este notebook descreve as 359 questões de `anexos/questoes.jsonl` e os 377 temas de `anexos/temas.csv` antes de qualquer classificação. Nada aqui chama API de modelo: só Pandas, as funções de carga de `classificador.dados` e `classificador.arvore` e as heurísticas testadas em `analise/heuristicas.py`. O resumo para leitura fica no documento de achados que acompanha este notebook.
 
 **Como reconstruir.** Da raiz do repositório:
 
@@ -96,6 +96,11 @@ def imprimir_texto(id_questao: str, limite: int | None = None) -> None:
         texto = texto[:limite].rstrip() + " [...]"
     for linha in texto.splitlines():
         print(textwrap.fill(linha, width=110))
+
+
+def decimal(valor: float, casas: int = 3) -> str:
+    # Número com vírgula decimal, como no texto e nos gráficos.
+    return f"{valor:.{casas}f}".replace(".", ",")
 
 
 print(f"{len(questoes)} questões e {len(temas)} temas carregados de anexos/")
@@ -275,7 +280,7 @@ for nome in mais_frequentes:
     display(amostra_do_assunto(nome))
 '''),
     _md(r'''
-**Leitura das amostras.** Os rótulos vão de lixeira a razoável. Em "Concurso de Crimes", o maior assunto, nenhuma das 8 trata de concurso material, formal ou crime continuado: há crimes contra a ordem econômica e a ordem tributária (Q0039, Q0181), concussão (Q0085), crimes contra a pessoa (Q0182), tortura praticada por policial (Q0307), erro sobre a pessoa no infanticídio (Q0316), prazo de representação (Q0317) e abuso de autoridade (Q0337). "Ação Penal (Parte 02)" é igual: recurso contra absolvição sumária (Q0003), prisão e cautelares (Q0151), organizações criminosas (Q0200), livramento condicional (Q0228), prescrição (Q0353). "Ação Penal (Parte 01)" é quase todo de provas e recursos (Q0012, Q0098, Q0146, Q0226). "Ação Penal" e "Inquérito Policial" acertam em parte da amostra (Q0152 e Q0305; Q0015 e Q0149). Só "Teoria da Pena (Parte 02)" é coerente: aplicação da pena e execução penal (Q0043, Q0052, Q0250). O assunto de origem não serve de rótulo para as questões.
+**Leitura das amostras.** Os rótulos vão de lixeira a razoável. Em "Concurso de Crimes", o maior assunto, nenhuma das 8 trata de concurso material, formal ou crime continuado: há crimes contra a ordem econômica e a ordem tributária (Q0039, Q0181), concussão (Q0085), crimes contra a pessoa (Q0182), tortura praticada por policial (Q0307), erro sobre a pessoa no infanticídio (Q0316), prazo de representação (Q0317) e abuso de autoridade (Q0337). "Ação Penal (Parte 02)" é igual: recurso contra absolvição sumária (Q0003), prisão e cautelares (Q0151), organizações criminosas (Q0200), livramento condicional (Q0228), prescrição (Q0353). Em "Ação Penal (Parte 01)", metade da amostra (4 de 8) trata de provas ou recursos (Q0012, Q0098, Q0146, Q0226), e duas cabem no rótulo: a Q0240, sobre o prazo para oferecer a denúncia, e a Q0296, sobre quem assume a queixa na ação privada quando a vítima morre. "Ação Penal" e "Inquérito Policial" acertam em parte da amostra (Q0007, Q0152 e Q0305; Q0015 e Q0149). Só "Teoria da Pena (Parte 02)" é coerente: aplicação da pena e execução penal (Q0043, Q0052, Q0250). Nas questões amostradas, só um dos 6 assuntos descreve bem o conteúdo; nos outros cinco, o assunto de origem acerta no máximo parte da amostra.
 
 ### Comparação com a decisão do pipeline
 
@@ -312,13 +317,13 @@ grupos = heuristicas.grupos_de_enunciado_repetido(questoes)
 print(f"\n{len(grupos)} grupos de enunciado repetido:")
 for grupo in grupos:
     enunciado = limpar_html(por_id.loc[grupo[0], "enunciado_html"])
-    print(f"  {len(grupo)} questões com {enunciado!r}: {', '.join(grupo)}")
+    print(f"  {len(grupo)} questões com o enunciado normalizado {heuristicas.normalizar(enunciado)!r}: {', '.join(grupo)}")
 for id_questao in ("Q0090", "Q0205"):
     print(f"\n--- {id_questao}")
     imprimir_texto(id_questao)
 '''),
     _md(r'''
-Q0090 e Q0205 têm o mesmo enunciado e nada em comum além dele: o tema está todo nas alternativas.
+Q0090 e Q0205 têm o mesmo enunciado normalizado (só a caixa muda: "CORRETA" e "correta") e nada em comum além dele: o tema está todo nas alternativas.
 
 ### 4.3 Q0078, corrupção de OCR
 
@@ -338,7 +343,7 @@ def tokens_fora_do_vocabulario(id_questao: str) -> list[str]:
     return [t for t in dict.fromkeys(heuristicas.tokens(por_id.loc[id_questao, "texto"])) if t not in vocabulario]
 
 
-print(f"Q0078: proporção fora do vocabulário {q0078['proporcao']:.3f}, {q0078['posicao']}ª maior de {len(ocr)}")
+print(f"Q0078: proporção fora do vocabulário {decimal(q0078['proporcao'])}, {q0078['posicao']}ª maior de {len(ocr)}")
 fora_q0078 = tokens_fora_do_vocabulario("Q0078")
 print(f"{len(fora_q0078)} palavras distintas fora do vocabulário:")
 print(textwrap.fill(", ".join(fora_q0078), width=110))
@@ -419,16 +424,19 @@ Para cada questão, o vocabulário é o conjunto de palavras (3 ou mais letras, 
     _codigo(r'''
 topo = ocr.head(10).merge(questoes[["id", "disciplina_origem"]], on="id")
 topo["exemplos_fora_do_vocabulario"] = topo["id"].map(lambda i: ", ".join(tokens_fora_do_vocabulario(i)[:8]))
-topo["proporcao"] = topo["proporcao"].round(3)
+topo["proporcao"] = topo["proporcao"].map(decimal)
 topo[["posicao", "id", "proporcao", "suspeita", "disciplina_origem", "exemplos_fora_do_vocabulario"]]
 '''),
     _codigo(r'''
 q0001 = ocr_por_id.loc["Q0001"]
-print(f"Q0078 (corrompida): {q0078['proporcao']:.3f}, {q0078['posicao']}ª de {len(ocr)}; {q0078['posicao'] - 1} questões ficam acima dela")
-print(f"Q0001 (limpa): {q0001['proporcao']:.3f}, {q0001['posicao']}ª de {len(ocr)}")
-print(f"mediana {ocr['proporcao'].median():.3f}; percentil 90 {ocr['proporcao'].quantile(0.9):.3f}; máximo {ocr['proporcao'].max():.3f}")
+print(f"Q0078 (corrompida): {decimal(q0078['proporcao'])}, {q0078['posicao']}ª de {len(ocr)}; {q0078['posicao'] - 1} questões ficam acima dela")
+print(f"Q0001 (limpa): {decimal(q0001['proporcao'])}, {q0001['posicao']}ª de {len(ocr)}")
+print(
+    f"mediana {decimal(ocr['proporcao'].median())}; percentil 90 {decimal(ocr['proporcao'].quantile(0.9))}; "
+    f"máximo {decimal(ocr['proporcao'].max())}"
+)
 for limiar in (0.25, 0.30, 0.34):
-    print(f"proporção acima de {limiar:.2f}: {(ocr['proporcao'] > limiar).sum()} questões")
+    print(f"proporção acima de {decimal(limiar, 2)}: {(ocr['proporcao'] > limiar).sum()} questões")
 print(f"marcadas como suspeitas (limiar 0,25): {ocr['suspeita'].sum()} de {len(ocr)}")
 print(f"\nacima da Q0078: {', '.join(ocr.loc[ocr['posicao'] < q0078['posicao'], 'id'])}")
 for id_questao in ocr.loc[(ocr["posicao"] > len(topo)) & (ocr["posicao"] < q0078["posicao"]), "id"]:
@@ -436,7 +444,7 @@ for id_questao in ocr.loc[(ocr["posicao"] > len(topo)) & (ocr["posicao"] < q0078
     print(f"{id_questao}, {ocr_por_id.loc[id_questao, 'posicao']}ª, fora da tabela acima: {exemplos}")
 '''),
     _md(r'''
-**O limiar e o que ele não faz.** A heurística não isola a questão corrompida. A Q0078 tem proporção 0,341 e fica em 12º lugar entre 359; a Q0001, limpa, tem 0,083. O percentil 90 é 0,266, e o limiar 0,25 marca 48 questões, 13% do total. As 11 que ficam acima da Q0078 são questões limpas com vocabulário raro num corpus pequeno: nomes de autores na criminologia (Cesare, Raffaele e Franz na Q0076, Vera Regina Pereira de Andrade na Q0002, Feuerbach e Carrara na Q0253), narrativas cheias de nomes e palavras do dia a dia (Q0115, Q0302, Q0083, Q0329) e matéria de outras áreas (ITCD na Q0142, Lei 9.029/95 na Q0154, Lei 9.605/98 na Q0344). No máximo aparecem palavras partidas, como "zoologi cos" na Q0344, não texto ilegível. Como a Q0078 está em 12º, nenhum limiar a marca sem marcar junto pelo menos 11 questões limpas.
+**O limiar e o que ele não faz.** A heurística não isola a questão corrompida. A Q0078 tem proporção 0,341 e fica em 12º lugar entre 359; a Q0001, limpa, tem 0,083. O percentil 90 é 0,266, e o limiar 0,25 marca 48 questões, 13% do total. As 11 que ficam acima da Q0078 são questões limpas com vocabulário raro num corpus pequeno: nomes de autores na criminologia (Cesare, Raffaele e Franz na Q0076, Vera Regina Pereira de Andrade na Q0002, Feuerbach e Carrara na Q0253), teoria criminológica com termos técnicos ("etiologico" e "metodologico" na Q0066), narrativas cheias de nomes e palavras do dia a dia (Q0115, Q0302, Q0083, Q0329), legislação penal especial com vocabulário de outras áreas, trabalhista e ambiental (Lei 9.029/95 na Q0154, Lei 9.605/98 na Q0344), e a Q0142, sobre ITCD, a única de fato fora das quatro disciplinas. No máximo aparecem palavras partidas, como "zoologi cos" na Q0344, não texto ilegível. Como a Q0078 está em 12º, nenhum limiar a marca sem marcar junto pelo menos 11 questões limpas.
 
 Por isso o resultado é uma **lista de triagem ordenada para leitura humana, não um detector**. O limiar 0,25 fica porque marca a Q0078 e deixa a Q0001 de fora, um pouco abaixo do percentil 90; ele não muda nenhuma decisão do pipeline: o texto não é corrigido, e a marca de suspeita só vai para o relatório. Uma melhoria barata, fora do escopo desta análise, seria olhar só as palavras fora do vocabulário que são longas ou têm sequências improváveis de letras, como "oossstomnioconcunsos".
 '''),
@@ -448,7 +456,7 @@ _GRAFICOS = [
     _md(r'''
 ## 6. Gráficos
 
-Cinco gráficos em matplotlib, seguindo o skill `dataviz`: cores da paleta de referência (azul para a série principal, laranja para o segundo grupo, cinza para o que é só contexto, rampa azul do claro ao escuro para o nível da árvore), barras finas com a ponta arredondada e a base reta, grade em linha fina e nenhum eixo duplo. As combinações passaram no validador de paleta do skill (azul e laranja nos testes de daltonismo, visão normal e contraste; a rampa de nível no teste ordinal; o cinza de contexto se separa do azul sob daltonismo e passa no contraste, e só reprova no croma, como todo cinza). Cada figura tem fundo claro próprio e opaco, então fica legível tanto no tema claro quanto no escuro do Jupyter ou do VS Code. Os mesmos números estão nas tabelas das seções 1, 2 e 5.
+Cinco gráficos em matplotlib, seguindo o skill `dataviz`: cores da paleta de referência (azul para a série principal, laranja para o segundo grupo, cinza para o que é só contexto, rampa azul do claro ao escuro para o nível da árvore), barras finas com a ponta arredondada e a base reta, grade em linha fina e nenhum eixo duplo. As combinações passaram no validador de paleta do skill (azul e laranja nos testes de daltonismo, visão normal e contraste; a rampa de nível no teste ordinal; o cinza de contexto se separa do azul sob daltonismo e passa no contraste, e só reprova no croma, como todo cinza). Cada figura tem fundo claro próprio e opaco, então fica legível tanto no tema claro quanto no escuro do Jupyter ou do VS Code. As contagens dos três primeiros gráficos estão nas tabelas das seções 1 (disciplina e alternativas) e 2 (disciplina e nível); o histograma tem só um resumo por faixas na seção 1; o gráfico de OCR estende a tabela da seção 5, que tem as 10 maiores, até as 20 maiores.
 '''),
     _codigo(r'''
 import matplotlib.pyplot as plt
@@ -479,7 +487,7 @@ _CODIGOS = [Traco.MOVETO, Traco.LINETO, Traco.CURVE3, Traco.CURVE3, Traco.LINETO
 
 
 def virgula(casas: int) -> FuncFormatter:
-    return FuncFormatter(lambda valor, _: f"{valor:.{casas}f}".replace(".", ","))
+    return FuncFormatter(lambda valor, _: decimal(valor, casas))
 
 
 def nova_figura(largura: float, altura: float, titulo: str, subtitulo: str):
@@ -633,7 +641,7 @@ posicoes, espessura = preparar_barras_h(fig, ax, topo20["id"], 0.5, eixo_de_valo
 for y, id_questao, valor in zip(posicoes, topo20["id"], topo20["proporcao"]):
     barra(ax, 0, valor, y, espessura, SERIE_1 if id_questao == "Q0078" else CONTEXTO)
     if id_questao == "Q0078":
-        rotulo_na_ponta(ax, valor, y, f"{valor:.3f}".replace(".", ",") + f" · {q0078['posicao']}ª de {len(ocr)}")
+        rotulo_na_ponta(ax, valor, y, f"{decimal(valor)} · {q0078['posicao']}ª de {len(ocr)}")
 for rotulo in ax.get_yticklabels():
     if rotulo.get_text() == "Q0078":
         rotulo.set_color(TINTA)
@@ -651,7 +659,7 @@ _IMPLICACOES = [
     _md(r'''
 ## 7. Implicações para o pipeline
 
-- **Alternativas no texto.** 20 enunciados são genéricos ("Assinale a alternativa CORRETA.") e três grupos repetem o mesmo enunciado, seis questões no maior. Sem as alternativas, Q0090 e Q0205 seriam o mesmo texto. Por isso o texto de classificação junta enunciado, comando e alternativas (`montar_texto`), e nada no pipeline deduplica por enunciado.
+- **Alternativas no texto.** 20 enunciados são genéricos ("Assinale a alternativa CORRETA.") e três grupos repetem o mesmo enunciado normalizado, seis questões no maior. Sem as alternativas, Q0090 e Q0205 seriam o mesmo texto, a menos da caixa. Por isso o texto de classificação junta enunciado, comando e alternativas (`montar_texto`), e nada no pipeline deduplica por enunciado.
 - **Canonicalização dos duplicados.** Os 20 temas de 6716 a 6738 não têm descrição e repetem temas existentes. `ArvoreTemas` converte cada um no canônico, 17 por título normalizado e 3 pela tabela de exceções, e nenhum aparece em `publicacao.csv`. O canônico 4696 tem o título errado "Estaturo de Idoso - Crimes": o id é o certo, e o título vai para o relatório.
 - **`fora` vem do conteúdo, não do rótulo.** Das 8 questões com disciplina de origem fora do escopo, só a Q0142 (ITCD) é de outra matéria; as outras sete são penais. A decisão `fora` sai dos votos dos modelos sobre o texto, e o prompt não mostra `disciplina_origem` nem `assunto_origem`.
 - **Lixeiras.** Dos 6 assuntos de origem mais frequentes, só "Teoria da Pena (Parte 02)" descreve bem as questões amostradas (seção 3), então `assunto_origem` não entra no prompt nem na busca de candidatos. A comparação com a decisão do pipeline fica para depois da execução.
