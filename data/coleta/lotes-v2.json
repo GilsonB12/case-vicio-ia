@@ -1,0 +1,1804 @@
+{
+ "n_lotes": 10,
+ "meta_por_tema": 4,
+ "lotes": [
+  {
+   "lote": "01",
+   "meta_total": 40,
+   "temas": [
+    {
+     "tema_id": 5199,
+     "caminho": "Penal > Teoria da Pena",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5209,
+       "titulo": "Efeitos da Condenação Penais e Extrapenais"
+      },
+      {
+       "tema_id": 5208,
+       "titulo": "Livramento Condicional"
+      },
+      {
+       "tema_id": 5206,
+       "titulo": "Pena de Multa"
+      },
+      {
+       "tema_id": 5201,
+       "titulo": "Penas Privativas de Liberdade"
+      },
+      {
+       "tema_id": 5205,
+       "titulo": "Penas Restritivas de Direitos"
+      },
+      {
+       "tema_id": 5202,
+       "titulo": "Primeira Fase da Dosimetria: Circunstâncias Judiciais"
+      },
+      {
+       "tema_id": 5210,
+       "titulo": "Reabilitação Criminal"
+      },
+      {
+       "tema_id": 5200,
+       "titulo": "Sanção Penal: Conceito, Finalidade e Modalidades"
+      },
+      {
+       "tema_id": 5203,
+       "titulo": "Segunda Fase da Dosimetria: Agravantes e Atenuantes"
+      },
+      {
+       "tema_id": 5207,
+       "titulo": "Suspensão Condicional da Pena"
+      },
+      {
+       "tema_id": 5204,
+       "titulo": "Terceira fase da Dosimetria: Causas de Aumento e de Diminuição"
+      }
+     ],
+     "peso": 77,
+     "meta": 4
+    },
+    {
+     "tema_id": 5228,
+     "caminho": "Penal > Teoria do Crime: Ilicitude",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5233,
+       "titulo": "Causas Supralegais de Exclusão da Ilicitude"
+      },
+      {
+       "tema_id": 5229,
+       "titulo": "Conceito e Elementos da Ilicitude"
+      },
+      {
+       "tema_id": 5230,
+       "titulo": "Estado de Necessidade"
+      },
+      {
+       "tema_id": 5232,
+       "titulo": "Estrito Cumprimento do Dever Legal"
+      },
+      {
+       "tema_id": 5231,
+       "titulo": "Legítima Defesa"
+      }
+     ],
+     "peso": 46,
+     "meta": 4
+    },
+    {
+     "tema_id": 5576,
+     "caminho": "Processo Penal > Sentença Penal > Fixação da Pena e do Regime Penitenciário",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 30,
+     "meta": 4
+    },
+    {
+     "tema_id": 5128,
+     "caminho": "Penal > Dos Crimes Contra a Liberdade Pessoal",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5130,
+       "titulo": "Ameaça e Perseguição"
+      },
+      {
+       "tema_id": 5133,
+       "titulo": "Dos Crimes contra a Inviolabilidade do Domicílio, Contra a Inviolabilidade da Correspondência e Contra a Inviolabilidade dos Segredos"
+      },
+      {
+       "tema_id": 5129,
+       "titulo": "Intimidação Sistemática (Bullying)"
+      },
+      {
+       "tema_id": 5132,
+       "titulo": "Sequestro, Cárcere Privado, Redução à Condição Análoga à de Escravo e Tráfico de Pessoas"
+      },
+      {
+       "tema_id": 5131,
+       "titulo": "Violência Psicológica contra a Mulher"
+      }
+     ],
+     "peso": 23,
+     "meta": 4
+    },
+    {
+     "tema_id": 5185,
+     "caminho": "Penal > Prescrição",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5186,
+       "titulo": "Conceito, Regras Gerais e Fundamentos da Prescrição"
+      },
+      {
+       "tema_id": 5187,
+       "titulo": "Contagem dos Prazos e Causas Suspensivas e Interruptivas da Prescrição"
+      },
+      {
+       "tema_id": 5190,
+       "titulo": "Outras Prescrições"
+      },
+      {
+       "tema_id": 5189,
+       "titulo": "Prescrição da Pretensão Executória"
+      },
+      {
+       "tema_id": 5188,
+       "titulo": "Prescrição da Pretensão Punitiva"
+      }
+     ],
+     "peso": 21,
+     "meta": 4
+    },
+    {
+     "tema_id": 5585,
+     "caminho": "Processo Penal > Teoria Geral das Prisões > Conceitos e Espécies de Prisão",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 18,
+     "meta": 4
+    },
+    {
+     "tema_id": 5475,
+     "caminho": "Processo Penal > Ação Penal > Ação Civil Ex Delicto",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 16,
+     "meta": 4
+    },
+    {
+     "tema_id": 4370,
+     "caminho": "Criminologia > Criminologia no Estado Democrático de Direito > Modelos de Reação ao Delito",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 15,
+     "meta": 4
+    },
+    {
+     "tema_id": 5536,
+     "caminho": "Processo Penal > Procedimento Ordinário > Alegações Orais",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 13,
+     "meta": 4
+    },
+    {
+     "tema_id": 5104,
+     "caminho": "Penal > Dos Crimes Contra a Dignidade Sexual > Violação Sexual Mediante Fraude",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 12,
+     "meta": 4
+    }
+   ]
+  },
+  {
+   "lote": "02",
+   "meta_total": 40,
+   "temas": [
+    {
+     "tema_id": 5517,
+     "caminho": "Processo Penal > Prisões em Espécie",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5523,
+       "titulo": "Liberdade Provisória"
+      },
+      {
+       "tema_id": 5522,
+       "titulo": "Medidas Cautelares Diversas da Prisão"
+      },
+      {
+       "tema_id": 5521,
+       "titulo": "Prisão Domiciliar"
+      },
+      {
+       "tema_id": 5519,
+       "titulo": "Prisão Preventiva"
+      },
+      {
+       "tema_id": 5520,
+       "titulo": "Prisão Temporária"
+      },
+      {
+       "tema_id": 5518,
+       "titulo": "Prisão em Flagrante"
+      }
+     ],
+     "peso": 57,
+     "meta": 4
+    },
+    {
+     "tema_id": 5079,
+     "caminho": "Penal > Dos Crimes Contra a Administração Judicial",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5080,
+       "titulo": "Denunciação Caluniosa, Comunicação Falsa de Crime ou Contravenção e Autoacusação Falsa"
+      },
+      {
+       "tema_id": 5082,
+       "titulo": "Exercício Arbitrário das Próprias Razões"
+      },
+      {
+       "tema_id": 5085,
+       "titulo": "Exercício Arbitrário ou Abuso de Poder"
+      },
+      {
+       "tema_id": 5081,
+       "titulo": "Falso Testemunha ou Falsa Perícia e Corrupção Ativa de Testemunha ou Perito"
+      },
+      {
+       "tema_id": 5084,
+       "titulo": "Favorecimento Pessoal e Real"
+      },
+      {
+       "tema_id": 5083,
+       "titulo": "Fraude Processual"
+      },
+      {
+       "tema_id": 5086,
+       "titulo": "Outros crimes contra a Administração Judicial"
+      }
+     ],
+     "peso": 41,
+     "meta": 4
+    },
+    {
+     "tema_id": 5063,
+     "caminho": "Penal > Ação Penal",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5065,
+       "titulo": "Ação Penal Privada"
+      },
+      {
+       "tema_id": 5064,
+       "titulo": "Ação Penal Pública"
+      }
+     ],
+     "peso": 29,
+     "meta": 4
+    },
+    {
+     "tema_id": 5205,
+     "caminho": "Penal > Teoria da Pena > Penas Restritivas de Direitos",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 23,
+     "meta": 4
+    },
+    {
+     "tema_id": 5071,
+     "caminho": "Penal > Concurso de Pessoas",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5072,
+       "titulo": "Autores e Partícipes"
+      },
+      {
+       "tema_id": 5073,
+       "titulo": "Autoria Mediata, Colateral e Coautoria"
+      },
+      {
+       "tema_id": 5076,
+       "titulo": "Comunicabilidade de Circunstâncias, Condições e Elementares"
+      },
+      {
+       "tema_id": 5075,
+       "titulo": "Cooperação Dolosamente Distinta"
+      },
+      {
+       "tema_id": 5074,
+       "titulo": "Participação"
+      }
+     ],
+     "peso": 21,
+     "meta": 4
+    },
+    {
+     "tema_id": 4384,
+     "caminho": "Criminologia > Teorias Legitimidoras da Pena",
+     "nivel": 1,
+     "filhos": [],
+     "peso": 18,
+     "meta": 4
+    },
+    {
+     "tema_id": 5102,
+     "caminho": "Penal > Dos Crimes Contra a Dignidade Sexual",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5106,
+       "titulo": "Assédio Sexual"
+      },
+      {
+       "tema_id": 5108,
+       "titulo": "Corrupção de Menores"
+      },
+      {
+       "tema_id": 5110,
+       "titulo": "Disposições Gerais dos Crimes Contra a Dignidade Sexual"
+      },
+      {
+       "tema_id": 5103,
+       "titulo": "Estupro e Estupro de Vulnerável"
+      },
+      {
+       "tema_id": 5105,
+       "titulo": "Importunação Sexual"
+      },
+      {
+       "tema_id": 5109,
+       "titulo": "Outros Crimes Contra a Dignidade Sexual"
+      },
+      {
+       "tema_id": 5107,
+       "titulo": "Registro Não Autorizado da Intimidade Sexual"
+      },
+      {
+       "tema_id": 5104,
+       "titulo": "Violação Sexual Mediante Fraude"
+      }
+     ],
+     "peso": 16,
+     "meta": 4
+    },
+    {
+     "tema_id": 5535,
+     "caminho": "Processo Penal > Procedimento Ordinário > Audiência de Instrução e Julgamento",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 14,
+     "meta": 4
+    },
+    {
+     "tema_id": 5505,
+     "caminho": "Processo Penal > Lei Processual no Tempo e no Espaço",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5508,
+       "titulo": "Interpretação da Lei processual Penal"
+      },
+      {
+       "tema_id": 5506,
+       "titulo": "Lei Processual no Espaço"
+      },
+      {
+       "tema_id": 5507,
+       "titulo": "Lei processual no Tempo"
+      }
+     ],
+     "peso": 13,
+     "meta": 4
+    },
+    {
+     "tema_id": 5084,
+     "caminho": "Penal > Dos Crimes Contra a Administração Judicial > Favorecimento Pessoal e Real",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 12,
+     "meta": 4
+    }
+   ]
+  },
+  {
+   "lote": "03",
+   "meta_total": 40,
+   "temas": [
+    {
+     "tema_id": 5218,
+     "caminho": "Penal > Teoria do Crime: Fato Típico",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5219,
+       "titulo": "Conceito, Sujeito e Objeto do Crime"
+      },
+      {
+       "tema_id": 5221,
+       "titulo": "Conduta"
+      },
+      {
+       "tema_id": 5222,
+       "titulo": "Crime Doloso e Culposo"
+      },
+      {
+       "tema_id": 5223,
+       "titulo": "Crimes Omissivos e Comissivos"
+      },
+      {
+       "tema_id": 5224,
+       "titulo": "Erro de Tipo"
+      },
+      {
+       "tema_id": 5220,
+       "titulo": "Fato Típico"
+      },
+      {
+       "tema_id": 5226,
+       "titulo": "Nexo Causal e Imputação Objetiva"
+      },
+      {
+       "tema_id": 5225,
+       "titulo": "Resultado"
+      },
+      {
+       "tema_id": 5227,
+       "titulo": "Tipicidade"
+      }
+     ],
+     "peso": 55,
+     "meta": 4
+    },
+    {
+     "tema_id": 5157,
+     "caminho": "Penal > Dos Crimes Contra o Patrimônio",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5158,
+       "titulo": "12 Disposições Gerais dos Crimes Contra o Patrimônio"
+      },
+      {
+       "tema_id": 5167,
+       "titulo": "Abuso de Incapazes"
+      },
+      {
+       "tema_id": 5165,
+       "titulo": "Apropriação indébita"
+      },
+      {
+       "tema_id": 5164,
+       "titulo": "Dano"
+      },
+      {
+       "tema_id": 5162,
+       "titulo": "Esbulho Possessório"
+      },
+      {
+       "tema_id": 5166,
+       "titulo": "Estelionato"
+      },
+      {
+       "tema_id": 5161,
+       "titulo": "Extorsão"
+      },
+      {
+       "tema_id": 5168,
+       "titulo": "Fraude à Execução"
+      },
+      {
+       "tema_id": 5159,
+       "titulo": "Furto"
+      },
+      {
+       "tema_id": 5169,
+       "titulo": "Receptação"
+      },
+      {
+       "tema_id": 5160,
+       "titulo": "Roubo"
+      },
+      {
+       "tema_id": 5163,
+       "titulo": "Usurpação"
+      }
+     ],
+     "peso": 40,
+     "meta": 4
+    },
+    {
+     "tema_id": 5584,
+     "caminho": "Processo Penal > Teoria Geral das Prisões",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5589,
+       "titulo": "Audiência de Custódia"
+      },
+      {
+       "tema_id": 5585,
+       "titulo": "Conceitos e Espécies de Prisão"
+      },
+      {
+       "tema_id": 5587,
+       "titulo": "Direitos e Garantias sobre a Prisão"
+      },
+      {
+       "tema_id": 5586,
+       "titulo": "Imunidades Prisionais e Prisões Especiais"
+      },
+      {
+       "tema_id": 5588,
+       "titulo": "Relaxamento da Prisão"
+      }
+     ],
+     "peso": 28,
+     "meta": 4
+    },
+    {
+     "tema_id": 5523,
+     "caminho": "Processo Penal > Prisões em Espécie > Liberdade Provisória",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 22,
+     "meta": 4
+    },
+    {
+     "tema_id": 5484,
+     "caminho": "Processo Penal > Competência > Competência por Prerrogativa de Função",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 20,
+     "meta": 4
+    },
+    {
+     "tema_id": 4703,
+     "caminho": "Direito Penal - Legislação Especial > Lei de Execução Penal",
+     "nivel": 1,
+     "filhos": [],
+     "peso": 18,
+     "meta": 4
+    },
+    {
+     "tema_id": 5116,
+     "caminho": "Penal > Dos Crimes Contra a Fé Pública e de Falsidade Documental",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5118,
+       "titulo": "Da Falsidade Documental"
+      },
+      {
+       "tema_id": 5119,
+       "titulo": "De outras falsidades"
+      },
+      {
+       "tema_id": 5117,
+       "titulo": "Dos Crimes contra a Fé Pública"
+      }
+     ],
+     "peso": 16,
+     "meta": 4
+    },
+    {
+     "tema_id": 4377,
+     "caminho": "Criminologia > Processos de Criminalização e Cifras Criminais",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 4379,
+       "titulo": "Cifras Criminais"
+      },
+      {
+       "tema_id": 4378,
+       "titulo": "Criminalização Primária e Secundária"
+      }
+     ],
+     "peso": 14,
+     "meta": 4
+    },
+    {
+     "tema_id": 5225,
+     "caminho": "Penal > Teoria do Crime: Fato Típico > Resultado",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 13,
+     "meta": 4
+    },
+    {
+     "tema_id": 5151,
+     "caminho": "Penal > Dos Crimes Contra a Vida > Feminicídio",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 12,
+     "meta": 4
+    }
+   ]
+  },
+  {
+   "lote": "04",
+   "meta_total": 40,
+   "temas": [
+    {
+     "tema_id": 5209,
+     "caminho": "Penal > Teoria da Pena > Efeitos da Condenação Penais e Extrapenais",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 55,
+     "meta": 4
+    },
+    {
+     "tema_id": 5211,
+     "caminho": "Penal > Teoria do Crime: Culpabilidade",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5217,
+       "titulo": "Causas Supralegais de Exclusão da Culpabilidade"
+      },
+      {
+       "tema_id": 5215,
+       "titulo": "Coação Moral Irresistível"
+      },
+      {
+       "tema_id": 5212,
+       "titulo": "Conceito e Elementos da Culpabilidade"
+      },
+      {
+       "tema_id": 5214,
+       "titulo": "Erro de Proibição"
+      },
+      {
+       "tema_id": 5213,
+       "titulo": "Inimputabilidade"
+      },
+      {
+       "tema_id": 5216,
+       "titulo": "Obediência Hierárquica"
+      }
+     ],
+     "peso": 40,
+     "meta": 4
+    },
+    {
+     "tema_id": 5577,
+     "caminho": "Processo Penal > Sentença Penal > Efeitos Decorrentes da Sentença Penal Condenatória",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 27,
+     "meta": 4
+    },
+    {
+     "tema_id": 5149,
+     "caminho": "Penal > Dos Crimes Contra a Vida",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5154,
+       "titulo": "Aborto"
+      },
+      {
+       "tema_id": 5151,
+       "titulo": "Feminicídio"
+      },
+      {
+       "tema_id": 5150,
+       "titulo": "Homicídio"
+      },
+      {
+       "tema_id": 5152,
+       "titulo": "Induzimento, Instigação ou Auxílio ao Suicídio"
+      },
+      {
+       "tema_id": 5153,
+       "titulo": "Infanticídio"
+      }
+     ],
+     "peso": 22,
+     "meta": 4
+    },
+    {
+     "tema_id": 5562,
+     "caminho": "Processo Penal > Recursos em Espécies > Apelação",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 19,
+     "meta": 4
+    },
+    {
+     "tema_id": 5082,
+     "caminho": "Penal > Dos Crimes Contra a Administração Judicial > Exercício Arbitrário das Próprias Razões",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 17,
+     "meta": 4
+    },
+    {
+     "tema_id": 5558,
+     "caminho": "Processo Penal > Provas em Espécies > Ação Controlada",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 16,
+     "meta": 4
+    },
+    {
+     "tema_id": 4386,
+     "caminho": "Criminologia > Teorias Sociológicas Explicativas da Criminalidade > Teorias de Nível Individual",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 14,
+     "meta": 4
+    },
+    {
+     "tema_id": 5548,
+     "caminho": "Processo Penal > Provas em Espécies > Confissão",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 13,
+     "meta": 4
+    },
+    {
+     "tema_id": 5495,
+     "caminho": "Processo Penal > Das Questões e Processos Incidentes > Restituição de Coisas Apreendidas",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 12,
+     "meta": 4
+    }
+   ]
+  },
+  {
+   "lote": "05",
+   "meta_total": 40,
+   "temas": [
+    {
+     "tema_id": 5466,
+     "caminho": "Processo Penal > Ação Penal",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5475,
+       "titulo": "Ação Civil Ex Delicto"
+      },
+      {
+       "tema_id": 5471,
+       "titulo": "Ação Penal Pública Condicionada"
+      },
+      {
+       "tema_id": 5470,
+       "titulo": "Ação Penal Pública Incondicionada"
+      },
+      {
+       "tema_id": 5472,
+       "titulo": "Ação Penal de Iniciativa Privada"
+      },
+      {
+       "tema_id": 5467,
+       "titulo": "Características e Condições da Ação Penal"
+      },
+      {
+       "tema_id": 5468,
+       "titulo": "Classificação da Ação Penal"
+      },
+      {
+       "tema_id": 5473,
+       "titulo": "Denúncia"
+      },
+      {
+       "tema_id": 5469,
+       "titulo": "Princípios da Ação Penal"
+      },
+      {
+       "tema_id": 5474,
+       "titulo": "Queixa Crime"
+      }
+     ],
+     "peso": 52,
+     "meta": 4
+    },
+    {
+     "tema_id": 5490,
+     "caminho": "Processo Penal > Das Questões e Processos Incidentes",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5493,
+       "titulo": "Exceção de Incompetência e de Ilegitimidade"
+      },
+      {
+       "tema_id": 5494,
+       "titulo": "Exceção de Litispendência e de Coisa Julgada"
+      },
+      {
+       "tema_id": 5492,
+       "titulo": "Exceção de Suspeição, de Impedimento ou de Incompatibilidade"
+      },
+      {
+       "tema_id": 5497,
+       "titulo": "Incidente de Falsidade e de Insanidade Mental"
+      },
+      {
+       "tema_id": 5496,
+       "titulo": "Medidas Assecuratórias: Sequestro, Hipoteca Legal e Arresto"
+      },
+      {
+       "tema_id": 5491,
+       "titulo": "Questões Prejudiciais e Preliminares"
+      },
+      {
+       "tema_id": 5495,
+       "titulo": "Restituição de Coisas Apreendidas"
+      }
+     ],
+     "peso": 38,
+     "meta": 4
+    },
+    {
+     "tema_id": 5232,
+     "caminho": "Penal > Teoria do Crime: Ilicitude > Estrito Cumprimento do Dever Legal",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 26,
+     "meta": 4
+    },
+    {
+     "tema_id": 5178,
+     "caminho": "Penal > Iter Criminis > Desistência Voluntária, Arrependimento Eficaz e Arrependimento posterior",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 22,
+     "meta": 4
+    },
+    {
+     "tema_id": 5512,
+     "caminho": "Processo Penal > Parte Geral dos Recursos",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5516,
+       "titulo": "Classificação dos Recursos"
+      },
+      {
+       "tema_id": 5515,
+       "titulo": "Efeito dos Recursos"
+      },
+      {
+       "tema_id": 5514,
+       "titulo": "Pressupostos Objetivos e Subjetivos de Admissibilidade Recursal"
+      },
+      {
+       "tema_id": 5513,
+       "titulo": "Princípios Recursais no Processo Penal"
+      }
+     ],
+     "peso": 19,
+     "meta": 4
+    },
+    {
+     "tema_id": 5233,
+     "caminho": "Penal > Teoria do Crime: Ilicitude > Causas Supralegais de Exclusão da Ilicitude",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 17,
+     "meta": 4
+    },
+    {
+     "tema_id": 5066,
+     "caminho": "Penal > Concurso de Crimes",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5068,
+       "titulo": "Concurso Formal"
+      },
+      {
+       "tema_id": 5067,
+       "titulo": "Concurso Material"
+      },
+      {
+       "tema_id": 5069,
+       "titulo": "Crime Continuado"
+      },
+      {
+       "tema_id": 5070,
+       "titulo": "Pena de Multa no Concurso de Crimes"
+      }
+     ],
+     "peso": 16,
+     "meta": 4
+    },
+    {
+     "tema_id": 5202,
+     "caminho": "Penal > Teoria da Pena > Primeira Fase da Dosimetria: Circunstâncias Judiciais",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 14,
+     "meta": 4
+    },
+    {
+     "tema_id": 5540,
+     "caminho": "Processo Penal > Procedimento Sumaríssimo > Competência dos Juizados Especiais Criminais",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 12,
+     "meta": 4
+    },
+    {
+     "tema_id": 4705,
+     "caminho": "Direito Penal - Legislação Especial > Organizações Criminosas",
+     "nivel": 1,
+     "filhos": [],
+     "peso": 12,
+     "meta": 4
+    }
+   ]
+  },
+  {
+   "lote": "06",
+   "meta_total": 40,
+   "temas": [
+    {
+     "tema_id": 5572,
+     "caminho": "Processo Penal > Sentença Penal",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5573,
+       "titulo": "Classificação dos Provimentos Judiciais"
+      },
+      {
+       "tema_id": 5577,
+       "titulo": "Efeitos Decorrentes da Sentença Penal Condenatória"
+      },
+      {
+       "tema_id": 5579,
+       "titulo": "Emendatio Libelli e Mutatio Libelli"
+      },
+      {
+       "tema_id": 5576,
+       "titulo": "Fixação da Pena e do Regime Penitenciário"
+      },
+      {
+       "tema_id": 5578,
+       "titulo": "Princípio da Correlação entre Acusação e Sentença"
+      },
+      {
+       "tema_id": 5574,
+       "titulo": "Sentença Absolutória"
+      },
+      {
+       "tema_id": 5575,
+       "titulo": "Sentença Condenatória"
+      }
+     ],
+     "peso": 50,
+     "meta": 4
+    },
+    {
+     "tema_id": 5175,
+     "caminho": "Penal > Iter Criminis",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5177,
+       "titulo": "Crime Consumado e Tentado"
+      },
+      {
+       "tema_id": 5179,
+       "titulo": "Crime Impossível"
+      },
+      {
+       "tema_id": 5178,
+       "titulo": "Desistência Voluntária, Arrependimento Eficaz e Arrependimento posterior"
+      },
+      {
+       "tema_id": 5176,
+       "titulo": "Fases do Iter Criminis"
+      }
+     ],
+     "peso": 36,
+     "meta": 4
+    },
+    {
+     "tema_id": 4385,
+     "caminho": "Criminologia > Teorias Sociológicas Explicativas da Criminalidade",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 4388,
+       "titulo": "Teorias Criminológicas em Espécie"
+      },
+      {
+       "tema_id": 4386,
+       "titulo": "Teorias de Nível Individual"
+      },
+      {
+       "tema_id": 4387,
+       "titulo": "Teorias de Nível Sociológico"
+      }
+     ],
+     "peso": 25,
+     "meta": 4
+    },
+    {
+     "tema_id": 4368,
+     "caminho": "Criminologia > Criminologia no Estado Democrático de Direito",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 4370,
+       "titulo": "Modelos de Reação ao Delito"
+      },
+      {
+       "tema_id": 4369,
+       "titulo": "Sistemas de Prevenção"
+      }
+     ],
+     "peso": 22,
+     "meta": 4
+    },
+    {
+     "tema_id": 5487,
+     "caminho": "Processo Penal > Comunicação dos Atos Processuais",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5488,
+       "titulo": "Citação e Contagem dos Prazos"
+      },
+      {
+       "tema_id": 5489,
+       "titulo": "Intimação e Contagem dos Prazos"
+      }
+     ],
+     "peso": 19,
+     "meta": 4
+    },
+    {
+     "tema_id": 5210,
+     "caminho": "Penal > Teoria da Pena > Reabilitação Criminal",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 16,
+     "meta": 4
+    },
+    {
+     "tema_id": 5177,
+     "caminho": "Penal > Iter Criminis > Crime Consumado e Tentado",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 15,
+     "meta": 4
+    },
+    {
+     "tema_id": 5223,
+     "caminho": "Penal > Teoria do Crime: Fato Típico > Crimes Omissivos e Comissivos",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 14,
+     "meta": 4
+    },
+    {
+     "tema_id": 5208,
+     "caminho": "Penal > Teoria da Pena > Livramento Condicional",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 12,
+     "meta": 4
+    },
+    {
+     "tema_id": 5550,
+     "caminho": "Processo Penal > Provas em Espécies > Prova Testemunhal",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 12,
+     "meta": 4
+    }
+   ]
+  },
+  {
+   "lote": "07",
+   "meta_total": 40,
+   "temas": [
+    {
+     "tema_id": 5560,
+     "caminho": "Processo Penal > Recursos em Espécies",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5566,
+       "titulo": "Agravo em Execução"
+      },
+      {
+       "tema_id": 5562,
+       "titulo": "Apelação"
+      },
+      {
+       "tema_id": 5567,
+       "titulo": "Carta Testemunhavel"
+      },
+      {
+       "tema_id": 5568,
+       "titulo": "Correição Parcial"
+      },
+      {
+       "tema_id": 5564,
+       "titulo": "Embargos Infringentes"
+      },
+      {
+       "tema_id": 5565,
+       "titulo": "Embargos de Declaração"
+      },
+      {
+       "tema_id": 5563,
+       "titulo": "Protesto por novo Júri"
+      },
+      {
+       "tema_id": 5571,
+       "titulo": "Recurso Especial"
+      },
+      {
+       "tema_id": 5570,
+       "titulo": "Recurso Extraordinário"
+      },
+      {
+       "tema_id": 5561,
+       "titulo": "Recurso em sentido estrito (RESE)"
+      },
+      {
+       "tema_id": 5569,
+       "titulo": "Recursos no Âmbito dos Juizados Especiais"
+      }
+     ],
+     "peso": 49,
+     "meta": 4
+    },
+    {
+     "tema_id": 5191,
+     "caminho": "Penal > Punibilidade",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5194,
+       "titulo": "Abolitio Criminis"
+      },
+      {
+       "tema_id": 5193,
+       "titulo": "Anistia, Graça e Indulto"
+      },
+      {
+       "tema_id": 5198,
+       "titulo": "Decadência"
+      },
+      {
+       "tema_id": 5192,
+       "titulo": "Morte do agente"
+      },
+      {
+       "tema_id": 5197,
+       "titulo": "Perdão Judicial"
+      },
+      {
+       "tema_id": 5195,
+       "titulo": "Perempção"
+      },
+      {
+       "tema_id": 5196,
+       "titulo": "Renúncia, Perdão do Ofendido e Retratação"
+      }
+     ],
+     "peso": 36,
+     "meta": 4
+    },
+    {
+     "tema_id": 5096,
+     "caminho": "Penal > Dos Crimes Contra a Administração Pública > Condescendência Criminosa",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 25,
+     "meta": 4
+    },
+    {
+     "tema_id": 5201,
+     "caminho": "Penal > Teoria da Pena > Penas Privativas de Liberdade",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 22,
+     "meta": 4
+    },
+    {
+     "tema_id": 5111,
+     "caminho": "Penal > Dos Crimes contra a Família",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5114,
+       "titulo": "Dos Crimes Contra a Assistência Familiar"
+      },
+      {
+       "tema_id": 5112,
+       "titulo": "Dos Crimes Contra o Casamento"
+      },
+      {
+       "tema_id": 5113,
+       "titulo": "Dos Crimes Contra o Estado de Filiação"
+      },
+      {
+       "tema_id": 5115,
+       "titulo": "Dos Crimes Contra o Pátrio Poder, a Tutela e a Curatela"
+      }
+     ],
+     "peso": 19,
+     "meta": 4
+    },
+    {
+     "tema_id": 5156,
+     "caminho": "Penal > Dos Crimes contra o Funcionamento dos Serviços Essenciais",
+     "nivel": 1,
+     "filhos": [],
+     "peso": 16,
+     "meta": 4
+    },
+    {
+     "tema_id": 5488,
+     "caminho": "Processo Penal > Comunicação dos Atos Processuais > Citação e Contagem dos Prazos",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 15,
+     "meta": 4
+    },
+    {
+     "tema_id": 5587,
+     "caminho": "Processo Penal > Teoria Geral das Prisões > Direitos e Garantias sobre a Prisão",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 14,
+     "meta": 4
+    },
+    {
+     "tema_id": 5169,
+     "caminho": "Penal > Dos Crimes Contra o Patrimônio > Receptação",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 12,
+     "meta": 4
+    },
+    {
+     "tema_id": 5198,
+     "caminho": "Penal > Punibilidade > Decadência",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 12,
+     "meta": 4
+    }
+   ]
+  },
+  {
+   "lote": "08",
+   "meta_total": 40,
+   "temas": [
+    {
+     "tema_id": 5543,
+     "caminho": "Processo Penal > Provas em Espécies",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5552,
+       "titulo": "Acareação"
+      },
+      {
+       "tema_id": 5558,
+       "titulo": "Ação Controlada"
+      },
+      {
+       "tema_id": 5554,
+       "titulo": "Busca e Apreensão"
+      },
+      {
+       "tema_id": 5544,
+       "titulo": "Cadeia de Custódia"
+      },
+      {
+       "tema_id": 5556,
+       "titulo": "Captação Ambiental"
+      },
+      {
+       "tema_id": 5557,
+       "titulo": "Colaboração Premiada"
+      },
+      {
+       "tema_id": 5548,
+       "titulo": "Confissão"
+      },
+      {
+       "tema_id": 5549,
+       "titulo": "Declaração do Ofendido"
+      },
+      {
+       "tema_id": 5545,
+       "titulo": "Exame de Corpo de Delito"
+      },
+      {
+       "tema_id": 5559,
+       "titulo": "Infiltração de Agentes"
+      },
+      {
+       "tema_id": 5555,
+       "titulo": "Interceptação Telefônica e Quebra do Sigilo de Dados Telefônicos"
+      },
+      {
+       "tema_id": 5547,
+       "titulo": "Interrogatório Judicial"
+      },
+      {
+       "tema_id": 5546,
+       "titulo": "Perícia"
+      },
+      {
+       "tema_id": 5553,
+       "titulo": "Prova Documental"
+      },
+      {
+       "tema_id": 5550,
+       "titulo": "Prova Testemunhal"
+      },
+      {
+       "tema_id": 5551,
+       "titulo": "Reconhecimento de Pessoas e Coisas"
+      }
+     ],
+     "peso": 49,
+     "meta": 4
+    },
+    {
+     "tema_id": 5224,
+     "caminho": "Penal > Teoria do Crime: Fato Típico > Erro de Tipo",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 33,
+     "meta": 4
+    },
+    {
+     "tema_id": 5155,
+     "caminho": "Penal > Dos Crimes contra o Estado Democrático de Direito",
+     "nivel": 1,
+     "filhos": [],
+     "peso": 25,
+     "meta": 4
+    },
+    {
+     "tema_id": 4388,
+     "caminho": "Criminologia > Teorias Sociológicas Explicativas da Criminalidade > Teorias Criminológicas em Espécie",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 21,
+     "meta": 4
+    },
+    {
+     "tema_id": 5221,
+     "caminho": "Penal > Teoria do Crime: Fato Típico > Conduta",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 19,
+     "meta": 4
+    },
+    {
+     "tema_id": 5080,
+     "caminho": "Penal > Dos Crimes Contra a Administração Judicial > Denunciação Caluniosa, Comunicação Falsa de Crime ou Contravenção e Autoacusação Falsa",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 16,
+     "meta": 4
+    },
+    {
+     "tema_id": 5531,
+     "caminho": "Processo Penal > Procedimento Ordinário > 2 Oferecimento, Rejeição e Recebimento da Peça Acusatória",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 15,
+     "meta": 4
+    },
+    {
+     "tema_id": 5518,
+     "caminho": "Processo Penal > Prisões em Espécie > Prisão em Flagrante",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 14,
+     "meta": 4
+    },
+    {
+     "tema_id": 5093,
+     "caminho": "Penal > Dos Crimes Contra a Administração Pública > Corrupção Ativa",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 12,
+     "meta": 4
+    },
+    {
+     "tema_id": 5524,
+     "caminho": "Processo Penal > Procedimento do Tribunal do Júri",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5527,
+       "titulo": "Impronúncia, Desclassificação, Absolvição Sumária e Pronúncia"
+      },
+      {
+       "tema_id": 5528,
+       "titulo": "Organização do Júri e Sessão de Julgamento"
+      },
+      {
+       "tema_id": 5525,
+       "titulo": "Princípios Constitucionais do Júri"
+      },
+      {
+       "tema_id": 5526,
+       "titulo": "Procedimento Bifásico do Tribunal do Júri"
+      },
+      {
+       "tema_id": 5529,
+       "titulo": "Sentença do Júri"
+      }
+     ],
+     "peso": 11,
+     "meta": 4
+    }
+   ]
+  },
+  {
+   "lote": "09",
+   "meta_total": 40,
+   "temas": [
+    {
+     "tema_id": 5530,
+     "caminho": "Processo Penal > Procedimento Ordinário",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5531,
+       "titulo": "2 Oferecimento, Rejeição e Recebimento da Peça Acusatória"
+      },
+      {
+       "tema_id": 5534,
+       "titulo": "Absolvição Sumária"
+      },
+      {
+       "tema_id": 5536,
+       "titulo": "Alegações Orais"
+      },
+      {
+       "tema_id": 5535,
+       "titulo": "Audiência de Instrução e Julgamento"
+      },
+      {
+       "tema_id": 5532,
+       "titulo": "Classificação dos Procedimentos"
+      },
+      {
+       "tema_id": 5533,
+       "titulo": "Defesa Preliminar"
+      },
+      {
+       "tema_id": 5537,
+       "titulo": "Sentença"
+      }
+     ],
+     "peso": 47,
+     "meta": 4
+    },
+    {
+     "tema_id": 5521,
+     "caminho": "Processo Penal > Prisões em Espécie > Prisão Domiciliar",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 32,
+     "meta": 4
+    },
+    {
+     "tema_id": 5091,
+     "caminho": "Penal > Dos Crimes Contra a Administração Pública > Concussão e Excesso de Exação",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 24,
+     "meta": 4
+    },
+    {
+     "tema_id": 5570,
+     "caminho": "Processo Penal > Recursos em Espécies > Recurso Extraordinário",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 21,
+     "meta": 4
+    },
+    {
+     "tema_id": 5196,
+     "caminho": "Penal > Punibilidade > Renúncia, Perdão do Ofendido e Retratação",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 19,
+     "meta": 4
+    },
+    {
+     "tema_id": 5522,
+     "caminho": "Processo Penal > Prisões em Espécie > Medidas Cautelares Diversas da Prisão",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 16,
+     "meta": 4
+    },
+    {
+     "tema_id": 4371,
+     "caminho": "Criminologia > Etapas Evolutivas e Escolas Criminológicas",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 4373,
+       "titulo": "Escolas Crimonológicas"
+      },
+      {
+       "tema_id": 4372,
+       "titulo": "Etapas Evolutivas da Criminologia (Antiguidade, Idade Média e Idade Moderna)"
+      }
+     ],
+     "peso": 15,
+     "meta": 4
+    },
+    {
+     "tema_id": 5222,
+     "caminho": "Penal > Teoria do Crime: Fato Típico > Crime Doloso e Culposo",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 14,
+     "meta": 4
+    },
+    {
+     "tema_id": 5164,
+     "caminho": "Penal > Dos Crimes Contra o Patrimônio > Dano",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 12,
+     "meta": 4
+    },
+    {
+     "tema_id": 5561,
+     "caminho": "Processo Penal > Recursos em Espécies > Recurso em sentido estrito (RESE)",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 11,
+     "meta": 4
+    }
+   ]
+  },
+  {
+   "lote": "10",
+   "meta_total": 40,
+   "temas": [
+    {
+     "tema_id": 5087,
+     "caminho": "Penal > Dos Crimes Contra a Administração Pública",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5097,
+       "titulo": "Advocacia Administrativa"
+      },
+      {
+       "tema_id": 5091,
+       "titulo": "Concussão e Excesso de Exação"
+      },
+      {
+       "tema_id": 5096,
+       "titulo": "Condescendência Criminosa"
+      },
+      {
+       "tema_id": 5094,
+       "titulo": "Contrabando ou Descaminho"
+      },
+      {
+       "tema_id": 5093,
+       "titulo": "Corrupção Ativa"
+      },
+      {
+       "tema_id": 5092,
+       "titulo": "Corrupção Passiva"
+      },
+      {
+       "tema_id": 5090,
+       "titulo": "Emprego Irregular de Verbas ou Rendas Públicas"
+      },
+      {
+       "tema_id": 5088,
+       "titulo": "Noções gerais dos crimes praticados contra a administração pública"
+      },
+      {
+       "tema_id": 5089,
+       "titulo": "Peculato e Peculato Mediante Erro de Outrem"
+      },
+      {
+       "tema_id": 5095,
+       "titulo": "Prevaricação"
+      },
+      {
+       "tema_id": 5100,
+       "titulo": "Resistência, Desobediência e Desacato"
+      },
+      {
+       "tema_id": 5101,
+       "titulo": "Tráfico de Influência"
+      },
+      {
+       "tema_id": 5099,
+       "titulo": "Usurpação de Função Pública"
+      },
+      {
+       "tema_id": 5098,
+       "titulo": "Violência Arbitrária"
+      }
+     ],
+     "peso": 47,
+     "meta": 4
+    },
+    {
+     "tema_id": 5480,
+     "caminho": "Processo Penal > Competência",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5483,
+       "titulo": "Comeptência Territorial"
+      },
+      {
+       "tema_id": 5485,
+       "titulo": "Competência de Juízo"
+      },
+      {
+       "tema_id": 5482,
+       "titulo": "Competência em Razão da Matéria"
+      },
+      {
+       "tema_id": 5484,
+       "titulo": "Competência por Prerrogativa de Função"
+      },
+      {
+       "tema_id": 5481,
+       "titulo": "Espécies e Fixação de Competência Criminal"
+      },
+      {
+       "tema_id": 5486,
+       "titulo": "Prorrogação, Perpetuação e Modificação de Competência"
+      }
+     ],
+     "peso": 30,
+     "meta": 4
+    },
+    {
+     "tema_id": 5214,
+     "caminho": "Penal > Teoria do Crime: Culpabilidade > Erro de Proibição",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 24,
+     "meta": 4
+    },
+    {
+     "tema_id": 5539,
+     "caminho": "Processo Penal > Procedimento Sumaríssimo",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5540,
+       "titulo": "Competência dos Juizados Especiais Criminais"
+      },
+      {
+       "tema_id": 5542,
+       "titulo": "Suspensão Condicional do Processo"
+      },
+      {
+       "tema_id": 5541,
+       "titulo": "Transação Penal"
+      }
+     ],
+     "peso": 21,
+     "meta": 4
+    },
+    {
+     "tema_id": 5498,
+     "caminho": "Processo Penal > Inquérito Policial",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5502,
+       "titulo": "Acordo de Não Persecução Penal"
+      },
+      {
+       "tema_id": 5499,
+       "titulo": "Conceito, Finalidade e Caractéristas do Inquérito Policial"
+      },
+      {
+       "tema_id": 5501,
+       "titulo": "Conclusão e Arquivamento do Inquérito Policial"
+      },
+      {
+       "tema_id": 5504,
+       "titulo": "Inquérito Civil"
+      },
+      {
+       "tema_id": 5503,
+       "titulo": "Juiz das Garantias"
+      },
+      {
+       "tema_id": 5500,
+       "titulo": "Procedimento do Inquérito Policial"
+      }
+     ],
+     "peso": 18,
+     "meta": 4
+    },
+    {
+     "tema_id": 5476,
+     "caminho": "Processo Penal > Ações Autônomas de Impugnação",
+     "nivel": 1,
+     "filhos": [
+      {
+       "tema_id": 5477,
+       "titulo": "Habeas Corpus"
+      },
+      {
+       "tema_id": 5479,
+       "titulo": "Mandado de Segurança"
+      },
+      {
+       "tema_id": 5478,
+       "titulo": "Revisão Criminal"
+      }
+     ],
+     "peso": 16,
+     "meta": 4
+    },
+    {
+     "tema_id": 5537,
+     "caminho": "Processo Penal > Procedimento Ordinário > Sentença",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 15,
+     "meta": 4
+    },
+    {
+     "tema_id": 4708,
+     "caminho": "Direito Penal - Legislação Especial > Tráfico de Drogas",
+     "nivel": 1,
+     "filhos": [],
+     "peso": 14,
+     "meta": 4
+    },
+    {
+     "tema_id": 5165,
+     "caminho": "Penal > Dos Crimes Contra o Patrimônio > Apropriação indébita",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 12,
+     "meta": 4
+    },
+    {
+     "tema_id": 5568,
+     "caminho": "Processo Penal > Recursos em Espécies > Correição Parcial",
+     "nivel": 2,
+     "filhos": [],
+     "peso": 11,
+     "meta": 4
+    }
+   ]
+  }
+ ]
+}
