@@ -56,7 +56,7 @@ A pasta `revisao-ui/` tem a tela em que o professor revisa as questões que o cl
 ```bash
 cd revisao-ui
 npm install
-npm run dados   # copia publicacao.csv, anexos/questoes.jsonl, anexos/temas.csv e os intermediários para public/dados/
+npm run dados   # copia publicacao.csv, anexos/questoes.jsonl, anexos/temas.csv, os intermediários e a âncora para public/dados/
 npm run dev     # abre em http://localhost:5173
 ```
 
@@ -68,6 +68,8 @@ O que a tela faz:
 - À direita aparecem o enunciado sem HTML e as alternativas. Abaixo deles vêm a sugestão com o caminho completo, o tema e a justificativa de cada modelo e os candidatos com caminho, origem e similaridade.
 - O professor confirma a sugestão, troca o tema ou marca a questão como fora. A observação é opcional. A troca oferece os candidatos da questão e uma busca, sem acento nem caixa, sobre todos os temas publicáveis. Raiz, tema inativo e duplicata sem descrição nunca aparecem.
 - O contador mostra quantas questões já foram revisadas. **Exportar CSV** baixa `decisoes_professor.csv` com as colunas `id,acao,tema_id,observacao`. As decisões ficam só na memória da aba, e a tela avisa antes de fechar a aba se há decisão ainda não exportada.
+
+No alto, a tela troca entre a **Fila de revisão** e o modo **Âncora**, em que o professor fecha o gabarito de referência das 40 questões de `data/ancora_para_rotular.csv`: para cada uma ele vê as propostas do Rotulador 1 e do Rotulador 2 (tema, confiança, justificativa e alternativas consideradas, com marca quando os dois concordam) e aceita uma delas, busca outro tema publicável ou marca fora da árvore (`tema_id` 0), com comentário opcional. As decisões ficam guardadas no navegador, e **Exportar ancora_manual.csv** baixa `id,tema_id,observacao` em UTF-8 com BOM, uma linha por questão decidida, avisando quando ainda há pendentes.
 
 Os testes rodam com `npm test`, e `npm run build` checa os tipos e gera `dist/`.
 

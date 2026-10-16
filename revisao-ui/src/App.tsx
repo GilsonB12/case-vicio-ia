@@ -1,8 +1,11 @@
-// Tela de revisão do professor: fila de questões "revisar", evidências do pipeline e exportação das decisões.
+// Tela de revisão do professor. Modo "Fila de revisão": questões "revisar", evidências do pipeline e exportação
+// das decisões. Modo "Âncora" (ModoAncora.tsx): gabarito de referência das 40 questões.
 import { Component, useEffect, useMemo, useState, type ReactNode } from "react";
 import "./App.css";
+import ModoAncora from "./ModoAncora";
 import { carregarTudo, filaRevisar, limparEnunciado, opcoesDeTroca, temasPublicaveis } from "./dados";
 import { baixar, montarCsvProfessor } from "./exportar";
+import { confianca, mensagemDe, resumo } from "./formato";
 import type { AcaoProfessor, Conjunto, Decisao, DecisaoProfessor, Tema, Voto } from "./tipos";
 
 type Estado =
@@ -30,27 +33,75 @@ const ROTULOS_ACAO: Record<AcaoProfessor, string> = {
   fora: "fora",
 };
 
-const formatoConfianca = new Intl.NumberFormat("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-
-function confianca(valor: number | null): string {
-  return valor === null ? "—" : formatoConfianca.format(valor);
-}
-
 function caminhoDe(temas: Map<number, Tema>, id: number | null): string {
   if (id === null) return "sem tema";
   return temas.get(id)?.caminho ?? `tema ${id} (não está na árvore)`;
 }
 
-function resumo(texto: string, limite: number): string {
-  const corrido = texto.replace(/\s+/g, " ").trim();
-  return corrido.length > limite ? `${corrido.slice(0, limite - 1).trimEnd()}…` : corrido;
+type Modo = "fila" | "ancora";
+
+const MODOS: { modo: Modo; rotulo: string }[] = [
+  { modo: "fila", rotulo: "Fila de revisão" },
+  { modo: "ancora", rotulo: "Âncora" },
+];
+
+function modoDoEndereco(): Modo {
+  try {
+    return window.location.hash === "#ancora" ? "ancora" : "fila";
+  } catch {
+    return "fila";
+  }
 }
 
-function mensagemDe(erro: unknown): string {
-  return erro instanceof Error ? erro.message : String(erro);
-}
-
+/**
+ * Os dois modos da tela. O modo Âncora só monta na primeira visita; depois, os dois ficam montados e o
+ * inativo só se esconde, para a troca de modo não apagar as decisões que a fila guarda em memória.
+ */
 export default function App() {
+  const [modo, setModo] = useState<Modo>(modoDoEndereco);
+  const [ancoraAberta, setAncoraAberta] = useState(modo === "ancora");
+
+  function trocar(novo: Modo) {
+    setModo(novo);
+    if (novo === "ancora") setAncoraAberta(true);
+    try {
+      const { pathname, search } = window.location;
+      window.history.replaceState(null, "", novo === "ancora" ? "#ancora" : `${pathname}${search}`);
+    } catch {
+      // sem history o modo só não sobrevive ao recarregar
+    }
+  }
+
+  return (
+    <div className="raiz">
+      <nav className="modos" aria-label="Modo da tela">
+        {MODOS.map(({ modo: opcao, rotulo }) => (
+          <button
+            key={opcao}
+            type="button"
+            className={`modo${opcao === modo ? " modo-ativo" : ""}`}
+            aria-pressed={opcao === modo}
+            onClick={() => trocar(opcao)}
+          >
+            {rotulo}
+          </button>
+        ))}
+      </nav>
+      <div className="modo-conteudo" hidden={modo !== "fila"}>
+        <FilaRevisao />
+      </div>
+      {ancoraAberta && (
+        <div className="modo-conteudo" hidden={modo !== "ancora"}>
+          <Protecao>
+            <ModoAncora />
+          </Protecao>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function FilaRevisao() {
   const [estado, setEstado] = useState<Estado>({ fase: "carregando" });
 
   useEffect(() => {

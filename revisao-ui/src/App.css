@@ -98,10 +98,54 @@ textarea {
 }
 
 /* Estrutura */
-.app {
+.raiz {
   height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.modo-conteudo,
+.app {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.modo-conteudo[hidden] {
+  display: none;
+}
+
+/* Troca de modo */
+.modos {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.4rem 1.25rem 0;
+  background: var(--fundo);
+  border-bottom: 1px solid var(--borda);
+}
+
+.modo {
+  border: 1px solid transparent;
+  border-bottom: 0;
+  border-radius: 6px 6px 0 0;
+  background: transparent;
+  color: var(--suave);
+  padding: 0.35rem 0.9rem;
+  margin-bottom: -1px;
+}
+
+.modo:hover:not(:disabled) {
+  border-color: transparent;
+  color: var(--texto);
+}
+
+.modo-ativo,
+.modo-ativo:hover:not(:disabled) {
+  background: var(--superficie);
+  border-color: var(--borda);
+  color: var(--texto);
+  font-weight: 600;
 }
 
 .topo {
@@ -152,6 +196,11 @@ textarea {
 
 .faixa-detalhe {
   color: var(--suave);
+}
+
+.faixa-perigo {
+  background: var(--perigo-fundo);
+  color: var(--perigo);
 }
 
 .corpo {
@@ -271,6 +320,18 @@ textarea {
 
 .selo-confirmar,
 .selo-trocar {
+  background: var(--ok-fundo);
+  border-color: transparent;
+  color: var(--ok);
+}
+
+.selo-decidida {
+  background: var(--ok-fundo);
+  border-color: transparent;
+  color: var(--ok);
+}
+
+.selo-concorda {
   background: var(--ok-fundo);
   border-color: transparent;
   color: var(--ok);
@@ -405,6 +466,62 @@ textarea {
   font-size: 0.95rem;
 }
 
+/* Âncora: cartões dos rotuladores */
+.voto-concorda {
+  border-color: var(--ok);
+  box-shadow: inset 3px 0 0 var(--ok);
+}
+
+.concordancia {
+  margin: 0 0 0.6rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.concordancia-sim {
+  background: var(--ok-fundo);
+  color: var(--ok);
+}
+
+.concordancia-nao {
+  background: var(--alerta-fundo);
+  color: var(--alerta);
+}
+
+.consideradas {
+  margin-top: 0.6rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--borda);
+}
+
+.consideradas .meta {
+  font-weight: 600;
+}
+
+.consideradas li {
+  margin: 0.2rem 0;
+  font-size: 0.92rem;
+}
+
+.consideradas-motivo {
+  color: var(--suave);
+}
+
+.consideradas-vazio {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.decidida .selo {
+  font-weight: 400;
+}
+
+.botoes button[aria-pressed="true"] {
+  box-shadow: 0 0 0 2px var(--ok-fundo), 0 0 0 3px var(--ok);
+}
+
 .candidatos {
   width: 100%;
   border-collapse: collapse;
@@ -496,9 +613,18 @@ textarea {
 
 /* Tela estreita: lista em cima, painel embaixo. */
 @media (max-width: 860px) {
-  .app {
+  .raiz {
     height: auto;
     min-height: 100vh;
+  }
+
+  .modo-conteudo,
+  .app {
+    flex: 1 0 auto;
+  }
+
+  .modos {
+    padding: 0.4rem 1rem 0;
   }
 
   .topo {
