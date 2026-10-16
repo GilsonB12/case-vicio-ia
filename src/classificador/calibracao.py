@@ -9,7 +9,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from classificador.ancora import carregar_ancora_manual
+from classificador.ancora import TEMA_FORA, carregar_ancora_manual
 from classificador.arvore import ArvoreTemas
 from classificador.candidatos import Candidato, candidatos_de_dict
 from classificador.config import CAMINHOS, SEMENTE
@@ -249,7 +249,10 @@ def comparar_ancora(avaliacao_questoes: pd.DataFrame, ancora: pd.DataFrame, arvo
     publicadas = avaliacao_questoes[(avaliacao_questoes["decisao"] == "publicar") & avaliacao_questoes["id"].isin(rotulos)]
     if publicadas.empty:
         return {"n_publicadas_na_ancora": 0, "acertos": 0, "precisao_observada": None, "precisao_prevista_para_elas": None}
-    acertos = sum(arvore.acerto(int(l.tema_decidido), rotulos[l.id]) for l in publicadas.itertuples())
+    # Âncora fora da árvore (nenhum tema serve): publicar qualquer tema é erro.
+    acertos = sum(
+        rotulos[l.id] != TEMA_FORA and arvore.acerto(int(l.tema_decidido), rotulos[l.id]) for l in publicadas.itertuples()
+    )
     return {
         "n_publicadas_na_ancora": int(len(publicadas)),
         "acertos": int(acertos),

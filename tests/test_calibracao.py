@@ -192,6 +192,20 @@ def test_comparar_ancora_e_ajustar_intervalo(arvore):
     assert cal.ajustar_intervalo(0.9, 0.95, None) == (0.9, 0.95)
 
 
+def test_comparar_ancora_com_tema_fora_da_arvore_conta_como_erro(arvore):
+    limiares = Limiares(publicar=0.6, pai=0.6)
+    questoes = questoes_sinteticas()
+    aval_q = cal.avaliar(cal.decidir_todas(questoes, arvore, limiares), questoes, arvore)
+    # Q0 publicada no próprio tema, Q1 no filho do tema da âncora (5527 é filho de 5524), Q2 com âncora fora da árvore.
+    ancora = pd.DataFrame({"id": ["Q0", "Q1", "Q2"], "tema_id": [5527, 5524, 0]})
+    corpus = corpus_sintetico()
+    tabela = cal.tabela_faixas(cal.avaliar(cal.decidir_todas(corpus, arvore, limiares), corpus, arvore))
+    resultado = cal.comparar_ancora(aval_q, ancora, arvore, tabela)
+    assert resultado["n_publicadas_na_ancora"] == 3
+    assert resultado["acertos"] == 2
+    assert resultado["precisao_observada"] == pytest.approx(2 / 3)
+
+
 def test_escrever_previsao_segue_o_formato(tmp_path):
     caminho = cal.escrever_previsao(tmp_path / "previsao.txt", 0.971, (0.95, 0.99), 0.6, (0.59, 0.61), "explicação")
     linhas = caminho.read_text(encoding="utf-8").splitlines()

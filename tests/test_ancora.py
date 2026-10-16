@@ -52,6 +52,23 @@ def test_carregar_ancora_manual_valida_temas(arvore, tmp_path):
         ancora.carregar_ancora_manual(arvore, caminho)
 
 
+def test_carregar_ancora_manual_aceita_tema_zero_como_fora_da_arvore(arvore, tmp_path):
+    caminho = tmp_path / "ancora_manual.csv"
+    caminho.write_text('id,tema_id,observacao\nQ0001,5527,""\nQ0282,0,"nenhum tema serve"\n', encoding="utf-8-sig")
+    df = ancora.carregar_ancora_manual(arvore, caminho)
+    assert list(df["id"]) == ["Q0001", "Q0282"]
+    assert list(df["tema_id"]) == [5527, ancora.TEMA_FORA]
+    assert ancora.TEMA_FORA == 0
+
+
+@pytest.mark.parametrize("tema", [4365, 99999])
+def test_carregar_ancora_manual_rejeita_raiz_e_tema_inexistente(arvore, tmp_path, tema):
+    caminho = tmp_path / "ancora_manual.csv"
+    pd.DataFrame({"id": ["Q0001", "Q0002"], "tema_id": [0, tema]}).to_csv(caminho, index=False)
+    with pytest.raises(ValueError, match=rf"não publicável.*\[{tema}\]"):
+        ancora.carregar_ancora_manual(arvore, caminho)
+
+
 def planilha_vazia(ids):
     return pd.DataFrame([{coluna: "" for coluna in ancora.COLUNAS} | {"id": i} for i in ids])
 

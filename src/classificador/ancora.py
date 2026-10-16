@@ -16,6 +16,8 @@ registro = logging.getLogger(__name__)
 N_ANCORA = 40
 COLUNAS = ["id", "disciplina_origem", "texto", "candidatos", "tema_id_gilson", "observacao"]
 COLUNAS_ROTULO = ["tema_id_gilson", "observacao"]
+# A tela de revisão grava tema_id 0 quando o professor decide que nenhum tema da árvore serve.
+TEMA_FORA = 0
 
 
 def ler_csv_planilha(caminho: Path, **opcoes) -> pd.DataFrame:
@@ -95,6 +97,11 @@ def rodar_ancora(
 
 
 def carregar_ancora_manual(arvore: ArvoreTemas, caminho: Path = CAMINHOS.ancora_manual) -> pd.DataFrame:
+    """Lê o gabarito da âncora exportado pela tela de revisão (id, tema_id, observacao).
+
+    tema_id 0 (TEMA_FORA) vem da tela e significa "nenhum tema serve": a questão fica fora da árvore e a linha
+    é mantida. Qualquer outro valor precisa ser um tema publicável.
+    """
     df = ler_csv_planilha(caminho, dtype={"id": str})
     if "tema_id" not in df.columns:
         raise ValueError(f"âncora em {caminho} sem a coluna tema_id; colunas encontradas: {list(df.columns)}")
@@ -102,7 +109,7 @@ def carregar_ancora_manual(arvore: ArvoreTemas, caminho: Path = CAMINHOS.ancora_
     if em_branco.any():
         raise ValueError(f"âncora em {caminho} com tema_id em branco nas questões: {list(df.loc[em_branco, 'id'])}")
     df["tema_id"] = df["tema_id"].astype(int)
-    invalidos = [int(t) for t in df["tema_id"] if not arvore.publicavel(int(t))]
+    invalidos = [int(t) for t in df["tema_id"] if int(t) != TEMA_FORA and not arvore.publicavel(int(t))]
     if invalidos:
         raise ValueError(f"âncora com tema(s) não publicável(is): {invalidos}")
     return df[["id", "tema_id"]].reset_index(drop=True)
