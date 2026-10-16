@@ -68,3 +68,25 @@ Task 1: minor (deferred): nomes de coleção Weaviate colidem com o pipeline em 
 Task 2: minor (deferred): observação sem decisão fica fora do CSV exportado apesar do placeholder; desfazer rearma o aviso de fechar aba; CSV exportado sem BOM para Excel; copiar-dados não apaga cópia antiga; status comparado com caixa; EX05 motivo não segue o template; DOMParser a cada tecla.
 
 - Nomes de coleção no Weaviate são compartilhados entre a API e o pipeline em lote (`Tema`, `CorpusQuestao`); não rodar os dois ao mesmo tempo contra o mesmo Weaviate, ou prefixar as coleções da API.
+
+## Execução real (16/10/2026)
+
+### Números
+
+- Corpus consolidado: 362 coletadas, 332 mantidas em 101 temas (10 curtas, 13 duplicatas de texto, 7 iguais a questões do case); fonte alta em 278, média em 54.
+- Votos: 359 + 332 questões, dois modelos cada, sem nenhuma falha de provedor; 80 minutos; concordância exata entre os modelos em 70% das 359 e 78% do corpus.
+- Primeira decisão: 104 publicadas (29%), 239 revisar, 16 fora; precisão prevista 0,97 [0,94; 1,00]; âncora 9 de 9 publicadas certas.
+- Depois do reparo de candidatos e da regra 6 corrigida: 117 publicadas (33%), 241 revisar, 1 fora (a Q0142, de Direito Tributário); precisão prevista 0,97 [0,94; 1,00]; âncora 11 de 11 publicadas certas.
+- Custo aproximado da execução: US$ 6,3 no provedor principal e US$ 0,8 no secundário, incluindo embeddings e o reparo (122 chamadas a mais). `classificar tudo` reproduz `publicacao.csv` e `previsao.txt` idênticos a partir do cache, sem nenhuma chamada, em 25 segundos.
+
+### Decisões tomadas depois de ver os dados
+
+- Limiar de publicação 0,85 mantido pela escada de seleção: no corpus, acordos com confiança mínima entre 0,80 e 0,85 acertam 90%; de 0,85 para cima, 98%. Baixar o limiar para 0,80 daria 39% de cobertura com precisão prevista 0,95 e limite inferior 0,92, abaixo da régua.
+- Reparo de candidatos (`classificar reparar`): a busca por similaridade deixou o tema certo fora da lista em 7 das 39 questões da âncora com tema, e 15 das 16 decisões `fora` eram questões dentro da árvore cujo tema não tinha sido oferecido. A justificativa do voto nulo vira consulta ao índice; os dois modelos revotam sobre a lista ampliada. Nas 359, 49 questões revotadas e 57 votos nulos resolvidos; no corpus, 12 e 15.
+- Regra 6: os dois modelos sem tema numa questão das quatro disciplinas vira `revisar` com sugestão (o tema mais próximo do assunto descrito), não `fora`. `fora` fica só para a regra 1.
+- Âncora: 34 das 40 com rótulo idêntico pelos dois rotuladores; nas 6 restantes a arbitragem está em `docs/projeto/ancora.md`. Nas 40, as sugestões em `revisar` pela regra 5 acertaram 16 de 17; pela regra 4 (modelos em ramos diferentes), 0 de 6: divergência de ramo é sinal de questão difícil de verdade.
+
+### Para o relatório
+
+- Cobertura de 33% é o preço da régua com os modelos escolhidos: a autodeclaração de confiança dos modelos é comprimida e o segundo modelo é conservador, o que empurra 161 acordos para `revisar` pela regra 5.
+- A busca de candidatos é o ponto fraco mais barato de melhorar: busca híbrida por número de lei e por título, ou lista maior, antes de qualquer troca de modelo.

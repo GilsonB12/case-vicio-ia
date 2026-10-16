@@ -1,0 +1,360 @@
+id,decisao,tema_central_id,extras_ids,confianca,motivo
+Q0001,publicar,5524,5527,0.60,
+Q0002,revisar,4377,4379;4385,0.62,confiança 0.62 abaixo do limiar 0.85
+Q0003,revisar,5562,5534,0.55,confiança 0.55 abaixo do limiar 0.85
+Q0004,revisar,5480,,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0005,revisar,5199,5208;4703,0.45,modelos divergem: Processo Penal > Sentença Penal > Fixação da Pena e do Regime Penitenciário vs Penal > Teoria da Pena
+Q0006,publicar,5157,5160;5175,0.60,
+Q0007,revisar,5466,5471;5063;5470,0.50,confiança 0.50 abaixo do limiar 0.85
+Q0008,revisar,5199,5087;4703,0.40,modelos divergem: Direito Penal - Legislação Especial > Lei de Execução Penal vs Penal > Teoria da Pena
+Q0009,revisar,5159,5157,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0010,publicar,4688,,0.90,
+Q0011,revisar,4702,5480,0.70,confiança 0.70 abaixo do limiar 0.85
+Q0012,revisar,5569,5561;5562,0.75,confiança 0.75 abaixo do limiar 0.85
+Q0013,publicar,5503,5498,0.90,
+Q0014,revisar,5477,4709;5584,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0015,publicar,5498,5500;5499;5501;5505,0.70,
+Q0016,revisar,5584,5585;5517,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0017,revisar,5533,5531;5530,0.70,um modelo não achou candidato; sugestão do outro
+Q0018,publicar,5540,5480;5539,0.85,
+Q0019,publicar,5475,5498;5572;5490,0.85,
+Q0020,revisar,5108,5199;5116,,nenhum modelo achou tema que cubra a questão; assunto descrito: A questão aborda múltiplos temas distintos da jurisprudência do STJ (crimes contra a dignidade sexual - art. 241-A/241-B do ECA; teoria da pena/dosimetria; crime de falsa identidade/art. 307 CP; causas de aumento no furto; medidas despenalizadoras como suspensão condicional e transação penal). Não cabe classificá‑la em um único subtema listado sem perder precisão.
+Q0021,revisar,5503,,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0022,revisar,5089,5087,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0023,revisar,5524,5527;5528,0.75,confiança 0.75 abaixo do limiar 0.85
+Q0024,revisar,4385,4388;4387,0.50,irmãos Teorias Criminológicas em Espécie e Teorias Sociológicas Explicativas da Criminalidade abaixo do limiar do pai 0.60
+Q0025,publicar,5101,5093,0.85,
+Q0026,publicar,4704,5131,0.90,
+Q0027,revisar,5487,5488;5489,0.50,irmãos Comunicação dos Atos Processuais e Citação e Contagem dos Prazos abaixo do limiar do pai 0.60
+Q0028,revisar,5531,5488;5527,0.60,"modelos divergem: Processo Penal > Procedimento Ordinário > 2 Oferecimento, Rejeição e Recebimento da Peça Acusatória vs Processo Penal > Procedimento do Tribunal do Júri"
+Q0029,publicar,4684,5587;5518,0.90,
+Q0030,revisar,5128,,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0031,revisar,4388,4387,0.50,confiança 0.50 abaixo do limiar 0.85
+Q0032,revisar,5497,5498,0.70,confiança 0.70 abaixo do limiar 0.85
+Q0033,publicar,5519,5585,0.90,
+Q0034,revisar,5477,5495;5498;5479,0.70,confiança 0.70 abaixo do limiar 0.85
+Q0035,publicar,4706,4705,0.90,
+Q0036,revisar,5466,5063,0.50,confiança 0.50 abaixo do limiar 0.85
+Q0037,revisar,5119,5132;5081;5118;5128;5116,,"nenhum modelo achou tema que cubra a questão; assunto descrito: A questão aborda simultaneamente crimes distintos: redução à condição análoga à de escravo (art.149), falso testemunho/falsa perícia e falsificação de documento particular, pertencentes a ramos diferentes do Direito Penal; não há um único subtema que cubra todos. O correto seria classificá‑la como múltipla/tema misto envolvendo esses crimes."
+Q0038,revisar,5583,5512;5498;5562,0.72,modelos divergem: Processo Penal > Recursos em Espécies > Apelação vs Processo Penal > Sujeitos do Processo
+Q0039,revisar,4687,,0.50,confiança 0.50 abaixo do limiar 0.85
+Q0040,revisar,5562,5524;5515,0.62,confiança 0.62 abaixo do limiar 0.85
+Q0041,publicar,5184,5199,0.90,
+Q0042,publicar,5222,5218,0.90,
+Q0043,revisar,5576,5203;5204;5202;5201,0.85,modelos divergem: Processo Penal > Sentença Penal > Fixação da Pena e do Regime Penitenciário vs Penal > Teoria da Pena
+Q0044,revisar,5488,5487;5548,0.50,modelos divergem: Processo Penal > Provas em Espécies > Confissão vs Processo Penal > Comunicação dos Atos Processuais > Citação e Contagem dos Prazos
+Q0045,revisar,5091,5089;5095,0.70,confiança 0.70 abaixo do limiar 0.85
+Q0046,revisar,5509,5510;5511,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0047,revisar,5164,5066,0.85,modelos divergem: Processo Penal > Ação Penal vs Penal > Dos Crimes Contra o Patrimônio > Dano
+Q0048,revisar,5193,4703,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0049,publicar,5149,,0.85,
+Q0050,revisar,4708,4705,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0051,publicar,5182,4690,0.90,
+Q0052,publicar,4703,5584,0.90,
+Q0053,revisar,5539,,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0054,publicar,5174,,0.90,
+Q0055,revisar,5550,5535,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0056,publicar,5066,5199,0.85,
+Q0057,publicar,5176,5175,0.90,
+Q0058,revisar,4377,4378;4385,0.50,confiança 0.50 abaixo do limiar 0.85
+Q0059,revisar,4385,4388;4370,0.70,modelos divergem: Criminologia > Teorias Sociológicas Explicativas da Criminalidade vs Criminologia > Teorias Legitimidoras da Pena
+Q0060,publicar,5087,5096;5093;5091;5097;5101,0.60,
+Q0061,publicar,4703,,0.90,
+Q0062,publicar,5182,5483,0.90,
+Q0063,revisar,5522,,0.20,confiança 0.20 abaixo do limiar 0.85
+Q0064,revisar,5185,4695;5165,0.70,modelos divergem: Penal > Prescrição vs Direito Penal - Legislação Especial > Crimes Tributários
+Q0065,revisar,5161,5132;5177,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0066,publicar,4373,4371,0.85,
+Q0067,publicar,5091,5087,0.90,
+Q0068,publicar,5087,5096,0.60,
+Q0069,publicar,5173,,0.85,
+Q0070,revisar,4703,5517;5199,0.45,confiança 0.45 abaixo do limiar 0.85
+Q0071,publicar,4688,,0.90,
+Q0072,revisar,5498,,0.40,confiança 0.40 abaixo do limiar 0.85
+Q0073,revisar,5087,5093;5091,0.70,confiança 0.70 abaixo do limiar 0.85
+Q0074,revisar,5180,5191;4703,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0075,publicar,5191,,0.88,
+Q0076,publicar,4373,4371,0.85,
+Q0077,revisar,5218,5194;5181;5182,0.60,modelos divergem: Penal > Teoria do Crime: Fato Típico vs Penal > Lei Penal no Tempo e no Espaço
+Q0078,publicar,4697,4691,0.85,
+Q0079,revisar,5580,5581;5582,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0080,publicar,4370,4368,0.85,
+Q0081,revisar,4373,4371,0.70,confiança 0.70 abaixo do limiar 0.85
+Q0082,publicar,5100,5087,0.90,
+Q0083,revisar,5150,5175,0.45,confiança 0.45 abaixo do limiar 0.85
+Q0084,revisar,4704,,0.75,confiança 0.75 abaixo do limiar 0.85
+Q0085,revisar,5091,5076,0.85,"modelos divergem: Penal > Dos Crimes Contra a Administração Pública > Concussão e Excesso de Exação vs Penal > Concurso de Pessoas > Comunicabilidade de Circunstâncias, Condições e Elementares"
+Q0086,publicar,5092,5087;5091;5094,0.90,
+Q0087,revisar,5521,4703,0.85,modelos divergem: Processo Penal > Prisões em Espécie > Prisão Domiciliar vs Direito Penal - Legislação Especial > Lei de Execução Penal
+Q0088,revisar,4389,4366;4383;4380,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0089,revisar,5159,,,"nenhum modelo achou tema que cubra a questão; assunto descrito: A questão trata do princípio da insignificância (princípio da intervenção mínima/teoria do crime), tema de teoria geral do crime/princípios do Direito Penal, que não consta entre os candidatos listados; portanto devolvo nulo e indico que o assunto seria 'Princípios do Direito Penal / Princípio da Insignificância'. "
+Q0090,revisar,5530,5539;5531;5466;5524,0.40,confiança 0.40 abaixo do limiar 0.85
+Q0091,revisar,5201,5576;4703,0.50,modelos divergem: Direito Penal - Legislação Especial > Lei de Execução Penal vs Penal > Teoria da Pena > Penas Privativas de Liberdade
+Q0092,publicar,5509,5510;5511,0.60,
+Q0093,revisar,5142,5149,0.40,confiança 0.40 abaixo do limiar 0.85
+Q0094,revisar,4388,4377;4385,0.50,confiança 0.50 abaixo do limiar 0.85
+Q0095,publicar,5191,5196;5466,0.72,
+Q0096,revisar,5480,5483;5486,0.50,"irmãos Comeptência Territorial e Prorrogação, Perpetuação e Modificação de Competência abaixo do limiar do pai 0.60"
+Q0097,revisar,4708,4705;5543,0.40,confiança 0.40 abaixo do limiar 0.85
+Q0098,publicar,5548,,0.90,
+Q0099,revisar,5087,5228,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0100,revisar,5102,5224,0.60,modelos divergem: Penal > Teoria do Crime: Fato Típico > Erro de Tipo vs Penal > Dos Crimes Contra a Dignidade Sexual
+Q0101,publicar,4704,,0.90,
+Q0102,revisar,5577,5209;5475;5572,0.50,confiança 0.50 abaixo do limiar 0.85
+Q0103,publicar,5476,,0.85,
+Q0104,revisar,5498,5480,0.65,confiança 0.65 abaixo do limiar 0.85
+Q0105,revisar,4388,4378,0.50,confiança 0.50 abaixo do limiar 0.85
+Q0106,publicar,5166,5157,0.85,
+Q0107,revisar,5116,4699,0.70,confiança 0.70 abaixo do limiar 0.85
+Q0108,revisar,5561,5560;5512;5515,0.72,confiança 0.72 abaixo do limiar 0.85
+Q0109,revisar,4708,,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0110,revisar,5480,5484;5482;5481,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0111,publicar,4373,4371,0.88,
+Q0112,publicar,4705,,0.85,
+Q0113,revisar,5185,5087,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0114,revisar,5505,5466;5498,0.50,confiança 0.50 abaixo do limiar 0.85
+Q0115,revisar,4385,4387;4388,0.50,irmãos Teorias de Nível Sociológico e Teorias Sociológicas Explicativas da Criminalidade abaixo do limiar do pai 0.60
+Q0116,publicar,4708,,0.85,
+Q0117,revisar,5200,5199;4384,0.50,confiança 0.50 abaixo do limiar 0.85
+Q0118,revisar,5505,5519;5523,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0119,publicar,5180,,0.90,
+Q0120,revisar,5543,5547,0.40,confiança 0.40 abaixo do limiar 0.85
+Q0121,revisar,5466,5472;5469;5196;5065,0.35,irmãos Ação Penal de Iniciativa Privada e Princípios da Ação Penal abaixo do limiar do pai 0.60
+Q0122,publicar,4703,,0.85,
+Q0123,revisar,4385,5584;4690,0.60,modelos divergem: Criminologia > Teorias Sociológicas Explicativas da Criminalidade vs Criminologia > Processos de Criminalização e Cifras Criminais
+Q0124,revisar,4384,,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0125,revisar,5505,5572;4708,0.85,modelos divergem: Processo Penal > Lei Processual no Tempo e no Espaço vs Direito Penal - Legislação Especial > Lei de Execução Penal
+Q0126,revisar,5213,5211;5226;5076,0.85,um modelo não achou candidato; sugestão do outro
+Q0127,revisar,5572,4708,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0128,revisar,5213,5184,0.80,modelos divergem: Penal > Teoria do Crime: Culpabilidade > Inimputabilidade vs Penal > Medida de Segurança
+Q0129,publicar,5550,5535,0.85,
+Q0130,revisar,5160,5205,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0131,publicar,5071,5218,0.85,
+Q0132,revisar,5490,5498,0.60,modelos divergem: Processo Penal > Das Questões e Processos Incidentes vs Processo Penal > Provas em Espécies
+Q0133,revisar,5524,5480,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0134,publicar,5092,5093;5087;5091,0.90,
+Q0135,publicar,5169,5157,0.90,
+Q0136,revisar,4704,5111,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0137,publicar,5498,,0.85,
+Q0138,publicar,5199,5205;5207,0.70,
+Q0139,publicar,5211,5217;4385,0.60,
+Q0140,revisar,5157,5159;5160,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0141,revisar,4385,4387;4388,0.45,irmãos Teorias de Nível Sociológico e Teorias Criminológicas em Espécie abaixo do limiar do pai 0.60
+Q0142,fora,,,,"fora das quatro disciplinas: A questão trata de isenções do ITCD (imposto sobre transmissão causa mortis e doação), matéria de Direito Tributário/Legislação estadual, não de Direito Penal ou Processo Penal."
+Q0143,revisar,5507,5505,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0144,publicar,5560,5561;5562,0.88,
+Q0145,revisar,4702,4695,0.40,confiança 0.40 abaixo do limiar 0.85
+Q0146,publicar,5594,5543,0.90,
+Q0147,revisar,5498,5556;5502;4705,0.72,modelos divergem: Processo Penal > Provas em Espécies vs Processo Penal > Inquérito Policial
+Q0148,publicar,5203,5576;5202,0.85,
+Q0149,revisar,5498,5554;5545;5500,0.72,confiança 0.72 abaixo do limiar 0.85
+Q0150,revisar,4708,,0.70,confiança 0.70 abaixo do limiar 0.85
+Q0151,revisar,5517,5521;5522;5519;5518;5585,0.50,confiança 0.50 abaixo do limiar 0.85
+Q0152,revisar,5472,5474;5466,0.50,confiança 0.50 abaixo do limiar 0.85
+Q0153,publicar,5222,,0.90,
+Q0154,revisar,5131,,,"nenhum modelo achou tema que cubra a questão; assunto descrito: Nenhum dos candidatos listados corresponde especificamente à Lei n.º 9.029/95 (práticas discriminatórias relativas à gravidez no trabalho). A questão trata de crime previsto nessa lei — a exigência, por empregador, de teste relativo à esterilização ou ao estado de gravidez — tema de legislação especial sobre discriminação no trabalho / Direito do Trabalho."
+Q0155,publicar,4703,4705,0.85,
+Q0156,revisar,4688,5207;5199,0.75,confiança 0.75 abaixo do limiar 0.85
+Q0157,revisar,5520,5584,0.70,confiança 0.70 abaixo do limiar 0.85
+Q0158,revisar,5209,5577,0.40,confiança 0.40 abaixo do limiar 0.85
+Q0159,revisar,5157,5177;5150,0.50,modelos divergem: Penal > Dos Crimes Contra a Vida > Homicídio vs Penal > Dos Crimes Contra o Patrimônio
+Q0160,publicar,5205,5199,0.88,
+Q0161,revisar,5518,5587,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0162,revisar,4368,4370;4369,0.55,irmãos Modelos de Reação ao Delito e Criminologia no Estado Democrático de Direito abaixo do limiar do pai 0.60
+Q0163,revisar,5133,4703,0.45,confiança 0.45 abaixo do limiar 0.85
+Q0164,publicar,4703,5210,0.90,
+Q0165,publicar,4705,5498,0.90,
+Q0166,revisar,5521,4703;5208;5201,0.70,modelos divergem: Processo Penal > Prisões em Espécie > Prisão Domiciliar vs Direito Penal - Legislação Especial > Lei de Execução Penal
+Q0167,publicar,5524,5480,0.88,
+Q0168,revisar,5087,,,"um modelo diz fora das disciplinas, outro diz que nenhum candidato serve"
+Q0169,revisar,5492,,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0170,publicar,5199,5210;5185;5205,0.60,
+Q0171,revisar,5185,5189;5199,0.70,modelos divergem: Penal > Prescrição vs Direito Penal - Legislação Especial > Crimes Hediondos
+Q0172,revisar,5466,5473;5480;5572,0.60,modelos divergem: Processo Penal > Ação Penal vs Processo Penal > Competência
+Q0173,revisar,4703,5201,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0174,revisar,5102,5107;5157,0.55,modelos divergem: Penal > Dos Crimes Contra a Dignidade Sexual vs Penal > Dos Crimes Contra a Liberdade Pessoal
+Q0175,publicar,5087,5091;5092;5093,0.60,
+Q0176,publicar,5079,5550,0.85,
+Q0177,revisar,5547,5548;5535,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0178,publicar,4697,,0.85,
+Q0179,publicar,4369,4370,0.90,
+Q0180,revisar,5543,5498,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0181,publicar,4695,,0.88,
+Q0182,revisar,5149,5154;5139;5125;5138,0.40,um modelo não achou candidato; sugestão do outro
+Q0183,revisar,5561,5560,0.40,confiança 0.40 abaixo do limiar 0.85
+Q0184,revisar,5518,5517,0.60,modelos divergem: Processo Penal > Prisões em Espécie > Prisão em Flagrante vs Direito Penal - Legislação Especial > Tráfico de Drogas
+Q0185,revisar,4703,5560;5566,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0186,publicar,5202,5199;5203,0.88,
+Q0187,revisar,5209,5087;5577,0.72,confiança 0.72 abaixo do limiar 0.85
+Q0188,revisar,5228,,0.62,modelos divergem: Penal > Teoria do Crime: Culpabilidade vs Penal > Teoria do Crime: Ilicitude
+Q0189,publicar,5466,,0.90,
+Q0190,revisar,4701,5539;5540,0.50,confiança 0.50 abaixo do limiar 0.85
+Q0191,revisar,5560,5561;5562;5567,0.30,confiança 0.30 abaixo do limiar 0.85
+Q0192,revisar,5087,5209;5091;5089,0.65,confiança 0.65 abaixo do limiar 0.85
+Q0193,revisar,5557,4705,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0194,revisar,5089,,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0195,revisar,4373,4384;4371;4385,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0196,revisar,4388,4387,0.50,confiança 0.50 abaixo do limiar 0.85
+Q0197,revisar,5498,5480,0.72,modelos divergem: Processo Penal > Competência vs Processo Penal > Inquérito Policial
+Q0198,revisar,5073,4705;5072;5071,0.50,confiança 0.50 abaixo do limiar 0.85
+Q0199,revisar,5218,5221;5230;5222,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0200,publicar,4705,,0.90,
+Q0201,publicar,5103,5102;5466,0.90,
+Q0202,publicar,5102,5108;5071,0.80,
+Q0203,revisar,4702,5496,0.72,confiança 0.72 abaixo do limiar 0.85
+Q0204,revisar,5507,5505,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0205,revisar,5512,5562;5567;5515,0.60,modelos divergem: Processo Penal > Recursos em Espécies vs Processo Penal > Parte Geral dos Recursos
+Q0206,revisar,5466,5560,0.45,confiança 0.45 abaixo do limiar 0.85
+Q0207,publicar,4703,,0.85,
+Q0208,publicar,5071,5149,0.85,
+Q0209,revisar,5500,5498,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0210,publicar,4697,4693,0.90,
+Q0211,revisar,5535,5530,0.50,confiança 0.50 abaixo do limiar 0.85
+Q0212,revisar,5488,5487,0.62,confiança 0.62 abaixo do limiar 0.85
+Q0213,revisar,4708,5487;5531;5530,0.50,confiança 0.50 abaixo do limiar 0.85
+Q0214,publicar,5494,5490,0.90,
+Q0215,revisar,5576,4703,0.85,modelos divergem: Processo Penal > Sentença Penal > Fixação da Pena e do Regime Penitenciário vs Penal > Teoria da Pena > Penas Privativas de Liberdade
+Q0216,revisar,5539,5466,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0217,revisar,4384,5199,0.80,modelos divergem: Criminologia > Teorias Legitimidoras da Pena vs Criminologia > Etapas Evolutivas e Escolas Criminológicas
+Q0218,revisar,5517,5584,0.60,modelos divergem: Processo Penal > Prisões em Espécie vs Processo Penal > Teoria Geral das Prisões
+Q0219,revisar,5071,5223,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0220,publicar,5501,5498,0.90,
+Q0221,revisar,5199,5201;5205,0.70,confiança 0.70 abaixo do limiar 0.85
+Q0222,revisar,4370,4368,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0223,revisar,4703,5084,0.90,modelos divergem: Direito Penal - Legislação Especial > Lei de Execução Penal vs Penal > Dos Crimes Contra a Administração Pública
+Q0224,revisar,5199,5207;5576,0.40,irmãos Suspensão Condicional da Pena e Teoria da Pena abaixo do limiar do pai 0.60
+Q0225,revisar,5480,5560;5571,0.50,modelos divergem: Processo Penal > Recursos em Espécies > Recurso Especial vs Processo Penal > Competência
+Q0226,publicar,5544,5543,0.93,
+Q0227,revisar,5103,5067;5149;5104;5110,0.65,confiança 0.65 abaixo do limiar 0.85
+Q0228,revisar,4703,5208;5566,0.50,confiança 0.50 abaixo do limiar 0.85
+Q0229,revisar,5584,5519;5520;5521;5587,0.55,modelos divergem: Processo Penal > Prisões em Espécie vs Processo Penal > Teoria Geral das Prisões
+Q0230,revisar,5211,5217;5071;5199;5213;5191,0.55,um modelo não achou candidato; sugestão do outro
+Q0231,publicar,5224,5218,0.90,
+Q0232,revisar,5079,5080;5082;5081;5084,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0233,publicar,5178,5175;5177,0.90,
+Q0234,revisar,4380,4382,0.50,confiança 0.50 abaixo do limiar 0.85
+Q0235,revisar,5561,5560;5515,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0236,revisar,5490,5495;5543,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0237,publicar,5178,5175,0.90,
+Q0238,revisar,5523,5517,0.72,confiança 0.72 abaixo do limiar 0.85
+Q0239,revisar,5199,5175;5224,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0240,revisar,5466,5498;5517,0.80,modelos divergem: Processo Penal > Ação Penal vs Processo Penal > Inquérito Policial
+Q0241,publicar,5224,5218,0.85,
+Q0242,revisar,5512,5560;5570;5571;5513,0.60,modelos divergem: Processo Penal > Recursos em Espécies vs Processo Penal > Parte Geral dos Recursos
+Q0243,revisar,5178,,0.70,confiança 0.70 abaixo do limiar 0.85
+Q0244,revisar,5091,5092,0.50,confiança 0.50 abaixo do limiar 0.85
+Q0245,revisar,5185,5189,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0246,publicar,5527,5524,0.85,
+Q0247,revisar,5466,5505;5548,0.60,modelos divergem: Processo Penal > Ação Penal vs Processo Penal > Lei Processual no Tempo e no Espaço
+Q0248,revisar,5087,5093;5092;5100;5091,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0249,revisar,5492,5480;5490,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0250,revisar,5201,4703;5202;5576,0.50,modelos divergem: Processo Penal > Sentença Penal > Fixação da Pena e do Regime Penitenciário vs Penal > Teoria da Pena > Penas Privativas de Liberdade
+Q0251,revisar,5191,5193;5185,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0252,revisar,5208,4703;5199,0.40,confiança 0.40 abaixo do limiar 0.85
+Q0253,publicar,4373,4371,0.85,
+Q0254,revisar,4704,,0.45,confiança 0.45 abaixo do limiar 0.85
+Q0255,publicar,5213,5217,0.85,
+Q0256,revisar,5224,5214;5228,0.55,confiança 0.55 abaixo do limiar 0.85
+Q0257,revisar,5218,5227;5219;5220,0.45,"irmãos Tipicidade e Conceito, Sujeito e Objeto do Crime abaixo do limiar do pai 0.60"
+Q0258,publicar,5545,5543;5498,0.90,
+Q0259,revisar,5066,5164;5159,0.90,modelos divergem: Penal > Concurso de Crimes vs Penal > Lei Penal no Tempo e no Espaço > Conflito Aparente de Normas
+Q0260,revisar,4370,4371;4368,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0261,revisar,5136,5466;5063,0.40,confiança 0.40 abaixo do limiar 0.85
+Q0262,revisar,4703,5184;5497,0.50,confiança 0.50 abaixo do limiar 0.85
+Q0263,publicar,5492,5490,0.90,
+Q0264,revisar,5103,5108;5109,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0265,revisar,5185,5066,0.72,confiança 0.72 abaixo do limiar 0.85
+Q0266,revisar,5480,5481,0.55,irmãos Competência e Espécies e Fixação de Competência Criminal abaixo do limiar do pai 0.60
+Q0267,revisar,4708,5498,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0268,revisar,5116,5118,0.45,confiança 0.45 abaixo do limiar 0.85
+Q0269,revisar,4368,5199;4384,0.40,modelos divergem: Criminologia > Teorias Legitimidoras da Pena vs Criminologia > Criminologia no Estado Democrático de Direito
+Q0270,publicar,5091,5092,0.85,
+Q0271,revisar,5524,5562,0.90,modelos divergem: Processo Penal > Procedimento do Tribunal do Júri vs Processo Penal > Parte Geral dos Recursos
+Q0272,revisar,4703,5185,0.70,confiança 0.70 abaixo do limiar 0.85
+Q0273,revisar,5089,5222;5087,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0274,revisar,5177,5160,0.80,modelos divergem: Penal > Iter Criminis > Crime Consumado e Tentado vs Penal > Dos Crimes Contra o Patrimônio > Roubo
+Q0275,revisar,5539,5540;4701;5487,0.50,irmãos Competência dos Juizados Especiais Criminais e Procedimento Sumaríssimo abaixo do limiar do pai 0.60
+Q0276,revisar,5543,5547;5548;5545;5550,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0277,publicar,4696,,0.90,
+Q0278,revisar,5539,,0.80,modelos divergem: Processo Penal > Ação Penal vs Processo Penal > Procedimento Sumaríssimo
+Q0279,revisar,5178,5159,0.70,"modelos divergem: Penal > Iter Criminis > Desistência Voluntária, Arrependimento Eficaz e Arrependimento posterior vs Penal > Prescrição"
+Q0280,revisar,5123,5466;5063;5498,0.55,modelos divergem: Penal > Dos Crimes Contra a Honra > Difamação vs Processo Penal > Ação Penal
+Q0281,revisar,5555,4700;5133;5498,0.80,modelos divergem: Processo Penal > Provas em Espécies > Interceptação Telefônica e Quebra do Sigilo de Dados Telefônicos vs Direito Penal - Legislação Especial > Interceptação Telefônica
+Q0282,revisar,4704,4697;4690,0.40,confiança 0.40 abaixo do limiar 0.85
+Q0283,revisar,5490,5495,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0284,revisar,5231,5228,0.62,confiança 0.62 abaixo do limiar 0.85
+Q0285,publicar,4376,,0.90,
+Q0286,publicar,5199,5204;5203;5202;5066,0.80,
+Q0287,revisar,5228,5230;5231;5232;5233,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0288,revisar,5066,5103;5191;5087,,"nenhum modelo achou tema que cubra a questão; assunto descrito: A questão aborda vários temas distintos (delitos sexuais/estupro de vulnerável; crime contra a ordem tributária; causas atenuantes em crimes ambientais; concurso de crimes; crime de responsabilidade), não se concentrando em um único subtema específico. Não é adequado classificá‑la em apenas um dos candidatos listados."
+Q0289,publicar,4704,5522;5577,0.85,
+Q0290,revisar,5539,5466;5487,0.50,confiança 0.50 abaixo do limiar 0.85
+Q0291,revisar,5501,4708,0.85,modelos divergem: Processo Penal > Inquérito Policial > Conclusão e Arquivamento do Inquérito Policial vs Direito Penal - Legislação Especial > Tráfico de Drogas
+Q0292,revisar,4368,4377;4370,0.50,confiança 0.50 abaixo do limiar 0.85
+Q0293,publicar,5185,5189;5188,0.60,
+Q0294,revisar,5211,5224;5233,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0295,revisar,5489,5487,0.72,confiança 0.72 abaixo do limiar 0.85
+Q0296,revisar,5466,5474,0.50,irmãos Queixa Crime e Ação Penal abaixo do limiar do pai 0.60
+Q0297,revisar,4695,4689,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0298,revisar,4694,5222,0.85,modelos divergem: Direito Penal - Legislação Especial > Crimes previstos no CDC vs Direito Penal - Legislação Especial > Crimes contra a Economia Popular
+Q0299,revisar,4370,4385;4388;4373;4384,0.80,modelos divergem: Criminologia > Criminologia no Estado Democrático de Direito > Modelos de Reação ao Delito vs Criminologia > Teorias Sociológicas Explicativas da Criminalidade
+Q0300,publicar,5084,5071,0.88,
+Q0301,publicar,5191,5196;5063,0.60,
+Q0302,publicar,5224,5218,0.90,
+Q0303,revisar,5180,5181;5182,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0304,revisar,5540,5539;5480;4701,0.50,confiança 0.50 abaixo do limiar 0.85
+Q0305,revisar,5466,5473;5471;5470;5469,0.50,modelos divergem: Penal > Ação Penal > Ação Penal Pública vs Processo Penal > Ação Penal
+Q0306,revisar,5071,4705;4708,0.60,modelos divergem: Penal > Concurso de Pessoas vs Direito Penal - Legislação Especial > Organizações Criminosas
+Q0307,revisar,4707,,0.75,confiança 0.75 abaixo do limiar 0.85
+Q0308,revisar,5498,5466,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0309,publicar,4688,4685,0.90,
+Q0310,publicar,5505,5507;5508;5506,0.80,
+Q0311,revisar,5488,5487,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0312,revisar,4384,5200,0.75,"modelos divergem: Criminologia > Teorias Legitimidoras da Pena vs Penal > Teoria da Pena > Sanção Penal: Conceito, Finalidade e Modalidades"
+Q0313,revisar,5209,5577;5475,0.50,modelos divergem: Processo Penal > Ação Penal > Ação Civil Ex Delicto vs Penal > Teoria da Pena > Efeitos da Condenação Penais e Extrapenais
+Q0314,publicar,5477,5476,0.92,
+Q0315,revisar,5185,,0.70,confiança 0.70 abaixo do limiar 0.85
+Q0316,revisar,5224,5153,0.72,confiança 0.72 abaixo do limiar 0.85
+Q0317,revisar,5198,5466,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0318,publicar,5178,5150;5175,0.85,
+Q0319,revisar,5073,5071,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0320,publicar,5550,5543,0.85,
+Q0321,publicar,5071,5073;4708;5149,0.60,
+Q0322,revisar,5561,5560,0.70,confiança 0.70 abaixo do limiar 0.85
+Q0323,revisar,5543,5557;5548;5550;5498,0.50,confiança 0.50 abaixo do limiar 0.85
+Q0324,revisar,4703,5213;5199;5201,0.65,modelos divergem: Direito Penal - Legislação Especial > Lei de Execução Penal vs Penal > Teoria da Pena
+Q0325,revisar,5466,5467;5473;5471,0.45,irmãos Características e Condições da Ação Penal e Ação Penal abaixo do limiar do pai 0.60
+Q0326,publicar,4708,,0.85,
+Q0327,publicar,5203,,0.85,
+Q0328,publicar,4380,4381;4382,0.60,
+Q0329,revisar,5557,4705,0.90,modelos divergem: Processo Penal > Provas em Espécies > Colaboração Premiada vs Direito Penal - Legislação Especial > Organizações Criminosas
+Q0330,revisar,5498,5501;5503;5500,0.55,confiança 0.55 abaixo do limiar 0.85
+Q0331,publicar,5477,5476,0.90,
+Q0332,publicar,5541,5539,0.85,
+Q0333,revisar,5178,4370,0.35,"modelos divergem: Criminologia > Criminologia no Estado Democrático de Direito vs Penal > Iter Criminis > Desistência Voluntária, Arrependimento Eficaz e Arrependimento posterior"
+Q0334,publicar,4381,,0.90,
+Q0335,publicar,5218,5222;5221;5223,0.60,
+Q0336,publicar,5159,,0.90,
+Q0337,publicar,4684,,0.90,
+Q0338,revisar,5543,5550,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0339,publicar,5572,5578;5537;5527;5579,0.60,
+Q0340,publicar,5071,5074;5072;5223,0.80,
+Q0341,revisar,5157,5169;5164;5466,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0342,revisar,5543,,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0343,revisar,5196,5063;5195,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0344,publicar,4688,5466,0.90,
+Q0345,revisar,5103,5102;5199,0.55,confiança 0.55 abaixo do limiar 0.85
+Q0346,revisar,5466,5584,0.50,confiança 0.50 abaixo do limiar 0.85
+Q0347,revisar,5199,5208;5228;5232;5066,0.40,irmãos Livramento Condicional e Teoria da Pena abaixo do limiar do pai 0.60
+Q0348,revisar,5093,5087,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0349,revisar,5178,5191;5157,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0350,publicar,4702,,0.90,
+Q0351,revisar,5118,5116,0.62,confiança 0.62 abaixo do limiar 0.85
+Q0352,revisar,5512,5513;5515,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0353,revisar,5185,5535;5188,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0354,revisar,5218,5226;5221;5219;5228,0.60,confiança 0.60 abaixo do limiar 0.85
+Q0355,publicar,4708,5498,0.85,
+Q0356,publicar,5066,5067;5068,0.88,
+Q0357,revisar,5134,,0.80,confiança 0.80 abaixo do limiar 0.85
+Q0358,revisar,5133,5127,0.55,confiança 0.55 abaixo do limiar 0.85
+Q0359,revisar,5539,,0.60,confiança 0.60 abaixo do limiar 0.85

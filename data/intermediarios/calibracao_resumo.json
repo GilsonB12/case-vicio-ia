@@ -1,0 +1,36 @@
+{
+  "limiares": {
+    "publicar": 0.85,
+    "pai": 0.6,
+    "contradicao": 0.6
+  },
+  "n_corpus": 332,
+  "n_questoes": 359,
+  "n_publicadas": 117,
+  "cobertura": 0.32590529247910865,
+  "cobertura_intervalo": [
+    0.31590529247910865,
+    0.33590529247910866
+  ],
+  "precisao_prevista": 0.9718289189443036,
+  "precisao_intervalo": [
+    0.938612159727758,
+    1.0
+  ],
+  "intervalo_bruto": [
+    0.938612159727758,
+    0.9909690017198147
+  ],
+  "intervalo_alargado": true,
+  "ancora": {
+    "n_publicadas_na_ancora": 11,
+    "acertos": 11,
+    "precisao_observada": 1.0,
+    "precisao_prevista_para_elas": 0.9720922459893049
+  },
+  "n_ancora": 40,
+  "repeticoes_final": 1000,
+  "degrau": 2,
+  "varredura_atingiu_alvo": false,
+  "alvo_atingido": false
+}

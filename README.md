@@ -11,7 +11,7 @@ docker compose up -d            # Weaviate; opcional, há substituto em memória
 uv run classificar tudo
 ```
 
-`uv run classificar tudo` gera `publicacao.csv` e `previsao.txt` na raiz. As etapas também rodam separadas: `candidatos`, `ancora`, `votos`, `vizinhanca`, `calibrar`, `decidir`, `publicar`. Testes: `uv run pytest`.
+`uv run classificar tudo` gera `publicacao.csv` e `previsao.txt` na raiz. As etapas também rodam separadas: `candidatos`, `ancora`, `votos`, `reparar`, `vizinhanca`, `calibrar`, `decidir`, `publicar`. Testes: `uv run pytest`.
 
 Os intermediários commitados em `data/intermediarios/` e o cache em `data/cache/` são o caminho de reprodução: `uv run classificar tudo` reaproveita candidatos e vizinhança prontos, lê votos e embeddings do cache e reproduz `publicacao.csv` sem chaves e sem Docker. `uv run classificar tudo --recalcular` recalcula todas as etapas (a planilha da âncora nunca é regravada), e o que não estiver no cache vai às APIs, então ele precisa das chaves no `.env`. A execução canônica usou o Weaviate via Docker (`docker compose up -d`) e os modelos de `.env.example`.
 
@@ -22,7 +22,8 @@ Os intermediários commitados em `data/intermediarios/` e o cache em `data/cache
 | `data/intermediarios/candidatos_*.jsonl` | `classificar candidatos` |
 | `data/ancora_para_rotular.csv` | `classificar ancora` |
 | `data/ancora_manual.csv` | exportado da tela de revisão (modo Âncora) a partir de `data/ancora_rotulos_modelo_*.jsonl`; protocolo e decisões em `docs/projeto/ancora.md` |
-| `data/intermediarios/votos_llm_*.jsonl` | `classificar votos` |
+| `data/intermediarios/votos_llm_*.jsonl` | `classificar votos`; depois, `classificar reparar` substitui os votos das questões em que um modelo não achou candidato, guardando os originais em `antes_do_reparo` |
+| `data/intermediarios/candidatos_*_reparo.jsonl` | `classificar reparar` (lista ampliada só das questões revotadas) |
 | `data/intermediarios/vizinhanca_*.jsonl` | `classificar vizinhanca` |
 | `data/intermediarios/limiares.json`, `calibracao_*.csv`, `calibracao_resumo.json` | `classificar calibrar` |
 | `data/intermediarios/decisoes_questoes.jsonl` | `classificar decidir` |
