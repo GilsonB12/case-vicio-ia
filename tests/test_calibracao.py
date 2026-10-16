@@ -206,6 +206,22 @@ def test_comparar_ancora_com_tema_fora_da_arvore_conta_como_erro(arvore):
     assert resultado["precisao_observada"] == pytest.approx(2 / 3)
 
 
+def test_comparar_ancora_com_raiz_da_disciplina_aceita_qualquer_tema_de_nivel_1(arvore):
+    limiares = Limiares(publicar=0.6, pai=0.6)
+    # Âncora na raiz 4683 (Legislação Especial): Q0 publicada na Lei Maria da Penha (4704, nível 1 dela) acerta;
+    # Q1 publicada em Furto (5159, outra disciplina) erra.
+    questoes = [entrada("Q0", 4704, 4704, 0.95, None), entrada("Q1", 5159, 5159, 0.95, None)]
+    aval_q = cal.avaliar(cal.decidir_todas(questoes, arvore, limiares), questoes, arvore)
+    assert list(aval_q.loc[aval_q["decisao"] == "publicar", "tema_decidido"]) == [4704, 5159]
+    ancora = pd.DataFrame({"id": ["Q0", "Q1"], "tema_id": [4683, 4683]})
+    corpus = corpus_sintetico()
+    tabela = cal.tabela_faixas(cal.avaliar(cal.decidir_todas(corpus, arvore, limiares), corpus, arvore))
+    resultado = cal.comparar_ancora(aval_q, ancora, arvore, tabela)
+    assert resultado["n_publicadas_na_ancora"] == 2
+    assert resultado["acertos"] == 1
+    assert resultado["precisao_observada"] == pytest.approx(1 / 2)
+
+
 def test_escrever_previsao_segue_o_formato(tmp_path):
     caminho = cal.escrever_previsao(tmp_path / "previsao.txt", 0.971, (0.95, 0.99), 0.6, (0.59, 0.61), "explicação")
     linhas = caminho.read_text(encoding="utf-8").splitlines()

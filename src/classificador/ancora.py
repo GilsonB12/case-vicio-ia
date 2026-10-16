@@ -96,11 +96,20 @@ def rodar_ancora(
     return saida
 
 
+def _rotulo_valido(arvore: ArvoreTemas, tema_id: int) -> bool:
+    if tema_id == TEMA_FORA or arvore.publicavel(tema_id):
+        return True
+    return arvore.existe(tema_id) and arvore.ativo(tema_id) and arvore.eh_raiz(tema_id)
+
+
 def carregar_ancora_manual(arvore: ArvoreTemas, caminho: Path = CAMINHOS.ancora_manual) -> pd.DataFrame:
     """Lê o gabarito da âncora exportado pela tela de revisão (id, tema_id, observacao).
 
     tema_id 0 (TEMA_FORA) vem da tela e significa "nenhum tema serve": a questão fica fora da árvore e a linha
-    é mantida. Qualquer outro valor precisa ser um tema publicável.
+    é mantida. A raiz de uma disciplina (nível 0) também vale e quer dizer "qualquer tema de nível 1 dessa
+    disciplina serve"; é o rótulo de questão que mistura várias leis. A raiz nunca é publicada, mas pela régua de
+    acerto (igual, pai ou filho direto) publicar um filho dela conta como acerto. Qualquer outro valor precisa ser
+    um tema publicável.
     """
     df = ler_csv_planilha(caminho, dtype={"id": str})
     if "tema_id" not in df.columns:
@@ -109,7 +118,7 @@ def carregar_ancora_manual(arvore: ArvoreTemas, caminho: Path = CAMINHOS.ancora_
     if em_branco.any():
         raise ValueError(f"âncora em {caminho} com tema_id em branco nas questões: {list(df.loc[em_branco, 'id'])}")
     df["tema_id"] = df["tema_id"].astype(int)
-    invalidos = [int(t) for t in df["tema_id"] if int(t) != TEMA_FORA and not arvore.publicavel(int(t))]
+    invalidos = [int(t) for t in df["tema_id"] if not _rotulo_valido(arvore, int(t))]
     if invalidos:
-        raise ValueError(f"âncora com tema(s) não publicável(is): {invalidos}")
+        raise ValueError(f"âncora com tema(s) não publicável(is) nem raiz de disciplina: {invalidos}")
     return df[["id", "tema_id"]].reset_index(drop=True)

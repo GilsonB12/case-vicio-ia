@@ -61,8 +61,18 @@ def test_carregar_ancora_manual_aceita_tema_zero_como_fora_da_arvore(arvore, tmp
     assert ancora.TEMA_FORA == 0
 
 
-@pytest.mark.parametrize("tema", [4365, 99999])
-def test_carregar_ancora_manual_rejeita_raiz_e_tema_inexistente(arvore, tmp_path, tema):
+def test_carregar_ancora_manual_aceita_raiz_da_disciplina(arvore, tmp_path):
+    caminho = tmp_path / "ancora_manual.csv"
+    caminho.write_text('id,tema_id,observacao\nQ0001,5527,""\nQ0282,4683,"questão mista de várias leis"\n', encoding="utf-8-sig")
+    df = ancora.carregar_ancora_manual(arvore, caminho)
+    assert list(df["id"]) == ["Q0001", "Q0282"]
+    assert list(df["tema_id"]) == [5527, 4683]
+    assert arvore.eh_raiz(4683) and not arvore.publicavel(4683)
+
+
+# 5078 é inativo, 6724 é duplicado de 4704 e 99999 não existe na árvore.
+@pytest.mark.parametrize("tema", [5078, 6724, 99999])
+def test_carregar_ancora_manual_rejeita_tema_inativo_duplicado_e_inexistente(arvore, tmp_path, tema):
     caminho = tmp_path / "ancora_manual.csv"
     pd.DataFrame({"id": ["Q0001", "Q0002"], "tema_id": [0, tema]}).to_csv(caminho, index=False)
     with pytest.raises(ValueError, match=rf"não publicável.*\[{tema}\]"):
