@@ -93,7 +93,14 @@ def decidir(
     # Regra 6: um ou os dois não acharam candidato.
     if ta is None and tb is None:
         if voto_a.disciplina != "Outra" and voto_b.disciplina != "Outra":
-            return Decisao(id_, "fora", None, [], None, f"nenhum tema da árvore cobre o assunto: {voto_a.justificativa}", 6)
+            # Questão das quatro disciplinas sem tema na lista: o professor revisa, com o tema mais próximo do assunto
+            # que os modelos descreveram (o primeiro vindo do reparo) ou, sem reparo, o primeiro candidato.
+            reparo = next((c.tema_id for c in candidatos if c.origem == "reparo"), None)
+            sugestao = reparo if reparo is not None else primeiro_candidato
+            if sugestao is None:
+                return Decisao(id_, "fora", None, [], None, f"nenhum tema da árvore cobre o assunto: {voto_a.justificativa}", 6)
+            return Decisao(id_, "revisar", sugestao, _extras(arvore, sugestao, *extras_votos), None,
+                           f"nenhum modelo achou tema que cubra a questão; assunto descrito: {voto_a.justificativa}", 6)
         return Decisao(id_, "revisar", primeiro_candidato, _extras(arvore, primeiro_candidato, *extras_votos), None,
                        "um modelo diz fora das disciplinas, outro diz que nenhum candidato serve", 6)
     if ta is None or tb is None:
@@ -148,6 +155,16 @@ def carregar_limiares(pasta: Path = CAMINHOS.intermediarios) -> Limiares:
     return Limiares()
 
 
+def carregar_candidatos(alvo: str, pasta: Path = CAMINHOS.intermediarios, passada: int = 2) -> dict[str, list[Candidato]]:
+    """Listas de candidatos por questão: as da passada e, na passada 2, a lista ampliada do reparo onde ela existe."""
+    candidatos = {l["id"]: candidatos_de_dict(l["candidatos"]) for l in ler_jsonl(pasta / f"candidatos_{alvo}_p{passada}.jsonl")}
+    caminho_reparo = pasta / f"candidatos_{alvo}_reparo.jsonl"
+    if passada == 2 and caminho_reparo.exists():
+        for linha in ler_jsonl(caminho_reparo):
+            candidatos[linha["id"]] = candidatos_de_dict(linha["candidatos"])
+    return candidatos
+
+
 def rodar_decisoes(
     alvo: str,
     arvore: ArvoreTemas,
@@ -158,7 +175,7 @@ def rodar_decisoes(
     votos = ler_jsonl(pasta / f"votos_llm_{alvo}.jsonl")
     caminho_viz = pasta / f"vizinhanca_{alvo}.jsonl"
     vizinhancas = {l["id"]: VotoVizinhanca.de_dict(l) for l in ler_jsonl(caminho_viz)} if caminho_viz.exists() else {}
-    candidatos = {l["id"]: candidatos_de_dict(l["candidatos"]) for l in ler_jsonl(pasta / f"candidatos_{alvo}_p{passada}.jsonl")}
+    candidatos = carregar_candidatos(alvo, pasta, passada)
     linhas: list[dict] = []
     for linha in votos:
         id_ = linha["id"]

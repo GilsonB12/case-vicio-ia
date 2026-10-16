@@ -373,3 +373,12 @@ def test_rodar_calibracao_sem_questoes_tem_cobertura_zero(arvore, pasta_calibrac
     assert resumo["n_questoes"] == 0
     assert resumo["cobertura"] == 0.0
     assert resumo["alvo_atingido"] is False
+
+
+def test_carregar_entradas_usa_a_lista_do_reparo(arvore, tmp_path):
+    gravar_alvo(tmp_path, "questoes", questoes_sinteticas()[:2])
+    ampliada = [Candidato(5527, "tema", 0.5), Candidato(5159, "reparo", 0.4)]
+    escrever_jsonl(tmp_path / "candidatos_questoes_reparo.jsonl", [{"id": "Q1", "candidatos": [asdict(c) for c in ampliada]}])
+    entradas = {e.id: e for e in cal.carregar_entradas("questoes", tmp_path, arvore)}
+    assert entradas["Q0"].candidatos == [Candidato(5527, "tema", 0.5)]
+    assert entradas["Q1"].candidatos == ampliada

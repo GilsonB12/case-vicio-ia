@@ -94,10 +94,37 @@ def test_dois_temas_de_nivel1_diferentes_nunca_publicam_na_raiz(arvore):
     assert r.tema_central_id in {5543, 5590}
 
 
-def test_regra6_fora_quando_ambos_nenhum_nas_disciplinas(arvore):
+CAND_REPARO = CAND[:2] + [Candidato(5157, "pai", 0.55), Candidato(5159, "reparo", 0.55), Candidato(5590, "reparo", 0.5)]
+
+
+def test_regra6_ambos_nenhum_nas_disciplinas_revisa_com_o_primeiro_do_reparo(arvore):
+    r = decidir("Q1", v(None, 0.4, extras=[5528]), v(None, 0.3, "Penal"), None, CAND_REPARO, arvore, L)
+    assert (r.decisao, r.tema_central_id, r.regra, r.confianca) == ("revisar", 5159, 6, None)
+    assert r.motivo == "nenhum modelo achou tema que cubra a questão; assunto descrito: porque sim"
+    assert r.extras_ids == [5528]
+
+
+def test_regra6_ambos_nenhum_sem_reparo_revisa_com_o_primeiro_candidato(arvore):
     r = d(v(None, 0.4), v(None, 0.3, "Penal"), arvore=arvore)
+    assert (r.decisao, r.tema_central_id, r.regra, r.confianca) == ("revisar", 5524, 6, None)
+    assert "assunto descrito" in r.motivo
+
+
+def test_regra6_ambos_nenhum_sem_candidatos_fica_fora(arvore):
+    r = decidir("Q1", v(None, 0.4), v(None, 0.3, "Penal"), None, [], arvore, L)
     assert (r.decisao, r.tema_central_id, r.regra) == ("fora", None, 6)
     assert r.motivo.startswith("nenhum tema da árvore cobre o assunto")
+
+
+def test_regra1_continua_fora_mesmo_com_candidato_do_reparo(arvore):
+    r = decidir("Q1", v(None, 0.3, "Outra"), v(None, 0.2, "Outra"), None, CAND_REPARO, arvore, L)
+    assert (r.decisao, r.tema_central_id, r.regra) == ("fora", None, 1)
+
+
+def test_regra6_so_um_nenhum_ignora_o_reparo(arvore):
+    r = decidir("Q1", v(None, 0.4), v(5527, 0.7), None, CAND_REPARO, arvore, L)
+    assert (r.decisao, r.tema_central_id, r.regra) == ("revisar", 5527, 6)
+    assert r.confianca == pytest.approx(0.7)
 
 
 def test_regra6_revisa_quando_um_outra_e_um_nenhum(arvore):
@@ -173,3 +200,43 @@ def test_rodar_decisoes_acusa_invariante_quebrada_com_o_id(arvore, tmp_path, mon
     monkeypatch.setattr(modulo, "decidir", lambda id_, *a: modulo.Decisao(id_, "revisar", None))
     with pytest.raises(ValueError, match="Q7"):
         modulo.rodar_decisoes("questoes", arvore, L, pasta=tmp_path)
+
+
+def _cand(*ids, origem="tema"):
+    return [{"tema_id": t, "origem": origem, "similaridade": 0.5} for t in ids]
+
+
+def test_carregar_candidatos_sem_reparo_le_a_p2(tmp_path):
+    escrever_jsonl(tmp_path / "candidatos_questoes_p2.jsonl", [{"id": "Q1", "candidatos": _cand(5527)}])
+    assert modulo.carregar_candidatos("questoes", tmp_path) == {"Q1": [Candidato(5527, "tema", 0.5)]}
+
+
+def test_carregar_candidatos_reparo_substitui_so_os_ids_presentes(tmp_path):
+    escrever_jsonl(tmp_path / "candidatos_questoes_p2.jsonl", [
+        {"id": "Q1", "candidatos": _cand(5527)},
+        {"id": "Q2", "candidatos": _cand(5524)},
+    ])
+    escrever_jsonl(tmp_path / "candidatos_questoes_reparo.jsonl", [
+        {"id": "Q2", "candidatos": _cand(5524) + _cand(5159, origem="reparo")},
+    ])
+    listas = modulo.carregar_candidatos("questoes", tmp_path)
+    assert listas["Q1"] == [Candidato(5527, "tema", 0.5)]
+    assert listas["Q2"] == [Candidato(5524, "tema", 0.5), Candidato(5159, "reparo", 0.5)]
+
+
+def test_rodar_decisoes_usa_a_lista_do_reparo(arvore, tmp_path):
+    nulo = v(None, 0.3).model_dump()
+    escrever_jsonl(tmp_path / "votos_llm_questoes.jsonl", [
+        {"id": "Q1", "openai": nulo, "anthropic": nulo},
+        {"id": "Q2", "openai": nulo, "anthropic": nulo},
+    ])
+    escrever_jsonl(tmp_path / "candidatos_questoes_p2.jsonl", [
+        {"id": "Q1", "candidatos": _cand(5527)},
+        {"id": "Q2", "candidatos": _cand(5524)},
+    ])
+    escrever_jsonl(tmp_path / "candidatos_questoes_reparo.jsonl", [
+        {"id": "Q2", "candidatos": _cand(5524) + _cand(5159, origem="reparo")},
+    ])
+    linhas = {l["id"]: l for l in ler_jsonl(modulo.rodar_decisoes("questoes", arvore, L, pasta=tmp_path))}
+    assert (linhas["Q1"]["decisao"], linhas["Q1"]["tema_central_id"]) == ("revisar", 5527)
+    assert (linhas["Q2"]["decisao"], linhas["Q2"]["tema_central_id"]) == ("revisar", 5159)

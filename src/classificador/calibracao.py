@@ -11,10 +11,10 @@ import pandas as pd
 
 from classificador.ancora import TEMA_FORA, carregar_ancora_manual
 from classificador.arvore import ArvoreTemas
-from classificador.candidatos import Candidato, candidatos_de_dict
+from classificador.candidatos import Candidato
 from classificador.config import CAMINHOS, SEMENTE
 from classificador.dados import carregar_corpus, ler_jsonl
-from classificador.decisao import Decisao, Limiares, decidir
+from classificador.decisao import Decisao, Limiares, carregar_candidatos, decidir
 from classificador.llm import VotoModelo
 from classificador.vizinhanca import VotoVizinhanca
 
@@ -55,7 +55,7 @@ def carregar_entradas(alvo: str, pasta: Path, arvore: ArvoreTemas, passada: int 
     votos = ler_jsonl(caminho_votos)
     caminho_viz = pasta / f"vizinhanca_{alvo}.jsonl"
     vizinhancas = {l["id"]: VotoVizinhanca.de_dict(l) for l in ler_jsonl(caminho_viz)} if caminho_viz.exists() else {}
-    candidatos = {l["id"]: candidatos_de_dict(l["candidatos"]) for l in ler_jsonl(pasta / f"candidatos_{alvo}_p{passada}.jsonl")}
+    candidatos = carregar_candidatos(alvo, pasta, passada)
     verdadeiros: dict[str, int] = {}
     if alvo == "corpus":
         corpus = carregar_corpus()
