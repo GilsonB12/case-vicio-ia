@@ -43,7 +43,7 @@ src/classificador/
   pipeline.py                  CLI que encadeia tudo e gera publicacao.csv
 data/
   corpus_referencia.jsonl      corpus coletado pelos agentes, com proveniência
-  ancora_manual.csv            40 rótulos cegos
+  ancora_manual.csv            40 rótulos de referência (seção 11)
   cache/                       respostas de modelos e embeddings, por hash
   intermediarios/              candidatos, votos e decisões por questão
 analise/
@@ -136,7 +136,7 @@ Intervalos: simulação da posterior Beta por célula com 1000 amostras (cada c�
 
 ## 11. Âncora manual
 
-Antes de qualquer chamada a modelos de linguagem, o pipeline gera `data/ancora_para_rotular.csv` com 40 questões das 359, sorteadas com semente fixa e estratificadas por `disciplina_origem`, cada uma com os candidatos da seção 6 e suas descrições. Gilson rotula sozinho e às cegas, sem ver saída do pipeline; pode pedir explicações sobre os temas candidatos, mas nunca recebe resposta sugerida. O rótulo final vai para `data/ancora_manual.csv` com os campos `id`, `tema_id`, `observacao`. O arquivo é commitado.
+Antes de qualquer chamada a modelos de linguagem, o pipeline gera `data/ancora_para_rotular.csv` com 40 questões das 359, sorteadas com semente fixa e estratificadas por `disciplina_origem`, cada uma com os candidatos da seção 6 e suas descrições. Os rótulos são fechados sem ver saída do pipeline, em duas etapas: dois rotuladores independentes (modelos de linguagem de fornecedores diferentes, distintos dos usados no pipeline, consultados com a árvore completa e sem acesso a candidatos, votos ou decisões) propõem tema, confiança, justificativa e alternativas para cada questão; Gilson arbitra na tela de revisão, confirmando as concordâncias e decidindo as divergências pelas justificativas e por pesquisa em sites de questões, sem receber resposta sugerida pelo pipeline. Regras de arbitragem e decisões em `docs/projeto/ancora.md`. O rótulo final vai para `data/ancora_manual.csv` com os campos `id`, `tema_id` (0 quer dizer fora da árvore) e `observacao`. O arquivo é commitado.
 
 ## 12. Análise exploratória dos dados
 

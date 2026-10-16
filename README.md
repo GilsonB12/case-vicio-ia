@@ -21,6 +21,7 @@ Os intermediários commitados em `data/intermediarios/` e o cache em `data/cache
 |---|---|
 | `data/intermediarios/candidatos_*.jsonl` | `classificar candidatos` |
 | `data/ancora_para_rotular.csv` | `classificar ancora` |
+| `data/ancora_manual.csv` | exportado da tela de revisão (modo Âncora) a partir de `data/ancora_rotulos_modelo_*.jsonl`; protocolo e decisões em `docs/projeto/ancora.md` |
 | `data/intermediarios/votos_llm_*.jsonl` | `classificar votos` |
 | `data/intermediarios/vizinhanca_*.jsonl` | `classificar vizinhanca` |
 | `data/intermediarios/limiares.json`, `calibracao_*.csv`, `calibracao_resumo.json` | `classificar calibrar` |
