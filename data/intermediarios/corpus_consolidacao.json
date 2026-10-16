@@ -1,0 +1,460 @@
+{
+  "arquivos": [
+    "lote-01.jsonl",
+    "lote-02.jsonl",
+    "lote-03.jsonl",
+    "lote-04.jsonl",
+    "lote-05.jsonl",
+    "lote-06.jsonl",
+    "lote-07.jsonl",
+    "lote-08.jsonl",
+    "lote-09.jsonl",
+    "lote-10.jsonl",
+    "lote-piloto.jsonl"
+  ],
+  "saida": "D:\\Projetos\\Pessoal\\case-vicio-ia\\data\\corpus_referencia.jsonl",
+  "embeddings": true,
+  "limiar_similaridade": 0.95,
+  "minimo_enunciado": 40,
+  "lotes": {
+    "01": {
+      "lidas": 31,
+      "mantidas": 28,
+      "descartadas": {
+        "igual_a_questao_do_case": 3
+      }
+    },
+    "02": {
+      "lidas": 37,
+      "mantidas": 36,
+      "descartadas": {
+        "igual_a_questao_do_case": 1
+      }
+    },
+    "03": {
+      "lidas": 37,
+      "mantidas": 33,
+      "descartadas": {
+        "enunciado_curto": 3,
+        "igual_a_questao_do_case": 1
+      }
+    },
+    "04": {
+      "lidas": 32,
+      "mantidas": 31,
+      "descartadas": {
+        "enunciado_curto": 1
+      }
+    },
+    "05": {
+      "lidas": 33,
+      "mantidas": 33,
+      "descartadas": {}
+    },
+    "06": {
+      "lidas": 37,
+      "mantidas": 34,
+      "descartadas": {
+        "enunciado_curto": 1,
+        "duplicata_texto": 2
+      }
+    },
+    "07": {
+      "lidas": 32,
+      "mantidas": 29,
+      "descartadas": {
+        "enunciado_curto": 3
+      }
+    },
+    "08": {
+      "lidas": 37,
+      "mantidas": 33,
+      "descartadas": {
+        "duplicata_texto": 3,
+        "igual_a_questao_do_case": 1
+      }
+    },
+    "09": {
+      "lidas": 36,
+      "mantidas": 31,
+      "descartadas": {
+        "enunciado_curto": 2,
+        "duplicata_texto": 3
+      }
+    },
+    "10": {
+      "lidas": 34,
+      "mantidas": 28,
+      "descartadas": {
+        "duplicata_texto": 5,
+        "igual_a_questao_do_case": 1
+      }
+    },
+    "piloto": {
+      "lidas": 16,
+      "mantidas": 16,
+      "descartadas": {}
+    }
+  },
+  "total_lidas": 362,
+  "total_mantidas": 332,
+  "descartadas_por_motivo": {
+    "schema": 0,
+    "tema_nao_publicavel": 0,
+    "enunciado_curto": 10,
+    "duplicata_texto": 13,
+    "igual_a_questao_do_case": 7,
+    "duplicata_embedding": 0
+  },
+  "por_tema": {
+    "4366": 2,
+    "4368": 6,
+    "4369": 4,
+    "4370": 9,
+    "4371": 4,
+    "4372": 2,
+    "4377": 1,
+    "4384": 4,
+    "4385": 3,
+    "4386": 4,
+    "4388": 3,
+    "4703": 4,
+    "4705": 4,
+    "4708": 3,
+    "5063": 3,
+    "5066": 4,
+    "5071": 4,
+    "5079": 4,
+    "5080": 4,
+    "5082": 4,
+    "5084": 4,
+    "5087": 3,
+    "5091": 3,
+    "5093": 4,
+    "5096": 4,
+    "5102": 4,
+    "5104": 2,
+    "5111": 3,
+    "5116": 4,
+    "5128": 4,
+    "5149": 3,
+    "5151": 4,
+    "5155": 2,
+    "5156": 2,
+    "5157": 3,
+    "5164": 2,
+    "5165": 4,
+    "5169": 3,
+    "5175": 4,
+    "5177": 4,
+    "5178": 4,
+    "5185": 3,
+    "5191": 2,
+    "5196": 4,
+    "5198": 2,
+    "5199": 3,
+    "5201": 1,
+    "5205": 3,
+    "5208": 3,
+    "5209": 4,
+    "5210": 4,
+    "5211": 4,
+    "5214": 1,
+    "5218": 4,
+    "5221": 2,
+    "5222": 3,
+    "5223": 3,
+    "5224": 4,
+    "5225": 2,
+    "5228": 4,
+    "5232": 3,
+    "5233": 3,
+    "5466": 4,
+    "5475": 4,
+    "5476": 4,
+    "5480": 4,
+    "5484": 4,
+    "5487": 4,
+    "5488": 4,
+    "5490": 4,
+    "5495": 3,
+    "5498": 4,
+    "5505": 4,
+    "5512": 4,
+    "5517": 4,
+    "5518": 3,
+    "5521": 4,
+    "5522": 4,
+    "5523": 4,
+    "5524": 4,
+    "5530": 3,
+    "5531": 3,
+    "5535": 2,
+    "5536": 1,
+    "5537": 1,
+    "5539": 4,
+    "5540": 3,
+    "5543": 4,
+    "5548": 2,
+    "5550": 1,
+    "5558": 2,
+    "5560": 4,
+    "5561": 2,
+    "5562": 4,
+    "5570": 2,
+    "5572": 4,
+    "5576": 2,
+    "5577": 1,
+    "5584": 3,
+    "5585": 2,
+    "5587": 4
+  },
+  "por_confianca": {
+    "alta": 278,
+    "media": 54,
+    "baixa": 0
+  },
+  "temas_canonicalizados": [],
+  "descartadas": [
+    {
+      "lote": "01",
+      "linha": 4,
+      "motivo": "igual_a_questao_do_case",
+      "detalhe": "similaridade 0.976",
+      "referencia": "Q0117",
+      "trecho": "O estudo das teorias relaciona-se intimamente com as finalid"
+    },
+    {
+      "lote": "01",
+      "linha": 18,
+      "motivo": "igual_a_questao_do_case",
+      "detalhe": "similaridade 0.989",
+      "referencia": "Q0315",
+      "trecho": "Paulo, nascido em 15/8/1996, foi denunciado em 24/5/2020, pe"
+    },
+    {
+      "lote": "01",
+      "linha": 28,
+      "motivo": "igual_a_questao_do_case",
+      "detalhe": "similaridade 0.963",
+      "referencia": "Q0080",
+      "trecho": "O cumprimento dos deveres legais por parte do apenado reclus"
+    },
+    {
+      "lote": "02",
+      "linha": 10,
+      "motivo": "igual_a_questao_do_case",
+      "detalhe": "similaridade 1.000",
+      "referencia": "Q0343",
+      "trecho": "Patrícia responde a processo por crime de ação penal privada"
+    },
+    {
+      "lote": "03",
+      "linha": 5,
+      "motivo": "igual_a_questao_do_case",
+      "detalhe": "similaridade 0.991",
+      "referencia": "Q0047",
+      "trecho": "Durante um pacífico protesto realizado no interior do Municí"
+    },
+    {
+      "lote": "03",
+      "linha": 17,
+      "motivo": "enunciado_curto",
+      "detalhe": "37 caracteres sem HTML",
+      "referencia": null,
+      "trecho": "Serão recolhidos a prisão especial os"
+    },
+    {
+      "lote": "03",
+      "linha": 33,
+      "motivo": "enunciado_curto",
+      "detalhe": "34 caracteres sem HTML",
+      "referencia": null,
+      "trecho": "É considerado(a) como crime formal"
+    },
+    {
+      "lote": "03",
+      "linha": 34,
+      "motivo": "enunciado_curto",
+      "detalhe": "34 caracteres sem HTML",
+      "referencia": null,
+      "trecho": "Entende-se por crime formal aquele"
+    },
+    {
+      "lote": "04",
+      "linha": 12,
+      "motivo": "enunciado_curto",
+      "detalhe": "11 caracteres sem HTML",
+      "referencia": null,
+      "trecho": "o homicídio"
+    },
+    {
+      "lote": "06",
+      "linha": 11,
+      "motivo": "duplicata_texto",
+      "detalhe": "",
+      "referencia": "04:28",
+      "trecho": "Conforme a teoria da associação diferencial de Sutherland, a"
+    },
+    {
+      "lote": "06",
+      "linha": 30,
+      "motivo": "duplicata_texto",
+      "detalhe": "",
+      "referencia": "03:31",
+      "trecho": "O rol legal de hipóteses com base no qual o agente deve agir"
+    },
+    {
+      "lote": "06",
+      "linha": 33,
+      "motivo": "enunciado_curto",
+      "detalhe": "24 caracteres sem HTML",
+      "referencia": null,
+      "trecho": "O livramento condicional"
+    },
+    {
+      "lote": "07",
+      "linha": 5,
+      "motivo": "enunciado_curto",
+      "detalhe": "34 caracteres sem HTML",
+      "referencia": null,
+      "trecho": "Extinguem a punibilidade do agente"
+    },
+    {
+      "lote": "07",
+      "linha": 6,
+      "motivo": "enunciado_curto",
+      "detalhe": "36 caracteres sem HTML",
+      "referencia": null,
+      "trecho": "Extingue-se a punibilidade do agente"
+    },
+    {
+      "lote": "07",
+      "linha": 15,
+      "motivo": "enunciado_curto",
+      "detalhe": "39 caracteres sem HTML",
+      "referencia": null,
+      "trecho": "Em relação aos crimes contra a família:"
+    },
+    {
+      "lote": "08",
+      "linha": 9,
+      "motivo": "duplicata_texto",
+      "detalhe": "",
+      "referencia": "07:19",
+      "trecho": "A sabotagem descrita no Código Penal brasileiro caracteriza "
+    },
+    {
+      "lote": "08",
+      "linha": 10,
+      "motivo": "duplicata_texto",
+      "detalhe": "",
+      "referencia": "07:18",
+      "trecho": "De acordo com Código Penal, em relação aos Crimes contra o E"
+    },
+    {
+      "lote": "08",
+      "linha": 15,
+      "motivo": "igual_a_questao_do_case",
+      "detalhe": "similaridade 0.960",
+      "referencia": "Q0031",
+      "trecho": "De acordo com a teoria da anomia, o crime se origina da impo"
+    },
+    {
+      "lote": "08",
+      "linha": 29,
+      "motivo": "duplicata_texto",
+      "detalhe": "",
+      "referencia": "02:2",
+      "trecho": "Compreendido o conceito de flagrante delito, pode-se definir"
+    },
+    {
+      "lote": "09",
+      "linha": 2,
+      "motivo": "enunciado_curto",
+      "detalhe": "28 caracteres sem HTML",
+      "referencia": null,
+      "trecho": "Cabível a absolvição sumária"
+    },
+    {
+      "lote": "09",
+      "linha": 16,
+      "motivo": "duplicata_texto",
+      "detalhe": "",
+      "referencia": "03:5",
+      "trecho": "Durante um pacífico protesto realizado no interior do Municí"
+    },
+    {
+      "lote": "09",
+      "linha": 19,
+      "motivo": "duplicata_texto",
+      "detalhe": "",
+      "referencia": "07:1",
+      "trecho": "Nos casos de sentença de impronúncia ou de absolvição sumári"
+    },
+    {
+      "lote": "09",
+      "linha": 20,
+      "motivo": "duplicata_texto",
+      "detalhe": "",
+      "referencia": "07:3",
+      "trecho": "Joaquim responde pelo crime de apropriação indébita cometida"
+    },
+    {
+      "lote": "09",
+      "linha": 21,
+      "motivo": "enunciado_curto",
+      "detalhe": "20 caracteres sem HTML",
+      "referencia": null,
+      "trecho": "O crime de concussão"
+    },
+    {
+      "lote": "10",
+      "linha": 2,
+      "motivo": "duplicata_texto",
+      "detalhe": "",
+      "referencia": "08:30",
+      "trecho": "Matheus, perito criminal, compareceu ao local de determinada"
+    },
+    {
+      "lote": "10",
+      "linha": 9,
+      "motivo": "duplicata_texto",
+      "detalhe": "",
+      "referencia": "06:1",
+      "trecho": "Quanto à sentença penal, é correto afirmar que"
+    },
+    {
+      "lote": "10",
+      "linha": 10,
+      "motivo": "duplicata_texto",
+      "detalhe": "",
+      "referencia": "06:2",
+      "trecho": "À luz do que dispõe o Código de Processo Penal sobre a sente"
+    },
+    {
+      "lote": "10",
+      "linha": 12,
+      "motivo": "duplicata_texto",
+      "detalhe": "",
+      "referencia": "06:3",
+      "trecho": "Após a instrução probatória e a apresentação de alegações fi"
+    },
+    {
+      "lote": "10",
+      "linha": 21,
+      "motivo": "duplicata_texto",
+      "detalhe": "",
+      "referencia": "04:7",
+      "trecho": "O erro de proibição indireto consiste em um descriminante pu"
+    },
+    {
+      "lote": "10",
+      "linha": 34,
+      "motivo": "igual_a_questao_do_case",
+      "detalhe": "similaridade 0.989",
+      "referencia": "Q0150",
+      "trecho": "Considerando o entendimento sumulado dos Tribunais Superiore"
+    }
+  ]
+}
