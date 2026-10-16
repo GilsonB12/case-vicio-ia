@@ -8,7 +8,7 @@ from collections import Counter
 from pathlib import Path
 from typing import Callable
 
-from classificador import ancora, calibracao, candidatos, decisao, llm, saida, vizinhanca
+from classificador import ancora, calibracao, candidatos, decisao, llm, reparo, saida, vizinhanca
 from classificador.arvore import ArvoreTemas
 from classificador.config import CAMINHOS
 from classificador.dados import carregar_questoes, ler_jsonl
@@ -55,6 +55,11 @@ def etapa_votos(alvo: str, limite: int | None = None) -> None:
     llm.rodar_votos(alvo, ArvoreTemas.carregar(), caminho, llm.criar_classificadores(), limite=limite)
 
 
+def etapa_reparar(alvo: str, recalcular: bool = False) -> None:
+    reparo.rodar_reparo(alvo, ArvoreTemas.carregar(), criar_embeddings(), llm.criar_classificadores(),
+                        pasta=CAMINHOS.intermediarios, recalcular=recalcular)
+
+
 def etapa_vizinhanca(alvo: str, recalcular: bool = True) -> None:
     if _reaproveitar(CAMINHOS.intermediarios / f"vizinhanca_{alvo}.jsonl", recalcular):
         return
@@ -95,7 +100,9 @@ ETAPAS_TUDO: list[tuple[str, Callable[[], None]]] = [
     ("candidatos p2 questoes", lambda: etapa_candidatos(2, "questoes", recalcular=_recalcular_no_tudo)),
     ("candidatos p2 corpus", lambda: etapa_candidatos(2, "corpus", recalcular=_recalcular_no_tudo)),
     ("votos questoes", lambda: etapa_votos("questoes")),
+    ("reparo questoes", lambda: etapa_reparar("questoes", recalcular=_recalcular_no_tudo)),
     ("votos corpus", lambda: etapa_votos("corpus")),
+    ("reparo corpus", lambda: etapa_reparar("corpus", recalcular=_recalcular_no_tudo)),
     ("vizinhanca questoes", lambda: etapa_vizinhanca("questoes", recalcular=_recalcular_no_tudo)),
     ("vizinhanca corpus", lambda: etapa_vizinhanca("corpus", recalcular=_recalcular_no_tudo)),
     ("calibrar", etapa_calibrar),
@@ -106,7 +113,7 @@ ETAPAS_TUDO: list[tuple[str, Callable[[], None]]] = [
 
 def rodar_tudo(etapas: list[tuple[str, Callable[[], None]]] = ETAPAS_TUDO, recalcular: bool = False) -> None:
     """Roda as etapas na ordem. Sem recalcular, candidatos e vizinhança com arquivo pronto são reaproveitados;
-    os votos vêm do cache e a planilha da âncora existente nunca é regravada."""
+    os votos e o reparo vêm do cache e a planilha da âncora existente nunca é regravada."""
     global _recalcular_no_tudo
     corpus = caminho_corpus()
     if not corpus.exists():
@@ -139,6 +146,11 @@ def main(argv: list[str] | None = None) -> None:
     p.add_argument("--limite", type=int, default=None)
     p.add_argument("--verificar", action="store_true", help="só testa chave e modelo de cada provedor")
 
+    p = sub.add_parser("reparar", help="amplia os candidatos pela justificativa do voto nulo e revota")
+    p.add_argument("--alvo", choices=["questoes", "corpus"], default="questoes")
+    p.add_argument("--recalcular", action="store_true",
+                   help="refaz também as questões já reparadas, a partir dos votos originais")
+
     p = sub.add_parser("vizinhanca", help="voto por vizinhança sobre o corpus")
     p.add_argument("--alvo", choices=["questoes", "corpus"], default="questoes")
 
@@ -162,6 +174,8 @@ def main(argv: list[str] | None = None) -> None:
                 print(f"{provedor}: {estado}")
         else:
             etapa_votos(args.alvo, args.limite)
+    elif args.comando == "reparar":
+        etapa_reparar(args.alvo, recalcular=args.recalcular)
     elif args.comando == "vizinhanca":
         etapa_vizinhanca(args.alvo)
     elif args.comando == "calibrar":
