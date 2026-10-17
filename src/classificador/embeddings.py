@@ -3,23 +3,50 @@ from __future__ import annotations
 
 import hashlib
 import json
+import logging
+import time
+from functools import lru_cache
 from pathlib import Path
 
+import tiktoken
 from langchain_core.embeddings import Embeddings
 
+from classificador import custos
 from classificador.config import CAMINHOS, ChaveAusenteError, ler_env
 
+registro = logging.getLogger(__name__)
+
 MODELO_PADRAO = "text-embedding-3-large"
+# Tokenizador dos modelos text-embedding-3.
+CODIFICACAO = "cl100k_base"
+
+
+@lru_cache(maxsize=1)
+def _codificador() -> tiktoken.Encoding:
+    return tiktoken.get_encoding(CODIFICACAO)
+
+
+def contar_tokens(textos: list[str]) -> int | None:
+    """Tokens de entrada de um lote; None se o tokenizador não carregar (o tiktoken baixa o arquivo na primeira vez)."""
+    try:
+        codificador = _codificador()
+    except Exception as erro:
+        registro.warning("tokenizador %s indisponível (%s); lote registrado com uso desconhecido", CODIFICACAO, erro)
+        return None
+    return sum(len(codificador.encode(texto, disallowed_special=())) for texto in textos)
 
 
 class EmbeddingsComCache(Embeddings):
     """Lê do cache o que já foi calculado; chama a base só para o que falta."""
 
-    def __init__(self, base: Embeddings | None, modelo: str, pasta_cache: Path) -> None:
+    def __init__(
+        self, base: Embeddings | None, modelo: str, pasta_cache: Path, livro: custos.LivroRazao | None = None
+    ) -> None:
         self.base = base
         self.modelo = modelo
         self.pasta = pasta_cache / "embeddings" / modelo
         self.pasta.mkdir(parents=True, exist_ok=True)
+        self.livro = livro if livro is not None else custos.LIVRO
         self.chamadas_base = 0
         self.acertos_cache = 0
 
@@ -54,7 +81,14 @@ class EmbeddingsComCache(Embeddings):
                     f"{len(faltantes)} texto(s) sem embedding em cache e OPENAI_API_KEY ausente. "
                     "Defina a chave no .env ou use o cache commitado."
                 )
-            novos = self.base.embed_documents([texts[i] for i in faltantes])
+            lote = [texts[i] for i in faltantes]
+            inicio = time.perf_counter()
+            try:
+                novos = self.base.embed_documents(lote)
+            except Exception as erro:
+                self._anotar(lote, inicio, erro)
+                raise
+            self._anotar(lote, inicio)
             self.chamadas_base += len(faltantes)
             if len(novos) != len(faltantes):
                 raise RuntimeError(
@@ -66,6 +100,20 @@ class EmbeddingsComCache(Embeddings):
                 self._gravar(texts[indice], vetor)
                 resultado[indice] = vetor
         return [v for v in resultado if v is not None]
+
+    def _anotar(self, lote: list[str], inicio: float, erro: BaseException | None = None) -> None:
+        """Uma linha no livro-razão para o lote que foi ao provedor; acerto de cache não gera linha."""
+        tokens = None if erro is not None else contar_tokens(lote)
+        uso = None if tokens is None else {
+            "tokens_entrada": tokens, "tokens_saida": 0, "tokens_raciocinio": 0,
+            "tokens_cache_leitura": 0, "tokens_cache_escrita": 0,
+        }
+        self.livro.registrar(
+            etapa=custos.contexto_atual().etapa or "embeddings", provedor="openai", modelo=self.modelo,
+            origem="api", tentativa=1, n_textos=len(lote), uso=uso,
+            latencia_ms=round((time.perf_counter() - inicio) * 1000, 1), sucesso=erro is None,
+            erro=None if erro is None else custos.descrever_erro(erro),
+        )
 
     def embed_query(self, text: str) -> list[float]:
         return self.embed_documents([text])[0]

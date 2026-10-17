@@ -278,6 +278,7 @@ dependencies = [
     { name = "pandas" },
     { name = "pydantic" },
     { name = "python-dotenv" },
+    { name = "tiktoken" },
     { name = "uvicorn" },
     { name = "weaviate-client" },
 ]
@@ -304,6 +305,7 @@ requires-dist = [
     { name = "pandas", specifier = ">=2.2" },
     { name = "pydantic", specifier = ">=2.7" },
     { name = "python-dotenv", specifier = ">=1.0" },
+    { name = "tiktoken", specifier = ">=0.8" },
     { name = "uvicorn", specifier = ">=0.30" },
     { name = "weaviate-client", specifier = ">=4.9" },
 ]

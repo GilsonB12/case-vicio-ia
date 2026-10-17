@@ -8,7 +8,7 @@ from collections import Counter
 from pathlib import Path
 from typing import Callable
 
-from classificador import ancora, calibracao, candidatos, decisao, llm, reparo, saida, vizinhanca
+from classificador import ancora, calibracao, candidatos, custos, decisao, llm, reparo, saida, vizinhanca
 from classificador.arvore import ArvoreTemas
 from classificador.config import CAMINHOS
 from classificador.dados import carregar_questoes, ler_jsonl
@@ -94,6 +94,29 @@ def etapa_publicar() -> None:
     print(f"previsao.txt: precisão {resumo['precisao_prevista']:.2f} [{inferior:.2f}, {superior:.2f}], cobertura {resumo['cobertura']:.2f}")
 
 
+def ler_valor_painel(texto: str) -> tuple[str, float]:
+    """PROVEDOR=VALOR em dólares, como no painel do provedor; aceita vírgula decimal."""
+    provedor, separador, valor = texto.partition("=")
+    if not separador or not provedor.strip():
+        raise argparse.ArgumentTypeError(f"use PROVEDOR=VALOR, por exemplo anthropic=5.80 (recebido {texto!r})")
+    try:
+        return provedor.strip(), float(valor.strip().replace(",", "."))
+    except ValueError:
+        raise argparse.ArgumentTypeError(f"valor do painel não é um número: {valor!r}") from None
+
+
+def etapa_custos(painel: list[tuple[str, float]] | None = None) -> dict:
+    resumo = custos.resumir_custos(
+        CAMINHOS.custos / "chamadas.jsonl",
+        painel=dict(painel or []),
+        decisoes=CAMINHOS.intermediarios / "decisoes_questoes.jsonl",
+        publicacao=CAMINHOS.publicacao,
+        saida=CAMINHOS.custos / "custos_resumo.json",
+    )
+    print(custos.formatar_resumo(resumo))
+    return resumo
+
+
 ETAPAS_TUDO: list[tuple[str, Callable[[], None]]] = [
     ("candidatos p1 questoes", lambda: etapa_candidatos(1, "questoes", recalcular=_recalcular_no_tudo)),
     ("ancora", etapa_ancora),
@@ -163,6 +186,12 @@ def main(argv: list[str] | None = None) -> None:
     p = sub.add_parser("tudo", help="roda todas as etapas na ordem, reaproveitando os intermediários prontos")
     p.add_argument("--recalcular", action="store_true", help="recalcula candidatos e vizinhança mesmo com arquivo pronto")
 
+    p = sub.add_parser("custos", help="resume o livro-razão de custos por execução, etapa, modelo e origem",
+                       description="Lê data/custos/chamadas.jsonl, imprime o resumo e grava data/custos/custos_resumo.json.")
+    p.add_argument("--painel", action="append", type=ler_valor_painel, default=[], metavar="PROVEDOR=USD",
+                   help="valor cobrado no painel do provedor, para comparar com o calculado; repetível, "
+                        "por exemplo --painel anthropic=5.80 --painel openai=0.70")
+
     args = parser.parse_args(argv)
     if args.comando == "candidatos":
         etapa_candidatos(args.passada, args.alvo)
@@ -186,6 +215,8 @@ def main(argv: list[str] | None = None) -> None:
         etapa_publicar()
     elif args.comando == "tudo":
         rodar_tudo(recalcular=args.recalcular)
+    elif args.comando == "custos":
+        etapa_custos(args.painel)
 
 
 if __name__ == "__main__":

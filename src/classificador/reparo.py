@@ -11,6 +11,7 @@ from pathlib import Path
 
 from langchain_core.embeddings import Embeddings
 
+from classificador import custos
 from classificador.arvore import ArvoreTemas
 from classificador.candidatos import Candidato, candidatos_de_dict, candidatos_para_dict, montar_indice_temas
 from classificador.config import CAMINHOS
@@ -150,7 +151,8 @@ def rodar_reparo(
         sem_voto_seguidas = [0] * len(PROVEDORES)
         indice: Indice | None = None
         try:
-            indice = montar_indice_temas(arvore, embeddings, criar)
+            with custos.contexto(etapa="reparo", alvo=alvo):
+                indice = montar_indice_temas(arvore, embeddings, criar)
             for posicao in pendentes:
                 linha = linhas[posicao]
                 id_ = str(linha["id"])
@@ -158,31 +160,33 @@ def rodar_reparo(
                     raise KeyError(f"questão {id_} sem candidatos em {caminho_candidatos}; gere os candidatos de novo")
                 if id_ not in textos:
                     raise KeyError(f"questão {id_} dos votos não está entre as questões do alvo '{alvo}'")
-                lista, novos = expandir_candidatos(candidatos[id_], linha, indice, arvore, k_reparo, teto)
-                if not novos:
-                    saida[posicao] = {**linha, "reparo": {"novos": [], "revotado": False}}
-                    continue
-                revotos: dict[str, dict | None] = {}
-                for indice_clf, (provedor, classificador) in enumerate(zip(PROVEDORES, classificadores)):
-                    voto = classificador.classificar(textos[id_], lista, arvore)
-                    # Disjuntor, como nos votos: sem voto várias vezes seguidas é chave, cota ou modelo com problema.
-                    sem_voto_seguidas[indice_clf] = sem_voto_seguidas[indice_clf] + 1 if voto is None else 0
-                    if sem_voto_seguidas[indice_clf] >= MAXIMO_NONE_CONSECUTIVOS:
-                        raise RuntimeError(
-                            f"classificador '{getattr(classificador, 'nome', provedor)}' ficou sem voto em "
-                            f"{MAXIMO_NONE_CONSECUTIVOS} revotações seguidas (última: {id_}); reparo interrompido "
-                            "sem regravar os votos. Rode `classificar votos --verificar` para checar chave, modelo e cota."
-                        )
-                    revotos[provedor] = _serializar(voto)
-                    if _voto_nulo(linha.get(provedor)) and voto is not None and voto.tema_central_id is not None:
-                        resolvidos += 1
-                saida[posicao] = {
-                    **linha,
-                    **revotos,
-                    "antes_do_reparo": {provedor: linha.get(provedor) for provedor in PROVEDORES},
-                    "reparo": {"novos": novos, "revotado": True},
-                }
-                listas[id_] = lista
+                # A busca pela justificativa (embedding) e as revotações entram no livro-razão com a questão.
+                with custos.contexto(etapa="reparo", alvo=alvo, id_questao=id_):
+                    lista, novos = expandir_candidatos(candidatos[id_], linha, indice, arvore, k_reparo, teto)
+                    if not novos:
+                        saida[posicao] = {**linha, "reparo": {"novos": [], "revotado": False}}
+                        continue
+                    revotos: dict[str, dict | None] = {}
+                    for indice_clf, (provedor, classificador) in enumerate(zip(PROVEDORES, classificadores)):
+                        voto = classificador.classificar(textos[id_], lista, arvore)
+                        # Disjuntor, como nos votos: sem voto várias vezes seguidas é chave, cota ou modelo com problema.
+                        sem_voto_seguidas[indice_clf] = sem_voto_seguidas[indice_clf] + 1 if voto is None else 0
+                        if sem_voto_seguidas[indice_clf] >= MAXIMO_NONE_CONSECUTIVOS:
+                            raise RuntimeError(
+                                f"classificador '{getattr(classificador, 'nome', provedor)}' ficou sem voto em "
+                                f"{MAXIMO_NONE_CONSECUTIVOS} revotações seguidas (última: {id_}); reparo interrompido "
+                                "sem regravar os votos. Rode `classificar votos --verificar` para checar chave, modelo e cota."
+                            )
+                        revotos[provedor] = _serializar(voto)
+                        if _voto_nulo(linha.get(provedor)) and voto is not None and voto.tema_central_id is not None:
+                            resolvidos += 1
+                    saida[posicao] = {
+                        **linha,
+                        **revotos,
+                        "antes_do_reparo": {provedor: linha.get(provedor) for provedor in PROVEDORES},
+                        "reparo": {"novos": novos, "revotado": True},
+                    }
+                    listas[id_] = lista
         finally:
             # O Weaviate abre uma conexão por índice; o substituto em memória ignora o fechamento.
             if indice is not None:

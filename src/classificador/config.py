@@ -21,6 +21,7 @@ class Caminhos:
     corpus: Path
     intermediarios: Path
     cache: Path
+    custos: Path
     ancora_planilha: Path
     ancora_manual: Path
     publicacao: Path
@@ -35,6 +36,7 @@ CAMINHOS = Caminhos(
     corpus=RAIZ / "data" / "corpus_referencia.jsonl",
     intermediarios=RAIZ / "data" / "intermediarios",
     cache=RAIZ / "data" / "cache",
+    custos=RAIZ / "data" / "custos",
     ancora_planilha=RAIZ / "data" / "ancora_para_rotular.csv",
     ancora_manual=RAIZ / "data" / "ancora_manual.csv",
     publicacao=RAIZ / "publicacao.csv",

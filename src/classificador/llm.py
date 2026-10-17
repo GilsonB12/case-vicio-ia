@@ -2,7 +2,9 @@
 from __future__ import annotations
 
 import argparse
+import contextlib
 import hashlib
+import itertools
 import json
 import logging
 import re
@@ -12,6 +14,7 @@ from typing import Callable, Literal
 
 from pydantic import BaseModel, Field, ValidationError
 
+from classificador import custos
 from classificador.arvore import ArvoreTemas
 from classificador.candidatos import Candidato, candidatos_de_dict
 from classificador.config import CAMINHOS, ChaveAusenteError, ler_env
@@ -34,7 +37,8 @@ class VotoInvalidoError(ValueError):
     """O modelo escolheu um tema que não estava entre os candidatos."""
 
 
-Invocador = Callable[[str], VotoModelo]
+# Devolve o voto e o uso de tokens da resposta (no formato de custos.normalizar_uso, ou None se desconhecido).
+Invocador = Callable[[str], tuple[VotoModelo, dict | None]]
 
 AVISO_RETENTATIVA = (
     "\n\nATENÇÃO: sua resposta anterior escolheu o id {id}, que NÃO está na lista de candidatos. "
@@ -83,6 +87,10 @@ def slug_configuracao(configuracao: dict) -> str:
     return re.sub(r"[^A-Za-z0-9._-]", "-", "_".join(partes))
 
 
+def _milissegundos(inicio: float) -> float:
+    return round((time.perf_counter() - inicio) * 1000, 1)
+
+
 def carregar_prompt(caminho: Path = CAMINHOS.prompts / "classificar.md") -> str:
     return caminho.read_text(encoding="utf-8")
 
@@ -113,19 +121,21 @@ class ClassificadorLLM:
         espera_base: float = 2.0,
         dormir: Callable[[float], None] = time.sleep,
         configuracao: dict | None = None,
+        livro: custos.LivroRazao | None = None,
     ) -> None:
         self.nome = nome
         self.modelo = modelo
         self.invocador = invocador
         # Parâmetros de invocação que mudam a resposta (esforço, max_tokens, método): entram na chave e na pasta do cache.
         self.configuracao = dict(configuracao or {})
-        slug = slug_configuracao(self.configuracao)
-        self.pasta = pasta_cache / "llm" / nome / (f"{modelo}__{slug}" if slug else modelo)
+        self.slug = slug_configuracao(self.configuracao)
+        self.pasta = pasta_cache / "llm" / nome / (f"{modelo}__{self.slug}" if self.slug else modelo)
         self.pasta.mkdir(parents=True, exist_ok=True)
         self.template = template
         self.tentativas = tentativas
         self.espera_base = espera_base
         self.dormir = dormir
+        self.livro = livro if livro is not None else custos.LIVRO
         self.chamadas = 0
         self.acertos_cache = 0
 
@@ -135,18 +145,24 @@ class ClassificadorLLM:
         chave = hashlib.sha256(f"{self.modelo}\n{configuracao}\n{prompt}\n{schema}".encode("utf-8")).hexdigest()
         return self.pasta / f"{chave}.json"
 
-    def _ler_cache(self, prompt: str) -> VotoModelo | None:
+    def _ler_cache(self, prompt: str) -> tuple[VotoModelo, dict | None] | None:
+        """Voto e uso guardados. O formato antigo, só o voto, é reconhecido pela chave tema_central_id e vem sem uso."""
         arquivo = self._arquivo(prompt)
         if not arquivo.exists():
             return None
         try:
-            return VotoModelo.model_validate_json(arquivo.read_text(encoding="utf-8"))
+            dados = json.loads(arquivo.read_text(encoding="utf-8"))
+            if "tema_central_id" in dados:
+                return VotoModelo.model_validate(dados), None
+            uso = dados.get("uso")
+            return VotoModelo.model_validate(dados["voto"]), uso if isinstance(uso, dict) else None
         except Exception:
             arquivo.unlink()
             return None
 
-    def _gravar_cache(self, prompt: str, voto: VotoModelo) -> None:
-        self._arquivo(prompt).write_text(voto.model_dump_json(), encoding="utf-8")
+    def _gravar_cache(self, prompt: str, voto: VotoModelo, uso: dict | None) -> None:
+        conteudo = {"voto": voto.model_dump(mode="json"), "uso": uso, "modelo": self.modelo, "quando": custos.agora_iso()}
+        self._arquivo(prompt).write_text(json.dumps(conteudo, ensure_ascii=False), encoding="utf-8")
 
     def validar(self, voto: VotoModelo, candidatos: list[Candidato], arvore: ArvoreTemas) -> VotoModelo:
         permitidos = {c.tema_id for c in candidatos}
@@ -162,20 +178,26 @@ class ClassificadorLLM:
                 extras.append(canonico)
         return voto.model_copy(update={"tema_central_id": central, "extras_ids": extras})
 
-    def _invocar_com_retentativas(self, prompt: str) -> VotoModelo | None:
+    def _invocar_com_retentativas(
+        self, prompt: str, anotar: Callable[..., None]
+    ) -> tuple[VotoModelo, dict | None, float] | None:
         """Chama o modelo com espera exponencial em erro transitório (429, 5xx, conexão, desconhecido).
 
         Erro 4xx que não é 429 sobe na hora. Resposta fora do schema sobe como ValidationError, para o chamador
-        tentar uma vez só com o aviso no prompt, sem passar pelas esperas.
+        tentar uma vez só com o aviso no prompt, sem passar pelas esperas. Cada tentativa que falha é anotada no
+        livro-razão aqui; a que responde volta com o uso e a latência, e quem chama a anota depois de validar o voto.
         """
         assert self.invocador is not None
         for tentativa in range(self.tentativas):
+            inicio = time.perf_counter()
             try:
                 self.chamadas += 1
-                return self.invocador(prompt)
-            except VotoInvalidoError:
-                raise
+                voto, uso = self.invocador(prompt)
             except Exception as erro:
+                # O invocador anexa ao erro de parse o uso da resposta que veio fora do schema.
+                anotar(prompt, uso=getattr(erro, "uso_tokens", None), latencia_ms=_milissegundos(inicio), erro=erro)
+                if isinstance(erro, VotoInvalidoError):
+                    raise
                 validacao = erro_de_validacao(erro)
                 if validacao is not None:
                     if validacao is erro:
@@ -187,18 +209,37 @@ class ClassificadorLLM:
                 registro.warning("%s: erro na chamada (%s), tentativa %d/%d", self.nome, erro, tentativa + 1, self.tentativas)
                 if tentativa + 1 < self.tentativas:
                     self.dormir(self.espera_base * (2 ** tentativa))
+            else:
+                return voto, uso, _milissegundos(inicio)
         return None
 
     def classificar(self, texto_questao: str, candidatos: list[Candidato], arvore: ArvoreTemas) -> VotoModelo | None:
+        """Voto validado do cache ou do modelo; cada invocação, de cache ou real, vira uma linha no livro-razão."""
         prompt = montar_prompt(self.template, texto_questao, candidatos, arvore)
+        arquivo = self._arquivo(prompt)
+        tentativas = itertools.count(1)
+
+        def anotar(enviado: str, origem: str = "api", uso: dict | None = None, latencia_ms: float | None = None,
+                   voto: VotoModelo | None = None, erro: BaseException | None = None) -> None:
+            self.livro.registrar(
+                provedor=self.nome, modelo=self.modelo, configuracao=self.slug, origem=origem,
+                tentativa=next(tentativas), hash_prompt=arquivo.stem, tamanho_prompt_chars=len(enviado),
+                n_candidatos=len(candidatos), uso=uso, latencia_ms=latencia_ms, sucesso=erro is None,
+                erro=None if erro is None else custos.descrever_erro(erro),
+                tema_votado=None if voto is None else voto.tema_central_id,
+                confianca=None if voto is None else voto.confianca,
+            )
+
         em_cache = self._ler_cache(prompt)
         if em_cache is not None:
+            voto_cache, uso_cache = em_cache
             try:
-                validado = self.validar(em_cache, candidatos, arvore)
+                validado = self.validar(voto_cache, candidatos, arvore)
             except VotoInvalidoError:
-                self._arquivo(prompt).unlink()
+                arquivo.unlink()
             else:
                 self.acertos_cache += 1
+                anotar(prompt, origem="cache", uso=uso_cache, voto=validado)
                 return validado
         if self.invocador is None:
             raise ChaveAusenteError(
@@ -208,21 +249,25 @@ class ClassificadorLLM:
         prompt_atual = prompt
         for rodada in range(2):
             try:
-                bruto = self._invocar_com_retentativas(prompt_atual)
+                resposta = self._invocar_com_retentativas(prompt_atual, anotar)
             except ValidationError as erro:
                 resumo = resumir_validacao(erro)
                 registro.warning("%s: resposta fora do schema (rodada %d): %s", self.nome, rodada + 1, resumo)
                 prompt_atual = prompt + AVISO_VALIDACAO.format(erro=resumo)
                 continue
-            if bruto is None:
+            if resposta is None:
                 return None
+            bruto, uso, latencia_ms = resposta
             try:
                 voto = self.validar(bruto, candidatos, arvore)
             except VotoInvalidoError as erro:
+                anotar(prompt_atual, uso=uso, latencia_ms=latencia_ms, voto=bruto, erro=erro)
                 registro.warning("%s: tema %s fora dos candidatos (rodada %d)", self.nome, erro, rodada + 1)
                 prompt_atual = prompt + AVISO_RETENTATIVA.format(id=erro)
                 continue
-            self._gravar_cache(prompt, voto)
+            # O voto pago vai para o cache antes da linha: se o livro falhar, a chamada não se perde.
+            self._gravar_cache(prompt, voto, uso)
+            anotar(prompt_atual, uso=uso, latencia_ms=latencia_ms, voto=voto)
             return voto
         return None
 
@@ -253,15 +298,33 @@ def criar_invocador(provedor: str, modelo: str) -> Invocador:
 
         # effort é o apelido do campo reasoning_effort no ChatAnthropic.
         base = ChatAnthropic(model=modelo, **parametros)
-    estruturado = base.with_structured_output(VotoModelo, method=configuracao["method"])
+    # include_raw traz a mensagem crua junto do voto: é dela que sai o uso de tokens.
+    estruturado = base.with_structured_output(VotoModelo, method=configuracao["method"], include_raw=True)
 
-    def invocar(prompt: str) -> VotoModelo:
-        resultado = estruturado.invoke(prompt)
-        if not isinstance(resultado, VotoModelo):
-            raise RuntimeError(f"{provedor} devolveu algo que não é VotoModelo: {type(resultado)}")
-        return resultado
+    def invocar(prompt: str) -> tuple[VotoModelo, dict | None]:
+        return desembrulhar_resposta(estruturado.invoke(prompt), provedor)
 
     return invocar
+
+
+def desembrulhar_resposta(resultado: dict, provedor: str) -> tuple[VotoModelo, dict | None]:
+    """Voto e uso de tokens da saída de with_structured_output(include_raw=True).
+
+    Com include_raw o LangChain não levanta o erro de parse, devolve-o em parsing_error. Ele sobe aqui como antes,
+    com o uso da resposta anexado em `uso_tokens`, para o livro-razão contar também a tentativa fora do schema.
+    """
+    if not isinstance(resultado, dict):
+        raise RuntimeError(f"{provedor} devolveu algo que não é a saída com include_raw: {type(resultado)}")
+    uso = custos.normalizar_uso(getattr(resultado.get("raw"), "usage_metadata", None))
+    voto = resultado.get("parsed")
+    erro = resultado.get("parsing_error")
+    if voto is None and erro is not None:
+        with contextlib.suppress(AttributeError, TypeError):
+            erro.uso_tokens = uso
+        raise erro
+    if not isinstance(voto, VotoModelo):
+        raise RuntimeError(f"{provedor} devolveu algo que não é VotoModelo: {type(voto)}")
+    return voto, uso
 
 
 def criar_classificadores(pasta_cache: Path = CAMINHOS.cache) -> tuple[ClassificadorLLM, ClassificadorLLM]:
@@ -298,8 +361,9 @@ def rodar_votos(
         if str(id_) not in candidatos:
             raise KeyError(f"questão {id_} sem candidatos em {caminho_candidatos}; gere os candidatos de novo")
         lista = candidatos[str(id_)]
-        voto_a = openai.classificar(texto, lista, arvore)
-        voto_b = anthropic.classificar(texto, lista, arvore)
+        with custos.contexto(etapa="votos", alvo=alvo, id_questao=str(id_)):
+            voto_a = openai.classificar(texto, lista, arvore)
+            voto_b = anthropic.classificar(texto, lista, arvore)
         for posicao_clf, (classificador, voto) in enumerate(((openai, voto_a), (anthropic, voto_b))):
             sem_voto_seguidas[posicao_clf] = sem_voto_seguidas[posicao_clf] + 1 if voto is None else 0
             if sem_voto_seguidas[posicao_clf] >= MAXIMO_NONE_CONSECUTIVOS:
@@ -324,7 +388,15 @@ def rodar_votos(
     return saida
 
 
-def verificar_provedores() -> dict[str, str]:
+PROMPT_VERIFICACAO = (
+    "Questão de teste: o crime de furto está no Código Penal. "
+    "Candidatos:\n- id 1: Penal > Furto\nResponda escolhendo o id 1 com confiança 1."
+)
+
+
+def verificar_provedores(livro: custos.LivroRazao | None = None) -> dict[str, str]:
+    """Uma chamada curta por provedor com chave; cada chamada feita vai para o livro-razão na etapa verificar."""
+    livro = livro if livro is not None else custos.LIVRO
     resultado: dict[str, str] = {}
     for provedor, variavel_modelo, padrao, variavel_chave in (
         ("openai", "MODELO_OPENAI", "gpt-5", "OPENAI_API_KEY"),
@@ -333,15 +405,25 @@ def verificar_provedores() -> dict[str, str]:
         if not ler_env(variavel_chave):
             resultado[provedor] = f"sem {variavel_chave}"
             continue
-        try:
-            invocar = criar_invocador(provedor, ler_env(variavel_modelo, padrao) or padrao)
-            voto = invocar(
-                "Questão de teste: o crime de furto está no Código Penal. "
-                "Candidatos:\n- id 1: Penal > Furto\nResponda escolhendo o id 1 com confiança 1."
-            )
-            resultado[provedor] = "ok" if voto.tema_central_id == 1 else f"respondeu {voto.tema_central_id}"
-        except Exception as erro:
-            resultado[provedor] = f"erro: {erro}"
+        modelo = ler_env(variavel_modelo, padrao) or padrao
+        linha = {"provedor": provedor, "modelo": modelo, "origem": "api", "tentativa": 1,
+                 "configuracao": slug_configuracao(configuracao_invocador(provedor, modelo)),
+                 "tamanho_prompt_chars": len(PROMPT_VERIFICACAO)}
+        inicio: float | None = None
+        with custos.contexto(etapa="verificar"):
+            try:
+                invocar = criar_invocador(provedor, modelo)
+                inicio = time.perf_counter()
+                voto, uso = invocar(PROMPT_VERIFICACAO)
+            except Exception as erro:
+                if inicio is not None:
+                    livro.registrar(**linha, uso=getattr(erro, "uso_tokens", None), latencia_ms=_milissegundos(inicio),
+                                    sucesso=False, erro=custos.descrever_erro(erro))
+                resultado[provedor] = f"erro: {erro}"
+                continue
+            livro.registrar(**linha, uso=uso, latencia_ms=_milissegundos(inicio),
+                            tema_votado=voto.tema_central_id, confianca=voto.confianca)
+        resultado[provedor] = "ok" if voto.tema_central_id == 1 else f"respondeu {voto.tema_central_id}"
     return resultado
 
 

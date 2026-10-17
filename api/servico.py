@@ -5,7 +5,7 @@ import logging
 import threading
 from typing import Any, Callable
 
-from classificador import candidatos, decisao, llm, vizinhanca
+from classificador import candidatos, custos, decisao, llm, vizinhanca
 from classificador.arvore import ArvoreTemas
 from classificador.config import CAMINHOS, ler_env
 from classificador.dados import carregar_corpus, montar_texto
@@ -89,14 +89,16 @@ class Servico:
         """
         arvore = self.arvore
         texto = montar_texto(enunciado_html, comando, alternativas)
-        indice_corpus = self.indice_corpus
-        lista = candidatos.buscar_candidatos(texto, self.indice_temas, arvore, indice_corpus)
-        openai, anthropic = self.classificadores
-        voto_a = openai.classificar(texto, lista, arvore)
-        voto_b = anthropic.classificar(texto, lista, arvore)
-        voto_vizinhanca = (
-            vizinhanca.VOTO_NULO if indice_corpus is None else vizinhanca.votar_vizinhanca(texto, indice_corpus, arvore)
-        )
+        # Embeddings (inclusive os dos índices montados no primeiro uso) e votos entram no livro-razão como api.
+        with custos.contexto(etapa="api", alvo="api", id_questao=ID_AVULSA):
+            indice_corpus = self.indice_corpus
+            lista = candidatos.buscar_candidatos(texto, self.indice_temas, arvore, indice_corpus)
+            openai, anthropic = self.classificadores
+            voto_a = openai.classificar(texto, lista, arvore)
+            voto_b = anthropic.classificar(texto, lista, arvore)
+            voto_vizinhanca = (
+                vizinhanca.VOTO_NULO if indice_corpus is None else vizinhanca.votar_vizinhanca(texto, indice_corpus, arvore)
+            )
         decidido = decisao.decidir(ID_AVULSA, voto_a, voto_b, voto_vizinhanca, lista, arvore, self.limiares)
         return {
             "decisao": decidido.decisao,

@@ -385,3 +385,36 @@ def test_reparar_help(capsys):
     texto = capsys.readouterr().out
     assert "--alvo" in texto
     assert "--recalcular" in texto
+
+
+def test_reparo_registra_etapa_e_questao_no_contexto_de_custos(cenario):
+    from classificador import custos
+
+    vistos = {"indice": [], "busca": [], "classificar": []}
+
+    class ClassificadorAnotador(ClassificadorFalso):
+        def classificar(self, texto, candidatos, arvore):
+            vistos["classificar"].append(custos.contexto_atual())
+            return super().classificar(texto, candidatos, arvore)
+
+    class IndiceAnotador(IndiceFalso):
+        def buscar(self, texto, k, excluir=frozenset()):
+            vistos["busca"].append(custos.contexto_atual())
+            return super().buscar(texto, k, excluir)
+
+    indice = IndiceAnotador(RESPOSTAS_INDICE)
+
+    def criar(nome, embeddings):
+        vistos["indice"].append(custos.contexto_atual())
+        return indice
+
+    classificadores = (
+        ClassificadorAnotador("openai", {TEXTOS["Q0001"]: voto(4697)}),
+        ClassificadorAnotador("anthropic", {TEXTOS["Q0001"]: voto(4697)}),
+    )
+    rodar_reparo("questoes", ArvoreTemas.carregar(), EmbeddingsFalsas(), classificadores, pasta=cenario, criar=criar)
+    assert vistos["indice"] == [custos.Contexto("reparo", "questoes", None)]
+    assert vistos["classificar"] == [custos.Contexto("reparo", "questoes", "Q0001")] * 2
+    assert {c.id_questao for c in vistos["busca"]} == {"Q0001", "Q0005"}
+    assert {c.etapa for c in vistos["busca"]} == {"reparo"}
+    assert custos.contexto_atual() == custos.Contexto()

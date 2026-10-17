@@ -147,3 +147,31 @@ def test_embeddings_sao_construidas_uma_vez_e_so_no_primeiro_acesso(monkeypatch)
     segunda = servico.embeddings
     assert len(construidas) == 1
     assert primeira is segunda is construidas[0]
+
+
+def test_servico_classifica_dentro_do_contexto_de_custos_da_api(monkeypatch):
+    from classificador import custos
+    from classificador.arvore import ArvoreTemas
+    from classificador.candidatos import Candidato
+
+    vistos = []
+
+    class ClassificadorAnotador:
+        def classificar(self, texto, candidatos, arvore):
+            vistos.append(custos.contexto_atual())
+            return None
+
+    def buscar(texto, indice_temas, arvore, indice_corpus):
+        vistos.append(custos.contexto_atual())
+        return [Candidato(5524, "tema", 0.7)]
+
+    monkeypatch.setattr(api.servico.candidatos, "buscar_candidatos", buscar)
+    servico = api.servico.Servico()
+    servico.__dict__.update(
+        arvore=ArvoreTemas.carregar(), indice_temas=object(), indice_corpus=None,
+        classificadores=(ClassificadorAnotador(), ClassificadorAnotador()), limiares=api.servico.decisao.Limiares(),
+    )
+    resposta = servico.classificar(ENTRADA["enunciado_html"], ENTRADA["comando"], ENTRADA["alternativas"])
+    assert resposta["votos"]["openai"] is None
+    assert vistos == [custos.Contexto("api", "api", api.servico.ID_AVULSA)] * 3
+    assert custos.contexto_atual() == custos.Contexto()
