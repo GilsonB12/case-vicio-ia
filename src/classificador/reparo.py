@@ -87,6 +87,16 @@ def expandir_candidatos(
     return list(candidatos) + acrescentados, [c.tema_id for c in acrescentados]
 
 
+def lista_gravada(candidatos: list[Candidato], gravada: list[dict]) -> tuple[list[Candidato], list[int]]:
+    """A lista ampliada de uma execução anterior e os ids dos temas novos nela, sem consultar o índice.
+
+    Novos são os de origem "reparo" ou "pai" que não estão em `candidatos` (a lista da passada 2), na ordem gravada.
+    """
+    lista = candidatos_de_dict(gravada)
+    presentes = {c.tema_id for c in candidatos}
+    return lista, [c.tema_id for c in lista if c.origem in ("reparo", "pai") and c.tema_id not in presentes]
+
+
 def _restaurar(linha: dict) -> dict:
     """A linha como saiu dos votos, sem o reparo de uma rodada anterior."""
     base = {chave: valor for chave, valor in linha.items() if chave not in ("reparo", "antes_do_reparo")}
@@ -118,7 +128,15 @@ def rodar_reparo(
 ) -> Path:
     """Reescreve votos_llm_{alvo}.jsonl com os votos revotados e grava candidatos_{alvo}_reparo.jsonl.
 
-    Linhas já reparadas são puladas; com recalcular, o reparo é refeito a partir dos votos originais.
+    Linhas já reparadas são puladas; com recalcular, o reparo é refeito a partir dos votos originais, com busca nova
+    no índice para todas as elegíveis e sem olhar o arquivo de reparo anterior.
+
+    Sem recalcular, a questão pendente que já tem lista ampliada em candidatos_{alvo}_reparo.jsonl revota sobre essa
+    lista, sem buscar no índice. É o que acontece em `classificar tudo` pelo cache: os votos são regravados sem a
+    chave reparo e as elegíveis voltam a ficar pendentes. Buscar de novo deixaria a reprodução depender do índice em
+    uso: Weaviate e o substituto em memória diferem na quarta casa da similaridade, um empate no corte do teto troca
+    um candidato, o prompt muda, o cache não bate e a revotação vira chamada paga. O índice só é montado quando
+    alguma pendente não tem lista gravada.
     """
     if alvo not in {"questoes", "corpus"}:
         raise ValueError("alvo deve ser 'questoes' ou 'corpus'")
@@ -135,7 +153,8 @@ def rodar_reparo(
     linhas = [_restaurar(linha) if recalcular else linha for linha in ler_jsonl(caminho_votos)]
     puladas = sum(1 for linha in linhas if "reparo" in linha)
     pendentes = [posicao for posicao, linha in enumerate(linhas) if "reparo" not in linha and elegivel(linha)]
-    # Sem recalcular, as listas ampliadas das questões já reparadas continuam no arquivo de candidatos do reparo.
+    # Sem recalcular, as listas ampliadas gravadas continuam valendo: as das já reparadas seguem no arquivo e as das
+    # pendentes substituem a busca no índice.
     anteriores = {}
     if not recalcular and caminho_reparo.exists():
         anteriores = {str(l["id"]): l["candidatos"] for l in ler_jsonl(caminho_reparo)}
@@ -143,6 +162,7 @@ def rodar_reparo(
     saida = list(linhas)
     listas: dict[str, list[Candidato]] = {}
     resolvidos = 0
+    reaproveitadas = 0
     antes = _contadores(classificadores)
     if pendentes:
         candidatos = {str(l["id"]): candidatos_de_dict(l["candidatos"]) for l in ler_jsonl(caminho_candidatos)}
@@ -151,8 +171,6 @@ def rodar_reparo(
         sem_voto_seguidas = [0] * len(PROVEDORES)
         indice: Indice | None = None
         try:
-            with custos.contexto(etapa="reparo", alvo=alvo):
-                indice = montar_indice_temas(arvore, embeddings, criar)
             for posicao in pendentes:
                 linha = linhas[posicao]
                 id_ = str(linha["id"])
@@ -160,9 +178,18 @@ def rodar_reparo(
                     raise KeyError(f"questão {id_} sem candidatos em {caminho_candidatos}; gere os candidatos de novo")
                 if id_ not in textos:
                     raise KeyError(f"questão {id_} dos votos não está entre as questões do alvo '{alvo}'")
+                gravada = anteriores.get(id_)
+                if gravada is None and indice is None:
+                    # Montado na primeira questão que precisa de busca; se todas têm lista gravada, nunca é montado.
+                    with custos.contexto(etapa="reparo", alvo=alvo):
+                        indice = montar_indice_temas(arvore, embeddings, criar)
                 # A busca pela justificativa (embedding) e as revotações entram no livro-razão com a questão.
                 with custos.contexto(etapa="reparo", alvo=alvo, id_questao=id_):
-                    lista, novos = expandir_candidatos(candidatos[id_], linha, indice, arvore, k_reparo, teto)
+                    if gravada is not None:
+                        lista, novos = lista_gravada(candidatos[id_], gravada)
+                        reaproveitadas += 1
+                    else:
+                        lista, novos = expandir_candidatos(candidatos[id_], linha, indice, arvore, k_reparo, teto)
                     if not novos:
                         saida[posicao] = {**linha, "reparo": {"novos": [], "revotado": False}}
                         continue
@@ -209,7 +236,8 @@ def rodar_reparo(
 
     resumo = (
         f"reparo {alvo}: {len(pendentes)} elegíveis, {len(listas)} revotadas, {len(pendentes) - len(listas)} sem tema novo, "
-        f"{puladas} já reparadas e puladas; {resolvidos} votos nulos deixaram de ser nulos"
+        f"{puladas} já reparadas e puladas, {reaproveitadas} com a lista ampliada gravada reaproveitada; "
+        f"{resolvidos} votos nulos deixaram de ser nulos"
     )
     depois = _contadores(classificadores)
     if antes is not None and depois is not None:

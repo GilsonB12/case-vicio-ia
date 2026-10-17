@@ -348,6 +348,141 @@ def test_alvo_invalido(tmp_path):
         rodar_reparo("outro", ArvoreTemas.carregar(), EmbeddingsFalsas(), classificadores_falsos(), pasta=tmp_path)
 
 
+# --- rodar_reparo com a lista ampliada já gravada --------------------------------------------------------
+
+# Lista ampliada de Q0001 numa execução anterior, diferente da que o índice falso montaria hoje (4697). 5159 tem
+# origem "reparo" mas já está na p2 e 4697 não está na p2 mas tem origem "tema": nenhum dos dois conta como novo.
+GRAVADA = [
+    Candidato(5524, "tema", 0.7),
+    Candidato(5527, "tema", 0.65),
+    Candidato(5159, "reparo", 0.4),
+    Candidato(4697, "tema", 0.3),
+    Candidato(5543, "pai", 0.75),
+    Candidato(5548, "reparo", 0.75),
+]
+
+
+def gravar_reparo_anterior(pasta, listas):
+    escrever_jsonl(pasta / "candidatos_questoes_reparo.jsonl",
+                   [{"id": id_, "candidatos": candidatos_para_dict(lista)} for id_, lista in listas.items()])
+
+
+def so_q0001_pendente(pasta):
+    """Q0005 já reparada; a única pendente é a Q0001."""
+    escrever_jsonl(pasta / "votos_llm_questoes.jsonl",
+                   VOTOS_ORIGINAIS[:4] + [{**VOTOS_ORIGINAIS[4], "reparo": {"novos": [], "revotado": False}}])
+
+
+def test_pendente_com_lista_gravada_revota_sobre_ela_sem_buscar_no_indice(cenario):
+    so_q0001_pendente(cenario)
+    gravar_reparo_anterior(cenario, {"Q0001": GRAVADA})
+    indice = IndiceFalso(RESPOSTAS_INDICE)
+    classificadores = classificadores_falsos()
+    rodar(cenario, classificadores, indice)
+
+    assert indice.buscas == []
+    for clf in classificadores:
+        assert clf.recebidos == [(TEXTOS["Q0001"], GRAVADA)]
+    primeira = ler_jsonl(cenario / "votos_llm_questoes.jsonl")[0]
+    assert primeira["reparo"] == {"novos": [5543, 5548], "revotado": True}
+    assert primeira["openai"] == dump(voto(4697, confianca=0.95))
+    assert primeira["antes_do_reparo"] == {"openai": VOTOS_ORIGINAIS[0]["openai"],
+                                           "anthropic": VOTOS_ORIGINAIS[0]["anthropic"]}
+    assert ler_jsonl(cenario / "candidatos_questoes_reparo.jsonl") == [
+        {"id": "Q0001", "candidatos": candidatos_para_dict(GRAVADA)},
+    ]
+
+
+def test_pendente_sem_lista_gravada_busca_no_indice(cenario):
+    so_q0001_pendente(cenario)
+    # O arquivo existe, mas só com a lista de outra questão.
+    gravar_reparo_anterior(cenario, {"Q0003": GRAVADA})
+    indice = IndiceFalso(RESPOSTAS_INDICE)
+    classificadores = classificadores_falsos()
+    _, criados = rodar(cenario, classificadores, indice)
+
+    assert criados == ["Tema"]
+    assert indice.buscas == [("porte ilegal de arma de fogo", reparo.K_REPARO)]
+    esperada = ORIGINAIS + [Candidato(4697, "reparo", 0.8)]
+    for clf in classificadores:
+        assert clf.recebidos == [(TEXTOS["Q0001"], esperada)]
+    assert ler_jsonl(cenario / "votos_llm_questoes.jsonl")[0]["reparo"] == {"novos": [4697], "revotado": True}
+    assert ler_jsonl(cenario / "candidatos_questoes_reparo.jsonl") == [
+        {"id": "Q0001", "candidatos": candidatos_para_dict(esperada)},
+    ]
+    assert indice.fechado
+
+
+def test_mistura_busca_no_indice_so_a_pendente_sem_lista_gravada(cenario):
+    gravar_reparo_anterior(cenario, {"Q0001": GRAVADA})
+    indice = IndiceFalso({**RESPOSTAS_INDICE, "nada novo": [(4697, 0.6)]})
+    classificadores = (
+        ClassificadorFalso("openai", {TEXTOS["Q0001"]: voto(5548), TEXTOS["Q0005"]: voto(4697)}),
+        ClassificadorFalso("anthropic", {TEXTOS["Q0001"]: voto(5548), TEXTOS["Q0005"]: voto(4697)}),
+    )
+    _, criados = rodar(cenario, classificadores, indice)
+
+    assert criados == ["Tema"]
+    # Os dois votos nulos da Q0005 buscam; a justificativa da Q0001 não vai ao índice.
+    assert indice.buscas == [("nada novo", reparo.K_REPARO)] * 2
+    nova = ORIGINAIS + [Candidato(4697, "reparo", 0.6)]
+    for clf in classificadores:
+        assert clf.recebidos == [(TEXTOS["Q0001"], GRAVADA), (TEXTOS["Q0005"], nova)]
+    linhas = ler_jsonl(cenario / "votos_llm_questoes.jsonl")
+    assert linhas[0]["reparo"] == {"novos": [5543, 5548], "revotado": True}
+    assert linhas[4]["reparo"] == {"novos": [4697], "revotado": True}
+    assert ler_jsonl(cenario / "candidatos_questoes_reparo.jsonl") == [
+        {"id": "Q0001", "candidatos": candidatos_para_dict(GRAVADA)},
+        {"id": "Q0005", "candidatos": candidatos_para_dict(nova)},
+    ]
+    assert indice.fechado
+
+
+def test_recalcular_ignora_a_lista_gravada_e_busca_de_novo(cenario):
+    gravar_reparo_anterior(cenario, {"Q0001": GRAVADA})
+    indice = IndiceFalso(RESPOSTAS_INDICE)
+    classificadores = classificadores_falsos()
+    rodar(cenario, classificadores, indice, recalcular=True)
+
+    assert ("porte ilegal de arma de fogo", reparo.K_REPARO) in indice.buscas
+    esperada = ORIGINAIS + [Candidato(4697, "reparo", 0.8)]
+    for clf in classificadores:
+        assert clf.recebidos == [(TEXTOS["Q0001"], esperada)]
+    assert ler_jsonl(cenario / "votos_llm_questoes.jsonl")[0]["reparo"] == {"novos": [4697], "revotado": True}
+    assert ler_jsonl(cenario / "candidatos_questoes_reparo.jsonl") == [
+        {"id": "Q0001", "candidatos": candidatos_para_dict(esperada)},
+    ]
+
+
+def test_sem_pendente_que_precise_de_busca_o_indice_nao_e_montado(cenario):
+    so_q0001_pendente(cenario)
+    gravar_reparo_anterior(cenario, {"Q0001": GRAVADA})
+    classificadores = classificadores_falsos()
+    _, criados = rodar(cenario, classificadores, IndiceFalso(RESPOSTAS_INDICE))
+
+    assert criados == []
+    assert [clf.chamadas for clf in classificadores] == [1, 1]
+
+
+def test_votos_regravados_pelo_cache_repetem_o_reparo_mesmo_com_outro_indice(cenario):
+    """`classificar tudo` regrava os votos sem a chave reparo; o reparo seguinte não pode depender do índice."""
+    rodar(cenario, classificadores_falsos(), IndiceFalso(RESPOSTAS_INDICE))
+    votos_antes = ler_jsonl(cenario / "votos_llm_questoes.jsonl")
+    candidatos_antes = ler_jsonl(cenario / "candidatos_questoes_reparo.jsonl")
+
+    escrever_jsonl(cenario / "votos_llm_questoes.jsonl", VOTOS_ORIGINAIS)
+    # Outro índice (Weaviate no lugar da memória, ou o contrário) poria outro tema no fim da lista ampliada.
+    outro = IndiceFalso({**RESPOSTAS_INDICE, "porte ilegal de arma de fogo": [(5548, 0.8)]})
+    classificadores = classificadores_falsos()
+    rodar(cenario, classificadores, outro)
+
+    for clf in classificadores:
+        assert clf.recebidos == [(TEXTOS["Q0001"], ORIGINAIS + [Candidato(4697, "reparo", 0.8)])]
+    assert ("porte ilegal de arma de fogo", reparo.K_REPARO) not in outro.buscas
+    assert ler_jsonl(cenario / "votos_llm_questoes.jsonl") == votos_antes
+    assert ler_jsonl(cenario / "candidatos_questoes_reparo.jsonl") == candidatos_antes
+
+
 # --- pipeline e CLI --------------------------------------------------------------------------------------
 
 
