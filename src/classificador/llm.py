@@ -329,7 +329,7 @@ def desembrulhar_resposta(resultado: dict, provedor: str) -> tuple[VotoModelo, d
 
 def criar_classificadores(pasta_cache: Path = CAMINHOS.cache) -> tuple[ClassificadorLLM, ClassificadorLLM]:
     template = carregar_prompt()
-    modelo_openai = ler_env("MODELO_OPENAI", "gpt-5") or "gpt-5"
+    modelo_openai = ler_env("MODELO_OPENAI", "gpt-5-mini") or "gpt-5-mini"
     modelo_anthropic = ler_env("MODELO_ANTHROPIC", "claude-sonnet-5-5") or "claude-sonnet-5-5"
     inv_openai = criar_invocador("openai", modelo_openai) if ler_env("OPENAI_API_KEY") else None
     inv_anthropic = criar_invocador("anthropic", modelo_anthropic) if ler_env("ANTHROPIC_API_KEY") else None

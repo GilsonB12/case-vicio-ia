@@ -90,3 +90,10 @@ Task 2: minor (deferred): observação sem decisão fica fora do CSV exportado a
 
 - Cobertura de 33% é o preço da régua com os modelos escolhidos: a autodeclaração de confiança dos modelos é comprimida e o segundo modelo é conservador, o que empurra 161 acordos para `revisar` pela regra 5.
 - A busca de candidatos é o ponto fraco mais barato de melhorar: busca híbrida por número de lei e por título, ou lista maior, antes de qualquer troca de modelo.
+
+### Fechamento (17/10/2026)
+
+- Livro-razão de custos: cada chamada de modelo ou de embeddings grava uma linha em `data/custos/chamadas.jsonl`, com tokens, latência, custo pela tabela de `src/classificador/precos.json` e origem (api ou cache); `classificar custos` agrega. As 1.504 chamadas da execução canônica são anteriores ao livro, por isso o custo delas vem do painel do provedor (US$ 5,80 na Anthropic) e da medição por chamada. O livro commitado é o da reprodução pelo cache: 1.504 linhas, custo zero.
+- Reprodução sem chaves comprovada com `.env.example`: `classificar tudo` reproduz `publicacao.csv` e `previsao.txt` byte a byte, sem nenhuma chamada. Para isso o reparo passou a reaproveitar a lista ampliada já gravada: com o Weaviate parado, o índice em memória difere na quarta casa decimal e mudava um candidato de empate na Q0010, o que gerava um prompt novo e uma chamada paga. O modelo padrão da OpenAI passou a ser o da execução canônica (`gpt-5-mini`), para o `tudo` funcionar mesmo sem `.env`.
+- Checagem independente de 60 rótulos do corpus: 88% compatíveis pela régua; detalhes em `docs/projeto/coleta-corpus.md`.
+- Risco que sobra: questão elegível ao reparo que não ganhou tema novo na primeira vez não tem lista gravada e ainda consulta o índice na reprodução; não ocorreu nesta execução (todas as 61 elegíveis foram revotadas).

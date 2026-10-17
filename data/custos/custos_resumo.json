@@ -1,0 +1,91 @@
+{
+  "livro": "D:\\Projetos\\Pessoal\\case-vicio-ia\\data\\custos\\chamadas.jsonl",
+  "preco_versao": "2026-10-15",
+  "linhas": 1504,
+  "linhas_invalidas": 0,
+  "gerado_em": "2026-10-17T23:01:23.450+00:00",
+  "total": {
+    "linhas": 1504,
+    "uso_desconhecido": 1504,
+    "custo_desconhecido": 0,
+    "tokens_entrada": 0,
+    "tokens_saida": 0,
+    "tokens_raciocinio": 0,
+    "custo_usd": 0.0
+  },
+  "por_execucao": {
+    "20261017T230108-31564": {
+      "linhas": 1504,
+      "uso_desconhecido": 1504,
+      "custo_desconhecido": 0,
+      "tokens_entrada": 0,
+      "tokens_saida": 0,
+      "tokens_raciocinio": 0,
+      "custo_usd": 0.0
+    }
+  },
+  "por_etapa": {
+    "votos": {
+      "linhas": 1382,
+      "uso_desconhecido": 1382,
+      "custo_desconhecido": 0,
+      "tokens_entrada": 0,
+      "tokens_saida": 0,
+      "tokens_raciocinio": 0,
+      "custo_usd": 0.0
+    },
+    "reparo": {
+      "linhas": 122,
+      "uso_desconhecido": 122,
+      "custo_desconhecido": 0,
+      "tokens_entrada": 0,
+      "tokens_saida": 0,
+      "tokens_raciocinio": 0,
+      "custo_usd": 0.0
+    }
+  },
+  "por_modelo": {
+    "openai/gpt-5-mini": {
+      "linhas": 752,
+      "uso_desconhecido": 752,
+      "custo_desconhecido": 0,
+      "tokens_entrada": 0,
+      "tokens_saida": 0,
+      "tokens_raciocinio": 0,
+      "custo_usd": 0.0
+    },
+    "anthropic/claude-sonnet-5-5": {
+      "linhas": 752,
+      "uso_desconhecido": 752,
+      "custo_desconhecido": 0,
+      "tokens_entrada": 0,
+      "tokens_saida": 0,
+      "tokens_raciocinio": 0,
+      "custo_usd": 0.0
+    }
+  },
+  "por_origem": {
+    "cache": {
+      "linhas": 1504,
+      "uso_desconhecido": 1504,
+      "custo_desconhecido": 0,
+      "tokens_entrada": 0,
+      "tokens_saida": 0,
+      "tokens_raciocinio": 0,
+      "custo_usd": 0.0
+    }
+  },
+  "por_questao": {
+    "etapas": [
+      "votos",
+      "reparo"
+    ],
+    "alvo": "questoes",
+    "custo_usd": 0.0,
+    "questoes": 359,
+    "custo_por_questao": 0.0,
+    "publicadas": 117,
+    "custo_por_publicada": 0.0
+  },
+  "painel": {}
+}

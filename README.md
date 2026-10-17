@@ -2,6 +2,15 @@
 
 Pipeline que classifica 359 questões de Penal, Processo Penal, Legislação Penal Especial e Criminologia nos temas da plataforma da Vício, decidindo entre `publicar`, `revisar` e `fora`. O enunciado original está em `docs/case/`.
 
+## Resultado
+
+| Entrega | Onde | Resumo |
+|---|---|---|
+| Decisões | `publicacao.csv` | 117 publicadas (33%), 241 para revisão, 1 fora |
+| Autoavaliação | `previsao.txt` | precisão prevista 0,97, intervalo 0,94 a 1,00; cobertura 0,33 |
+| Relatório | [`relatorio.md`](relatorio.md) | como pensei, diagnóstico, produção e memo para o professor |
+| Código | `src/classificador/`, `api/`, `revisao-ui/`, `analise/` | pipeline, API, tela de revisão e análise exploratória |
+
 ## Como rodar
 
 ```bash
@@ -83,9 +92,35 @@ O notebook `analise/analise_exploratoria.ipynb` descreve as questões e os temas
 uv run python analise/construir_notebook.py && uv run jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=600 analise/analise_exploratoria.ipynb
 ```
 
+## Modelos, custo e tempo
+
+| Peça | Escolha |
+|---|---|
+| Voto 1 | `claude-sonnet-5-5` (Anthropic), esforço de raciocínio baixo, saída estruturada por JSON Schema, `max_tokens` 4096 |
+| Voto 2 | `gpt-5-mini` (OpenAI), esforço de raciocínio baixo, saída estruturada por JSON Schema |
+| Embeddings | `text-embedding-3-large` (OpenAI), 3.072 dimensões, cache em disco |
+| Banco vetorial | Weaviate 1.27 via Docker (`docker compose up -d`, porta 8081), com substituto em memória |
+| Orquestração | LangChain para os modelos e os embeddings; cliente oficial do Weaviate para o índice |
+
+Chamadas na execução canônica (16/10/2026): 752 por modelo (359 questões, 332 do corpus, 61 revotações do reparo), mais 1 de verificação por provedor. Custo real no painel da Anthropic: US$ 5,80. OpenAI: cerca de US$ 0,80 pela medição por chamada (US$ 0,001 por voto, mais centavos de embeddings). Tempo: 2 minutos de candidatos, 80 minutos de votos, 10 minutos de reparo, 1 minuto de vizinhança; calibração, decisão e publicação são instantâneas. `uv run classificar tudo` a partir do cache reproduz tudo em 25 segundos, sem chave.
+
+A partir desta versão, cada chamada de modelo ou de embeddings grava uma linha em `data/custos/chamadas.jsonl` (tokens de entrada, saída e raciocínio, latência, custo pela tabela de preços versionada em `src/classificador/precos.json`, acerto de cache ou chamada real), e `uv run classificar custos` agrega por execução, etapa e modelo. As 1.504 chamadas da execução canônica foram feitas antes desse livro-razão existir, por isso o custo delas vem do painel do provedor e da medição por chamada.
+
+## Decisões tomadas à mão
+
+- **Árvore:** os 20 temas duplicados sem descrição (6716 a 6738) viram o original, 17 pelo título e 3 por uma tabela de exceções (`arvore.py`); raízes de disciplina e os 2 temas inativos nunca são publicados; os 7 temas sem questões na fonte continuam candidatos.
+- **Rótulos de origem ignorados:** `disciplina_origem` e `assunto_origem` não entram no prompt nem na busca, porque 7 das 8 questões com disciplina de origem fora do escopo são penais (`analise/achados.md`).
+- **Prompt congelado** em `src/classificador/prompts/classificar.md`, com a régua explicada e a proibição de escolher temas introdutórios por serem genéricos.
+- **Corpus:** 100 temas de maior peso entre os candidatos das 359, 4 questões por tema, por orçamento; fontes, regra de pai e filho e níveis de confiança em `docs/projeto/coleta-corpus.md`, com uma checagem independente de 60 rótulos (88% compatíveis pela régua).
+- **Calibração:** os limiares saem da varredura, não da mão; o que foi fixado à mão foi a escada de seleção (meta 0,97 de média e 0,95 de limite inferior, relaxada degrau a degrau) e a suavização de Jeffreys.
+- **Âncora:** 40 questões rotuladas por dois rotuladores independentes e arbitradas pelo autor, com 6 decisões manuais, inclusive a Q0282 na raiz da disciplina (`docs/projeto/ancora.md`).
+- **Depois de ver os dados:** a etapa de reparo de candidatos e a mudança da regra 6 (dois modelos sem tema vira revisar, não fora), com os números antes e depois em `docs/projeto/notes/2026-10-14-pendencias-pipeline-central.md`, seção "Execução real".
+
 ## Documentos
 
+- Relatório e memo: [`relatorio.md`](relatorio.md)
 - Spec de design: `docs/projeto/specs/2026-10-14-classificacao-topicos-design.md`
-- Plano do pipeline: `docs/projeto/plans/2026-10-14-pipeline-central.md`
-
-As seções de decisões manuais, modelos usados, custo e tempo entram ao final da execução.
+- Planos: `docs/projeto/plans/`
+- Decisões e pendências: `docs/projeto/notes/2026-10-14-pendencias-pipeline-central.md`
+- Âncora: `docs/projeto/ancora.md`; corpus: `docs/projeto/coleta-corpus.md`; árvore legível: `docs/projeto/arvore-temas.md`
+- Análise exploratória: `analise/achados.md`
