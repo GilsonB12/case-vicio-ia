@@ -4,7 +4,7 @@ Checagem feita depois da execução, sem gabarito da Vício: dois juízes indepe
 
 ## Protocolo
 
-- Os juízes são dois modelos de linguagem de fornecedores diferentes, distintos dos dois que votam no pipeline e usados por assinatura, sem API. Cada um recebeu a árvore inteira (`docs/projeto/arvore-temas.md`) e as questões, com as mesmas regras de rotulagem da âncora (`docs/projeto/ancora.md`): a questão como um todo, subtema quando domina, pai quando a questão se espalha, 0 só para outra disciplina.
+- Os juízes são dois modelos de fronteira, distintos dos dois que votam no pipeline e usados por assinatura, sem API: juiz 1, Claude Fable 5.1 (via Claude Code, como agente, esforço de raciocínio extra alto); juiz 2, Codex CLI com o modelo gpt-6-astra (esforço de raciocínio alto, por assinatura). Prompt em `docs/projeto/prompts/auditoria-publicadas.md`. Cada um recebeu a árvore inteira (`docs/projeto/arvore-temas.md`) e as questões, com as mesmas regras de rotulagem da âncora (`docs/projeto/ancora.md`): a questão como um todo, subtema quando domina, pai quando a questão se espalha, 0 só para outra disciplina.
 - Nenhum dos dois viu a decisão do pipeline, os votos, os candidatos nem este repositório; o juiz 1 foi instruído a não abrir arquivo nenhum além do prompt, e o juiz 2 rodou em sandbox só de leitura com o prompt pela entrada padrão.
 - Os pareceres são por questão, então valem para qualquer rodada: as 94 questões publicadas nas duas rodadas foram julgadas uma vez; as 30 que só a canônica publicou foram julgadas depois, pelo mesmo protocolo.
 

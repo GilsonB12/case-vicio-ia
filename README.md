@@ -13,6 +13,18 @@ Pipeline que classifica 359 questões de Penal, Processo Penal, Legislação Pen
 | Relatório | [`relatorio.md`](relatorio.md) | como pensei, diagnóstico, produção e memo para o professor |
 | Código | `src/classificador/`, `api/`, `revisao-ui/`, `analise/` | pipeline, API, tela de revisão e análise exploratória |
 
+Para o revisor vão as 234 questões marcadas `revisar`, cada uma com o tema sugerido e o motivo. A única `fora` (Q0142, imposto ITCD) não vai para ninguém: some do recorte até alguém criar o tema.
+
+## Metodologia em resumo
+
+O case não traz nenhuma questão rotulada, e a régua só pune erro nas publicadas. Então o problema não é classificar bem; é saber quando se está certo. Sem gabarito, três coisas fazem o papel do especialista:
+
+1. **Dois modelos independentes votam, e ninguém decide sozinho.** `gpt-5-mini` (OpenAI) e `claude-sonnet-5-5` (Anthropic) recebem o mesmo prompt, com a questão inteira e uma lista de até 12 temas candidatos vinda do banco vetorial, e devolvem tema, extras, confiança e justificativa em formato estruturado. O prompt está em `src/classificador/prompts/classificar.md`: explica como a plataforma usa o tema e a régua da avaliação, manda ler as alternativas, proíbe temas introdutórios por serem genéricos e pede confiança honesta. Os dois não são do mesmo porte: um é intermediário, o outro é pequeno; o segundo voto serve para dar independência, não paridade. Quando os dois concordam com confiança mínima de 0,85, a questão é publicada; quando discordam, ou concordam com pouca confiança, vai para o professor com a sugestão. Um terceiro voto vem das questões parecidas do corpus.
+2. **Um corpus de questões reais, com tema conhecido, para calibrar.** Como não havia gabarito, a confiança dos modelos precisava ser medida em algum lugar. Agentes de pesquisa receberam lotes de temas da nossa árvore e procuraram, em sites públicos de questões e PDFs de bancas, questões claramente sobre cada tema; cada questão foi rotulada com o `tema_id` da nossa árvore (não com a categoria do site), pela regra de pai e filho da régua, e o conjunto foi deduplicado contra as 359 do case. Resultado: 332 questões em 101 temas. O pipeline rodou nelas como se fossem as 359, e a precisão por regra de decisão e faixa de confiança virou a previsão: acordo com confiança 0,85 ou mais acerta 99% no corpus; entre 0,80 e 0,85, 90%; abaixo, 75%. É daí que saem os limiares e o `previsao.txt`. Um leitor independente, às cegas, concordou com 88% dos rótulos do corpus pela régua (`docs/projeto/coleta-corpus.md`).
+3. **Avaliação por dois modelos de fronteira, às cegas.** Para a âncora (40 questões de referência) e para a auditoria das publicadas, dois avaliadores independentes dos modelos do pipeline: Claude Fable 5.1 (via Claude Code, como agente, esforço de raciocínio extra alto) e Codex CLI com o modelo gpt-6-astra (esforço de raciocínio alto, por assinatura). Nenhum viu a decisão do pipeline, os votos nem os candidatos; receberam a árvore inteira e as questões, com os prompts de `docs/projeto/prompts/`. Na âncora, concordaram entre si em 34 das 40 e o autor arbitrou as 6 restantes. Na auditoria das 124 publicadas, concordaram com o pipeline em 99,2% e 96,0%, contra uma previsão de 0,98 com intervalo 0,96 a 1,00 feita antes de qualquer checagem (`docs/projeto/auditoria-publicadas.md`).
+
+O raciocínio completo, o diagnóstico do que atrapalha, o desenho para produção e o memo para o professor estão em [`relatorio.md`](relatorio.md), escrito para quem não é técnico.
+
 ## Como rodar
 
 ```bash
@@ -26,13 +38,31 @@ uv run classificar tudo
 
 Os intermediários commitados em `data/intermediarios/` e o cache em `data/cache/` são o caminho de reprodução: `uv run classificar tudo` reaproveita candidatos e vizinhança prontos, lê votos e embeddings do cache e reproduz `publicacao.csv` sem chaves e sem Docker. `uv run classificar tudo --recalcular` recalcula todas as etapas (a planilha da âncora nunca é regravada), e o que não estiver no cache vai às APIs, então ele precisa das chaves no `.env`. A execução canônica usou o Weaviate via Docker (`docker compose up -d`) e os modelos de `.env.example`.
 
+## Passo a passo do zero
+
+Pré-requisitos: Git, [uv](https://docs.astral.sh/uv/) (instala o Python 3.12 sozinho), Node 20 ou mais novo para a tela, e Docker Desktop se quiser o Weaviate (opcional: sem ele o índice roda em memória, com o mesmo resultado).
+
+```bash
+git clone https://github.com/GilsonB12/case-vicio-ia.git && cd case-vicio-ia
+uv python install 3.12 && uv sync          # 1. ambiente Python
+cp .env.example .env                        # 2. modelos da execução canônica; chaves vazias bastam para reproduzir
+docker compose up -d                        # 3. Weaviate na porta 8081 (opcional)
+uv run pytest -q                            # 4. 317 testes, sem rede
+uv run classificar tudo                     # 5. reproduz publicacao.csv e previsao.txt do cache, 25 s, sem chave
+uv run classificar custos                   # 6. agrega o livro-razão de chamadas
+uv run uvicorn api.main:app --port 8000     # 7. API: GET /saude, GET /temas, POST /classificar (docs em /docs)
+cd revisao-ui && npm install && npm run dados && npm run dev   # 8. tela do professor em http://localhost:5173
+```
+
+Para refazer a classificação de verdade, com chamadas aos modelos: preencha `OPENAI_API_KEY` e `ANTHROPIC_API_KEY` no `.env`, apague ou renomeie `data/cache/` e rode `uv run classificar tudo --recalcular`. Leva cerca de 80 minutos e custa cerca de US$ 6,60; cada chamada fica registrada em `data/custos/chamadas.jsonl`. A análise exploratória (`analise/analise_exploratoria.ipynb`) já vem executada; a seção "Análise exploratória" abaixo diz como reconstruir.
+
 ## O que gera cada arquivo
 
 | Arquivo | Gerado por |
 |---|---|
 | `data/intermediarios/candidatos_*.jsonl` | `classificar candidatos` |
 | `data/ancora_para_rotular.csv` | `classificar ancora` |
-| `data/ancora_manual.csv` | exportado da tela de revisão (modo Âncora) a partir de `data/ancora_rotulos_modelo_*.jsonl`; protocolo e decisões em `docs/projeto/ancora.md` |
+| `data/ancora_manual.csv` | arbitragem do autor sobre `data/ancora_rotulos_modelo_*.jsonl`, feita num modo da tela de revisão que existiu durante o projeto e foi removido da interface final (está no histórico do git); protocolo e decisões em `docs/projeto/ancora.md` |
 | `data/intermediarios/votos_llm_*.jsonl` | `classificar votos`; depois, `classificar reparar` substitui os votos das questões em que um modelo não achou candidato, guardando os originais em `antes_do_reparo` |
 | `data/intermediarios/candidatos_*_reparo.jsonl` | `classificar reparar` (lista ampliada só das questões revotadas) |
 | `data/intermediarios/vizinhanca_*.jsonl` | `classificar vizinhanca` |
@@ -82,7 +112,7 @@ O que a tela faz:
 - O professor confirma a sugestão, troca o tema ou marca a questão como fora. A observação é opcional. A troca oferece os candidatos da questão e uma busca, sem acento nem caixa, sobre todos os temas publicáveis. Raiz, tema inativo e duplicata sem descrição nunca aparecem.
 - O contador mostra quantas questões já foram revisadas. **Exportar CSV** baixa `decisoes_professor.csv` com as colunas `id,acao,tema_id,observacao`. As decisões ficam só na memória da aba, e a tela avisa antes de fechar a aba se há decisão ainda não exportada.
 
-No alto, a tela troca entre a **Fila de revisão** e o modo **Âncora**, em que o professor fecha o gabarito de referência das 40 questões de `data/ancora_para_rotular.csv`: para cada uma ele vê as propostas do Rotulador 1 e do Rotulador 2 (tema, confiança, justificativa e alternativas consideradas, com marca quando os dois concordam) e aceita uma delas, busca outro tema publicável ou marca fora da árvore (`tema_id` 0), com comentário opcional. As decisões ficam guardadas no navegador, e **Exportar ancora_manual.csv** baixa `id,tema_id,observacao` em UTF-8 com BOM, uma linha por questão decidida, avisando quando ainda há pendentes.
+Durante o projeto a tela teve um segundo modo, Âncora, em que o autor fechou o gabarito das 40 questões de referência a partir das propostas dos dois rotuladores. Ele foi removido da interface final, que é só a fila do professor; o código está no histórico do git.
 
 Os testes rodam com `npm test`, e `npm run build` checa os tipos e gera `dist/`.
 
@@ -119,7 +149,7 @@ Cada chamada de modelo ou de embeddings grava uma linha em `data/custos/chamadas
 - **Prompt congelado** em `src/classificador/prompts/classificar.md`, com a régua explicada e a proibição de escolher temas introdutórios por serem genéricos.
 - **Corpus:** 100 temas de maior peso entre os candidatos das 359, 4 questões por tema, por orçamento; fontes, regra de pai e filho e níveis de confiança em `docs/projeto/coleta-corpus.md`, com uma checagem independente de 60 rótulos (88% compatíveis pela régua).
 - **Calibração:** os limiares saem da varredura, não da mão; o que foi fixado à mão foi a escada de seleção (meta 0,97 de média e 0,95 de limite inferior, relaxada degrau a degrau) e a suavização de Jeffreys.
-- **Âncora:** 40 questões rotuladas por dois rotuladores independentes e arbitradas pelo autor, com 6 decisões manuais, inclusive a Q0282 na raiz da disciplina (`docs/projeto/ancora.md`).
+- **Âncora:** 40 questões rotuladas por dois rotuladores independentes (Claude Fable 5.1 (via Claude Code, como agente, esforço de raciocínio extra alto); Codex CLI com o modelo gpt-6-astra (esforço de raciocínio alto, por assinatura)) e arbitradas pelo autor, com 6 decisões manuais, inclusive a Q0282 na raiz da disciplina (`docs/projeto/ancora.md`).
 - **Depois de ver os dados:** a etapa de reparo de candidatos e a mudança da regra 6 (dois modelos sem tema vira revisar, não fora), com os números antes e depois em `docs/projeto/notes/2026-10-14-pendencias-pipeline-central.md`, seção "Execução real".
 
 ## Documentos
@@ -130,3 +160,4 @@ Cada chamada de modelo ou de embeddings grava uma linha em `data/custos/chamadas
 - Decisões e pendências: `docs/projeto/notes/2026-10-14-pendencias-pipeline-central.md`
 - Âncora: `docs/projeto/ancora.md`; corpus: `docs/projeto/coleta-corpus.md`; árvore legível: `docs/projeto/arvore-temas.md`
 - Análise exploratória: `analise/achados.md`
+- Prompts dos avaliadores: `docs/projeto/prompts/` (rotuladores da âncora, checagem do corpus, auditoria das publicadas); prompt do pipeline: `src/classificador/prompts/classificar.md`
