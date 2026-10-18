@@ -1,114 +1,96 @@
 {
   "livro": "D:\\Projetos\\Pessoal\\case-vicio-ia\\data\\custos\\chamadas.jsonl",
   "preco_versao": "2026-10-15",
-  "linhas": 1507,
+  "linhas": 1953,
   "linhas_invalidas": 0,
-  "gerado_em": "2026-10-18T12:24:32.419+00:00",
+  "gerado_em": "2026-10-18T14:07:36.959+00:00",
   "total": {
-    "linhas": 1507,
-    "uso_desconhecido": 1504,
+    "linhas": 1953,
+    "uso_desconhecido": 0,
     "custo_desconhecido": 0,
-    "tokens_entrada": 3283,
-    "tokens_saida": 536,
-    "tokens_raciocinio": 256,
-    "custo_usd": 0.00705719
+    "tokens_entrada": 3668736,
+    "tokens_saida": 386407,
+    "tokens_raciocinio": 189824,
+    "custo_usd": 6.5812847
   },
   "por_execucao": {
-    "20261017T230108-31564": {
-      "linhas": 1504,
-      "uso_desconhecido": 1504,
-      "custo_desconhecido": 0,
-      "tokens_entrada": 0,
-      "tokens_saida": 0,
-      "tokens_raciocinio": 0,
-      "custo_usd": 0.0
-    },
-    "20261018T122408-24204": {
-      "linhas": 3,
+    "20261018T124828-19068": {
+      "linhas": 1953,
       "uso_desconhecido": 0,
       "custo_desconhecido": 0,
-      "tokens_entrada": 3283,
-      "tokens_saida": 536,
-      "tokens_raciocinio": 256,
-      "custo_usd": 0.00705719
+      "tokens_entrada": 3668736,
+      "tokens_saida": 386407,
+      "tokens_raciocinio": 189824,
+      "custo_usd": 6.5812847
     }
   },
   "por_etapa": {
-    "votos": {
-      "linhas": 1382,
-      "uso_desconhecido": 1382,
-      "custo_desconhecido": 0,
-      "tokens_entrada": 0,
-      "tokens_saida": 0,
-      "tokens_raciocinio": 0,
-      "custo_usd": 0.0
-    },
-    "reparo": {
-      "linhas": 122,
-      "uso_desconhecido": 122,
-      "custo_desconhecido": 0,
-      "tokens_entrada": 0,
-      "tokens_saida": 0,
-      "tokens_raciocinio": 0,
-      "custo_usd": 0.0
-    },
-    "api": {
-      "linhas": 3,
+    "embeddings": {
+      "linhas": 361,
       "uso_desconhecido": 0,
       "custo_desconhecido": 0,
-      "tokens_entrada": 3283,
-      "tokens_saida": 536,
-      "tokens_raciocinio": 256,
-      "custo_usd": 0.00705719
+      "tokens_entrada": 187149,
+      "tokens_saida": 0,
+      "tokens_raciocinio": 0,
+      "custo_usd": 0.02432937
+    },
+    "votos": {
+      "linhas": 1382,
+      "uso_desconhecido": 0,
+      "custo_desconhecido": 0,
+      "tokens_entrada": 3151533,
+      "tokens_saida": 349149,
+      "tokens_raciocinio": 169216,
+      "custo_usd": 5.953914
+    },
+    "reparo": {
+      "linhas": 210,
+      "uso_desconhecido": 0,
+      "custo_desconhecido": 0,
+      "tokens_entrada": 330054,
+      "tokens_saida": 37258,
+      "tokens_raciocinio": 20608,
+      "custo_usd": 0.60304133
     }
   },
   "por_modelo": {
+    "openai/text-embedding-3-large": {
+      "linhas": 447,
+      "uso_desconhecido": 0,
+      "custo_desconhecido": 0,
+      "tokens_entrada": 194165,
+      "tokens_saida": 0,
+      "tokens_raciocinio": 0,
+      "custo_usd": 0.02524145
+    },
     "openai/gpt-5-mini": {
       "linhas": 753,
-      "uso_desconhecido": 752,
+      "uso_desconhecido": 0,
       "custo_desconhecido": 0,
-      "tokens_entrada": 1047,
-      "tokens_saida": 359,
-      "tokens_raciocinio": 256,
-      "custo_usd": 0.00097975
+      "tokens_entrada": 1204389,
+      "tokens_saida": 268686,
+      "tokens_raciocinio": 189824,
+      "custo_usd": 0.83846925
     },
     "anthropic/claude-sonnet-5-5": {
       "linhas": 753,
-      "uso_desconhecido": 752,
-      "custo_desconhecido": 0,
-      "tokens_entrada": 2148,
-      "tokens_saida": 177,
-      "tokens_raciocinio": 0,
-      "custo_usd": 0.006066
-    },
-    "openai/text-embedding-3-large": {
-      "linhas": 1,
       "uso_desconhecido": 0,
       "custo_desconhecido": 0,
-      "tokens_entrada": 88,
-      "tokens_saida": 0,
+      "tokens_entrada": 2270182,
+      "tokens_saida": 117721,
       "tokens_raciocinio": 0,
-      "custo_usd": 1.144e-05
+      "custo_usd": 5.717574
     }
   },
   "por_origem": {
-    "cache": {
-      "linhas": 1504,
-      "uso_desconhecido": 1504,
-      "custo_desconhecido": 0,
-      "tokens_entrada": 0,
-      "tokens_saida": 0,
-      "tokens_raciocinio": 0,
-      "custo_usd": 0.0
-    },
     "api": {
-      "linhas": 3,
+      "linhas": 1953,
       "uso_desconhecido": 0,
       "custo_desconhecido": 0,
-      "tokens_entrada": 3283,
-      "tokens_saida": 536,
-      "tokens_raciocinio": 256,
-      "custo_usd": 0.00705719
+      "tokens_entrada": 3668736,
+      "tokens_saida": 386407,
+      "tokens_raciocinio": 189824,
+      "custo_usd": 6.5812847
     }
   },
   "por_questao": {
@@ -117,18 +99,18 @@
       "reparo"
     ],
     "alvo": "questoes",
-    "custo_usd": 0.0,
+    "custo_usd": 3.6579626,
     "questoes": 359,
-    "custo_por_questao": 0.0,
-    "publicadas": 117,
-    "custo_por_publicada": 0.0
+    "custo_por_questao": 0.01018931,
+    "publicadas": 124,
+    "custo_por_publicada": 0.0294997
   },
   "painel": {
     "anthropic": {
       "informado": 5.8,
-      "calculado": 0.006066,
-      "diferenca": 5.793934,
-      "diferenca_percentual": 99.9,
+      "calculado": 5.717574,
+      "diferenca": 0.082426,
+      "diferenca_percentual": 1.42,
       "linhas_sem_custo": 0
     }
   }

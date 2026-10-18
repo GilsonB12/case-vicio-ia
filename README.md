@@ -6,8 +6,10 @@ Pipeline que classifica 359 questões de Penal, Processo Penal, Legislação Pen
 
 | Entrega | Onde | Resumo |
 |---|---|---|
-| Decisões | `publicacao.csv` | 117 publicadas (33%), 241 para revisão, 1 fora |
-| Autoavaliação | `previsao.txt` | precisão prevista 0,97, intervalo 0,94 a 1,00; cobertura 0,33 |
+| Decisões | `publicacao.csv` | 124 publicadas (35%), 234 para revisão, 1 fora |
+| Autoavaliação | `previsao.txt` | precisão prevista 0,98, intervalo 0,96 a 1,00; cobertura 0,35 |
+| Checagem externa | `docs/projeto/auditoria-publicadas.md` | dois juízes independentes, às cegas, sobre as publicadas |
+| Rastreabilidade | `data/custos/chamadas.jsonl` | uma linha por chamada de modelo ou embedding, com tokens, latência e custo |
 | Relatório | [`relatorio.md`](relatorio.md) | como pensei, diagnóstico, produção e memo para o professor |
 | Código | `src/classificador/`, `api/`, `revisao-ui/`, `analise/` | pipeline, API, tela de revisão e análise exploratória |
 
@@ -102,9 +104,13 @@ uv run python analise/construir_notebook.py && uv run jupyter nbconvert --to not
 | Banco vetorial | Weaviate 1.27 via Docker (`docker compose up -d`, porta 8081), com substituto em memória |
 | Orquestração | LangChain para os modelos e os embeddings; cliente oficial do Weaviate para o índice |
 
-Chamadas na execução canônica (16/10/2026): 752 por modelo (359 questões, 332 do corpus, 61 revotações do reparo), mais 1 de verificação por provedor. Custo real no painel da Anthropic: US$ 5,80. OpenAI: cerca de US$ 0,80 pela medição por chamada (US$ 0,001 por voto, mais centavos de embeddings). Tempo: 2 minutos de candidatos, 80 minutos de votos, 10 minutos de reparo, 1 minuto de vizinhança; calibração, decisão e publicação são instantâneas. `uv run classificar tudo` a partir do cache reproduz tudo em 25 segundos, sem chave.
+Os dois modelos não são equivalentes: um é o intermediário da Anthropic, o outro o pequeno da OpenAI (o intermediário da OpenAI custaria 25 vezes mais por voto em tokens de raciocínio, sem mudar o voto no teste). O segundo voto existe para dar independência, não paridade, e a calibração mede a dupla como ela é.
 
-A partir desta versão, cada chamada de modelo ou de embeddings grava uma linha em `data/custos/chamadas.jsonl` (tokens de entrada, saída e raciocínio, latência, custo pela tabela de preços versionada em `src/classificador/precos.json`, acerto de cache ou chamada real), e `uv run classificar custos` agrega por execução, etapa e modelo. As 1.504 chamadas da execução canônica foram feitas antes desse livro-razão existir, por isso o custo delas vem do painel do provedor e da medição por chamada.
+A execução canônica é a de 18/10/2026, feita do zero com o livro-razão ligado: 1.953 chamadas (753 por modelo, sendo 359 questões, 332 do corpus e 62 revotações do reparo, mais 447 lotes de embeddings), nenhuma falha, 79 minutos de relógio. Custo calculado pelo livro, com a tabela de preços de 15/10: **US$ 6,58**, sendo US$ 5,72 no modelo da Anthropic, US$ 0,84 no da OpenAI e US$ 0,03 de embeddings. Por chamada: o modelo da Anthropic recebe em média 3.015 tokens e devolve 156, em 2,2 segundos; o da OpenAI recebe 1.599 e devolve 357, dos quais 252 de raciocínio, em 3,5 segundos. Uma primeira execução completa, em 16/10, anterior ao livro-razão, custou US$ 5,80 no painel da Anthropic, 1,4% acima do que o livro calculou para a segunda; os dois valores batem. `uv run classificar tudo` a partir do cache reproduz tudo em 25 segundos, sem chave.
+
+Cada chamada de modelo ou de embeddings grava uma linha em `data/custos/chamadas.jsonl` (tokens de entrada, saída e raciocínio, latência, custo pela tabela de preços versionada em `src/classificador/precos.json`, acerto de cache ou chamada real, tema votado e confiança), e `uv run classificar custos` agrega por execução, etapa e modelo, com `--painel provedor=valor` para comparar com o painel do provedor.
+
+**Estabilidade entre as duas execuções.** Com os mesmos prompts, os modelos não repetem exatamente: o da Anthropic deu o mesmo tema em 93% das 359 questões, o da OpenAI em 82%. As decisões coincidiram em 85% (306 de 359); 94 questões foram publicadas nas duas vezes, todas no mesmo tema ou em pai e filho; 30 entraram e 23 saíram. O conjunto publicado muda nas bordas, a precisão não: as duas rodadas foram auditadas às cegas por dois juízes independentes (`docs/projeto/auditoria-publicadas.md`).
 
 ## Decisões tomadas à mão
 

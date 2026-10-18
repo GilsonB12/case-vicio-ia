@@ -1,1 +1,1 @@
-{"tema_central_id":null,"extras_ids":[5224,5214],"disciplina":"Penal","confianca":0.0,"justificativa":"placeholder"}
+{"voto": {"tema_central_id": null, "extras_ids": [5224, 5214], "disciplina": "Penal", "confianca": 0.0, "justificativa": "placeholder"}, "uso": {"tokens_entrada": 2435, "tokens_saida": 59, "tokens_raciocinio": 0, "tokens_cache_leitura": 0, "tokens_cache_escrita": 0}, "modelo": "claude-sonnet-5-5", "quando": "2026-10-18T13:54:37.180+00:00"}

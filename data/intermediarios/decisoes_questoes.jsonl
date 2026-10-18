@@ -1,359 +1,359 @@
 {"id": "Q0001", "decisao": "publicar", "tema_central_id": 5524, "extras_ids": [5527], "confianca": 0.6, "motivo": "", "regra": 3}
-{"id": "Q0002", "decisao": "revisar", "tema_central_id": 4377, "extras_ids": [4379, 4385], "confianca": 0.62, "motivo": "confiança 0.62 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0003", "decisao": "revisar", "tema_central_id": 5562, "extras_ids": [5534], "confianca": 0.55, "motivo": "confiança 0.55 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0004", "decisao": "revisar", "tema_central_id": 5480, "extras_ids": [], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0005", "decisao": "revisar", "tema_central_id": 5199, "extras_ids": [5208, 4703], "confianca": 0.45, "motivo": "modelos divergem: Processo Penal > Sentença Penal > Fixação da Pena e do Regime Penitenciário vs Penal > Teoria da Pena", "regra": 4}
+{"id": "Q0002", "decisao": "revisar", "tema_central_id": 4377, "extras_ids": [4379, 4388], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0003", "decisao": "revisar", "tema_central_id": 5560, "extras_ids": [5561, 5562, 5534], "confianca": 0.5, "motivo": "irmãos Recurso em sentido estrito (RESE) e Apelação abaixo do limiar do pai 0.55", "regra": 3}
+{"id": "Q0004", "decisao": "revisar", "tema_central_id": 5480, "extras_ids": [], "confianca": 0.45, "motivo": "confiança 0.45 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0005", "decisao": "revisar", "tema_central_id": 5199, "extras_ids": [5208, 4703], "confianca": 0.5, "motivo": "modelos divergem: Processo Penal > Sentença Penal > Fixação da Pena e do Regime Penitenciário vs Penal > Teoria da Pena", "regra": 4}
 {"id": "Q0006", "decisao": "publicar", "tema_central_id": 5157, "extras_ids": [5160, 5175], "confianca": 0.6, "motivo": "", "regra": 3}
-{"id": "Q0007", "decisao": "revisar", "tema_central_id": 5466, "extras_ids": [5471, 5063, 5470], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0008", "decisao": "revisar", "tema_central_id": 5199, "extras_ids": [5087, 4703], "confianca": 0.4, "motivo": "modelos divergem: Direito Penal - Legislação Especial > Lei de Execução Penal vs Penal > Teoria da Pena", "regra": 4}
-{"id": "Q0009", "decisao": "revisar", "tema_central_id": 5159, "extras_ids": [5157], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0007", "decisao": "publicar", "tema_central_id": 5466, "extras_ids": [5471, 5063], "confianca": 0.55, "motivo": "", "regra": 3}
+{"id": "Q0008", "decisao": "revisar", "tema_central_id": 4703, "extras_ids": [5087], "confianca": 0.72, "motivo": "confiança 0.72 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0009", "decisao": "revisar", "tema_central_id": 5159, "extras_ids": [5157], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0010", "decisao": "publicar", "tema_central_id": 4688, "extras_ids": [], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0011", "decisao": "revisar", "tema_central_id": 4702, "extras_ids": [5480], "confianca": 0.7, "motivo": "confiança 0.70 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0012", "decisao": "revisar", "tema_central_id": 5569, "extras_ids": [5561, 5562], "confianca": 0.75, "motivo": "confiança 0.75 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0011", "decisao": "revisar", "tema_central_id": 4702, "extras_ids": [5480], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0012", "decisao": "revisar", "tema_central_id": 5569, "extras_ids": [5561], "confianca": 0.7, "motivo": "confiança 0.70 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0013", "decisao": "publicar", "tema_central_id": 5503, "extras_ids": [5498], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0014", "decisao": "revisar", "tema_central_id": 5477, "extras_ids": [4709, 5584], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0015", "decisao": "publicar", "tema_central_id": 5498, "extras_ids": [5500, 5499, 5501, 5505], "confianca": 0.7, "motivo": "", "regra": 3}
-{"id": "Q0016", "decisao": "revisar", "tema_central_id": 5584, "extras_ids": [5585, 5517], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0017", "decisao": "revisar", "tema_central_id": 5533, "extras_ids": [5531, 5530], "confianca": 0.7, "motivo": "um modelo não achou candidato; sugestão do outro", "regra": 6}
-{"id": "Q0018", "decisao": "publicar", "tema_central_id": 5540, "extras_ids": [5480, 5539], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0019", "decisao": "publicar", "tema_central_id": 5475, "extras_ids": [5498, 5572, 5490], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0020", "decisao": "revisar", "tema_central_id": 5108, "extras_ids": [5199, 5116], "confianca": null, "motivo": "nenhum modelo achou tema que cubra a questão; assunto descrito: A questão aborda múltiplos temas distintos da jurisprudência do STJ (crimes contra a dignidade sexual - art. 241-A/241-B do ECA; teoria da pena/dosimetria; crime de falsa identidade/art. 307 CP; causas de aumento no furto; medidas despenalizadoras como suspensão condicional e transação penal). Não cabe classificá‑la em um único subtema listado sem perder precisão.", "regra": 6}
-{"id": "Q0021", "decisao": "revisar", "tema_central_id": 5503, "extras_ids": [], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0022", "decisao": "revisar", "tema_central_id": 5089, "extras_ids": [5087], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0023", "decisao": "revisar", "tema_central_id": 5524, "extras_ids": [5527, 5528], "confianca": 0.75, "motivo": "confiança 0.75 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0024", "decisao": "revisar", "tema_central_id": 4385, "extras_ids": [4388, 4387], "confianca": 0.5, "motivo": "irmãos Teorias Criminológicas em Espécie e Teorias Sociológicas Explicativas da Criminalidade abaixo do limiar do pai 0.60", "regra": 3}
-{"id": "Q0025", "decisao": "publicar", "tema_central_id": 5101, "extras_ids": [5093], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0026", "decisao": "publicar", "tema_central_id": 4704, "extras_ids": [5131], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0027", "decisao": "revisar", "tema_central_id": 5487, "extras_ids": [5488, 5489], "confianca": 0.5, "motivo": "irmãos Comunicação dos Atos Processuais e Citação e Contagem dos Prazos abaixo do limiar do pai 0.60", "regra": 3}
-{"id": "Q0028", "decisao": "revisar", "tema_central_id": 5531, "extras_ids": [5488, 5527], "confianca": 0.6, "motivo": "modelos divergem: Processo Penal > Procedimento Ordinário > 2 Oferecimento, Rejeição e Recebimento da Peça Acusatória vs Processo Penal > Procedimento do Tribunal do Júri", "regra": 4}
+{"id": "Q0014", "decisao": "revisar", "tema_central_id": 5477, "extras_ids": [4709], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0015", "decisao": "revisar", "tema_central_id": 5498, "extras_ids": [5500, 5501, 5499, 5505], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0016", "decisao": "revisar", "tema_central_id": 5584, "extras_ids": [5517, 5585, 5523], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0017", "decisao": "revisar", "tema_central_id": 5530, "extras_ids": [5531, 5487, 5533], "confianca": 0.4, "motivo": "irmãos 2 Oferecimento, Rejeição e Recebimento da Peça Acusatória e Procedimento Ordinário abaixo do limiar do pai 0.55", "regra": 3}
+{"id": "Q0018", "decisao": "publicar", "tema_central_id": 5540, "extras_ids": [5480, 5539], "confianca": 0.88, "motivo": "", "regra": 2}
+{"id": "Q0019", "decisao": "publicar", "tema_central_id": 5475, "extras_ids": [5572, 5498, 5490], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0020", "decisao": "revisar", "tema_central_id": 5108, "extras_ids": [5102, 5199, 5116], "confianca": null, "motivo": "nenhum modelo achou tema que cubra a questão; assunto descrito: A questão reúne várias posições jurisprudenciais do STJ sobre temas distintos (crimes do ECA/ pornografia infantil, dosimetria/teoria da pena, crime de falsa identidade) que pertencem a subáreas diversas do Direito Penal, não cabendo classificá‑la em apenas um dos subtemas listados; trata‑se, portanto, de questão mista sobre direito penal material e teoria da pena.", "regra": 6}
+{"id": "Q0021", "decisao": "revisar", "tema_central_id": 5503, "extras_ids": [5498, 5480], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0022", "decisao": "publicar", "tema_central_id": 5089, "extras_ids": [5087], "confianca": 0.85, "motivo": "", "regra": 2}
+{"id": "Q0023", "decisao": "publicar", "tema_central_id": 5524, "extras_ids": [5528, 5527], "confianca": 0.8, "motivo": "", "regra": 3}
+{"id": "Q0024", "decisao": "revisar", "tema_central_id": 4385, "extras_ids": [4388, 4387], "confianca": 0.5, "motivo": "irmãos Teorias Criminológicas em Espécie e Teorias Sociológicas Explicativas da Criminalidade abaixo do limiar do pai 0.55", "regra": 3}
+{"id": "Q0025", "decisao": "revisar", "tema_central_id": 5101, "extras_ids": [5093], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0026", "decisao": "publicar", "tema_central_id": 4704, "extras_ids": [], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0027", "decisao": "revisar", "tema_central_id": 5487, "extras_ids": [5488, 5489], "confianca": 0.5, "motivo": "irmãos Comunicação dos Atos Processuais e Citação e Contagem dos Prazos abaixo do limiar do pai 0.55", "regra": 3}
+{"id": "Q0028", "decisao": "revisar", "tema_central_id": 5524, "extras_ids": [5527], "confianca": 0.8, "motivo": "um modelo não achou candidato; sugestão do outro", "regra": 6}
 {"id": "Q0029", "decisao": "publicar", "tema_central_id": 4684, "extras_ids": [5587, 5518], "confianca": 0.9, "motivo": "", "regra": 2}
 {"id": "Q0030", "decisao": "revisar", "tema_central_id": 5128, "extras_ids": [], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0031", "decisao": "revisar", "tema_central_id": 4388, "extras_ids": [4387], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0032", "decisao": "revisar", "tema_central_id": 5497, "extras_ids": [5498], "confianca": 0.7, "motivo": "confiança 0.70 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0031", "decisao": "revisar", "tema_central_id": 4385, "extras_ids": [4387, 4388], "confianca": 0.5, "motivo": "irmãos Teorias de Nível Sociológico e Teorias Criminológicas em Espécie abaixo do limiar do pai 0.55", "regra": 3}
+{"id": "Q0032", "decisao": "revisar", "tema_central_id": 5497, "extras_ids": [5498], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0033", "decisao": "publicar", "tema_central_id": 5519, "extras_ids": [5585], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0034", "decisao": "revisar", "tema_central_id": 5477, "extras_ids": [5495, 5498, 5479], "confianca": 0.7, "motivo": "confiança 0.70 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0034", "decisao": "revisar", "tema_central_id": 5477, "extras_ids": [5498, 5495, 5476], "confianca": 0.75, "motivo": "confiança 0.75 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0035", "decisao": "publicar", "tema_central_id": 4706, "extras_ids": [4705], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0036", "decisao": "revisar", "tema_central_id": 5466, "extras_ids": [5063], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0037", "decisao": "revisar", "tema_central_id": 5119, "extras_ids": [5132, 5081, 5118, 5128, 5116], "confianca": null, "motivo": "nenhum modelo achou tema que cubra a questão; assunto descrito: A questão aborda simultaneamente crimes distintos: redução à condição análoga à de escravo (art.149), falso testemunho/falsa perícia e falsificação de documento particular, pertencentes a ramos diferentes do Direito Penal; não há um único subtema que cubra todos. O correto seria classificá‑la como múltipla/tema misto envolvendo esses crimes.", "regra": 6}
-{"id": "Q0038", "decisao": "revisar", "tema_central_id": 5583, "extras_ids": [5512, 5498, 5562], "confianca": 0.72, "motivo": "modelos divergem: Processo Penal > Recursos em Espécies > Apelação vs Processo Penal > Sujeitos do Processo", "regra": 4}
-{"id": "Q0039", "decisao": "revisar", "tema_central_id": 4687, "extras_ids": [], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0040", "decisao": "revisar", "tema_central_id": 5562, "extras_ids": [5524, 5515], "confianca": 0.62, "motivo": "confiança 0.62 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0041", "decisao": "publicar", "tema_central_id": 5184, "extras_ids": [5199], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0042", "decisao": "publicar", "tema_central_id": 5222, "extras_ids": [5218], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0043", "decisao": "revisar", "tema_central_id": 5576, "extras_ids": [5203, 5204, 5202, 5201], "confianca": 0.85, "motivo": "modelos divergem: Processo Penal > Sentença Penal > Fixação da Pena e do Regime Penitenciário vs Penal > Teoria da Pena", "regra": 4}
-{"id": "Q0044", "decisao": "revisar", "tema_central_id": 5488, "extras_ids": [5487, 5548], "confianca": 0.5, "motivo": "modelos divergem: Processo Penal > Provas em Espécies > Confissão vs Processo Penal > Comunicação dos Atos Processuais > Citação e Contagem dos Prazos", "regra": 4}
-{"id": "Q0045", "decisao": "revisar", "tema_central_id": 5091, "extras_ids": [5089, 5095], "confianca": 0.7, "motivo": "confiança 0.70 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0046", "decisao": "revisar", "tema_central_id": 5509, "extras_ids": [5510, 5511], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0047", "decisao": "revisar", "tema_central_id": 5164, "extras_ids": [5066], "confianca": 0.85, "motivo": "modelos divergem: Processo Penal > Ação Penal vs Penal > Dos Crimes Contra o Patrimônio > Dano", "regra": 4}
-{"id": "Q0048", "decisao": "revisar", "tema_central_id": 5193, "extras_ids": [4703], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0049", "decisao": "publicar", "tema_central_id": 5149, "extras_ids": [], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0050", "decisao": "revisar", "tema_central_id": 4708, "extras_ids": [4705], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0051", "decisao": "publicar", "tema_central_id": 5182, "extras_ids": [4690], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0052", "decisao": "publicar", "tema_central_id": 4703, "extras_ids": [5584], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0053", "decisao": "revisar", "tema_central_id": 5539, "extras_ids": [], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0036", "decisao": "revisar", "tema_central_id": 5466, "extras_ids": [5063], "confianca": 0.4, "motivo": "confiança 0.40 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0037", "decisao": "revisar", "tema_central_id": 5117, "extras_ids": [5128, 5132, 5081, 5118], "confianca": null, "motivo": "nenhum modelo achou tema que cubra a questão; assunto descrito: A questão exige conhecimento de vários crimes distintos (redução à condição análoga à de escravo — art.149; falso testemunho; e falsificação de documento particular — art.298), não cabendo em um único subtema listado. Melhor classificá‑la como multimateria dentro de Penal do que forçar escolha errônea.", "regra": 6}
+{"id": "Q0038", "decisao": "revisar", "tema_central_id": 5583, "extras_ids": [5512, 5549, 5498, 5562], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0039", "decisao": "revisar", "tema_central_id": 4687, "extras_ids": [], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0040", "decisao": "revisar", "tema_central_id": 5562, "extras_ids": [5515, 5524], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0041", "decisao": "revisar", "tema_central_id": 5199, "extras_ids": [5210], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0042", "decisao": "publicar", "tema_central_id": 5222, "extras_ids": [5218], "confianca": 0.88, "motivo": "", "regra": 2}
+{"id": "Q0043", "decisao": "revisar", "tema_central_id": 5576, "extras_ids": [5202, 5203, 5204, 5201], "confianca": 0.8, "motivo": "modelos divergem: Processo Penal > Sentença Penal > Fixação da Pena e do Regime Penitenciário vs Penal > Teoria da Pena", "regra": 4}
+{"id": "Q0044", "decisao": "revisar", "tema_central_id": 5488, "extras_ids": [5548], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0045", "decisao": "publicar", "tema_central_id": 5091, "extras_ids": [5087, 5089, 5095], "confianca": 0.85, "motivo": "", "regra": 2}
+{"id": "Q0046", "decisao": "revisar", "tema_central_id": 5509, "extras_ids": [5510, 5511, 5530], "confianca": 0.55, "motivo": "confiança 0.55 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0047", "decisao": "revisar", "tema_central_id": 5164, "extras_ids": [5087, 5066, 5466], "confianca": 0.85, "motivo": "modelos divergem: Processo Penal > Ação Penal vs Penal > Dos Crimes Contra o Patrimônio > Dano", "regra": 4}
+{"id": "Q0048", "decisao": "revisar", "tema_central_id": 5193, "extras_ids": [4703, 5210], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0049", "decisao": "publicar", "tema_central_id": 5149, "extras_ids": [5175], "confianca": 0.85, "motivo": "", "regra": 2}
+{"id": "Q0050", "decisao": "revisar", "tema_central_id": 4708, "extras_ids": [], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0051", "decisao": "revisar", "tema_central_id": 5182, "extras_ids": [4690], "confianca": 0.85, "motivo": "modelos divergem: Direito Penal - Legislação Especial > Crimes de Racismo vs Penal > Lei Penal no Tempo e no Espaço > Lei penal no Espaço", "regra": 4}
+{"id": "Q0052", "decisao": "publicar", "tema_central_id": 4703, "extras_ids": [], "confianca": 0.85, "motivo": "", "regra": 2}
+{"id": "Q0053", "decisao": "revisar", "tema_central_id": 5539, "extras_ids": [5560], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0054", "decisao": "publicar", "tema_central_id": 5174, "extras_ids": [], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0055", "decisao": "revisar", "tema_central_id": 5550, "extras_ids": [5535], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0055", "decisao": "revisar", "tema_central_id": 5535, "extras_ids": [5550], "confianca": 0.85, "motivo": "modelos divergem: Processo Penal > Procedimento Ordinário > Audiência de Instrução e Julgamento vs Processo Penal > Provas em Espécies > Prova Testemunhal", "regra": 4}
 {"id": "Q0056", "decisao": "publicar", "tema_central_id": 5066, "extras_ids": [5199], "confianca": 0.85, "motivo": "", "regra": 2}
 {"id": "Q0057", "decisao": "publicar", "tema_central_id": 5176, "extras_ids": [5175], "confianca": 0.9, "motivo": "", "regra": 2}
 {"id": "Q0058", "decisao": "revisar", "tema_central_id": 4377, "extras_ids": [4378, 4385], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0059", "decisao": "revisar", "tema_central_id": 4385, "extras_ids": [4388, 4370], "confianca": 0.7, "motivo": "modelos divergem: Criminologia > Teorias Sociológicas Explicativas da Criminalidade vs Criminologia > Teorias Legitimidoras da Pena", "regra": 4}
-{"id": "Q0060", "decisao": "publicar", "tema_central_id": 5087, "extras_ids": [5096, 5093, 5091, 5097, 5101], "confianca": 0.6, "motivo": "", "regra": 3}
-{"id": "Q0061", "decisao": "publicar", "tema_central_id": 4703, "extras_ids": [], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0059", "decisao": "revisar", "tema_central_id": 4385, "extras_ids": [4388], "confianca": 0.8, "motivo": "modelos divergem: Criminologia > Teorias Sociológicas Explicativas da Criminalidade vs Criminologia > Teorias Legitimidoras da Pena", "regra": 4}
+{"id": "Q0060", "decisao": "publicar", "tema_central_id": 5087, "extras_ids": [5096, 5093, 5091, 5097, 5101], "confianca": 0.75, "motivo": "", "regra": 3}
+{"id": "Q0061", "decisao": "publicar", "tema_central_id": 4703, "extras_ids": [], "confianca": 0.85, "motivo": "", "regra": 2}
 {"id": "Q0062", "decisao": "publicar", "tema_central_id": 5182, "extras_ids": [5483], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0063", "decisao": "revisar", "tema_central_id": 5522, "extras_ids": [], "confianca": 0.2, "motivo": "confiança 0.20 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0064", "decisao": "revisar", "tema_central_id": 5185, "extras_ids": [4695, 5165], "confianca": 0.7, "motivo": "modelos divergem: Penal > Prescrição vs Direito Penal - Legislação Especial > Crimes Tributários", "regra": 4}
-{"id": "Q0065", "decisao": "revisar", "tema_central_id": 5161, "extras_ids": [5132, 5177], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0066", "decisao": "publicar", "tema_central_id": 4373, "extras_ids": [4371], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0067", "decisao": "publicar", "tema_central_id": 5091, "extras_ids": [5087], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0063", "decisao": "revisar", "tema_central_id": 4704, "extras_ids": [5522], "confianca": 0.7, "motivo": "confiança 0.70 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0064", "decisao": "revisar", "tema_central_id": 5165, "extras_ids": [4695, 5185], "confianca": 0.7, "motivo": "modelos divergem: Penal > Dos Crimes Contra o Patrimônio > Apropriação indébita vs Direito Penal - Legislação Especial > Crimes Tributários", "regra": 4}
+{"id": "Q0065", "decisao": "revisar", "tema_central_id": 5161, "extras_ids": [5177], "confianca": 0.85, "motivo": "modelos divergem: Penal > Dos Crimes Contra a Liberdade Pessoal > Sequestro, Cárcere Privado, Redução à Condição Análoga à de Escravo e Tráfico de Pessoas vs Penal > Dos Crimes Contra o Patrimônio > Extorsão", "regra": 4}
+{"id": "Q0066", "decisao": "revisar", "tema_central_id": 4373, "extras_ids": [4371], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0067", "decisao": "publicar", "tema_central_id": 5091, "extras_ids": [5087, 5093, 5095], "confianca": 0.9, "motivo": "", "regra": 2}
 {"id": "Q0068", "decisao": "publicar", "tema_central_id": 5087, "extras_ids": [5096], "confianca": 0.6, "motivo": "", "regra": 3}
-{"id": "Q0069", "decisao": "publicar", "tema_central_id": 5173, "extras_ids": [], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0070", "decisao": "revisar", "tema_central_id": 4703, "extras_ids": [5517, 5199], "confianca": 0.45, "motivo": "confiança 0.45 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0069", "decisao": "revisar", "tema_central_id": 5173, "extras_ids": [5170], "confianca": 0.7, "motivo": "confiança 0.70 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0070", "decisao": "revisar", "tema_central_id": 5517, "extras_ids": [4703, 5199], "confianca": 0.6, "motivo": "modelos divergem: Processo Penal > Prisões em Espécie vs Direito Penal - Legislação Especial > Lei de Execução Penal", "regra": 4}
 {"id": "Q0071", "decisao": "publicar", "tema_central_id": 4688, "extras_ids": [], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0072", "decisao": "revisar", "tema_central_id": 5498, "extras_ids": [], "confianca": 0.4, "motivo": "confiança 0.40 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0072", "decisao": "revisar", "tema_central_id": 5590, "extras_ids": [5595, 5498, 5592], "confianca": 0.5, "motivo": "irmãos Princípios Relativos à Prova Penal e Teoria Geral das Provas abaixo do limiar do pai 0.55", "regra": 3}
 {"id": "Q0073", "decisao": "revisar", "tema_central_id": 5087, "extras_ids": [5093, 5091], "confianca": 0.7, "motivo": "confiança 0.70 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0074", "decisao": "revisar", "tema_central_id": 5180, "extras_ids": [5191, 4703], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0075", "decisao": "publicar", "tema_central_id": 5191, "extras_ids": [], "confianca": 0.88, "motivo": "", "regra": 2}
+{"id": "Q0074", "decisao": "revisar", "tema_central_id": 5505, "extras_ids": [5199, 4703, 5194], "confianca": 0.5, "motivo": "um modelo não achou candidato; sugestão do outro", "regra": 6}
+{"id": "Q0075", "decisao": "publicar", "tema_central_id": 5191, "extras_ids": [], "confianca": 0.85, "motivo": "", "regra": 2}
 {"id": "Q0076", "decisao": "publicar", "tema_central_id": 4373, "extras_ids": [4371], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0077", "decisao": "revisar", "tema_central_id": 5218, "extras_ids": [5194, 5181, 5182], "confianca": 0.6, "motivo": "modelos divergem: Penal > Teoria do Crime: Fato Típico vs Penal > Lei Penal no Tempo e no Espaço", "regra": 4}
-{"id": "Q0078", "decisao": "publicar", "tema_central_id": 4697, "extras_ids": [4691], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0079", "decisao": "revisar", "tema_central_id": 5580, "extras_ids": [5581, 5582], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0080", "decisao": "publicar", "tema_central_id": 4370, "extras_ids": [4368], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0081", "decisao": "revisar", "tema_central_id": 4373, "extras_ids": [4371], "confianca": 0.7, "motivo": "confiança 0.70 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0077", "decisao": "revisar", "tema_central_id": 5194, "extras_ids": [5180], "confianca": 0.9, "motivo": "um modelo não achou candidato; sugestão do outro", "regra": 6}
+{"id": "Q0078", "decisao": "publicar", "tema_central_id": 4697, "extras_ids": [4691, 5518], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0079", "decisao": "revisar", "tema_central_id": 5580, "extras_ids": [5581, 5582], "confianca": 0.62, "motivo": "confiança 0.62 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0080", "decisao": "publicar", "tema_central_id": 4370, "extras_ids": [5210], "confianca": 0.85, "motivo": "", "regra": 2}
+{"id": "Q0081", "decisao": "publicar", "tema_central_id": 4373, "extras_ids": [4371, 4385], "confianca": 0.88, "motivo": "", "regra": 2}
 {"id": "Q0082", "decisao": "publicar", "tema_central_id": 5100, "extras_ids": [5087], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0083", "decisao": "revisar", "tema_central_id": 5150, "extras_ids": [5175], "confianca": 0.45, "motivo": "confiança 0.45 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0084", "decisao": "revisar", "tema_central_id": 4704, "extras_ids": [], "confianca": 0.75, "motivo": "confiança 0.75 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0085", "decisao": "revisar", "tema_central_id": 5091, "extras_ids": [5076], "confianca": 0.85, "motivo": "modelos divergem: Penal > Dos Crimes Contra a Administração Pública > Concussão e Excesso de Exação vs Penal > Concurso de Pessoas > Comunicabilidade de Circunstâncias, Condições e Elementares", "regra": 4}
+{"id": "Q0083", "decisao": "revisar", "tema_central_id": 5150, "extras_ids": [5222], "confianca": 0.6, "motivo": "modelos divergem: Penal > Dos Crimes Contra a Vida > Homicídio vs Penal > Teoria do Crime: Fato Típico > Erro de Tipo", "regra": 4}
+{"id": "Q0084", "decisao": "publicar", "tema_central_id": 4704, "extras_ids": [], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0085", "decisao": "revisar", "tema_central_id": 5076, "extras_ids": [5091], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0086", "decisao": "publicar", "tema_central_id": 5092, "extras_ids": [5087, 5091, 5094], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0087", "decisao": "revisar", "tema_central_id": 5521, "extras_ids": [4703], "confianca": 0.85, "motivo": "modelos divergem: Processo Penal > Prisões em Espécie > Prisão Domiciliar vs Direito Penal - Legislação Especial > Lei de Execução Penal", "regra": 4}
+{"id": "Q0087", "decisao": "revisar", "tema_central_id": 5521, "extras_ids": [4703], "confianca": 0.9, "motivo": "modelos divergem: Processo Penal > Prisões em Espécie > Prisão Domiciliar vs Direito Penal - Legislação Especial > Lei de Execução Penal", "regra": 4}
 {"id": "Q0088", "decisao": "revisar", "tema_central_id": 4389, "extras_ids": [4366, 4383, 4380], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0089", "decisao": "revisar", "tema_central_id": 5159, "extras_ids": [], "confianca": null, "motivo": "nenhum modelo achou tema que cubra a questão; assunto descrito: A questão trata do princípio da insignificância (princípio da intervenção mínima/teoria do crime), tema de teoria geral do crime/princípios do Direito Penal, que não consta entre os candidatos listados; portanto devolvo nulo e indico que o assunto seria 'Princípios do Direito Penal / Princípio da Insignificância'. ", "regra": 6}
-{"id": "Q0090", "decisao": "revisar", "tema_central_id": 5530, "extras_ids": [5539, 5531, 5466, 5524], "confianca": 0.4, "motivo": "confiança 0.40 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0089", "decisao": "revisar", "tema_central_id": 5228, "extras_ids": [5172], "confianca": 0.9, "motivo": "modelos divergem: Penal > Teoria do Crime: Ilicitude vs Penal > Introdução ao Estudo do Direito Penal > Princípios do Direito Penal", "regra": 4}
+{"id": "Q0090", "decisao": "revisar", "tema_central_id": 5530, "extras_ids": [5531, 5487, 5524, 5539], "confianca": 0.4, "motivo": "confiança 0.40 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0091", "decisao": "revisar", "tema_central_id": 5201, "extras_ids": [5576, 4703], "confianca": 0.5, "motivo": "modelos divergem: Direito Penal - Legislação Especial > Lei de Execução Penal vs Penal > Teoria da Pena > Penas Privativas de Liberdade", "regra": 4}
-{"id": "Q0092", "decisao": "publicar", "tema_central_id": 5509, "extras_ids": [5510, 5511], "confianca": 0.6, "motivo": "", "regra": 3}
-{"id": "Q0093", "decisao": "revisar", "tema_central_id": 5142, "extras_ids": [5149], "confianca": 0.4, "motivo": "confiança 0.40 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0094", "decisao": "revisar", "tema_central_id": 4388, "extras_ids": [4377, 4385], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0095", "decisao": "publicar", "tema_central_id": 5191, "extras_ids": [5196, 5466], "confianca": 0.72, "motivo": "", "regra": 3}
-{"id": "Q0096", "decisao": "revisar", "tema_central_id": 5480, "extras_ids": [5483, 5486], "confianca": 0.5, "motivo": "irmãos Comeptência Territorial e Prorrogação, Perpetuação e Modificação de Competência abaixo do limiar do pai 0.60", "regra": 3}
+{"id": "Q0092", "decisao": "revisar", "tema_central_id": 5511, "extras_ids": [5510, 5509], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0093", "decisao": "revisar", "tema_central_id": 5142, "extras_ids": [5149, 5228], "confianca": 0.4, "motivo": "confiança 0.40 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0094", "decisao": "revisar", "tema_central_id": 4388, "extras_ids": [4377, 4385], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0095", "decisao": "publicar", "tema_central_id": 5191, "extras_ids": [5196], "confianca": 0.6, "motivo": "", "regra": 3}
+{"id": "Q0096", "decisao": "revisar", "tema_central_id": 5480, "extras_ids": [5483, 5486], "confianca": 0.5, "motivo": "irmãos Comeptência Territorial e Prorrogação, Perpetuação e Modificação de Competência abaixo do limiar do pai 0.55", "regra": 3}
 {"id": "Q0097", "decisao": "revisar", "tema_central_id": 4708, "extras_ids": [4705, 5543], "confianca": 0.4, "motivo": "confiança 0.40 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0098", "decisao": "publicar", "tema_central_id": 5548, "extras_ids": [], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0099", "decisao": "revisar", "tema_central_id": 5087, "extras_ids": [5228], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0100", "decisao": "revisar", "tema_central_id": 5102, "extras_ids": [5224], "confianca": 0.6, "motivo": "modelos divergem: Penal > Teoria do Crime: Fato Típico > Erro de Tipo vs Penal > Dos Crimes Contra a Dignidade Sexual", "regra": 4}
-{"id": "Q0101", "decisao": "publicar", "tema_central_id": 4704, "extras_ids": [], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0102", "decisao": "revisar", "tema_central_id": 5577, "extras_ids": [5209, 5475, 5572], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0098", "decisao": "publicar", "tema_central_id": 5548, "extras_ids": [5547], "confianca": 0.85, "motivo": "", "regra": 2}
+{"id": "Q0099", "decisao": "revisar", "tema_central_id": 5228, "extras_ids": [], "confianca": 0.9, "motivo": "modelos divergem: Penal > Teoria do Crime: Ilicitude vs Penal > Dos Crimes Contra a Administração Pública", "regra": 4}
+{"id": "Q0100", "decisao": "revisar", "tema_central_id": 5102, "extras_ids": [5224], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0101", "decisao": "publicar", "tema_central_id": 4704, "extras_ids": [], "confianca": 0.88, "motivo": "", "regra": 2}
+{"id": "Q0102", "decisao": "revisar", "tema_central_id": 5577, "extras_ids": [5572, 5209, 5475], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0103", "decisao": "publicar", "tema_central_id": 5476, "extras_ids": [], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0104", "decisao": "revisar", "tema_central_id": 5498, "extras_ids": [5480], "confianca": 0.65, "motivo": "confiança 0.65 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0105", "decisao": "revisar", "tema_central_id": 4388, "extras_ids": [4378], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0106", "decisao": "publicar", "tema_central_id": 5166, "extras_ids": [5157], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0107", "decisao": "revisar", "tema_central_id": 5116, "extras_ids": [4699], "confianca": 0.7, "motivo": "confiança 0.70 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0108", "decisao": "revisar", "tema_central_id": 5561, "extras_ids": [5560, 5512, 5515], "confianca": 0.72, "motivo": "confiança 0.72 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0109", "decisao": "revisar", "tema_central_id": 4708, "extras_ids": [], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0110", "decisao": "revisar", "tema_central_id": 5480, "extras_ids": [5484, 5482, 5481], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0104", "decisao": "publicar", "tema_central_id": 5498, "extras_ids": [], "confianca": 0.85, "motivo": "", "regra": 2}
+{"id": "Q0105", "decisao": "revisar", "tema_central_id": 4388, "extras_ids": [4385, 4378], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0106", "decisao": "revisar", "tema_central_id": 5166, "extras_ids": [5157], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0107", "decisao": "revisar", "tema_central_id": 5116, "extras_ids": [], "confianca": 0.8, "motivo": "modelos divergem: Direito Penal - Legislação Especial > Identificação Criminal vs Penal > Dos Crimes Contra a Fé Pública e de Falsidade Documental", "regra": 4}
+{"id": "Q0108", "decisao": "revisar", "tema_central_id": 5561, "extras_ids": [5560, 5515], "confianca": 0.65, "motivo": "confiança 0.65 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0109", "decisao": "publicar", "tema_central_id": 4708, "extras_ids": [], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0110", "decisao": "revisar", "tema_central_id": 5480, "extras_ids": [5482, 5484, 5481], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0111", "decisao": "publicar", "tema_central_id": 4373, "extras_ids": [4371], "confianca": 0.88, "motivo": "", "regra": 2}
-{"id": "Q0112", "decisao": "publicar", "tema_central_id": 4705, "extras_ids": [], "confianca": 0.85, "motivo": "", "regra": 2}
+{"id": "Q0112", "decisao": "revisar", "tema_central_id": 4705, "extras_ids": [], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0113", "decisao": "revisar", "tema_central_id": 5185, "extras_ids": [5087], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0114", "decisao": "revisar", "tema_central_id": 5505, "extras_ids": [5466, 5498], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0115", "decisao": "revisar", "tema_central_id": 4385, "extras_ids": [4387, 4388], "confianca": 0.5, "motivo": "irmãos Teorias de Nível Sociológico e Teorias Sociológicas Explicativas da Criminalidade abaixo do limiar do pai 0.60", "regra": 3}
-{"id": "Q0116", "decisao": "publicar", "tema_central_id": 4708, "extras_ids": [], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0117", "decisao": "revisar", "tema_central_id": 5200, "extras_ids": [5199, 4384], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0118", "decisao": "revisar", "tema_central_id": 5505, "extras_ids": [5519, 5523], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0119", "decisao": "publicar", "tema_central_id": 5180, "extras_ids": [], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0120", "decisao": "revisar", "tema_central_id": 5543, "extras_ids": [5547], "confianca": 0.4, "motivo": "confiança 0.40 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0121", "decisao": "revisar", "tema_central_id": 5466, "extras_ids": [5472, 5469, 5196, 5065], "confianca": 0.35, "motivo": "irmãos Ação Penal de Iniciativa Privada e Princípios da Ação Penal abaixo do limiar do pai 0.60", "regra": 3}
-{"id": "Q0122", "decisao": "publicar", "tema_central_id": 4703, "extras_ids": [], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0123", "decisao": "revisar", "tema_central_id": 4385, "extras_ids": [5584, 4690], "confianca": 0.6, "motivo": "modelos divergem: Criminologia > Teorias Sociológicas Explicativas da Criminalidade vs Criminologia > Processos de Criminalização e Cifras Criminais", "regra": 4}
-{"id": "Q0124", "decisao": "revisar", "tema_central_id": 4384, "extras_ids": [], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0125", "decisao": "revisar", "tema_central_id": 5505, "extras_ids": [5572, 4708], "confianca": 0.85, "motivo": "modelos divergem: Processo Penal > Lei Processual no Tempo e no Espaço vs Direito Penal - Legislação Especial > Lei de Execução Penal", "regra": 4}
-{"id": "Q0126", "decisao": "revisar", "tema_central_id": 5213, "extras_ids": [5211, 5226, 5076], "confianca": 0.85, "motivo": "um modelo não achou candidato; sugestão do outro", "regra": 6}
-{"id": "Q0127", "decisao": "revisar", "tema_central_id": 5572, "extras_ids": [4708], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0128", "decisao": "revisar", "tema_central_id": 5213, "extras_ids": [5184], "confianca": 0.8, "motivo": "modelos divergem: Penal > Teoria do Crime: Culpabilidade > Inimputabilidade vs Penal > Medida de Segurança", "regra": 4}
-{"id": "Q0129", "decisao": "publicar", "tema_central_id": 5550, "extras_ids": [5535], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0130", "decisao": "revisar", "tema_central_id": 5160, "extras_ids": [5205], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0131", "decisao": "publicar", "tema_central_id": 5071, "extras_ids": [5218], "confianca": 0.85, "motivo": "", "regra": 2}
+{"id": "Q0115", "decisao": "publicar", "tema_central_id": 4385, "extras_ids": [4388, 4387], "confianca": 0.6, "motivo": "", "regra": 3}
+{"id": "Q0116", "decisao": "revisar", "tema_central_id": 4708, "extras_ids": [], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0117", "decisao": "revisar", "tema_central_id": 4384, "extras_ids": [], "confianca": 0.9, "motivo": "modelos divergem: Criminologia > Teorias Legitimidoras da Pena vs Penal > Teoria da Pena > Sanção Penal: Conceito, Finalidade e Modalidades", "regra": 4}
+{"id": "Q0118", "decisao": "revisar", "tema_central_id": 5505, "extras_ids": [5519, 5523], "confianca": 0.65, "motivo": "confiança 0.65 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0119", "decisao": "publicar", "tema_central_id": 5180, "extras_ids": [5505], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0120", "decisao": "revisar", "tema_central_id": 5547, "extras_ids": [5543], "confianca": 0.4, "motivo": "confiança 0.40 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0121", "decisao": "revisar", "tema_central_id": 5466, "extras_ids": [5472, 5469, 5065, 5063, 5196], "confianca": 0.35, "motivo": "irmãos Ação Penal de Iniciativa Privada e Princípios da Ação Penal abaixo do limiar do pai 0.55", "regra": 3}
+{"id": "Q0122", "decisao": "publicar", "tema_central_id": 4703, "extras_ids": [5201], "confianca": 0.88, "motivo": "", "regra": 2}
+{"id": "Q0123", "decisao": "revisar", "tema_central_id": 4377, "extras_ids": [4385, 5584], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0124", "decisao": "revisar", "tema_central_id": 4384, "extras_ids": [], "confianca": 0.7, "motivo": "confiança 0.70 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0125", "decisao": "revisar", "tema_central_id": 5505, "extras_ids": [4708], "confianca": 0.8, "motivo": "modelos divergem: Processo Penal > Lei Processual no Tempo e no Espaço vs Direito Penal - Legislação Especial > Lei de Execução Penal", "regra": 4}
+{"id": "Q0126", "decisao": "revisar", "tema_central_id": 5213, "extras_ids": [5211, 5226, 5076], "confianca": 0.9, "motivo": "um modelo não achou candidato; sugestão do outro", "regra": 6}
+{"id": "Q0127", "decisao": "revisar", "tema_central_id": 5572, "extras_ids": [5576, 4708], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0128", "decisao": "revisar", "tema_central_id": 5184, "extras_ids": [5213], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0129", "decisao": "revisar", "tema_central_id": 5550, "extras_ids": [5535], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0130", "decisao": "revisar", "tema_central_id": 5160, "extras_ids": [5205], "confianca": 0.7, "motivo": "confiança 0.70 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0131", "decisao": "publicar", "tema_central_id": 5071, "extras_ids": [5218], "confianca": 0.9, "motivo": "", "regra": 2}
 {"id": "Q0132", "decisao": "revisar", "tema_central_id": 5490, "extras_ids": [5498], "confianca": 0.6, "motivo": "modelos divergem: Processo Penal > Das Questões e Processos Incidentes vs Processo Penal > Provas em Espécies", "regra": 4}
 {"id": "Q0133", "decisao": "revisar", "tema_central_id": 5524, "extras_ids": [5480], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0134", "decisao": "publicar", "tema_central_id": 5092, "extras_ids": [5093, 5087, 5091], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0135", "decisao": "publicar", "tema_central_id": 5169, "extras_ids": [5157], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0136", "decisao": "revisar", "tema_central_id": 4704, "extras_ids": [5111], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0134", "decisao": "publicar", "tema_central_id": 5092, "extras_ids": [5087, 5091], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0135", "decisao": "publicar", "tema_central_id": 5169, "extras_ids": [5157], "confianca": 0.85, "motivo": "", "regra": 2}
+{"id": "Q0136", "decisao": "publicar", "tema_central_id": 4704, "extras_ids": [5111], "confianca": 0.85, "motivo": "", "regra": 2}
 {"id": "Q0137", "decisao": "publicar", "tema_central_id": 5498, "extras_ids": [], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0138", "decisao": "publicar", "tema_central_id": 5199, "extras_ids": [5205, 5207], "confianca": 0.7, "motivo": "", "regra": 3}
-{"id": "Q0139", "decisao": "publicar", "tema_central_id": 5211, "extras_ids": [5217, 4385], "confianca": 0.6, "motivo": "", "regra": 3}
+{"id": "Q0138", "decisao": "publicar", "tema_central_id": 5199, "extras_ids": [5205, 5207], "confianca": 0.8, "motivo": "", "regra": 3}
+{"id": "Q0139", "decisao": "publicar", "tema_central_id": 5211, "extras_ids": [5217], "confianca": 0.6, "motivo": "", "regra": 3}
 {"id": "Q0140", "decisao": "revisar", "tema_central_id": 5157, "extras_ids": [5159, 5160], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0141", "decisao": "revisar", "tema_central_id": 4385, "extras_ids": [4387, 4388], "confianca": 0.45, "motivo": "irmãos Teorias de Nível Sociológico e Teorias Criminológicas em Espécie abaixo do limiar do pai 0.60", "regra": 3}
-{"id": "Q0142", "decisao": "fora", "tema_central_id": null, "extras_ids": [], "confianca": null, "motivo": "fora das quatro disciplinas: A questão trata de isenções do ITCD (imposto sobre transmissão causa mortis e doação), matéria de Direito Tributário/Legislação estadual, não de Direito Penal ou Processo Penal.", "regra": 1}
-{"id": "Q0143", "decisao": "revisar", "tema_central_id": 5507, "extras_ids": [5505], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0144", "decisao": "publicar", "tema_central_id": 5560, "extras_ids": [5561, 5562], "confianca": 0.88, "motivo": "", "regra": 3}
-{"id": "Q0145", "decisao": "revisar", "tema_central_id": 4702, "extras_ids": [4695], "confianca": 0.4, "motivo": "confiança 0.40 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0146", "decisao": "publicar", "tema_central_id": 5594, "extras_ids": [5543], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0147", "decisao": "revisar", "tema_central_id": 5498, "extras_ids": [5556, 5502, 4705], "confianca": 0.72, "motivo": "modelos divergem: Processo Penal > Provas em Espécies vs Processo Penal > Inquérito Policial", "regra": 4}
+{"id": "Q0141", "decisao": "revisar", "tema_central_id": 4385, "extras_ids": [4388, 4387], "confianca": 0.4, "motivo": "irmãos Teorias Criminológicas em Espécie e Teorias de Nível Sociológico abaixo do limiar do pai 0.55", "regra": 3}
+{"id": "Q0142", "decisao": "fora", "tema_central_id": null, "extras_ids": [], "confianca": null, "motivo": "fora das quatro disciplinas: A questão trata de isenções do imposto sobre transmissão causa mortis e doação (ITCD), tema de Direito Tributário/Financeiro estadual, não relacionado a Penal ou Processo Penal.", "regra": 1}
+{"id": "Q0143", "decisao": "revisar", "tema_central_id": 5507, "extras_ids": [], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0144", "decisao": "publicar", "tema_central_id": 5560, "extras_ids": [5561, 5562], "confianca": 0.85, "motivo": "", "regra": 3}
+{"id": "Q0145", "decisao": "publicar", "tema_central_id": 4702, "extras_ids": [4695], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0146", "decisao": "revisar", "tema_central_id": 5594, "extras_ids": [5543], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0147", "decisao": "revisar", "tema_central_id": 5498, "extras_ids": [5502, 5556, 4705], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0148", "decisao": "publicar", "tema_central_id": 5203, "extras_ids": [5576, 5202], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0149", "decisao": "revisar", "tema_central_id": 5498, "extras_ids": [5554, 5545, 5500], "confianca": 0.72, "motivo": "confiança 0.72 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0150", "decisao": "revisar", "tema_central_id": 4708, "extras_ids": [], "confianca": 0.7, "motivo": "confiança 0.70 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0151", "decisao": "revisar", "tema_central_id": 5517, "extras_ids": [5521, 5522, 5519, 5518, 5585], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0152", "decisao": "revisar", "tema_central_id": 5472, "extras_ids": [5474, 5466], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0153", "decisao": "publicar", "tema_central_id": 5222, "extras_ids": [], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0154", "decisao": "revisar", "tema_central_id": 5131, "extras_ids": [], "confianca": null, "motivo": "nenhum modelo achou tema que cubra a questão; assunto descrito: Nenhum dos candidatos listados corresponde especificamente à Lei n.º 9.029/95 (práticas discriminatórias relativas à gravidez no trabalho). A questão trata de crime previsto nessa lei — a exigência, por empregador, de teste relativo à esterilização ou ao estado de gravidez — tema de legislação especial sobre discriminação no trabalho / Direito do Trabalho.", "regra": 6}
+{"id": "Q0149", "decisao": "publicar", "tema_central_id": 5498, "extras_ids": [5500, 5554, 5545], "confianca": 0.6, "motivo": "", "regra": 3}
+{"id": "Q0150", "decisao": "publicar", "tema_central_id": 4708, "extras_ids": [], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0151", "decisao": "revisar", "tema_central_id": 5517, "extras_ids": [5521, 5519, 5518, 5522, 5585], "confianca": 0.55, "motivo": "confiança 0.55 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0152", "decisao": "revisar", "tema_central_id": 5472, "extras_ids": [5474, 5065], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0153", "decisao": "revisar", "tema_central_id": 5222, "extras_ids": [], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0154", "decisao": "revisar", "tema_central_id": 4690, "extras_ids": [], "confianca": 0.35, "motivo": "um modelo não achou candidato; sugestão do outro", "regra": 6}
 {"id": "Q0155", "decisao": "publicar", "tema_central_id": 4703, "extras_ids": [4705], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0156", "decisao": "revisar", "tema_central_id": 4688, "extras_ids": [5207, 5199], "confianca": 0.75, "motivo": "confiança 0.75 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0157", "decisao": "revisar", "tema_central_id": 5520, "extras_ids": [5584], "confianca": 0.7, "motivo": "confiança 0.70 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0156", "decisao": "publicar", "tema_central_id": 4688, "extras_ids": [5207], "confianca": 0.85, "motivo": "", "regra": 2}
+{"id": "Q0157", "decisao": "publicar", "tema_central_id": 5520, "extras_ids": [5498], "confianca": 0.9, "motivo": "", "regra": 2}
 {"id": "Q0158", "decisao": "revisar", "tema_central_id": 5209, "extras_ids": [5577], "confianca": 0.4, "motivo": "confiança 0.40 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0159", "decisao": "revisar", "tema_central_id": 5157, "extras_ids": [5177, 5150], "confianca": 0.5, "motivo": "modelos divergem: Penal > Dos Crimes Contra a Vida > Homicídio vs Penal > Dos Crimes Contra o Patrimônio", "regra": 4}
-{"id": "Q0160", "decisao": "publicar", "tema_central_id": 5205, "extras_ids": [5199], "confianca": 0.88, "motivo": "", "regra": 2}
-{"id": "Q0161", "decisao": "revisar", "tema_central_id": 5518, "extras_ids": [5587], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0162", "decisao": "revisar", "tema_central_id": 4368, "extras_ids": [4370, 4369], "confianca": 0.55, "motivo": "irmãos Modelos de Reação ao Delito e Criminologia no Estado Democrático de Direito abaixo do limiar do pai 0.60", "regra": 3}
-{"id": "Q0163", "decisao": "revisar", "tema_central_id": 5133, "extras_ids": [4703], "confianca": 0.45, "motivo": "confiança 0.45 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0159", "decisao": "revisar", "tema_central_id": 5157, "extras_ids": [5066, 5150, 5177], "confianca": 0.4, "motivo": "modelos divergem: Penal > Dos Crimes Contra a Vida > Homicídio vs Penal > Dos Crimes Contra o Patrimônio", "regra": 4}
+{"id": "Q0160", "decisao": "publicar", "tema_central_id": 5205, "extras_ids": [5199], "confianca": 0.85, "motivo": "", "regra": 2}
+{"id": "Q0161", "decisao": "revisar", "tema_central_id": 5518, "extras_ids": [5587, 5523, 5522, 5521], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0162", "decisao": "revisar", "tema_central_id": 4370, "extras_ids": [4369, 4368], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0163", "decisao": "revisar", "tema_central_id": 5133, "extras_ids": [4703], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0164", "decisao": "publicar", "tema_central_id": 4703, "extras_ids": [5210], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0165", "decisao": "publicar", "tema_central_id": 4705, "extras_ids": [5498], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0166", "decisao": "revisar", "tema_central_id": 5521, "extras_ids": [4703, 5208, 5201], "confianca": 0.7, "motivo": "modelos divergem: Processo Penal > Prisões em Espécie > Prisão Domiciliar vs Direito Penal - Legislação Especial > Lei de Execução Penal", "regra": 4}
-{"id": "Q0167", "decisao": "publicar", "tema_central_id": 5524, "extras_ids": [5480], "confianca": 0.88, "motivo": "", "regra": 2}
-{"id": "Q0168", "decisao": "revisar", "tema_central_id": 5087, "extras_ids": [], "confianca": null, "motivo": "um modelo diz fora das disciplinas, outro diz que nenhum candidato serve", "regra": 6}
-{"id": "Q0169", "decisao": "revisar", "tema_central_id": 5492, "extras_ids": [], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0165", "decisao": "publicar", "tema_central_id": 4705, "extras_ids": [5498, 5543], "confianca": 0.85, "motivo": "", "regra": 2}
+{"id": "Q0166", "decisao": "revisar", "tema_central_id": 5521, "extras_ids": [4703, 5208, 5201], "confianca": 0.75, "motivo": "modelos divergem: Processo Penal > Prisões em Espécie > Prisão Domiciliar vs Direito Penal - Legislação Especial > Lei de Execução Penal", "regra": 4}
+{"id": "Q0167", "decisao": "publicar", "tema_central_id": 5524, "extras_ids": [5480], "confianca": 0.85, "motivo": "", "regra": 2}
+{"id": "Q0168", "decisao": "revisar", "tema_central_id": 5125, "extras_ids": [], "confianca": null, "motivo": "nenhum modelo achou tema que cubra a questão; assunto descrito: A questão trata de delitos da Lei n.º 14.597/2023 (crimes no âmbito do esporte — corrupção privada no esporte e crimes contra a incerteza do resultado), tema não contemplado entre os candidatos; o correto seria classificar em 'Crimes no Esporte / Lei 14.597/2023'.", "regra": 6}
+{"id": "Q0169", "decisao": "publicar", "tema_central_id": 5492, "extras_ids": [5490], "confianca": 0.85, "motivo": "", "regra": 2}
 {"id": "Q0170", "decisao": "publicar", "tema_central_id": 5199, "extras_ids": [5210, 5185, 5205], "confianca": 0.6, "motivo": "", "regra": 3}
-{"id": "Q0171", "decisao": "revisar", "tema_central_id": 5185, "extras_ids": [5189, 5199], "confianca": 0.7, "motivo": "modelos divergem: Penal > Prescrição vs Direito Penal - Legislação Especial > Crimes Hediondos", "regra": 4}
+{"id": "Q0171", "decisao": "revisar", "tema_central_id": 5185, "extras_ids": [4693], "confianca": 0.75, "motivo": "um modelo não achou candidato; sugestão do outro", "regra": 6}
 {"id": "Q0172", "decisao": "revisar", "tema_central_id": 5466, "extras_ids": [5473, 5480, 5572], "confianca": 0.6, "motivo": "modelos divergem: Processo Penal > Ação Penal vs Processo Penal > Competência", "regra": 4}
-{"id": "Q0173", "decisao": "revisar", "tema_central_id": 4703, "extras_ids": [5201], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0174", "decisao": "revisar", "tema_central_id": 5102, "extras_ids": [5107, 5157], "confianca": 0.55, "motivo": "modelos divergem: Penal > Dos Crimes Contra a Dignidade Sexual vs Penal > Dos Crimes Contra a Liberdade Pessoal", "regra": 4}
-{"id": "Q0175", "decisao": "publicar", "tema_central_id": 5087, "extras_ids": [5091, 5092, 5093], "confianca": 0.6, "motivo": "", "regra": 3}
-{"id": "Q0176", "decisao": "publicar", "tema_central_id": 5079, "extras_ids": [5550], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0177", "decisao": "revisar", "tema_central_id": 5547, "extras_ids": [5548, 5535], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0178", "decisao": "publicar", "tema_central_id": 4697, "extras_ids": [], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0179", "decisao": "publicar", "tema_central_id": 4369, "extras_ids": [4370], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0173", "decisao": "publicar", "tema_central_id": 4703, "extras_ids": [], "confianca": 0.85, "motivo": "", "regra": 2}
+{"id": "Q0174", "decisao": "revisar", "tema_central_id": 5102, "extras_ids": [5107, 5108, 5157], "confianca": 0.6, "motivo": "modelos divergem: Penal > Dos Crimes Contra a Dignidade Sexual vs Penal > Dos Crimes Contra a Liberdade Pessoal", "regra": 4}
+{"id": "Q0175", "decisao": "revisar", "tema_central_id": 5087, "extras_ids": [5091, 5092, 5093], "confianca": 0.5, "motivo": "irmãos Concussão e Excesso de Exação e Corrupção Passiva abaixo do limiar do pai 0.55", "regra": 3}
+{"id": "Q0176", "decisao": "publicar", "tema_central_id": 5079, "extras_ids": [5550], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0177", "decisao": "publicar", "tema_central_id": 5547, "extras_ids": [5548], "confianca": 0.85, "motivo": "", "regra": 2}
+{"id": "Q0178", "decisao": "publicar", "tema_central_id": 4697, "extras_ids": [], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0179", "decisao": "publicar", "tema_central_id": 4369, "extras_ids": [], "confianca": 0.85, "motivo": "", "regra": 2}
 {"id": "Q0180", "decisao": "revisar", "tema_central_id": 5543, "extras_ids": [5498], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0181", "decisao": "publicar", "tema_central_id": 4695, "extras_ids": [], "confianca": 0.88, "motivo": "", "regra": 2}
-{"id": "Q0182", "decisao": "revisar", "tema_central_id": 5149, "extras_ids": [5154, 5139, 5125, 5138], "confianca": 0.4, "motivo": "um modelo não achou candidato; sugestão do outro", "regra": 6}
-{"id": "Q0183", "decisao": "revisar", "tema_central_id": 5561, "extras_ids": [5560], "confianca": 0.4, "motivo": "confiança 0.40 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0184", "decisao": "revisar", "tema_central_id": 5518, "extras_ids": [5517], "confianca": 0.6, "motivo": "modelos divergem: Processo Penal > Prisões em Espécie > Prisão em Flagrante vs Direito Penal - Legislação Especial > Tráfico de Drogas", "regra": 4}
+{"id": "Q0181", "decisao": "publicar", "tema_central_id": 4695, "extras_ids": [], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0182", "decisao": "revisar", "tema_central_id": 5138, "extras_ids": [5154, 5139, 5144, 5116, 5149], "confianca": 0.4, "motivo": "um modelo não achou candidato; sugestão do outro", "regra": 6}
+{"id": "Q0183", "decisao": "revisar", "tema_central_id": 5561, "extras_ids": [5560, 5562], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0184", "decisao": "revisar", "tema_central_id": 5518, "extras_ids": [4708], "confianca": 0.8, "motivo": "modelos divergem: Processo Penal > Prisões em Espécie > Prisão em Flagrante vs Direito Penal - Legislação Especial > Tráfico de Drogas", "regra": 4}
 {"id": "Q0185", "decisao": "revisar", "tema_central_id": 4703, "extras_ids": [5560, 5566], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0186", "decisao": "publicar", "tema_central_id": 5202, "extras_ids": [5199, 5203], "confianca": 0.88, "motivo": "", "regra": 2}
-{"id": "Q0187", "decisao": "revisar", "tema_central_id": 5209, "extras_ids": [5087, 5577], "confianca": 0.72, "motivo": "confiança 0.72 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0188", "decisao": "revisar", "tema_central_id": 5228, "extras_ids": [], "confianca": 0.62, "motivo": "modelos divergem: Penal > Teoria do Crime: Culpabilidade vs Penal > Teoria do Crime: Ilicitude", "regra": 4}
-{"id": "Q0189", "decisao": "publicar", "tema_central_id": 5466, "extras_ids": [], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0190", "decisao": "revisar", "tema_central_id": 4701, "extras_ids": [5539, 5540], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0191", "decisao": "revisar", "tema_central_id": 5560, "extras_ids": [5561, 5562, 5567], "confianca": 0.3, "motivo": "confiança 0.30 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0192", "decisao": "revisar", "tema_central_id": 5087, "extras_ids": [5209, 5091, 5089], "confianca": 0.65, "motivo": "confiança 0.65 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0193", "decisao": "revisar", "tema_central_id": 5557, "extras_ids": [4705], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0194", "decisao": "revisar", "tema_central_id": 5089, "extras_ids": [], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0195", "decisao": "revisar", "tema_central_id": 4373, "extras_ids": [4384, 4371, 4385], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0196", "decisao": "revisar", "tema_central_id": 4388, "extras_ids": [4387], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0197", "decisao": "revisar", "tema_central_id": 5498, "extras_ids": [5480], "confianca": 0.72, "motivo": "modelos divergem: Processo Penal > Competência vs Processo Penal > Inquérito Policial", "regra": 4}
+{"id": "Q0186", "decisao": "publicar", "tema_central_id": 5202, "extras_ids": [5199, 5203], "confianca": 0.85, "motivo": "", "regra": 2}
+{"id": "Q0187", "decisao": "revisar", "tema_central_id": 5209, "extras_ids": [5087, 5577], "confianca": 0.7, "motivo": "confiança 0.70 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0188", "decisao": "publicar", "tema_central_id": 5228, "extras_ids": [5233], "confianca": 0.6, "motivo": "", "regra": 3}
+{"id": "Q0189", "decisao": "publicar", "tema_central_id": 5466, "extras_ids": [], "confianca": 0.85, "motivo": "", "regra": 2}
+{"id": "Q0190", "decisao": "revisar", "tema_central_id": 4701, "extras_ids": [5540, 5480, 5539], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0191", "decisao": "revisar", "tema_central_id": 5560, "extras_ids": [5561, 5562, 5567], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0192", "decisao": "revisar", "tema_central_id": 5087, "extras_ids": [5091, 5089, 5209], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0193", "decisao": "revisar", "tema_central_id": 5557, "extras_ids": [4705, 5502], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0194", "decisao": "revisar", "tema_central_id": 5089, "extras_ids": [5159], "confianca": 0.7, "motivo": "confiança 0.70 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0195", "decisao": "revisar", "tema_central_id": 4373, "extras_ids": [4371, 4384, 4385], "confianca": 0.62, "motivo": "confiança 0.62 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0196", "decisao": "revisar", "tema_central_id": 4385, "extras_ids": [4387, 4388], "confianca": 0.5, "motivo": "irmãos Teorias de Nível Sociológico e Teorias Criminológicas em Espécie abaixo do limiar do pai 0.55", "regra": 3}
+{"id": "Q0197", "decisao": "revisar", "tema_central_id": 5480, "extras_ids": [5498], "confianca": 0.85, "motivo": "modelos divergem: Processo Penal > Competência vs Processo Penal > Inquérito Policial", "regra": 4}
 {"id": "Q0198", "decisao": "revisar", "tema_central_id": 5073, "extras_ids": [4705, 5072, 5071], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0199", "decisao": "revisar", "tema_central_id": 5218, "extras_ids": [5221, 5230, 5222], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0199", "decisao": "revisar", "tema_central_id": 5218, "extras_ids": [5221, 5222, 5228, 5230], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0200", "decisao": "publicar", "tema_central_id": 4705, "extras_ids": [], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0201", "decisao": "publicar", "tema_central_id": 5103, "extras_ids": [5102, 5466], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0201", "decisao": "publicar", "tema_central_id": 5103, "extras_ids": [5466], "confianca": 0.85, "motivo": "", "regra": 2}
 {"id": "Q0202", "decisao": "publicar", "tema_central_id": 5102, "extras_ids": [5108, 5071], "confianca": 0.8, "motivo": "", "regra": 3}
-{"id": "Q0203", "decisao": "revisar", "tema_central_id": 4702, "extras_ids": [5496], "confianca": 0.72, "motivo": "confiança 0.72 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0204", "decisao": "revisar", "tema_central_id": 5507, "extras_ids": [5505], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0205", "decisao": "revisar", "tema_central_id": 5512, "extras_ids": [5562, 5567, 5515], "confianca": 0.6, "motivo": "modelos divergem: Processo Penal > Recursos em Espécies vs Processo Penal > Parte Geral dos Recursos", "regra": 4}
-{"id": "Q0206", "decisao": "revisar", "tema_central_id": 5466, "extras_ids": [5560], "confianca": 0.45, "motivo": "confiança 0.45 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0207", "decisao": "publicar", "tema_central_id": 4703, "extras_ids": [], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0208", "decisao": "publicar", "tema_central_id": 5071, "extras_ids": [5149], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0209", "decisao": "revisar", "tema_central_id": 5500, "extras_ids": [5498], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0203", "decisao": "revisar", "tema_central_id": 4702, "extras_ids": [5496], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0204", "decisao": "publicar", "tema_central_id": 5507, "extras_ids": [5505], "confianca": 0.85, "motivo": "", "regra": 2}
+{"id": "Q0205", "decisao": "revisar", "tema_central_id": 5512, "extras_ids": [5515, 5562, 5567], "confianca": 0.4, "motivo": "confiança 0.40 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0206", "decisao": "revisar", "tema_central_id": 5466, "extras_ids": [5530, 5560], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0207", "decisao": "publicar", "tema_central_id": 4703, "extras_ids": [], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0208", "decisao": "revisar", "tema_central_id": 5071, "extras_ids": [5149], "confianca": 0.75, "motivo": "confiança 0.75 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0209", "decisao": "revisar", "tema_central_id": 5498, "extras_ids": [5590], "confianca": 0.8, "motivo": "modelos divergem: Processo Penal > Teoria Geral das Provas > Princípios Relativos à Prova Penal vs Processo Penal > Inquérito Policial", "regra": 4}
 {"id": "Q0210", "decisao": "publicar", "tema_central_id": 4697, "extras_ids": [4693], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0211", "decisao": "revisar", "tema_central_id": 5535, "extras_ids": [5530], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0212", "decisao": "revisar", "tema_central_id": 5488, "extras_ids": [5487], "confianca": 0.62, "motivo": "confiança 0.62 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0213", "decisao": "revisar", "tema_central_id": 4708, "extras_ids": [5487, 5531, 5530], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0211", "decisao": "revisar", "tema_central_id": 5535, "extras_ids": [5530], "confianca": 0.55, "motivo": "confiança 0.55 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0212", "decisao": "revisar", "tema_central_id": 5488, "extras_ids": [5487], "confianca": 0.7, "motivo": "confiança 0.70 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0213", "decisao": "revisar", "tema_central_id": 4708, "extras_ids": [5473, 5530], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0214", "decisao": "publicar", "tema_central_id": 5494, "extras_ids": [5490], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0215", "decisao": "revisar", "tema_central_id": 5576, "extras_ids": [4703], "confianca": 0.85, "motivo": "modelos divergem: Processo Penal > Sentença Penal > Fixação da Pena e do Regime Penitenciário vs Penal > Teoria da Pena > Penas Privativas de Liberdade", "regra": 4}
-{"id": "Q0216", "decisao": "revisar", "tema_central_id": 5539, "extras_ids": [5466], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0217", "decisao": "revisar", "tema_central_id": 4384, "extras_ids": [5199], "confianca": 0.8, "motivo": "modelos divergem: Criminologia > Teorias Legitimidoras da Pena vs Criminologia > Etapas Evolutivas e Escolas Criminológicas", "regra": 4}
-{"id": "Q0218", "decisao": "revisar", "tema_central_id": 5517, "extras_ids": [5584], "confianca": 0.6, "motivo": "modelos divergem: Processo Penal > Prisões em Espécie vs Processo Penal > Teoria Geral das Prisões", "regra": 4}
-{"id": "Q0219", "decisao": "revisar", "tema_central_id": 5071, "extras_ids": [5223], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0220", "decisao": "publicar", "tema_central_id": 5501, "extras_ids": [5498], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0221", "decisao": "revisar", "tema_central_id": 5199, "extras_ids": [5201, 5205], "confianca": 0.7, "motivo": "confiança 0.70 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0215", "decisao": "revisar", "tema_central_id": 5576, "extras_ids": [5572, 5537], "confianca": 0.9, "motivo": "modelos divergem: Processo Penal > Sentença Penal > Fixação da Pena e do Regime Penitenciário vs Penal > Teoria da Pena > Penas Privativas de Liberdade", "regra": 4}
+{"id": "Q0216", "decisao": "revisar", "tema_central_id": 5539, "extras_ids": [5466, 5475], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0217", "decisao": "revisar", "tema_central_id": 4371, "extras_ids": [4384], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0218", "decisao": "revisar", "tema_central_id": 5517, "extras_ids": [5584, 5558], "confianca": 0.8, "motivo": "modelos divergem: Processo Penal > Prisões em Espécie vs Processo Penal > Teoria Geral das Prisões", "regra": 4}
+{"id": "Q0219", "decisao": "revisar", "tema_central_id": 5071, "extras_ids": [5066], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0220", "decisao": "publicar", "tema_central_id": 5501, "extras_ids": [5498], "confianca": 0.85, "motivo": "", "regra": 2}
+{"id": "Q0221", "decisao": "revisar", "tema_central_id": 5199, "extras_ids": [5201, 5205], "confianca": 0.75, "motivo": "confiança 0.75 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0222", "decisao": "revisar", "tema_central_id": 4370, "extras_ids": [4368], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0223", "decisao": "revisar", "tema_central_id": 4703, "extras_ids": [5084], "confianca": 0.9, "motivo": "modelos divergem: Direito Penal - Legislação Especial > Lei de Execução Penal vs Penal > Dos Crimes Contra a Administração Pública", "regra": 4}
-{"id": "Q0224", "decisao": "revisar", "tema_central_id": 5199, "extras_ids": [5207, 5576], "confianca": 0.4, "motivo": "irmãos Suspensão Condicional da Pena e Teoria da Pena abaixo do limiar do pai 0.60", "regra": 3}
-{"id": "Q0225", "decisao": "revisar", "tema_central_id": 5480, "extras_ids": [5560, 5571], "confianca": 0.5, "motivo": "modelos divergem: Processo Penal > Recursos em Espécies > Recurso Especial vs Processo Penal > Competência", "regra": 4}
-{"id": "Q0226", "decisao": "publicar", "tema_central_id": 5544, "extras_ids": [5543], "confianca": 0.93, "motivo": "", "regra": 2}
-{"id": "Q0227", "decisao": "revisar", "tema_central_id": 5103, "extras_ids": [5067, 5149, 5104, 5110], "confianca": 0.65, "motivo": "confiança 0.65 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0223", "decisao": "revisar", "tema_central_id": 4703, "extras_ids": [5084], "confianca": 0.6, "motivo": "modelos divergem: Direito Penal - Legislação Especial > Lei de Execução Penal vs Penal > Dos Crimes Contra a Administração Pública", "regra": 4}
+{"id": "Q0224", "decisao": "revisar", "tema_central_id": 5199, "extras_ids": [5207, 5209], "confianca": 0.4, "motivo": "irmãos Suspensão Condicional da Pena e Teoria da Pena abaixo do limiar do pai 0.55", "regra": 3}
+{"id": "Q0225", "decisao": "publicar", "tema_central_id": 5478, "extras_ids": [5571, 5480], "confianca": 0.85, "motivo": "", "regra": 2}
+{"id": "Q0226", "decisao": "publicar", "tema_central_id": 5544, "extras_ids": [5543], "confianca": 0.85, "motivo": "", "regra": 2}
+{"id": "Q0227", "decisao": "revisar", "tema_central_id": 5103, "extras_ids": [5067, 5149, 5104, 5110], "confianca": 0.72, "motivo": "confiança 0.72 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0228", "decisao": "revisar", "tema_central_id": 4703, "extras_ids": [5208, 5566], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0229", "decisao": "revisar", "tema_central_id": 5584, "extras_ids": [5519, 5520, 5521, 5587], "confianca": 0.55, "motivo": "modelos divergem: Processo Penal > Prisões em Espécie vs Processo Penal > Teoria Geral das Prisões", "regra": 4}
-{"id": "Q0230", "decisao": "revisar", "tema_central_id": 5211, "extras_ids": [5217, 5071, 5199, 5213, 5191], "confianca": 0.55, "motivo": "um modelo não achou candidato; sugestão do outro", "regra": 6}
-{"id": "Q0231", "decisao": "publicar", "tema_central_id": 5224, "extras_ids": [5218], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0232", "decisao": "revisar", "tema_central_id": 5079, "extras_ids": [5080, 5082, 5081, 5084], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0230", "decisao": "revisar", "tema_central_id": 5211, "extras_ids": [5214, 5217, 5199, 5066], "confianca": 0.45, "motivo": "confiança 0.45 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0231", "decisao": "publicar", "tema_central_id": 5224, "extras_ids": [5211, 4708], "confianca": 0.85, "motivo": "", "regra": 2}
+{"id": "Q0232", "decisao": "revisar", "tema_central_id": 5079, "extras_ids": [5080, 5082, 5081, 5084], "confianca": 0.75, "motivo": "confiança 0.75 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0233", "decisao": "publicar", "tema_central_id": 5178, "extras_ids": [5175, 5177], "confianca": 0.9, "motivo": "", "regra": 2}
 {"id": "Q0234", "decisao": "revisar", "tema_central_id": 4380, "extras_ids": [4382], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0235", "decisao": "revisar", "tema_central_id": 5561, "extras_ids": [5560, 5515], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0236", "decisao": "revisar", "tema_central_id": 5490, "extras_ids": [5495, 5543], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0236", "decisao": "revisar", "tema_central_id": 5490, "extras_ids": [5495, 5543], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0237", "decisao": "publicar", "tema_central_id": 5178, "extras_ids": [5175], "confianca": 0.9, "motivo": "", "regra": 2}
 {"id": "Q0238", "decisao": "revisar", "tema_central_id": 5523, "extras_ids": [5517], "confianca": 0.72, "motivo": "confiança 0.72 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0239", "decisao": "revisar", "tema_central_id": 5199, "extras_ids": [5175, 5224], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0239", "decisao": "revisar", "tema_central_id": 5199, "extras_ids": [5224], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0240", "decisao": "revisar", "tema_central_id": 5466, "extras_ids": [5498, 5517], "confianca": 0.8, "motivo": "modelos divergem: Processo Penal > Ação Penal vs Processo Penal > Inquérito Policial", "regra": 4}
-{"id": "Q0241", "decisao": "publicar", "tema_central_id": 5224, "extras_ids": [5218], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0242", "decisao": "revisar", "tema_central_id": 5512, "extras_ids": [5560, 5570, 5571, 5513], "confianca": 0.6, "motivo": "modelos divergem: Processo Penal > Recursos em Espécies vs Processo Penal > Parte Geral dos Recursos", "regra": 4}
-{"id": "Q0243", "decisao": "revisar", "tema_central_id": 5178, "extras_ids": [], "confianca": 0.7, "motivo": "confiança 0.70 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0244", "decisao": "revisar", "tema_central_id": 5091, "extras_ids": [5092], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0245", "decisao": "revisar", "tema_central_id": 5185, "extras_ids": [5189], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0241", "decisao": "revisar", "tema_central_id": 5224, "extras_ids": [5218], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0242", "decisao": "revisar", "tema_central_id": 5512, "extras_ids": [5560, 5513], "confianca": 0.5, "motivo": "modelos divergem: Processo Penal > Recursos em Espécies vs Processo Penal > Parte Geral dos Recursos", "regra": 4}
+{"id": "Q0243", "decisao": "revisar", "tema_central_id": 5178, "extras_ids": [], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0244", "decisao": "revisar", "tema_central_id": 5091, "extras_ids": [5087, 5092], "confianca": 0.4, "motivo": "confiança 0.40 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0245", "decisao": "publicar", "tema_central_id": 5185, "extras_ids": [5189], "confianca": 0.8, "motivo": "", "regra": 3}
 {"id": "Q0246", "decisao": "publicar", "tema_central_id": 5527, "extras_ids": [5524], "confianca": 0.85, "motivo": "", "regra": 2}
 {"id": "Q0247", "decisao": "revisar", "tema_central_id": 5466, "extras_ids": [5505, 5548], "confianca": 0.6, "motivo": "modelos divergem: Processo Penal > Ação Penal vs Processo Penal > Lei Processual no Tempo e no Espaço", "regra": 4}
-{"id": "Q0248", "decisao": "revisar", "tema_central_id": 5087, "extras_ids": [5093, 5092, 5100, 5091], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0249", "decisao": "revisar", "tema_central_id": 5492, "extras_ids": [5480, 5490], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0250", "decisao": "revisar", "tema_central_id": 5201, "extras_ids": [4703, 5202, 5576], "confianca": 0.5, "motivo": "modelos divergem: Processo Penal > Sentença Penal > Fixação da Pena e do Regime Penitenciário vs Penal > Teoria da Pena > Penas Privativas de Liberdade", "regra": 4}
+{"id": "Q0248", "decisao": "revisar", "tema_central_id": 5087, "extras_ids": [5092, 5093, 5100, 5091], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0249", "decisao": "publicar", "tema_central_id": 5492, "extras_ids": [5480], "confianca": 0.85, "motivo": "", "regra": 2}
+{"id": "Q0250", "decisao": "revisar", "tema_central_id": 5201, "extras_ids": [5576], "confianca": 0.5, "motivo": "modelos divergem: Processo Penal > Sentença Penal > Fixação da Pena e do Regime Penitenciário vs Penal > Teoria da Pena > Penas Privativas de Liberdade", "regra": 4}
 {"id": "Q0251", "decisao": "revisar", "tema_central_id": 5191, "extras_ids": [5193, 5185], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0252", "decisao": "revisar", "tema_central_id": 5208, "extras_ids": [4703, 5199], "confianca": 0.4, "motivo": "confiança 0.40 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0253", "decisao": "publicar", "tema_central_id": 4373, "extras_ids": [4371], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0254", "decisao": "revisar", "tema_central_id": 4704, "extras_ids": [], "confianca": 0.45, "motivo": "confiança 0.45 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0255", "decisao": "publicar", "tema_central_id": 5213, "extras_ids": [5217], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0256", "decisao": "revisar", "tema_central_id": 5224, "extras_ids": [5214, 5228], "confianca": 0.55, "motivo": "confiança 0.55 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0257", "decisao": "revisar", "tema_central_id": 5218, "extras_ids": [5227, 5219, 5220], "confianca": 0.45, "motivo": "irmãos Tipicidade e Conceito, Sujeito e Objeto do Crime abaixo do limiar do pai 0.60", "regra": 3}
-{"id": "Q0258", "decisao": "publicar", "tema_central_id": 5545, "extras_ids": [5543, 5498], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0259", "decisao": "revisar", "tema_central_id": 5066, "extras_ids": [5164, 5159], "confianca": 0.9, "motivo": "modelos divergem: Penal > Concurso de Crimes vs Penal > Lei Penal no Tempo e no Espaço > Conflito Aparente de Normas", "regra": 4}
+{"id": "Q0252", "decisao": "revisar", "tema_central_id": 4703, "extras_ids": [5208, 5199], "confianca": 0.4, "motivo": "confiança 0.40 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0253", "decisao": "publicar", "tema_central_id": 4373, "extras_ids": [4371], "confianca": 0.88, "motivo": "", "regra": 2}
+{"id": "Q0254", "decisao": "publicar", "tema_central_id": 4704, "extras_ids": [], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0255", "decisao": "publicar", "tema_central_id": 5213, "extras_ids": [5211, 5217], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0256", "decisao": "revisar", "tema_central_id": 5224, "extras_ids": [5214], "confianca": 0.62, "motivo": "modelos divergem: Penal > Teoria do Crime: Culpabilidade vs Penal > Teoria do Crime: Fato Típico > Erro de Tipo", "regra": 4}
+{"id": "Q0257", "decisao": "revisar", "tema_central_id": 5170, "extras_ids": [5228], "confianca": 0.4, "motivo": "confiança 0.40 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0258", "decisao": "publicar", "tema_central_id": 5545, "extras_ids": [5543], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0259", "decisao": "revisar", "tema_central_id": 5183, "extras_ids": [5164, 5159], "confianca": 0.93, "motivo": "modelos divergem: Penal > Concurso de Crimes vs Penal > Lei Penal no Tempo e no Espaço > Conflito Aparente de Normas", "regra": 4}
 {"id": "Q0260", "decisao": "revisar", "tema_central_id": 4370, "extras_ids": [4371, 4368], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0261", "decisao": "revisar", "tema_central_id": 5136, "extras_ids": [5466, 5063], "confianca": 0.4, "motivo": "confiança 0.40 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0261", "decisao": "revisar", "tema_central_id": 5466, "extras_ids": [5136], "confianca": 0.8, "motivo": "modelos divergem: Processo Penal > Ação Penal vs Penal > Dos Crimes contra a Organização do Trabalho, a Propriedade Imaterial e ao Sentimento Religioso > Dos Crimescontra a Propriedade Imaterial", "regra": 4}
 {"id": "Q0262", "decisao": "revisar", "tema_central_id": 4703, "extras_ids": [5184, 5497], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0263", "decisao": "publicar", "tema_central_id": 5492, "extras_ids": [5490], "confianca": 0.9, "motivo": "", "regra": 2}
 {"id": "Q0264", "decisao": "revisar", "tema_central_id": 5103, "extras_ids": [5108, 5109], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0265", "decisao": "revisar", "tema_central_id": 5185, "extras_ids": [5066], "confianca": 0.72, "motivo": "confiança 0.72 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0266", "decisao": "revisar", "tema_central_id": 5480, "extras_ids": [5481], "confianca": 0.55, "motivo": "irmãos Competência e Espécies e Fixação de Competência Criminal abaixo do limiar do pai 0.60", "regra": 3}
-{"id": "Q0267", "decisao": "revisar", "tema_central_id": 4708, "extras_ids": [5498], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0268", "decisao": "revisar", "tema_central_id": 5116, "extras_ids": [5118], "confianca": 0.45, "motivo": "confiança 0.45 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0265", "decisao": "revisar", "tema_central_id": 5185, "extras_ids": [5066], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0266", "decisao": "revisar", "tema_central_id": 5480, "extras_ids": [5481, 5524], "confianca": 0.5, "motivo": "irmãos Competência e Espécies e Fixação de Competência Criminal abaixo do limiar do pai 0.55", "regra": 3}
+{"id": "Q0267", "decisao": "revisar", "tema_central_id": 4708, "extras_ids": [5517, 5498], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0268", "decisao": "revisar", "tema_central_id": 5120, "extras_ids": [5118, 5122], "confianca": 0.6, "motivo": "modelos divergem: Penal > Dos Crimes Contra a Honra vs Penal > Dos Crimes Contra a Fé Pública e de Falsidade Documental", "regra": 4}
 {"id": "Q0269", "decisao": "revisar", "tema_central_id": 4368, "extras_ids": [5199, 4384], "confianca": 0.4, "motivo": "modelos divergem: Criminologia > Teorias Legitimidoras da Pena vs Criminologia > Criminologia no Estado Democrático de Direito", "regra": 4}
 {"id": "Q0270", "decisao": "publicar", "tema_central_id": 5091, "extras_ids": [5092], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0271", "decisao": "revisar", "tema_central_id": 5524, "extras_ids": [5562], "confianca": 0.9, "motivo": "modelos divergem: Processo Penal > Procedimento do Tribunal do Júri vs Processo Penal > Parte Geral dos Recursos", "regra": 4}
-{"id": "Q0272", "decisao": "revisar", "tema_central_id": 4703, "extras_ids": [5185], "confianca": 0.7, "motivo": "confiança 0.70 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0273", "decisao": "revisar", "tema_central_id": 5089, "extras_ids": [5222, 5087], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0274", "decisao": "revisar", "tema_central_id": 5177, "extras_ids": [5160], "confianca": 0.8, "motivo": "modelos divergem: Penal > Iter Criminis > Crime Consumado e Tentado vs Penal > Dos Crimes Contra o Patrimônio > Roubo", "regra": 4}
-{"id": "Q0275", "decisao": "revisar", "tema_central_id": 5539, "extras_ids": [5540, 4701, 5487], "confianca": 0.5, "motivo": "irmãos Competência dos Juizados Especiais Criminais e Procedimento Sumaríssimo abaixo do limiar do pai 0.60", "regra": 3}
+{"id": "Q0271", "decisao": "revisar", "tema_central_id": 5562, "extras_ids": [5560, 5524], "confianca": 0.8, "motivo": "modelos divergem: Processo Penal > Recursos em Espécies > Apelação vs Processo Penal > Parte Geral dos Recursos", "regra": 4}
+{"id": "Q0272", "decisao": "revisar", "tema_central_id": 4703, "extras_ids": [5185], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0273", "decisao": "revisar", "tema_central_id": 5089, "extras_ids": [5222, 5087], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0274", "decisao": "revisar", "tema_central_id": 5177, "extras_ids": [5160], "confianca": 0.85, "motivo": "modelos divergem: Penal > Iter Criminis > Crime Consumado e Tentado vs Penal > Dos Crimes Contra o Patrimônio > Roubo", "regra": 4}
+{"id": "Q0275", "decisao": "publicar", "tema_central_id": 5539, "extras_ids": [5540, 4701, 5488], "confianca": 0.6, "motivo": "", "regra": 3}
 {"id": "Q0276", "decisao": "revisar", "tema_central_id": 5543, "extras_ids": [5547, 5548, 5545, 5550], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0277", "decisao": "publicar", "tema_central_id": 4696, "extras_ids": [], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0278", "decisao": "revisar", "tema_central_id": 5539, "extras_ids": [], "confianca": 0.8, "motivo": "modelos divergem: Processo Penal > Ação Penal vs Processo Penal > Procedimento Sumaríssimo", "regra": 4}
-{"id": "Q0279", "decisao": "revisar", "tema_central_id": 5178, "extras_ids": [5159], "confianca": 0.7, "motivo": "modelos divergem: Penal > Iter Criminis > Desistência Voluntária, Arrependimento Eficaz e Arrependimento posterior vs Penal > Prescrição", "regra": 4}
-{"id": "Q0280", "decisao": "revisar", "tema_central_id": 5123, "extras_ids": [5466, 5063, 5498], "confianca": 0.55, "motivo": "modelos divergem: Penal > Dos Crimes Contra a Honra > Difamação vs Processo Penal > Ação Penal", "regra": 4}
-{"id": "Q0281", "decisao": "revisar", "tema_central_id": 5555, "extras_ids": [4700, 5133, 5498], "confianca": 0.8, "motivo": "modelos divergem: Processo Penal > Provas em Espécies > Interceptação Telefônica e Quebra do Sigilo de Dados Telefônicos vs Direito Penal - Legislação Especial > Interceptação Telefônica", "regra": 4}
-{"id": "Q0282", "decisao": "revisar", "tema_central_id": 4704, "extras_ids": [4697, 4690], "confianca": 0.4, "motivo": "confiança 0.40 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0283", "decisao": "revisar", "tema_central_id": 5490, "extras_ids": [5495], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0284", "decisao": "revisar", "tema_central_id": 5231, "extras_ids": [5228], "confianca": 0.62, "motivo": "confiança 0.62 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0285", "decisao": "publicar", "tema_central_id": 4376, "extras_ids": [], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0278", "decisao": "revisar", "tema_central_id": 5539, "extras_ids": [5466], "confianca": 0.45, "motivo": "confiança 0.45 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0279", "decisao": "revisar", "tema_central_id": 5178, "extras_ids": [5159], "confianca": 0.8, "motivo": "modelos divergem: Penal > Iter Criminis > Desistência Voluntária, Arrependimento Eficaz e Arrependimento posterior vs Penal > Prescrição", "regra": 4}
+{"id": "Q0280", "decisao": "revisar", "tema_central_id": 5466, "extras_ids": [5123, 5120, 5498], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0281", "decisao": "revisar", "tema_central_id": 5498, "extras_ids": [5543], "confianca": 0.4, "motivo": "confiança 0.40 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0282", "decisao": "revisar", "tema_central_id": 4697, "extras_ids": [4704], "confianca": 0.6, "motivo": "modelos divergem: Direito Penal - Legislação Especial > Estatuto do Desarmamento vs Direito Penal - Legislação Especial > Lei Maria da Penha", "regra": 4}
+{"id": "Q0283", "decisao": "revisar", "tema_central_id": 5490, "extras_ids": [5572], "confianca": 0.7, "motivo": "confiança 0.70 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0284", "decisao": "revisar", "tema_central_id": 5231, "extras_ids": [5228], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0285", "decisao": "publicar", "tema_central_id": 4376, "extras_ids": [4374], "confianca": 0.9, "motivo": "", "regra": 2}
 {"id": "Q0286", "decisao": "publicar", "tema_central_id": 5199, "extras_ids": [5204, 5203, 5202, 5066], "confianca": 0.8, "motivo": "", "regra": 3}
-{"id": "Q0287", "decisao": "revisar", "tema_central_id": 5228, "extras_ids": [5230, 5231, 5232, 5233], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0288", "decisao": "revisar", "tema_central_id": 5066, "extras_ids": [5103, 5191, 5087], "confianca": null, "motivo": "nenhum modelo achou tema que cubra a questão; assunto descrito: A questão aborda vários temas distintos (delitos sexuais/estupro de vulnerável; crime contra a ordem tributária; causas atenuantes em crimes ambientais; concurso de crimes; crime de responsabilidade), não se concentrando em um único subtema específico. Não é adequado classificá‑la em apenas um dos candidatos listados.", "regra": 6}
-{"id": "Q0289", "decisao": "publicar", "tema_central_id": 4704, "extras_ids": [5522, 5577], "confianca": 0.85, "motivo": "", "regra": 2}
+{"id": "Q0287", "decisao": "publicar", "tema_central_id": 5228, "extras_ids": [5230], "confianca": 0.6, "motivo": "", "regra": 3}
+{"id": "Q0288", "decisao": "revisar", "tema_central_id": 5066, "extras_ids": [5103, 5087, 5191], "confianca": null, "motivo": "nenhum modelo achou tema que cubra a questão; assunto descrito: A questão é composta por afirmações sobre temas distintos (crimes contra a dignidade sexual, concurso de crimes, crimes contra a administração pública e questões de processo/penalidade em crimes tributários e ambientais), não cabendo em um único subtema listado; seria necessário um tema composto ou múltiplas etiquetas.", "regra": 6}
+{"id": "Q0289", "decisao": "publicar", "tema_central_id": 4704, "extras_ids": [5522], "confianca": 0.85, "motivo": "", "regra": 2}
 {"id": "Q0290", "decisao": "revisar", "tema_central_id": 5539, "extras_ids": [5466, 5487], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0291", "decisao": "revisar", "tema_central_id": 5501, "extras_ids": [4708], "confianca": 0.85, "motivo": "modelos divergem: Processo Penal > Inquérito Policial > Conclusão e Arquivamento do Inquérito Policial vs Direito Penal - Legislação Especial > Tráfico de Drogas", "regra": 4}
-{"id": "Q0292", "decisao": "revisar", "tema_central_id": 4368, "extras_ids": [4377, 4370], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0291", "decisao": "revisar", "tema_central_id": 5501, "extras_ids": [4708], "confianca": 0.8, "motivo": "modelos divergem: Processo Penal > Inquérito Policial > Conclusão e Arquivamento do Inquérito Policial vs Direito Penal - Legislação Especial > Tráfico de Drogas", "regra": 4}
+{"id": "Q0292", "decisao": "revisar", "tema_central_id": 4368, "extras_ids": [5584, 4370], "confianca": 0.5, "motivo": "modelos divergem: Criminologia > Processos de Criminalização e Cifras Criminais vs Criminologia > Criminologia no Estado Democrático de Direito", "regra": 4}
 {"id": "Q0293", "decisao": "publicar", "tema_central_id": 5185, "extras_ids": [5189, 5188], "confianca": 0.6, "motivo": "", "regra": 3}
-{"id": "Q0294", "decisao": "revisar", "tema_central_id": 5211, "extras_ids": [5224, 5233], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0295", "decisao": "revisar", "tema_central_id": 5489, "extras_ids": [5487], "confianca": 0.72, "motivo": "confiança 0.72 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0296", "decisao": "revisar", "tema_central_id": 5466, "extras_ids": [5474], "confianca": 0.5, "motivo": "irmãos Queixa Crime e Ação Penal abaixo do limiar do pai 0.60", "regra": 3}
+{"id": "Q0294", "decisao": "publicar", "tema_central_id": 5211, "extras_ids": [5224], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0295", "decisao": "revisar", "tema_central_id": 5489, "extras_ids": [5487], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0296", "decisao": "revisar", "tema_central_id": 5466, "extras_ids": [5474, 5063], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0297", "decisao": "revisar", "tema_central_id": 4695, "extras_ids": [4689], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0298", "decisao": "revisar", "tema_central_id": 4694, "extras_ids": [5222], "confianca": 0.85, "motivo": "modelos divergem: Direito Penal - Legislação Especial > Crimes previstos no CDC vs Direito Penal - Legislação Especial > Crimes contra a Economia Popular", "regra": 4}
-{"id": "Q0299", "decisao": "revisar", "tema_central_id": 4370, "extras_ids": [4385, 4388, 4373, 4384], "confianca": 0.8, "motivo": "modelos divergem: Criminologia > Criminologia no Estado Democrático de Direito > Modelos de Reação ao Delito vs Criminologia > Teorias Sociológicas Explicativas da Criminalidade", "regra": 4}
-{"id": "Q0300", "decisao": "publicar", "tema_central_id": 5084, "extras_ids": [5071], "confianca": 0.88, "motivo": "", "regra": 2}
-{"id": "Q0301", "decisao": "publicar", "tema_central_id": 5191, "extras_ids": [5196, 5063], "confianca": 0.6, "motivo": "", "regra": 3}
-{"id": "Q0302", "decisao": "publicar", "tema_central_id": 5224, "extras_ids": [5218], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0303", "decisao": "revisar", "tema_central_id": 5180, "extras_ids": [5181, 5182], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0304", "decisao": "revisar", "tema_central_id": 5540, "extras_ids": [5539, 5480, 4701], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0298", "decisao": "revisar", "tema_central_id": 4694, "extras_ids": [5222], "confianca": 0.4, "motivo": "confiança 0.40 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0299", "decisao": "revisar", "tema_central_id": 4370, "extras_ids": [4373, 4384, 4371], "confianca": 0.9, "motivo": "modelos divergem: Criminologia > Criminologia no Estado Democrático de Direito > Modelos de Reação ao Delito vs Criminologia > Teorias Sociológicas Explicativas da Criminalidade > Teorias Criminológicas em Espécie", "regra": 4}
+{"id": "Q0300", "decisao": "publicar", "tema_central_id": 5084, "extras_ids": [5160], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0301", "decisao": "publicar", "tema_central_id": 5191, "extras_ids": [5196], "confianca": 0.55, "motivo": "", "regra": 3}
+{"id": "Q0302", "decisao": "publicar", "tema_central_id": 5224, "extras_ids": [5218], "confianca": 0.85, "motivo": "", "regra": 2}
+{"id": "Q0303", "decisao": "revisar", "tema_central_id": 5180, "extras_ids": [5181, 5182], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0304", "decisao": "revisar", "tema_central_id": 5540, "extras_ids": [5480, 4701], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0305", "decisao": "revisar", "tema_central_id": 5466, "extras_ids": [5473, 5471, 5470, 5469], "confianca": 0.5, "motivo": "modelos divergem: Penal > Ação Penal > Ação Penal Pública vs Processo Penal > Ação Penal", "regra": 4}
-{"id": "Q0306", "decisao": "revisar", "tema_central_id": 5071, "extras_ids": [4705, 4708], "confianca": 0.6, "motivo": "modelos divergem: Penal > Concurso de Pessoas vs Direito Penal - Legislação Especial > Organizações Criminosas", "regra": 4}
-{"id": "Q0307", "decisao": "revisar", "tema_central_id": 4707, "extras_ids": [], "confianca": 0.75, "motivo": "confiança 0.75 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0306", "decisao": "revisar", "tema_central_id": 4705, "extras_ids": [4708], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0307", "decisao": "publicar", "tema_central_id": 4707, "extras_ids": [], "confianca": 0.9, "motivo": "", "regra": 2}
 {"id": "Q0308", "decisao": "revisar", "tema_central_id": 5498, "extras_ids": [5466], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0309", "decisao": "publicar", "tema_central_id": 4688, "extras_ids": [4685], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0310", "decisao": "publicar", "tema_central_id": 5505, "extras_ids": [5507, 5508, 5506], "confianca": 0.8, "motivo": "", "regra": 3}
+{"id": "Q0309", "decisao": "publicar", "tema_central_id": 4688, "extras_ids": [], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0310", "decisao": "revisar", "tema_central_id": 5505, "extras_ids": [5507, 5506, 5508], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0311", "decisao": "revisar", "tema_central_id": 5488, "extras_ids": [5487], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0312", "decisao": "revisar", "tema_central_id": 4384, "extras_ids": [5200], "confianca": 0.75, "motivo": "modelos divergem: Criminologia > Teorias Legitimidoras da Pena vs Penal > Teoria da Pena > Sanção Penal: Conceito, Finalidade e Modalidades", "regra": 4}
+{"id": "Q0312", "decisao": "revisar", "tema_central_id": 4384, "extras_ids": [4371], "confianca": 0.85, "motivo": "modelos divergem: Criminologia > Teorias Legitimidoras da Pena vs Penal > Teoria da Pena > Sanção Penal: Conceito, Finalidade e Modalidades", "regra": 4}
 {"id": "Q0313", "decisao": "revisar", "tema_central_id": 5209, "extras_ids": [5577, 5475], "confianca": 0.5, "motivo": "modelos divergem: Processo Penal > Ação Penal > Ação Civil Ex Delicto vs Penal > Teoria da Pena > Efeitos da Condenação Penais e Extrapenais", "regra": 4}
-{"id": "Q0314", "decisao": "publicar", "tema_central_id": 5477, "extras_ids": [5476], "confianca": 0.92, "motivo": "", "regra": 2}
-{"id": "Q0315", "decisao": "revisar", "tema_central_id": 5185, "extras_ids": [], "confianca": 0.7, "motivo": "confiança 0.70 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0316", "decisao": "revisar", "tema_central_id": 5224, "extras_ids": [5153], "confianca": 0.72, "motivo": "confiança 0.72 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0314", "decisao": "publicar", "tema_central_id": 5477, "extras_ids": [5476], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0315", "decisao": "revisar", "tema_central_id": 5185, "extras_ids": [5191], "confianca": 0.75, "motivo": "confiança 0.75 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0316", "decisao": "revisar", "tema_central_id": 5224, "extras_ids": [5153], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0317", "decisao": "revisar", "tema_central_id": 5198, "extras_ids": [5466], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0318", "decisao": "publicar", "tema_central_id": 5178, "extras_ids": [5150, 5175], "confianca": 0.85, "motivo": "", "regra": 2}
 {"id": "Q0319", "decisao": "revisar", "tema_central_id": 5073, "extras_ids": [5071], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0320", "decisao": "publicar", "tema_central_id": 5550, "extras_ids": [5543], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0321", "decisao": "publicar", "tema_central_id": 5071, "extras_ids": [5073, 4708, 5149], "confianca": 0.6, "motivo": "", "regra": 3}
-{"id": "Q0322", "decisao": "revisar", "tema_central_id": 5561, "extras_ids": [5560], "confianca": 0.7, "motivo": "confiança 0.70 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0323", "decisao": "revisar", "tema_central_id": 5543, "extras_ids": [5557, 5548, 5550, 5498], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0324", "decisao": "revisar", "tema_central_id": 4703, "extras_ids": [5213, 5199, 5201], "confianca": 0.65, "motivo": "modelos divergem: Direito Penal - Legislação Especial > Lei de Execução Penal vs Penal > Teoria da Pena", "regra": 4}
-{"id": "Q0325", "decisao": "revisar", "tema_central_id": 5466, "extras_ids": [5467, 5473, 5471], "confianca": 0.45, "motivo": "irmãos Características e Condições da Ação Penal e Ação Penal abaixo do limiar do pai 0.60", "regra": 3}
-{"id": "Q0326", "decisao": "publicar", "tema_central_id": 4708, "extras_ids": [], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0327", "decisao": "publicar", "tema_central_id": 5203, "extras_ids": [], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0328", "decisao": "publicar", "tema_central_id": 4380, "extras_ids": [4381, 4382], "confianca": 0.6, "motivo": "", "regra": 3}
-{"id": "Q0329", "decisao": "revisar", "tema_central_id": 5557, "extras_ids": [4705], "confianca": 0.9, "motivo": "modelos divergem: Processo Penal > Provas em Espécies > Colaboração Premiada vs Direito Penal - Legislação Especial > Organizações Criminosas", "regra": 4}
-{"id": "Q0330", "decisao": "revisar", "tema_central_id": 5498, "extras_ids": [5501, 5503, 5500], "confianca": 0.55, "motivo": "confiança 0.55 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0331", "decisao": "publicar", "tema_central_id": 5477, "extras_ids": [5476], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0332", "decisao": "publicar", "tema_central_id": 5541, "extras_ids": [5539], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0333", "decisao": "revisar", "tema_central_id": 5178, "extras_ids": [4370], "confianca": 0.35, "motivo": "modelos divergem: Criminologia > Criminologia no Estado Democrático de Direito vs Penal > Iter Criminis > Desistência Voluntária, Arrependimento Eficaz e Arrependimento posterior", "regra": 4}
-{"id": "Q0334", "decisao": "publicar", "tema_central_id": 4381, "extras_ids": [], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0335", "decisao": "publicar", "tema_central_id": 5218, "extras_ids": [5222, 5221, 5223], "confianca": 0.6, "motivo": "", "regra": 3}
-{"id": "Q0336", "decisao": "publicar", "tema_central_id": 5159, "extras_ids": [], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0320", "decisao": "publicar", "tema_central_id": 5550, "extras_ids": [5543], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0321", "decisao": "revisar", "tema_central_id": 5071, "extras_ids": [5073, 5072, 4708, 5149], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0322", "decisao": "revisar", "tema_central_id": 5561, "extras_ids": [5560], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0323", "decisao": "revisar", "tema_central_id": 5543, "extras_ids": [5530, 5535, 5557], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0324", "decisao": "revisar", "tema_central_id": 4703, "extras_ids": [5199, 5191, 5201], "confianca": 0.7, "motivo": "modelos divergem: Direito Penal - Legislação Especial > Lei de Execução Penal vs Penal > Teoria da Pena", "regra": 4}
+{"id": "Q0325", "decisao": "revisar", "tema_central_id": 5466, "extras_ids": [5471, 5473, 5467], "confianca": 0.55, "motivo": "confiança 0.55 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0326", "decisao": "revisar", "tema_central_id": 4708, "extras_ids": [], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0327", "decisao": "publicar", "tema_central_id": 5203, "extras_ids": [5199], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0328", "decisao": "revisar", "tema_central_id": 4382, "extras_ids": [4381], "confianca": 0.62, "motivo": "vizinhança aponta Criminologia > Criminologia no Estado Democrático de Direito com peso 0.61", "regra": 5}
+{"id": "Q0329", "decisao": "revisar", "tema_central_id": 5557, "extras_ids": [4705, 5071], "confianca": 0.62, "motivo": "confiança 0.62 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0330", "decisao": "publicar", "tema_central_id": 5498, "extras_ids": [5501, 5503], "confianca": 0.6, "motivo": "", "regra": 3}
+{"id": "Q0331", "decisao": "publicar", "tema_central_id": 5477, "extras_ids": [5476], "confianca": 0.85, "motivo": "", "regra": 2}
+{"id": "Q0332", "decisao": "publicar", "tema_central_id": 5541, "extras_ids": [5539], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0333", "decisao": "revisar", "tema_central_id": 5178, "extras_ids": [4370, 5199, 4703], "confianca": 0.4, "motivo": "modelos divergem: Criminologia > Criminologia no Estado Democrático de Direito vs Penal > Iter Criminis > Desistência Voluntária, Arrependimento Eficaz e Arrependimento posterior", "regra": 4}
+{"id": "Q0334", "decisao": "publicar", "tema_central_id": 4381, "extras_ids": [4380], "confianca": 0.9, "motivo": "", "regra": 2}
+{"id": "Q0335", "decisao": "revisar", "tema_central_id": 5218, "extras_ids": [5222, 5223, 5221], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0336", "decisao": "publicar", "tema_central_id": 5159, "extras_ids": [5157], "confianca": 0.9, "motivo": "", "regra": 2}
 {"id": "Q0337", "decisao": "publicar", "tema_central_id": 4684, "extras_ids": [], "confianca": 0.9, "motivo": "", "regra": 2}
 {"id": "Q0338", "decisao": "revisar", "tema_central_id": 5543, "extras_ids": [5550], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0339", "decisao": "publicar", "tema_central_id": 5572, "extras_ids": [5578, 5537, 5527, 5579], "confianca": 0.6, "motivo": "", "regra": 3}
-{"id": "Q0340", "decisao": "publicar", "tema_central_id": 5071, "extras_ids": [5074, 5072, 5223], "confianca": 0.8, "motivo": "", "regra": 3}
-{"id": "Q0341", "decisao": "revisar", "tema_central_id": 5157, "extras_ids": [5169, 5164, 5466], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0342", "decisao": "revisar", "tema_central_id": 5543, "extras_ids": [], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0343", "decisao": "revisar", "tema_central_id": 5196, "extras_ids": [5063, 5195], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0344", "decisao": "publicar", "tema_central_id": 4688, "extras_ids": [5466], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0345", "decisao": "revisar", "tema_central_id": 5103, "extras_ids": [5102, 5199], "confianca": 0.55, "motivo": "confiança 0.55 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0346", "decisao": "revisar", "tema_central_id": 5466, "extras_ids": [5584], "confianca": 0.5, "motivo": "confiança 0.50 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0347", "decisao": "revisar", "tema_central_id": 5199, "extras_ids": [5208, 5228, 5232, 5066], "confianca": 0.4, "motivo": "irmãos Livramento Condicional e Teoria da Pena abaixo do limiar do pai 0.60", "regra": 3}
-{"id": "Q0348", "decisao": "revisar", "tema_central_id": 5093, "extras_ids": [5087], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0349", "decisao": "revisar", "tema_central_id": 5178, "extras_ids": [5191, 5157], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0339", "decisao": "revisar", "tema_central_id": 5572, "extras_ids": [5578, 5527, 5579], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0340", "decisao": "publicar", "tema_central_id": 5071, "extras_ids": [5074, 5072], "confianca": 0.8, "motivo": "", "regra": 3}
+{"id": "Q0341", "decisao": "revisar", "tema_central_id": 5157, "extras_ids": [5164, 5169, 5466], "confianca": 0.78, "motivo": "confiança 0.78 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0342", "decisao": "revisar", "tema_central_id": 5543, "extras_ids": [5498], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0343", "decisao": "revisar", "tema_central_id": 5196, "extras_ids": [5063, 5195], "confianca": 0.55, "motivo": "confiança 0.55 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0344", "decisao": "publicar", "tema_central_id": 4688, "extras_ids": [], "confianca": 0.88, "motivo": "", "regra": 2}
+{"id": "Q0345", "decisao": "revisar", "tema_central_id": 5103, "extras_ids": [5102, 5199], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0346", "decisao": "revisar", "tema_central_id": 5466, "extras_ids": [5584], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0347", "decisao": "revisar", "tema_central_id": 5199, "extras_ids": [5232, 5228, 5069, 5208], "confianca": 0.4, "motivo": "um modelo não achou candidato; sugestão do outro", "regra": 6}
+{"id": "Q0348", "decisao": "revisar", "tema_central_id": 5093, "extras_ids": [5087], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0349", "decisao": "publicar", "tema_central_id": 5178, "extras_ids": [5157], "confianca": 0.85, "motivo": "", "regra": 2}
 {"id": "Q0350", "decisao": "publicar", "tema_central_id": 4702, "extras_ids": [], "confianca": 0.9, "motivo": "", "regra": 2}
-{"id": "Q0351", "decisao": "revisar", "tema_central_id": 5118, "extras_ids": [5116], "confianca": 0.62, "motivo": "confiança 0.62 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0352", "decisao": "revisar", "tema_central_id": 5512, "extras_ids": [5513, 5515], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0353", "decisao": "revisar", "tema_central_id": 5185, "extras_ids": [5535, 5188], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0354", "decisao": "revisar", "tema_central_id": 5218, "extras_ids": [5226, 5221, 5219, 5228], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0355", "decisao": "publicar", "tema_central_id": 4708, "extras_ids": [5498], "confianca": 0.85, "motivo": "", "regra": 2}
-{"id": "Q0356", "decisao": "publicar", "tema_central_id": 5066, "extras_ids": [5067, 5068], "confianca": 0.88, "motivo": "", "regra": 2}
+{"id": "Q0351", "decisao": "revisar", "tema_central_id": 5118, "extras_ids": [5116], "confianca": 0.7, "motivo": "confiança 0.70 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0352", "decisao": "revisar", "tema_central_id": 5512, "extras_ids": [5515, 5514, 5513], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0353", "decisao": "revisar", "tema_central_id": 5530, "extras_ids": [5572, 5535, 5185], "confianca": 0.4, "motivo": "modelos divergem: Penal > Prescrição vs Processo Penal > Procedimento Ordinário", "regra": 4}
+{"id": "Q0354", "decisao": "revisar", "tema_central_id": 5218, "extras_ids": [5226, 5221, 5228, 5222, 5219], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0355", "decisao": "revisar", "tema_central_id": 4708, "extras_ids": [5517, 5498], "confianca": 0.75, "motivo": "confiança 0.75 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0356", "decisao": "publicar", "tema_central_id": 5066, "extras_ids": [5067, 5068], "confianca": 0.85, "motivo": "", "regra": 2}
 {"id": "Q0357", "decisao": "revisar", "tema_central_id": 5134, "extras_ids": [], "confianca": 0.8, "motivo": "confiança 0.80 abaixo do limiar 0.85", "regra": 5}
-{"id": "Q0358", "decisao": "revisar", "tema_central_id": 5133, "extras_ids": [5127], "confianca": 0.55, "motivo": "confiança 0.55 abaixo do limiar 0.85", "regra": 5}
+{"id": "Q0358", "decisao": "revisar", "tema_central_id": 5133, "extras_ids": [5218], "confianca": 0.4, "motivo": "confiança 0.40 abaixo do limiar 0.85", "regra": 5}
 {"id": "Q0359", "decisao": "revisar", "tema_central_id": 5539, "extras_ids": [], "confianca": 0.6, "motivo": "confiança 0.60 abaixo do limiar 0.85", "regra": 5}

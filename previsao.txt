@@ -1,7 +1,7 @@
-precisao_prevista: 0.97   # fração das publicadas que estará certa
-precisao_intervalo: 0.94-1.00
-cobertura_prevista: 0.33  # fração das questões que você publicou
-cobertura_intervalo: 0.32-0.34
+precisao_prevista: 0.98   # fração das publicadas que estará certa
+precisao_intervalo: 0.96-1.00
+cobertura_prevista: 0.35  # fração das questões que você publicou
+cobertura_intervalo: 0.34-0.36
 
 Como chegamos nos números.
 
@@ -9,8 +9,8 @@ Não há gabarito das 359 questões, então a precisão foi estimada num corpus 
 
 O corpus é mais fácil que as 359, que vieram de lixeiras. A precisão prevista é a média, sobre as publicadas entre as 359, da precisão no corpus da célula (regra de decisão × faixa de confiança) em que cada uma cai, com suavização de Jeffreys ((acertos + 0.5) / (n + 1)). Quando a célula tem menos de 5 questões do corpus, recua para a faixa; quando a faixa também tem menos de 5, para o corpus inteiro. Essa reponderação corrige só a diferença na mistura de regras de decisão e faixas de confiança entre o corpus e as 359. Ela supõe que, dentro de uma célula, a chance de acerto é a mesma no corpus e nas 359; a única checagem dessa suposição é a âncora manual, que, com poucas questões publicadas, só detecta diferenças grandes. O intervalo de 95% vem de simulação da posterior Beta de cada célula, com 1000 sorteios.
 
-Os limiares de publicação (0.85 no tema, 0.60 no pai) saíram de uma varredura em que nenhum par de limiares atingiu ao mesmo tempo a meta de precisão prevista 0.97 e o piso de 0.95 para o limite inferior, então a escolha desceu a escada de seleção. Usamos o terceiro critério: nenhum par teve limite inferior de pelo menos 0.95, então, entre os pares com precisão prevista de pelo menos 0.97, ficou o de maior limite inferior. Com os números finais, o par escolhido não cumpre ao mesmo tempo as duas condições, e a previsão de precisão no topo deste arquivo reflete esse par. Os limiares foram escolhidos no mesmo corpus usado para estimar a precisão, o que pode deixar a estimativa um pouco otimista.
+Os limiares de publicação (0.85 no tema, 0.55 no pai) foram escolhidos por varredura, maximizando cobertura sujeita a precisão prevista de pelo menos 0.97 e limite inferior do intervalo de pelo menos 0.95. É o primeiro critério da escada de seleção, o único que cumpre a meta inteira. Os limiares foram escolhidos no mesmo corpus usado para estimar a precisão, o que pode deixar a estimativa um pouco otimista.
 
-Checagem com âncora manual: das 11 questões publicadas que estavam na âncora de 40 rotuladas às cegas, 11 estavam certas (observado 1.00, previsto 0.97). O intervalo foi alargado para conter a observação; depois do alargamento, o limite inferior é 0.94 (antes, 0.94).
+Checagem com âncora manual: das 13 questões publicadas que estavam na âncora de 40 rotuladas às cegas, 13 estavam certas (observado 1.00, previsto 0.98). O intervalo foi alargado para conter a observação; depois do alargamento, o limite inferior é 0.96 (antes, 0.96).
 
-Cobertura: 117 de 359 questões publicadas. É um número observado, não previsto, por isso o intervalo é estreito.
+Cobertura: 124 de 359 questões publicadas. É um número observado, não previsto, por isso o intervalo é estreito.
