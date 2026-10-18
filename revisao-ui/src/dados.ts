@@ -19,18 +19,14 @@ const DECISOES_VALIDAS: TipoDecisao[] = ["publicar", "revisar", "fora"];
 const ESSENCIAIS = ["publicacao.csv", "questoes.jsonl", "temas.csv"] as const;
 const OPCIONAIS = ["decisoes_questoes.jsonl", "votos_llm_questoes.jsonl", "candidatos_questoes_p2.jsonl"] as const;
 
-export function semBom(texto: string): string {
+function semBom(texto: string): string {
   return texto.replace(/^\uFEFF/, "");
 }
 
-/** CSV com cabeçalho; o separador padrão é a vírgula. */
-export function lerCsvComCampos(
-  texto: string,
-  delimitador = ",",
-): { linhas: Record<string, string>[]; campos: string[] } {
+function lerCsvComCampos(texto: string): { linhas: Record<string, string>[]; campos: string[] } {
   const resultado = Papa.parse<Record<string, string>>(semBom(texto), {
     header: true,
-    delimiter: delimitador,
+    delimiter: ",",
     skipEmptyLines: true,
     transformHeader: (cabecalho) => cabecalho.trim(),
   });
@@ -63,7 +59,7 @@ export function parseJsonl<T = unknown>(texto: string): T[] {
   return itens;
 }
 
-export function exigirColunas(campos: string[], esperadas: string[], arquivo: string): void {
+function exigirColunas(campos: string[], esperadas: string[], arquivo: string): void {
   const faltando = esperadas.filter((coluna) => !campos.includes(coluna));
   if (faltando.length > 0) throw new Error(`${arquivo} sem as colunas ${faltando.join(", ")}`);
 }
@@ -76,7 +72,7 @@ function inteiroOuNulo(valor: string | undefined, contexto: string): number | nu
   return numero;
 }
 
-export function numeroOuNulo(valor: unknown): number | null {
+function numeroOuNulo(valor: unknown): number | null {
   if (valor === null || valor === undefined || valor === "") return null;
   const numero = Number(valor);
   return Number.isFinite(numero) ? numero : null;
@@ -224,7 +220,7 @@ function normalizarQuestao(bruta: Record<string, unknown>): Questao {
  * Busca um arquivo; devolve null quando ele não existe. O servidor do Vite responde 200 com o index.html
  * para caminho inexistente, então HTML também conta como ausente.
  */
-export async function buscarArquivo(url: string, buscar: Buscador): Promise<string | null> {
+async function buscarArquivo(url: string, buscar: Buscador): Promise<string | null> {
   let resposta: RespostaMinima;
   try {
     resposta = await buscar(url);
@@ -238,7 +234,7 @@ export async function buscarArquivo(url: string, buscar: Buscador): Promise<stri
   return texto;
 }
 
-export function comArquivo<T>(arquivo: string, ler: () => T): T {
+function comArquivo<T>(arquivo: string, ler: () => T): T {
   try {
     return ler();
   } catch (erro) {
@@ -246,7 +242,7 @@ export function comArquivo<T>(arquivo: string, ler: () => T): T {
   }
 }
 
-export const buscarPadrao: Buscador = (url) => fetch(url, { cache: "no-cache" });
+const buscarPadrao: Buscador = (url) => fetch(url, { cache: "no-cache" });
 
 /**
  * Carrega os seis arquivos de `base`. publicacao.csv, questoes.jsonl e temas.csv são obrigatórios;

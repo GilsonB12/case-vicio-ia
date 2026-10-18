@@ -1,4 +1,4 @@
-// Formatação de texto compartilhada pelos dois modos da tela.
+// Formatação de texto usada pela tela.
 
 const formatoConfianca = new Intl.NumberFormat("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
