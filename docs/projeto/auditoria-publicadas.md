@@ -39,6 +39,10 @@ Juiz 1: 116 de 117 (99,1%, intervalo 96,0% a 99,9%). Juiz 2: 113 de 117 (96,6%, 
 
 Quatro das cinco são nós sobrepostos ou questão mista, o mesmo padrão que apareceu na âncora e na checagem do corpus. A Q0202 é a mais instrutiva: quando uma questão narra um crime específico para cobrar um instituto da parte geral, a árvore oferece dois lugares legítimos, e a régua conta um deles como erro.
 
+## A faixa seguinte: os 48 acordos com confiança entre 0,80 e 0,85 que ficaram em revisão
+
+Para saber o que custaria publicar a próxima faixa, os mesmos dois juízes classificaram às cegas as 48 questões em que os dois modelos concordaram com confiança mínima entre 0,80 e 0,85 e que a regra mandou para revisão. Dados em `data/auditoria_revisar_faixa_080.jsonl`. Pela régua, a sugestão do pipeline estava certa para o juiz 1 em 46 de 48 e para o juiz 2 em 46 de 48 (95,8%, intervalo 87% a 99% cada), certa para os dois em 45. As contestadas são Q0161 (prisão preventiva ou audiência de custódia), Q0317 (decadência ou ação penal condicionada) e Q0322 (recurso em sentido estrito ou outro recurso): de novo nós vizinhos. O corpus previa 90% para essa faixa; a auditoria deu 96%, no fio da navalha da régua. Por isso a faixa fica em revisão nesta entrega, e é a primeira a ser liberada quando os rótulos do professor confirmarem o número.
+
 ## Limitações
 
 Juízes são modelos, não a equipe da Vício; podem compartilhar vieses com os modelos do pipeline, embora sejam de fornecedores e configurações diferentes e não tenham visto a lista de candidatos. O intervalo do juiz mais rigoroso vai até 91%, então 124 questões não bastam para garantir os 95% com 95% de confiança; o que a auditoria mostra é que a estimativa pontual fica acima da régua pelos dois juízes, nas duas rodadas, e que os erros contestados são de fronteira, não de leitura.

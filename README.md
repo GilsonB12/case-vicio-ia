@@ -15,6 +15,13 @@ Pipeline que classifica 359 questões de Penal, Processo Penal, Legislação Pen
 
 Para o revisor vão as 234 questões marcadas `revisar`, cada uma com o tema sugerido e o motivo. A única `fora` (Q0142, imposto ITCD) não vai para ninguém: some do recorte até alguém criar o tema.
 
+| Por que foi para revisão | Questões | O que o revisor recebe |
+|---|---|---|
+| Os dois modelos concordam, mas a menor confiança fica abaixo de 0,85 | 158 | A sugestão dos dois, com justificativa. Na âncora, 18 de 19 dessas sugestões estavam certas: são confirmações rápidas. 48 delas estão entre 0,80 e 0,85. |
+| Os dois modelos escolheram ramos diferentes | 51 | As duas opções e qual delas a vizinhança apoia. Na âncora, só 1 de 6 sugestões estava certa: são as difíceis de verdade. |
+| Pai e filho, com confiança baixa para publicar no pai | 13 | O pai sugerido e os dois subtemas como extras. |
+| Um ou os dois modelos não acharam tema que cubra a questão | 12 | O tema mais próximo do assunto que os próprios modelos descreveram; questões mistas ou sem nó na árvore. |
+
 ## Metodologia em resumo
 
 O case não traz nenhuma questão rotulada, e a régua só pune erro nas publicadas. Então o problema não é classificar bem; é saber quando se está certo. Sem gabarito, três coisas fazem o papel do especialista:
