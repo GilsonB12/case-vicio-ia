@@ -2,6 +2,16 @@
 
 Das 359 questões, publiquei **124 (35%)**, mandei **234** para revisão e marquei **1** como fora da árvore. Previsão de precisão nas publicadas, feita antes de qualquer checagem: **0,98**, intervalo **0,96 a 1,00** (`previsao.txt`). Uma auditoria cega por dois juízes independentes, feita depois, encontrou 96,0% e 99,2%. A seguir: como pensei, o que atrapalha, como eu levaria isto para produção e um memo para o professor. O código, os prompts, cada decisão tomada à mão, os arquivos intermediários e um livro-razão com tokens, latência e custo de cada uma das 1.953 chamadas estão no repositório; `uv run classificar tudo` reproduz `publicacao.csv` a partir do cache, sem chave de API, em 25 segundos.
 
+**Custo das APIs nesta entrega.**
+
+| | Chamadas | Anthropic (claude-sonnet-5-5) | OpenAI (gpt-5-mini + embeddings) | Total |
+|---|---|---|---|---|
+| Execução canônica (18/10), medida chamada a chamada pelo livro-razão | 1.953 | US$ 5,72 | US$ 0,87 | **US$ 6,58** |
+| Primeira execução completa (16/10) e testes, pelo painel do provedor e pela medição por chamada | cerca de 1.520 | US$ 5,80 | cerca de US$ 0,90 | cerca de US$ 6,70 |
+| **Projeto inteiro** | cerca de 3.500 | cerca de US$ 11,50 | cerca de US$ 1,80 | **cerca de US$ 13,30** |
+
+Os avaliadores (rotuladores da âncora, checagem do corpus e auditoria) rodaram por assinatura, sem custo de API. Reproduzir o resultado a partir do cache commitado não custa nada.
+
 ## a) Como eu pensei
 
 **O problema não é classificar bem; é saber quando estou certo.** A régua só pune erro nas publicadas. Um modelo de linguagem acerta "razoavelmente bem" sozinho, mas razoável não dá para publicar. O desenho inteiro gira em torno de três decisões:
