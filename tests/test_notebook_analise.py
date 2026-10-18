@@ -1,6 +1,5 @@
 """O notebook da análise exploratória existe, é válido, foi executado e roda em
-outra máquina: sem caminho absoluto, sem kernel registrado à mão e em sincronia
-com o construtor."""
+outra máquina: sem caminho absoluto e sem kernel registrado à mão."""
 from __future__ import annotations
 
 import re
@@ -81,12 +80,6 @@ def test_primeira_celula_de_codigo_acha_a_raiz_pelo_pyproject():
     assert "sys.path.insert" in primeira
 
 
-def test_comando_de_reconstrucao_documentado_no_topo():
-    topo = _ler().cells[0]
-    assert topo.cell_type == "markdown"
-    assert "uv run python analise/construir_notebook.py" in topo.source
-    assert "uv run jupyter nbconvert --to notebook --execute --inplace analise/analise_exploratoria.ipynb" in topo.source
-
 
 def test_kernel_e_o_padrao_do_ipykernel():
     assert _ler().metadata.kernelspec.name == "python3"
@@ -103,11 +96,3 @@ def test_graficos_embutidos_no_maximo_cinco():
 
 def test_tamanho_abaixo_de_5_mb():
     assert NOTEBOOK.stat().st_size < TAMANHO_MAXIMO
-
-
-def test_notebook_em_sincronia_com_o_construtor():
-    from analise.construir_notebook import montar_notebook
-
-    esperado = [(celula.cell_type, celula.source) for celula in montar_notebook().cells]
-    gravado = [(celula.cell_type, celula.source) for celula in _ler().cells]
-    assert gravado == esperado

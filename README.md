@@ -127,10 +127,10 @@ Os testes rodam com `npm test`, e `npm run build` checa os tipos e gera `dist/`.
 
 ## Análise exploratória
 
-O notebook `analise/analise_exploratoria.ipynb` descreve as questões e os temas antes de qualquer classificação, sem chamar modelo, e já vem executado. Os achados, para quem não é técnico, estão em [`analise/achados.md`](analise/achados.md). Para reconstruir o notebook a partir de `analise/construir_notebook.py` e executá-lo no lugar:
+O notebook `analise/analise_exploratoria.ipynb` descreve as questões e os temas antes de qualquer classificação, sem chamar modelo, e já vem executado. Os achados, para quem não é técnico, estão em [`analise/achados.md`](analise/achados.md). As funções de apoio (vocabulário, heurística de OCR, defeitos da árvore) estão em `analise/heuristicas.py`, com testes. Para executar o notebook de novo no lugar:
 
 ```bash
-uv run python analise/construir_notebook.py && uv run jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=600 analise/analise_exploratoria.ipynb
+uv run jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=600 analise/analise_exploratoria.ipynb
 ```
 
 ## Modelos, custo e tempo
@@ -165,7 +165,6 @@ Cada chamada de modelo ou de embeddings grava uma linha em `data/custos/chamadas
 
 - Relatório e memo: [`relatorio.md`](relatorio.md)
 - Spec de design: `docs/projeto/specs/2026-10-14-classificacao-topicos-design.md`
-- Planos: `docs/projeto/plans/`
 - Decisões e pendências: `docs/projeto/notes/2026-10-14-pendencias-pipeline-central.md`
 - Âncora: `docs/projeto/ancora.md`; corpus: `docs/projeto/coleta-corpus.md`; árvore legível: `docs/projeto/arvore-temas.md`
 - Análise exploratória: `analise/achados.md`
