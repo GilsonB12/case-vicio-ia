@@ -1,17 +1,17 @@
 {
   "livro": "D:\\Projetos\\Pessoal\\case-vicio-ia\\data\\custos\\chamadas.jsonl",
   "preco_versao": "2026-10-15",
-  "linhas": 1504,
+  "linhas": 1507,
   "linhas_invalidas": 0,
-  "gerado_em": "2026-10-17T23:01:23.450+00:00",
+  "gerado_em": "2026-10-18T12:24:32.419+00:00",
   "total": {
-    "linhas": 1504,
+    "linhas": 1507,
     "uso_desconhecido": 1504,
     "custo_desconhecido": 0,
-    "tokens_entrada": 0,
-    "tokens_saida": 0,
-    "tokens_raciocinio": 0,
-    "custo_usd": 0.0
+    "tokens_entrada": 3283,
+    "tokens_saida": 536,
+    "tokens_raciocinio": 256,
+    "custo_usd": 0.00705719
   },
   "por_execucao": {
     "20261017T230108-31564": {
@@ -22,6 +22,15 @@
       "tokens_saida": 0,
       "tokens_raciocinio": 0,
       "custo_usd": 0.0
+    },
+    "20261018T122408-24204": {
+      "linhas": 3,
+      "uso_desconhecido": 0,
+      "custo_desconhecido": 0,
+      "tokens_entrada": 3283,
+      "tokens_saida": 536,
+      "tokens_raciocinio": 256,
+      "custo_usd": 0.00705719
     }
   },
   "por_etapa": {
@@ -42,26 +51,44 @@
       "tokens_saida": 0,
       "tokens_raciocinio": 0,
       "custo_usd": 0.0
+    },
+    "api": {
+      "linhas": 3,
+      "uso_desconhecido": 0,
+      "custo_desconhecido": 0,
+      "tokens_entrada": 3283,
+      "tokens_saida": 536,
+      "tokens_raciocinio": 256,
+      "custo_usd": 0.00705719
     }
   },
   "por_modelo": {
     "openai/gpt-5-mini": {
-      "linhas": 752,
+      "linhas": 753,
       "uso_desconhecido": 752,
       "custo_desconhecido": 0,
-      "tokens_entrada": 0,
-      "tokens_saida": 0,
-      "tokens_raciocinio": 0,
-      "custo_usd": 0.0
+      "tokens_entrada": 1047,
+      "tokens_saida": 359,
+      "tokens_raciocinio": 256,
+      "custo_usd": 0.00097975
     },
     "anthropic/claude-sonnet-5-5": {
-      "linhas": 752,
+      "linhas": 753,
       "uso_desconhecido": 752,
       "custo_desconhecido": 0,
-      "tokens_entrada": 0,
+      "tokens_entrada": 2148,
+      "tokens_saida": 177,
+      "tokens_raciocinio": 0,
+      "custo_usd": 0.006066
+    },
+    "openai/text-embedding-3-large": {
+      "linhas": 1,
+      "uso_desconhecido": 0,
+      "custo_desconhecido": 0,
+      "tokens_entrada": 88,
       "tokens_saida": 0,
       "tokens_raciocinio": 0,
-      "custo_usd": 0.0
+      "custo_usd": 1.144e-05
     }
   },
   "por_origem": {
@@ -73,6 +100,15 @@
       "tokens_saida": 0,
       "tokens_raciocinio": 0,
       "custo_usd": 0.0
+    },
+    "api": {
+      "linhas": 3,
+      "uso_desconhecido": 0,
+      "custo_desconhecido": 0,
+      "tokens_entrada": 3283,
+      "tokens_saida": 536,
+      "tokens_raciocinio": 256,
+      "custo_usd": 0.00705719
     }
   },
   "por_questao": {
@@ -87,5 +123,13 @@
     "publicadas": 117,
     "custo_por_publicada": 0.0
   },
-  "painel": {}
+  "painel": {
+    "anthropic": {
+      "informado": 5.8,
+      "calculado": 0.006066,
+      "diferenca": 5.793934,
+      "diferenca_percentual": 99.9,
+      "linhas_sem_custo": 0
+    }
+  }
 }
